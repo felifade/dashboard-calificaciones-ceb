@@ -605,43 +605,16 @@
             </div>
         </div>
 
-        <!-- Botón Aclaración -->
-        <button onclick="abrirModalAclaracion()" class="btn-aclaracion">
-            💬 ¿Tienes alguna duda o solicitud de aclaración?
-        </button>
+        <!-- Aviso de Aclaraciones Presenciales en Clase -->
+        <div style="background: rgba(30,41,59,0.8); border: 1px solid var(--border); border-radius: 12px; padding: 14px; text-align: center; font-size: 0.82rem; color: #cbd5e1; margin-bottom: 16px; line-height: 1.4;">
+            📌 <strong>Aviso de Revisiones:</strong> Si tienes alguna duda sobre la asignación de tus puntos o asistencias, cualquier revisión o cotejo de evidencias se atenderá únicamente de manera presencial <strong>durante tu hora de clase</strong>.
+        </div>
 
         <button onclick="cerrarSesion()" class="btn-logout">🔒 Cerrar sesión / Consultar otra CURP</button>
 
         <div class="footer-time">
             <span class="live-pulse"></span> Conectado en tiempo real con el CEB 5/4<br>
-            Sincronizado: 04/10/2026 16:07:35
-        </div>
-    </div>
-</div>
-
-<!-- MODAL ACLARACION -->
-<div id="modalAclaracion" class="modal-overlay">
-    <div class="modal-body">
-        <h3 class="modal-title">💬 Registrar Solicitud de Aclaración</h3>
-        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
-            Tu mensaje será enviado directamente al expediente del docente para su revisión formal.
-        </p>
-
-        <label class="label-input">Componente a Aclarar</label>
-        <select id="aclaracionConcepto" class="modal-select">
-            <option value="Portafolio de Evidencias">📁 Portafolio de Evidencias (6.0 pts)</option>
-            <option value="Examen Parcial">📝 Examen Parcial (2.0 pts)</option>
-            <option value="PEC (Proyecto Comunitario)">🌱 PEC - Proyecto Escolar Comunitario (2.0 pts)</option>
-            <option value="Asistencias y Faltas">⏱️ Registro de Asistencias / Faltas</option>
-            <option value="Otro motivo">💬 Otro motivo</option>
-        </select>
-
-        <label class="label-input">Detalle de tu solicitud</label>
-        <textarea id="aclaracionTexto" class="modal-textarea" rows="4" placeholder="Explica detalladamente la duda o la evidencia de entrega (ej. 'En mi Portafolio tengo entregadas todas las prácticas en Classroom...')."></textarea>
-
-        <div class="modal-actions">
-            <button onclick="enviarAclaracion()" class="btn-send">Enviar Solicitud 🚀</button>
-            <button onclick="cerrarModalAclaracion()" class="btn-cancel">Cancelar</button>
+            Sincronizado: 04/10/2026 16:09:27
         </div>
     </div>
 </div>

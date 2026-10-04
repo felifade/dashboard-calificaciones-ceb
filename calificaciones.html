@@ -466,10 +466,6 @@
                     <div class="pillar-max">Máx 2.0 pts</div>
                 </div>
             </div>
-            <div class="faltas-bar">
-                <span>Faltas acumuladas en P1:</span>
-                <strong id="p1Faltas" style="color:#f8fafc;">0 faltas</strong>
-            </div>
         </div>
 
         <!-- Parcial 2 -->
@@ -497,10 +493,6 @@
                     <div id="p2Pec" class="pillar-val">--</div>
                     <div class="pillar-max">Máx 2.0 pts</div>
                 </div>
-            </div>
-            <div class="faltas-bar">
-                <span>Faltas acumuladas en P2:</span>
-                <strong id="p2Faltas" style="color:#f8fafc;">0 faltas</strong>
             </div>
         </div>
 
@@ -530,10 +522,6 @@
                     <div class="pillar-max">Máx 2.0 pts</div>
                 </div>
             </div>
-            <div class="faltas-bar">
-                <span>Faltas acumuladas en P3:</span>
-                <strong id="p3Faltas" style="color:#f8fafc;">0 faltas</strong>
-            </div>
         </div>
 
         <!-- Evaluación Global -->
@@ -543,7 +531,7 @@
                 <span id="gloTotal" class="parcial-total">--</span>
             </div>
             <div class="faltas-bar">
-                <span>Calificación Examen Global:</span>
+                <span>Estatus del Examen Global:</span>
                 <strong id="gloEstatus" style="color:#60a5fa;">Calificación Única</strong>
             </div>
         </div>
@@ -557,7 +545,7 @@
 
         <div class="footer-time">
             <span class="live-pulse"></span> Conectado en tiempo real con el CEB 5/4<br>
-            Sincronizado: 04/10/2026 16:18:38
+            Sincronizado: 04/10/2026 16:27:34
         </div>
     </div>
 </div>
@@ -657,21 +645,18 @@
         document.getElementById('p1Portafolio').innerText = fmtVal(stu.p1.portafolio);
         document.getElementById('p1Examen').innerText = fmtVal(stu.p1.examen);
         document.getElementById('p1Pec').innerText = fmtVal(stu.p1.pec);
-        document.getElementById('p1Faltas').innerText = stu.p1.faltas + ' falta(s)';
 
         // P2 (Portafolio, Examen, PEC)
         document.getElementById('p2Total').innerText = fmtVal(stu.p2.total);
         document.getElementById('p2Portafolio').innerText = fmtVal(stu.p2.portafolio);
         document.getElementById('p2Examen').innerText = fmtVal(stu.p2.examen);
         document.getElementById('p2Pec').innerText = fmtVal(stu.p2.pec);
-        document.getElementById('p2Faltas').innerText = stu.p2.faltas + ' falta(s)';
 
         // P3 (Portafolio, Examen, PEC)
         document.getElementById('p3Total').innerText = fmtVal(stu.p3.total);
         document.getElementById('p3Portafolio').innerText = fmtVal(stu.p3.portafolio);
         document.getElementById('p3Examen').innerText = fmtVal(stu.p3.examen);
         document.getElementById('p3Pec').innerText = fmtVal(stu.p3.pec);
-        document.getElementById('p3Faltas').innerText = stu.p3.faltas + ' falta(s)';
 
         // Global
         document.getElementById('gloTotal').innerText = fmtVal(stu.global);

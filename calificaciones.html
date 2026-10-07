@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>CEB 5/4 - Portal de Calificaciones Alumnos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -541,11 +544,15 @@
             💬 ¿Tienes alguna duda sobre tu calificación?
         </button>
 
+        <button onclick="forzarActualizacion()" class="btn-aclaracion" style="background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.35); color: #6ee7b7;">
+            🔄 Refrescar Notas / Cargar Cambios Recientes
+        </button>
+
         <button onclick="cerrarSesion()" class="btn-logout">🔒 Cerrar sesión / Consultar otra CURP</button>
 
         <div class="footer-time">
             <span class="live-pulse"></span> Conectado en tiempo real con el CEB 5/4<br>
-            Sincronizado: 07/10/2026 11:42:36
+            Sincronizado: 07/10/2026 11:50:23
         </div>
     </div>
 </div>
@@ -660,6 +667,16 @@
 
         // Global
         document.getElementById('gloTotal').innerText = fmtVal(stu.global);
+    }
+
+    function forzarActualizacion() {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(regs => {
+                for(let reg of regs) reg.unregister();
+            });
+        }
+        const cleanUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+        window.location.href = cleanUrl + '?nocache=' + new Date().getTime();
     }
 
     function cerrarSesion() {

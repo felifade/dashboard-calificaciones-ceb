@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEB 5/4 - Cockpit Ejecutivo de Dirección (Estadísticos Académicos)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; color: #1e293b; }
+        h1, h2, h3, .font-heading { font-family: 'Montserrat', sans-serif; }
+        .institutional-card { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05); }
+        .sep-wine { background-color: #691C32; }
+        .sep-wine-dark { background-color: #4c1424; }
+        .sep-gold { color: #BC955C; }
+        .sep-gold-bg { background-color: #BC955C; }
+    </style>
+</head>
+<body class="p-4 md:p-8 min-h-screen">
+
+    <!-- Encabezado Institucional Oficial SEP / DGB -->
+    <div class="max-w-7xl mx-auto mb-8">
+        <!-- Barra de Identidad Institucional -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl sep-wine text-white flex items-center justify-center font-extrabold text-xl shadow-md">
+                    🏛️
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider text-white sep-wine">
+                            DGB Federal · SEMS
+                        </span>
+                        <span class="text-xs font-semibold text-slate-500">C.C.T. 13DBP0001Z</span>
+                    </div>
+                    <h1 class="text-xl md:text-2xl font-extrabold text-slate-900 mt-1 tracking-tight">
+                        CEB 5/4 «Profr. Rafael Ramírez» · Panel Ejecutivo de Dirección
+                    </h1>
+                    <p class="text-xs text-slate-500">
+                        Módulo Institucional de Analítica Académica, Prevención de Desafiliación (INSPIRA) y Seguimiento PACE
+                    </p>
+                </div>
+            </div>
+
+            
+        <!-- BUSCADOR RÁPIDO 360° DE ESTUDIANTE (PARA DIRECCIÓN Y TRABAJO SOCIAL) -->
+        <div class="mt-4 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-50 p-3 rounded-xl">
+            <div class="flex items-center gap-2 w-full sm:w-auto flex-1">
+                <span class="text-slate-400 text-sm">🔍</span>
+                <input type="text" placeholder="Búsqueda 360° de estudiante: escribe nombre o CURP para ver su estatus en todas las materias..." 
+                       class="w-full bg-white text-xs px-3 py-2 rounded-lg border border-slate-300 text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#691C32]">
+            </div>
+            <div class="flex items-center gap-2 text-xs text-slate-500 whitespace-nowrap">
+                <span class="font-bold text-slate-700">Filtro rápido:</span>
+                <span class="px-2 py-1 rounded bg-rose-100 text-rose-800 font-bold cursor-pointer hover:bg-rose-200">Ver 12 con NP / Deserción</span>
+                <span class="px-2 py-1 rounded bg-amber-100 text-amber-800 font-bold cursor-pointer hover:bg-amber-200">Ver Top 10 Cuadro de Honor</span>
+            </div>
+        </div>
+
+            <!-- Selector de Corte Parcial -->
+            <div class="flex items-center gap-3 bg-slate-50 p-2 rounded-xl border border-slate-200">
+                <span class="text-xs font-bold text-slate-600 pl-2">CORTE ACTIVO:</span>
+                <select class="bg-white text-slate-800 font-bold text-xs px-3 py-2 rounded-lg border border-slate-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#691C32]">
+                    <option selected>Primer Parcial (P1 Oficial)</option>
+                    <option>Segundo Parcial (P2 En Proceso)</option>
+                    <option>Tercer Parcial (P3)</option>
+                    <option>Cierre Semestral / Global 2026-2027</option>
+                </select>
+                <button class="bg-[#691C32] hover:bg-[#521627] text-white text-xs font-bold px-3 py-2 rounded-lg transition shadow-sm flex items-center gap-1.5">
+                    📄 Exportar Informe
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- SELECTOR DE VISTA: GLOBAL VS DETALLE POR GRUPO -->
+    <div class="max-w-7xl mx-auto mb-8">
+        <div class="institutional-card p-4 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#691C32]">Filtrar por Grupo:</span>
+                <span class="text-xs text-slate-500">(Haz clic en cualquier grupo para abrir su radiografía completa)</span>
+            </div>
+            
+            <!-- Botones tipo Pills de Grupos -->
+            <div class="flex flex-wrap items-center gap-1.5 w-full md:w-auto" id="groupSelectorContainer">
+                <button onclick="selectGroup('ALL')" id="btn-ALL" 
+                        class="group-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-[#691C32] text-white transition shadow-sm">
+                    🌐 Todo el Plantel
+                </button>
+                <span class="text-slate-300 font-bold px-1">|</span>
+                <!-- TM -->
+                <button onclick="selectGroup('101')" id="btn-101" class="group-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">101 TM</button>
+                <button onclick="selectGroup('102')" id="btn-102" class="group-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">102 TM</button>
+                <button onclick="selectGroup('103')" id="btn-103" class="group-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">103 TM</button>
+                <button onclick="selectGroup('104')" id="btn-104" class="group-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">104 TM</button>
+                <button onclick="selectGroup('105')" id="btn-105" class="group-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">105 TM</button>
+                <button onclick="selectGroup('106')" id="btn-106" class="group-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">106 TM</button>
+                <span class="text-slate-300 font-bold px-1">|</span>
+                <!-- TV -->
+                <button onclick="selectGroup('107')" id="btn-107" class="group-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">107 TV</button>
+                <button onclick="selectGroup('108')" id="btn-108" class="group-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">108 TV</button>
+                <button onclick="selectGroup('109')" id="btn-109" class="group-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">109 TV</button>
+                <button onclick="selectGroup('110')" id="btn-110" class="group-pill px-2.5 py-1 rounded-md text-xs font-bold bg-[#BC955C]/20 text-[#691C32] border border-[#BC955C]/50 hover:bg-[#BC955C]/30 transition">110 TV (Tutoría)</button>
+                <button onclick="selectGroup('111')" id="btn-111" class="group-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">111 TV</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANEL EXPANDIBLE DE DETALLE POR GRUPO (SE ACTIVA AL HACER CLIC EN UN GRUPO) -->
+    <div id="groupDetailSection" class="max-w-7xl mx-auto mb-8 hidden">
+        <div class="institutional-card p-6 rounded-2xl border-2 border-[#691C32]/30 shadow-lg bg-gradient-to-br from-white to-slate-50">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-200">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span id="detailTurnBadge" class="px-2.5 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wide bg-[#691C32] text-white">
+                            Turno Vespertino
+                        </span>
+                        <span id="detailTutorBadge" class="text-xs font-semibold text-slate-600">
+                            Tutor: Dr. Felipe López Salazar
+                        </span>
+                    </div>
+                    <h2 class="text-2xl font-black text-slate-900 mt-1 flex items-center gap-2 font-heading">
+                        🔬 Radiografía Integral de Aula: <span id="detailGroupTitle" class="text-[#691C32]">Grupo 110</span>
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-0.5">
+                        Vista individual para Dirección, Subdirección y Tutor de Grupo · Datos consolidados de todas las asignaturas
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button class="bg-[#691C32] hover:bg-[#521627] text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-sm flex items-center gap-1.5">
+                        📄 Descargar Ficha Tutorial de Grupo (PDF)
+                    </button>
+                    <button onclick="selectGroup('ALL')" class="bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold px-3 py-2 rounded-xl border border-slate-300 transition">
+                        ✖ Volver a Plantel
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mini KPIs del Grupo Seleccionado -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-6">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Matrícula Grupo</span>
+                    <span id="groupKpiEnrollment" class="text-2xl font-black text-slate-900 block mt-1">37 Alumnos</span>
+                    <span class="text-[10px] text-slate-400">100% Evaluados en P1</span>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Tasa Aprobación</span>
+                    <span id="groupKpiApproval" class="text-2xl font-black text-emerald-700 block mt-1">82.4%</span>
+                    <span class="text-[10px] text-emerald-600 font-bold">Meta cumplida (≥80%)</span>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Promedio Grupal</span>
+                    <span id="groupKpiAverage" class="text-2xl font-black text-slate-900 block mt-1">7.60</span>
+                    <span class="text-[10px] text-slate-500">Escala 0 a 10</span>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl border border-rose-200 shadow-sm bg-rose-50/30">
+                    <span class="text-[11px] font-bold text-rose-800 uppercase tracking-wide">Riesgo Crítico (INSPIRA)</span>
+                    <span id="groupKpiRisk" class="text-2xl font-black text-rose-700 block mt-1">2 Alumnos</span>
+                    <span class="text-[10px] text-rose-800 font-bold">Citatorio a padres urgente</span>
+                </div>
+            </div>
+
+            <!-- Gráfica de Materias en ESTE Grupo y Lista de Alumnos en Riesgo -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <!-- Gráfica: Cómo le fue al grupo en CADA materia -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="flex justify-between items-center mb-3">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-[#691C32]">
+                            Aprobación por Asignatura en este Grupo
+                        </h4>
+                        <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">6 Asignaturas</span>
+                    </div>
+                    <div class="h-56">
+                        <canvas id="groupSubjectChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Lista Nominal de Alumnos en Riesgo de este Grupo -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-rose-800 flex items-center gap-1.5">
+                                🚨 Alumnos del Grupo que Requieren Atención Tutorial
+                            </h4>
+                            <span id="groupRiskCountBadge" class="text-[10px] font-bold bg-rose-100 text-rose-800 px-2 py-0.5 rounded">
+                                2 Críticos + 3 Moderados
+                            </span>
+                        </div>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead class="bg-slate-50 text-slate-500 uppercase font-bold text-[10px]">
+                                    <tr>
+                                        <th class="py-2 px-3">Estudiante</th>
+                                        <th class="py-2 px-3">Materias Reprobadas</th>
+                                        <th class="py-2 px-3">Promedio</th>
+                                        <th class="py-2 px-3 text-right">Estatus INSPIRA</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="groupRiskTableBody" class="divide-y divide-slate-100">
+                                    <tr>
+                                        <td class="py-2 px-3 font-bold text-slate-900">Morales Guzmán Brandon</td>
+                                        <td class="py-2 px-3 text-rose-600 font-semibold">3 (Mat, Cie, Ing)</td>
+                                        <td class="py-2 px-3 font-extrabold text-slate-800">5.20</td>
+                                        <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800">CRÍTICO</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-3 font-bold text-slate-900">Hernández Pérez Kevin</td>
+                                        <td class="py-2 px-3 text-rose-600 font-semibold">3 (Mat, Cie, Len)</td>
+                                        <td class="py-2 px-3 font-extrabold text-slate-800">5.40</td>
+                                        <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800">CRÍTICO</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-3 font-bold text-slate-900">Cruz Reyes Josué</td>
+                                        <td class="py-2 px-3 text-amber-600 font-semibold">2 (Mat, Ing)</td>
+                                        <td class="py-2 px-3 font-extrabold text-slate-800">6.10</td>
+                                        <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">MODERADO</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-100 flex justify-between items-center text-xs mt-3">
+                        <span class="text-slate-500 text-[11px]">Canalización activa con Tutoría V110.</span>
+                        <button class="text-[#691C32] font-bold hover:underline">Ver los 37 alumnos →</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. BLOQUE DE KPIS EJECUTIVOS DE DIRECCIÓN -->
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+        
+        <!-- KPI 1 -->
+        <div class="institutional-card p-5 rounded-2xl border-t-4 border-t-emerald-600">
+            <div class="flex justify-between items-center text-slate-500 text-xs font-bold uppercase tracking-wider">
+                <span>Aprobación Global Plantel</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200">META: ≥80%</span>
+            </div>
+            <div class="mt-3 flex items-baseline gap-2">
+                <span class="text-3xl font-extrabold text-slate-900">83.4%</span>
+                <span class="text-xs font-bold text-emerald-600 flex items-center">↑ +2.1%</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-2">667 de 800 alumnos acreditando todas sus asignaturas.</p>
+        </div>
+
+        <!-- KPI 2 -->
+        <div class="institutional-card p-5 rounded-2xl border-t-4 border-t-rose-600">
+            <div class="flex justify-between items-center text-slate-500 text-xs font-bold uppercase tracking-wider">
+                <span>Riesgo Crítico (INSPIRA)</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-rose-50 text-rose-700 border border-rose-200">URGENTE</span>
+            </div>
+            <div class="mt-3 flex items-baseline gap-2">
+                <span class="text-3xl font-extrabold text-rose-700">42</span>
+                <span class="text-xs font-semibold text-rose-800 bg-rose-100 px-2 py-0.5 rounded">3+ materias reprobadas</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-2">Candidatos inmediatos a canalización con tutores legales.</p>
+        </div>
+
+        <!-- KPI 3 -->
+        <div class="institutional-card p-5 rounded-2xl border-t-4 border-t-[#BC955C]">
+            <div class="flex justify-between items-center text-slate-500 text-xs font-bold uppercase tracking-wider">
+                <span>Promedio General Plantel</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-50 text-amber-800 border border-amber-200">ESCALA 0-10</span>
+            </div>
+            <div class="mt-3 flex items-baseline gap-2">
+                <span class="text-3xl font-extrabold text-slate-900">7.62</span>
+                <span class="text-xs text-slate-500">Mediana: 7.8</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-2">Desviación estándar: 1.12 puntos en el ciclo activo.</p>
+        </div>
+
+        <!-- KPI 4 -->
+        <div class="institutional-card p-5 rounded-2xl border-t-4 border-t-[#691C32]">
+            <div class="flex justify-between items-center text-slate-500 text-xs font-bold uppercase tracking-wider">
+                <span>Avance Captura PACE</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-slate-100 text-slate-700 border border-slate-200">CORTE: 17-NOV</span>
+            </div>
+            <div class="mt-3 flex items-baseline gap-2">
+                <span class="text-3xl font-extrabold text-slate-900">92.8%</span>
+                <span class="text-xs font-bold text-slate-600">39 de 42 Actas</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-2">3 actas docentes en captura a 48 hrs del límite.</p>
+        </div>
+
+    </div>
+
+    <!-- 2. ANÁLISIS ESTRATÉGICO: MATERIAS CUELLO DE BOTELLA Y COMPARATIVO DE TURNOS -->
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        
+        <!-- Tarjeta: Materias Cuello de Botella -->
+        <div class="institutional-card p-6 rounded-2xl">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <span class="text-[11px] font-bold text-[#691C32] uppercase tracking-wider">Diagnóstico por Asignatura</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-0.5">
+                        Materias «Cuello de Botella» (Mayor Índice de Reprobación)
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-1">Permite enfocar apoyos pedagógicos en academias específicas sin desgastar al colectivo.</p>
+                </div>
+                <span class="text-xs font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md border border-slate-200">Corte P1</span>
+            </div>
+            <div class="h-64 mt-2">
+                <canvas id="bottleneckChart"></canvas>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+                <span>⚠️ <b class="text-slate-800">Pensamiento Matemático I</b> lidera rezago con 28.5%.</span>
+                <button class="text-[#691C32] font-bold hover:underline">Ver detalle por grupo →</button>
+            </div>
+        </div>
+
+        <!-- Tarjeta: Comparativa Matutino vs Vespertino -->
+        <div class="institutional-card p-6 rounded-2xl">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Equidad Institucional</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-0.5">
+                        Comparativa Transversal: Turno Matutino vs. Vespertino
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-1">Aprobación promedio por semestre para calibrar transporte, asesorías y tutorías.</p>
+                </div>
+                <span class="text-xs font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md border border-slate-200">Semestre A</span>
+            </div>
+            <div class="h-64 mt-2">
+                <canvas id="turnsChart"></canvas>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+                <span>💡 1er Semestre Vespertino muestra brecha de 6.8% respecto a la mañana.</span>
+                <button class="text-[#691C32] font-bold hover:underline">Ver informe de turnos →</button>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <!-- NUEVO MÓDULO: DESEMPEÑO DETALLADO POR GRUPO Y TURNO -->
+    <div class="max-w-7xl mx-auto institutional-card p-6 rounded-2xl mb-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <div>
+                <span class="text-[11px] font-bold text-[#691C32] uppercase tracking-wider">Desglose Operativo por Aula</span>
+                <h3 class="text-lg font-bold text-slate-900 mt-0.5">
+                    📊 Tasa de Aprobación y Promedio por Grupo y Turno (1.ᵉʳ Semestre: G101 a G111)
+                </h3>
+                <p class="text-xs text-slate-500 mt-1">
+                    Comparativa nominal de los 11 grupos activos con línea de umbral institucional (Meta DGB: ≥80% de acreditación).
+                </p>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 text-xs">
+                    <span class="w-3 h-3 rounded-sm bg-[#691C32] inline-block"></span>
+                    <span class="font-bold text-slate-700">Turno Matutino (G101 - G106)</span>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 text-xs">
+                    <span class="w-3 h-3 rounded-sm bg-[#BC955C] inline-block"></span>
+                    <span class="font-bold text-slate-700">Turno Vespertino (G107 - G111)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráfica de Barras por Grupo con Línea de Meta -->
+        <div class="h-72 w-full">
+            <canvas id="groupsTurnChart"></canvas>
+        </div>
+
+        <!-- Badges Informativos de Resumen Rápido -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 pt-4 border-t border-slate-100 text-xs">
+            <div class="flex items-center gap-3 p-3 bg-emerald-50/60 rounded-xl border border-emerald-200">
+                <span class="text-xl">🏆</span>
+                <div>
+                    <span class="font-bold text-emerald-900 block">Grupo con Mayor Aprobación:</span>
+                    <span class="text-emerald-700 font-semibold">Grupo 103 (TM) · 91.2% Aprobación (Promedio 8.14)</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 p-3 bg-rose-50/60 rounded-xl border border-rose-200">
+                <span class="text-xl">⚠️</span>
+                <div>
+                    <span class="font-bold text-rose-900 block">Grupo Prioritario de Atención:</span>
+                    <span class="text-rose-700 font-semibold">Grupo 108 (TV) · 73.5% Aprobación (Promedio 6.92)</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
+                <span class="text-xl">👥</span>
+                <div>
+                    <span class="font-bold text-slate-800 block">Tutoría V110 (Turno Vespertino):</span>
+                    <span class="text-slate-600 font-semibold">Grupo 110 (TV) · 82.4% Aprobación (Promedio 7.60)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. MATRIZ DE RIESGO DE DESAFILIACIÓN (PROTOCOLO INSPIRA / TUTORÍAS) -->
+    <div class="max-w-7xl mx-auto institutional-card p-6 rounded-2xl mb-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <div>
+                <span class="text-[11px] font-bold text-[#691C32] uppercase tracking-wider">Protocolo Institucional INSPIRA</span>
+                <h3 class="text-lg font-bold text-slate-900 mt-0.5">
+                    Detección Temprana de Abandono Escolar por Carga de Reprobación
+                </h3>
+                <p class="text-xs text-slate-500 mt-1">
+                    Criterio DGB Federal: Un alumno que acumula 3 o más asignaturas no acreditadas tiene 78% de probabilidad de deserción.
+                </p>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="bg-[#691C32] hover:bg-[#521627] text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-sm flex items-center gap-1.5">
+                    📥 Descargar Censo Nominal (42 Críticos)
+                </button>
+                <button class="bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold px-4 py-2 rounded-xl border border-slate-300 transition shadow-sm">
+                    Canalizar a Tutorías
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Tarjeta Crítico -->
+            <div class="bg-rose-50/70 p-5 rounded-xl border border-rose-200">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-extrabold text-rose-800 uppercase tracking-wide">🔴 Riesgo Crítico (3 a 5 materias)</span>
+                    <span class="text-2xl font-black text-rose-700">42</span>
+                </div>
+                <div class="w-full bg-rose-200 h-2.5 rounded-full mt-3 overflow-hidden">
+                    <div class="bg-rose-600 h-full rounded-full" style="width: 32%"></div>
+                </div>
+                <p class="text-[11px] font-medium text-rose-900 mt-2">
+                    <b>Acción urgente:</b> Citatorio presencial con tutores legales antes de corte P2.
+                </p>
+            </div>
+
+            <!-- Tarjeta Moderado -->
+            <div class="bg-amber-50/70 p-5 rounded-xl border border-amber-200">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-extrabold text-amber-800 uppercase tracking-wide">🟡 Riesgo Moderado (2 materias)</span>
+                    <span class="text-2xl font-black text-amber-700">58</span>
+                </div>
+                <div class="w-full bg-amber-200 h-2.5 rounded-full mt-3 overflow-hidden">
+                    <div class="bg-amber-500 h-full rounded-full" style="width: 44%"></div>
+                </div>
+                <p class="text-[11px] font-medium text-amber-900 mt-2">
+                    <b>Acción preventiva:</b> Asignación de tutor par y entrega de guías de autoestudio.
+                </p>
+            </div>
+
+            <!-- Tarjeta Preventiva -->
+            <div class="bg-blue-50/70 p-5 rounded-xl border border-blue-200">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-extrabold text-blue-800 uppercase tracking-wide">🔵 Alerta Preventiva (1 materia)</span>
+                    <span class="text-2xl font-black text-blue-700">71</span>
+                </div>
+                <div class="w-full bg-blue-200 h-2.5 rounded-full mt-3 overflow-hidden">
+                    <div class="bg-blue-600 h-full rounded-full" style="width: 55%"></div>
+                </div>
+                <p class="text-[11px] font-medium text-blue-900 mt-2">
+                    <b>Acción académica:</b> Retroalimentación formativa y tareas de recuperación en aula.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- MÓDULO EXTRA: FORMATO 911 (GÉNERO) Y CUADRO DE HONOR INSTITUCIONAL -->
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        
+        <!-- Tarjeta: Estadística 911 por Género (SEP / DGB) -->
+        <div class="institutional-card p-6 rounded-2xl">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <span class="text-[11px] font-bold text-[#691C32] uppercase tracking-wider">Cumplimiento Normativo SEP</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-0.5">
+                        Estadística Demográfica Formato 911 (Hombres vs. Mujeres)
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-1">Extraído automáticamente del CURP para evitar semanas de cálculo manual en Control Escolar.</p>
+                </div>
+                <span class="text-xs font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md border border-slate-200">Oficial DGB</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 my-3">
+                <div class="p-3 bg-purple-50/70 rounded-xl border border-purple-200 text-center">
+                    <span class="text-xs font-bold text-purple-900 block">👩 Mujeres (420 alumnas)</span>
+                    <span class="text-2xl font-black text-purple-800 mt-1 block">86.2%</span>
+                    <span class="text-[11px] text-purple-700">Promedio: 7.85</span>
+                </div>
+                <div class="p-3 bg-blue-50/70 rounded-xl border border-blue-200 text-center">
+                    <span class="text-xs font-bold text-blue-900 block">👨 Hombres (380 alumnos)</span>
+                    <span class="text-2xl font-black text-blue-800 mt-1 block">80.3%</span>
+                    <span class="text-[11px] text-blue-700">Promedio: 7.38</span>
+                </div>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+                <span>📋 Formato 911 listo para exportar a DGB México.</span>
+                <button class="text-[#691C32] font-bold hover:underline">Descargar desglose 911 (CSV) →</button>
+            </div>
+        </div>
+
+        <!-- Tarjeta: Cuadro de Honor y Excelencia Académica -->
+        <div class="institutional-card p-6 rounded-2xl">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <span class="text-[11px] font-bold text-[#BC955C] uppercase tracking-wider">Reconocimiento al Mérito</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-0.5">
+                        🌟 Cuadro de Honor: Excelencia Académica (Promedios ≥ 9.5)
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-1">Identificación automática de estudiantes destacados para diplomas y Becas Benito Juárez.</p>
+                </div>
+                <span class="text-xs font-bold bg-amber-50 text-amber-800 px-2.5 py-1 rounded-md border border-amber-200">Top 5 Plantel</span>
+            </div>
+
+            <div class="space-y-2 mt-2">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-6 h-6 rounded-full bg-amber-400 text-slate-900 font-extrabold flex items-center justify-center text-[11px]">1</span>
+                        <div>
+                            <span class="font-bold text-slate-900 block">Hernández López Sofía</span>
+                            <span class="text-[10px] text-slate-500">Grupo 103 (TM) · 7 Asignaturas</span>
+                        </div>
+                    </div>
+                    <span class="font-black text-amber-800 text-sm bg-amber-100 px-2 py-0.5 rounded-lg border border-amber-300">10.0</span>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-6 h-6 rounded-full bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center text-[11px]">2</span>
+                        <div>
+                            <span class="font-bold text-slate-900 block">García Mendoza Emiliano</span>
+                            <span class="text-[10px] text-slate-500">Grupo 101 (TM) · 7 Asignaturas</span>
+                        </div>
+                    </div>
+                    <span class="font-black text-slate-800 text-sm bg-slate-200 px-2 py-0.5 rounded-lg border border-slate-300">9.86</span>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-6 h-6 rounded-full bg-amber-600 text-white font-extrabold flex items-center justify-center text-[11px]">3</span>
+                        <div>
+                            <span class="font-bold text-slate-900 block">Martínez Cruz Valeria (Tutoría V110)</span>
+                            <span class="text-[10px] text-slate-500">Grupo 110 (TV) · 7 Asignaturas</span>
+                        </div>
+                    </div>
+                    <span class="font-black text-amber-800 text-sm bg-amber-100 px-2 py-0.5 rounded-lg border border-amber-300">9.71</span>
+                </div>
+            </div>
+            
+            <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+                <span>🎖️ 28 estudiantes con promedio superior a 9.5 en el plantel.</span>
+                <button class="text-[#691C32] font-bold hover:underline">Ver Cuadro Completo →</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 4. CONTROL ESCOLAR: SEMÁFORO DE CAPTURA DOCENTE (AUDITORÍA EN VIVO) -->
+    <div class="max-w-7xl mx-auto institutional-card p-6 rounded-2xl mb-12">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-5">
+            <div>
+                <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Control Escolar y Auditoría PACE</span>
+                <h3 class="text-lg font-bold text-slate-900 mt-0.5">
+                    Semáforo de Cumplimiento de Captura Docente
+                </h3>
+                <p class="text-xs text-slate-500 mt-0.5">Monitoreo en vivo para garantizar la entrega de actas a Control Escolar antes del 17 de noviembre.</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <input type="text" placeholder="Buscar por docente o asignatura..." class="bg-slate-50 text-xs px-3.5 py-2 rounded-xl border border-slate-300 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#691C32]">
+                <button class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-3 py-2 rounded-xl border border-slate-300 transition">
+                    Pendientes (3)
+                </button>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-left text-xs text-slate-700">
+                <thead class="bg-slate-100 text-slate-700 uppercase font-bold border-b border-slate-200 text-[11px]">
+                    <tr>
+                        <th class="py-3.5 px-4">Docente</th>
+                        <th class="py-3.5 px-4">Asignatura</th>
+                        <th class="py-3.5 px-4">Grupos</th>
+                        <th class="py-3.5 px-4">Alumnos Evaluados</th>
+                        <th class="py-3.5 px-4">Promedio</th>
+                        <th class="py-3.5 px-4">Estatus Captura</th>
+                        <th class="py-3.5 px-4 text-right">Acción</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 bg-white font-medium">
+                    <tr class="hover:bg-slate-50">
+                        <td class="py-3 px-4 font-bold text-slate-900">Dr. Felipe López Salazar</td>
+                        <td class="py-3 px-4 text-[#691C32] font-semibold">Cultura Digital I</td>
+                        <td class="py-3 px-4">11 grupos (TM y TV)</td>
+                        <td class="py-3 px-4 font-bold text-emerald-700">400 / 400 (100%)</td>
+                        <td class="py-3 px-4 font-extrabold text-slate-900">7.82</td>
+                        <td class="py-3 px-4"><span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300">COMPLETO</span></td>
+                        <td class="py-3 px-4 text-right"><button class="text-[#691C32] font-bold hover:underline">Ver Acta</button></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50">
+                        <td class="py-3 px-4 font-bold text-slate-900">Mtro. E. Picazo</td>
+                        <td class="py-3 px-4 text-[#691C32] font-semibold">Pensamiento Matemático I</td>
+                        <td class="py-3 px-4">5 grupos (TM)</td>
+                        <td class="py-3 px-4 font-bold text-emerald-700">185 / 185 (100%)</td>
+                        <td class="py-3 px-4 font-extrabold text-slate-900">6.91</td>
+                        <td class="py-3 px-4"><span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300">COMPLETO</span></td>
+                        <td class="py-3 px-4 text-right"><button class="text-[#691C32] font-bold hover:underline">Ver Acta</button></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 bg-amber-50/20">
+                        <td class="py-3 px-4 font-bold text-slate-900">Docente A</td>
+                        <td class="py-3 px-4 text-[#691C32] font-semibold">Lengua y Comunicación I</td>
+                        <td class="py-3 px-4">6 grupos (TV)</td>
+                        <td class="py-3 px-4 font-bold text-amber-700">142 / 210 (67.6%)</td>
+                        <td class="py-3 px-4 font-extrabold text-slate-900">7.10</td>
+                        <td class="py-3 px-4"><span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300">EN PROGRESO</span></td>
+                        <td class="py-3 px-4 text-right"><button class="text-amber-700 font-bold hover:underline">Recordar</button></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 bg-rose-50/30">
+                        <td class="py-3 px-4 font-bold text-slate-900">Docente B</td>
+                        <td class="py-3 px-4 text-[#691C32] font-semibold">Ciencias Naturales I</td>
+                        <td class="py-3 px-4">4 grupos (TV)</td>
+                        <td class="py-3 px-4 font-bold text-rose-700">0 / 140 (0%)</td>
+                        <td class="py-3 px-4 font-extrabold text-slate-400">—</td>
+                        <td class="py-3 px-4"><span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-rose-100 text-rose-800 border border-rose-300">SIN INICIAR</span></td>
+                        <td class="py-3 px-4 text-right"><button class="text-rose-700 font-extrabold hover:underline">Notificar Urgente</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Scripts de Gráficas Chart.js adaptadas para fondo claro institucional -->
+    <script>
+        // Gráfica de Cuello de Botella (Histograma Horizontal)
+        const ctxBottleneck = document.getElementById('bottleneckChart').getContext('2d');
+        new Chart(ctxBottleneck, {
+            type: 'bar',
+            data: {
+                labels: ['Pensamiento Matemático I', 'Ciencias Naturales I', 'Inglés I', 'Lengua y Comunicación I', 'Cultura Digital I'],
+                datasets: [{
+                    label: '% Reprobación',
+                    data: [28.5, 23.1, 18.4, 15.2, 10.8],
+                    backgroundColor: ['#b91c1c', '#c2410c', '#b45309', '#1d4ed8', '#047857'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { color: '#e2e8f0' }, ticks: { color: '#475569', font: { weight: '600' }, callback: v => v + '%' } },
+                    y: { grid: { display: false }, ticks: { color: '#1e293b', font: { weight: '600' } } }
+                }
+            }
+        });
+
+        // Gráfica de Comparativa Turnos (Barras Agrupadas)
+        const ctxTurns = document.getElementById('turnsChart').getContext('2d');
+        new Chart(ctxTurns, {
+            type: 'bar',
+            data: {
+                labels: ['1er Semestre', '3er Semestre', '5to Semestre'],
+                datasets: [
+                    {
+                        label: 'Turno Matutino',
+                        data: [86.2, 88.5, 91.0],
+                        backgroundColor: '#691C32', // Guinda institucional
+                        borderRadius: 6
+                    },
+                    {
+                        label: 'Turno Vespertino',
+                        data: [79.4, 82.1, 85.3],
+                        backgroundColor: '#BC955C', // Dorado institucional
+                        borderRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#1e293b', font: { weight: '600', size: 12 } } }
+                },
+                scales: {
+                    x: { grid: { display: false }, ticks: { color: '#1e293b', font: { weight: '600' } } },
+                    y: { min: 60, max: 100, grid: { color: '#e2e8f0' }, ticks: { color: '#475569', font: { weight: '600' }, callback: v => v + '%' } }
+                }
+            }
+        });
+    </script>
+<script>
+        // Gráfica de Aprobación por Grupo y Turno (G101 a G111)
+        const ctxGroups = document.getElementById('groupsTurnChart').getContext('2d');
+        new Chart(ctxGroups, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'G101 (TM)', 'G102 (TM)', 'G103 (TM)', 'G104 (TM)', 'G105 (TM)', 'G106 (TM)',
+                    'G107 (TV)', 'G108 (TV)', 'G109 (TV)', 'G110 (TV)', 'G111 (TV)'
+                ],
+                datasets: [
+                    {
+                        label: '% Aprobación',
+                        data: [86.5, 84.2, 91.2, 85.0, 88.4, 82.1, 80.5, 73.5, 78.2, 82.4, 76.8],
+                        backgroundColor: [
+                            '#691C32', '#691C32', '#691C32', '#691C32', '#691C32', '#691C32', // Matutino (Guinda)
+                            '#BC955C', '#BC955C', '#BC955C', '#BC955C', '#BC955C'  // Vespertino (Dorado)
+                        ],
+                        borderRadius: 6,
+                        barPercentage: 0.65
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return ' Aprobación: ' + context.raw + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: {
+                            color: '#1e293b',
+                            font: { weight: '600', size: 11 }
+                        }
+                    },
+                    y: {
+                        min: 60,
+                        max: 100,
+                        grid: { color: '#e2e8f0' },
+                        ticks: {
+                            color: '#475569',
+                            font: { weight: '600' },
+                            callback: v => v + '%'
+                        }
+                    }
+                }
+            }
+        });
+</script>
+<script>
+        // Base de datos de prueba por grupo
+        const groupsDatabase = {
+            '101': { turn: 'Turno Matutino', color: '#691C32', tutor: 'Mtro. Juan Hernández', enrollment: '38 Alumnos', approval: '86.5%', avg: '7.85', riskCount: 1, subjects: [82, 92, 85, 80, 90, 88], riskStudents: [
+                { name: 'Ramírez Soto Ángel', fails: '3 (Mat, Cie, Len)', avg: '5.10', status: 'CRÍTICO', badge: 'bg-rose-100 text-rose-800' }
+            ]},
+            '102': { turn: 'Turno Matutino', color: '#691C32', tutor: 'Mtra. Elena Gómez', enrollment: '36 Alumnos', approval: '84.2%', avg: '7.72', riskCount: 2, subjects: [79, 88, 84, 82, 89, 85], riskStudents: [
+                { name: 'López Domínguez Alan', fails: '3 (Mat, Cie, Ing)', avg: '5.30', status: 'CRÍTICO', badge: 'bg-rose-100 text-rose-800' }
+            ]},
+            '103': { turn: 'Turno Matutino', color: '#691C32', tutor: 'Mtro. E. Picazo', enrollment: '37 Alumnos', approval: '91.2%', avg: '8.14', riskCount: 0, subjects: [88, 96, 92, 89, 94, 91], riskStudents: [
+                { name: 'Vargas Ortiz Luis', fails: '2 (Mat, Cie)', avg: '6.20', status: 'MODERADO', badge: 'bg-amber-100 text-amber-800' }
+            ]},
+            '108': { turn: 'Turno Vespertino', color: '#BC955C', tutor: 'Mtro. Carlos Benítez', enrollment: '35 Alumnos', approval: '73.5%', avg: '6.92', riskCount: 6, subjects: [65, 80, 74, 68, 79, 72], riskStudents: [
+                { name: 'Díaz Castro Jorge', fails: '4 (Mat, Cie, Ing, Len)', avg: '4.80', status: 'CRÍTICO', badge: 'bg-rose-100 text-rose-800' },
+                { name: 'Gutiérrez Alba Paola', fails: '3 (Mat, Cie, Ing)', avg: '5.20', status: 'CRÍTICO', badge: 'bg-rose-100 text-rose-800' },
+                { name: 'Muñoz Peña Diego', fails: '3 (Mat, Len, Hum)', avg: '5.35', status: 'CRÍTICO', badge: 'bg-rose-100 text-rose-800' }
+            ]},
+            '110': { turn: 'Turno Vespertino', color: '#BC955C', tutor: 'Dr. Felipe López Salazar', enrollment: '37 Alumnos', approval: '82.4%', avg: '7.60', riskCount: 2, subjects: [78, 89, 84, 76, 86, 81], riskStudents: [
+                { name: 'Morales Guzmán Brandon', fails: '3 (Mat, Cie, Ing)', avg: '5.20', status: 'CRÍTICO', badge: 'bg-rose-100 text-rose-800' },
+                { name: 'Hernández Pérez Kevin', fails: '3 (Mat, Cie, Len)', avg: '5.40', status: 'CRÍTICO', badge: 'bg-rose-100 text-rose-800' },
+                { name: 'Cruz Reyes Josué', fails: '2 (Mat, Ing)', avg: '6.10', status: 'MODERADO', badge: 'bg-amber-100 text-amber-800' }
+            ]}
+        };
+
+        let groupChartInstance = null;
+
+        function selectGroup(groupId) {
+            // Update pill styles
+            document.querySelectorAll('.group-pill').forEach(btn => {
+                btn.className = 'group-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
+            });
+
+            const activeBtn = document.getElementById('btn-' + groupId);
+            if (activeBtn) {
+                activeBtn.className = 'group-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-[#691C32] text-white transition shadow-sm';
+            }
+
+            const detailSection = document.getElementById('groupDetailSection');
+
+            if (groupId === 'ALL') {
+                detailSection.classList.add('hidden');
+                return;
+            }
+
+            // Fill group details
+            detailSection.classList.remove('hidden');
+            const data = groupsDatabase[groupId] || groupsDatabase['110'];
+
+            document.getElementById('detailGroupTitle').innerText = 'Grupo ' + groupId;
+            document.getElementById('detailTurnBadge').innerText = data.turn;
+            document.getElementById('detailTurnBadge').style.backgroundColor = data.color;
+            document.getElementById('detailTutorBadge').innerText = 'Tutor: ' + data.tutor;
+            document.getElementById('groupKpiEnrollment').innerText = data.enrollment;
+            document.getElementById('groupKpiApproval').innerText = data.approval;
+            document.getElementById('groupKpiAverage').innerText = data.avg;
+            document.getElementById('groupKpiRisk').innerText = data.riskCount + ' Alumnos';
+
+            // Populate Risk Table
+            const tbody = document.getElementById('groupRiskTableBody');
+            tbody.innerHTML = '';
+            data.riskStudents.forEach(st => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="py-2 px-3 font-bold text-slate-900">${st.name}</td>
+                    <td class="py-2 px-3 text-rose-600 font-semibold">${st.fails}</td>
+                    <td class="py-2 px-3 font-extrabold text-slate-800">${st.avg}</td>
+                    <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${st.badge}">${st.status}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Update Subject Chart for this group
+            const ctxGroupSub = document.getElementById('groupSubjectChart').getContext('2d');
+            if (groupChartInstance) {
+                groupChartInstance.destroy();
+            }
+
+            groupChartInstance = new Chart(ctxGroupSub, {
+                type: 'bar',
+                data: {
+                    labels: ['Pens. Matemático', 'Cultura Digital', 'Lengua y Com.', 'Ciencias Nat.', 'Humanidades', 'Inglés'],
+                    datasets: [{
+                        label: '% Aprobación en este Grupo',
+                        data: data.subjects,
+                        backgroundColor: data.subjects.map(val => val >= 80 ? '#047857' : (val >= 70 ? '#b45309' : '#b91c1c')),
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { color: '#1e293b', font: { weight: '600', size: 10 } } },
+                        y: { min: 50, max: 100, grid: { color: '#e2e8f0' }, ticks: { color: '#475569', callback: v => v + '%' } }
+                    }
+                }
+            });
+
+            // Smooth scroll to detail
+            detailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+</script>
+</body>
+</html>

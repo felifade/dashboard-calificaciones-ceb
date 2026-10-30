@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Cockpit Semestral · Fechas y Pendientes CEB 5/4</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: rgba(22, 30, 49, 0.85);
+      --card-border: #2d3748;
+      --card-hover: rgba(30, 41, 59, 0.95);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.2);
+      --red: #f43f5e;
+      --red-bg: rgba(244, 63, 94, 0.15);
+      --yellow: #f59e0b;
+      --yellow-bg: rgba(245, 158, 11, 0.15);
+      --green: #10b981;
+      --green-bg: rgba(16, 185, 129, 0.15);
+      --purple: #a855f7;
+      --purple-bg: rgba(168, 85, 247, 0.15);
+      --blue: #3b82f6;
+      --blue-bg: rgba(59, 130, 246, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 40%);
+      color: var(--text);
+      padding: 20px 16px 80px 16px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc, #38bdf8);
+      background-size: 200% auto;
+      animation: gradientShift 6s linear infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .inst-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+      background: linear-gradient(90deg, #ffffff, #cbd5e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 5px 12px;
+      border-radius: 10px;
+    }
+
+    .meta-pill strong {
+      color: var(--text);
+    }
+
+    /* Live Notice Banner (Grindelia announcement) */
+    .urgent-banner {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(244, 63, 94, 0.15) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin-bottom: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 8px 25px -5px rgba(245, 158, 11, 0.15);
+      animation: pulseAlert 4s infinite ease-in-out;
+    }
+
+    @keyframes pulseAlert {
+      0%, 100% { border-color: rgba(245, 158, 11, 0.4); }
+      50% { border-color: rgba(245, 158, 11, 0.8); box-shadow: 0 8px 30px rgba(245, 158, 11, 0.25); }
+    }
+
+    .urgent-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .urgent-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fbbf24;
+    }
+
+    .badge-updated {
+      background: #f59e0b;
+      color: #0f172a;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .urgent-body {
+      font-size: 0.92rem;
+      color: #fde68a;
+      line-height: 1.5;
+    }
+
+    .urgent-body strong {
+      color: #ffffff;
+      text-decoration: underline;
+      text-decoration-color: #f59e0b;
+    }
+
+    .urgent-source {
+      font-size: 0.8rem;
+      color: rgba(253, 230, 138, 0.75);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px solid rgba(245, 158, 11, 0.2);
+      padding-top: 8px;
+    }
+
+    /* Metric Cards Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .metric-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .metric-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .metric-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Progress bar */
+    .progress-bar-container {
+      background: rgba(255,255,255,0.08);
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, #10b981);
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    /* Tab Navigation */
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 10px 16px;
+      border-radius: 12px 12px 0 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    /* Content Sections */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Parciales Cards */
+    .parciales-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .parcial-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 18px;
+      position: relative;
+    }
+
+    .parcial-card.p1 {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: linear-gradient(180deg, rgba(56, 189, 248, 0.08) 0%, rgba(22, 30, 49, 0.9) 100%);
+    }
+
+    .parcial-card.p2 {
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .parcial-card.p3 {
+      border-color: rgba(244, 63, 94, 0.3);
+    }
+
+    .parcial-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .p1 .parcial-badge { background: var(--blue-bg); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .p2 .parcial-badge { background: var(--yellow-bg); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .p3 .parcial-badge { background: var(--red-bg); color: #f87171; border: 1px solid rgba(244, 63, 94, 0.3); }
+
+    .parcial-dates {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .parcial-keydates {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 10px;
+    }
+
+    .keydate-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .keydate-label { color: var(--text-muted); }
+    .keydate-val { font-weight: 600; text-align: right; }
+
+    /* Interactive To-Do List */
+    .todo-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+
+    .todo-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .todo-filters {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent);
+      color: #0b0f19;
+      border-color: var(--accent);
+    }
+
+    .todo-input-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .todo-input {
+      flex: 1;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .todo-input:focus {
+      border-color: var(--accent);
+    }
+
+    .todo-select {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      color: var(--text);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .add-task-btn {
+      background: var(--accent);
+      color: #0b0f19;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s ease;
+    }
+
+    .add-task-btn:hover {
+      opacity: 0.9;
+    }
+
+    .todo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .todo-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 12px 14px;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .todo-item:hover {
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .todo-item.completed {
+      opacity: 0.5;
+    }
+
+    .todo-item.completed .todo-text {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .todo-checkbox {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .todo-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .todo-text {
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .todo-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .tag-category {
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .tag-eval { background: var(--blue-bg); color: #38bdf8; }
+    .tag-pec { background: var(--purple-bg); color: #c084fc; }
+    .tag-tuto { background: var(--green-bg); color: #34d399; }
+    .tag-admin { background: var(--yellow-bg); color: #fbbf24; }
+
+    .delete-task-btn {
+      background: transparent;
+      border: none;
+      color: #64748b;
+      cursor: pointer;
+      padding: 4px;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+    }
+
+    .delete-task-btn:hover {
+      color: var(--red);
+    }
+
+    /* Weekly Accordion */
+    .weeks-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .week-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .week-card.current {
+      border-color: #38bdf8;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    }
+
+    .week-header {
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .week-header:hover {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .week-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .week-badge {
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .week-card.current .week-badge {
+      background: var(--accent);
+      color: #0b0f19;
+    }
+
+    .week-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .week-dates {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .week-body {
+      padding: 16px 18px;
+      border-top: 1px solid var(--card-border);
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      display: none;
+      background: rgba(15, 23, 42, 0.4);
+    }
+
+    .week-card.open .week-body {
+      display: block;
+    }
+
+    .week-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    /* Alternative Options / Suggestions Card */
+    .suggestions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .suggestion-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .suggestion-icon {
+      font-size: 1.8rem;
+    }
+
+    .suggestion-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .suggestion-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .suggestion-action {
+      margin-top: auto;
+      padding-top: 12px;
+    }
+
+    .btn-action {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-action:hover {
+      background: var(--accent);
+      color: #0b0f19;
+      border-color: var(--accent);
+    }
+
+    /* Print and Mobile optimization */
+    @media (max-width: 640px) {
+      body { padding: 12px 10px 80px 10px; }
+      header { padding: 18px 14px; }
+      h1 { font-size: 1.45rem; }
+      .metrics-grid { grid-template-columns: 1fr; }
+      .todo-input-bar { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <div class="inst-badge">
+        🏛️ CEB 5/4 "Profr. Rafael Ramírez" · CCT 13DBP0001Z
+      </div>
+      <h1>Dashboard Semestral de Fechas y Actividades</h1>
+      <p class="subtitle">Ciclo Escolar 2026-2027 · Semestre A (16 Semanas Efectivas de Clase)</p>
+      
+      <div class="meta-bar">
+        <div class="meta-pill">📅 Hoy: <strong id="current-date-str">Miércoles 30 de Septiembre de 2026</strong></div>
+        <div class="meta-pill">📍 Semana Activa: <strong style="color: #38bdf8;">Semana 05 de 16</strong></div>
+        <div class="meta-pill">🎯 Parcial: <strong style="color: #fbbf24;">Primer Parcial (Cierre)</strong></div>
+        <div class="meta-pill">👨‍🏫 Docente: <strong>Felipe López Salazar</strong></div>
+      </div>
+    </header>
+
+    <!-- Official Notice Banner (Updated via WhatsApp Screenshot) -->
+    <div class="urgent-banner">
+      <div class="urgent-header">
+        <div class="urgent-title">
+          <span>📢</span>
+          <span>Aviso Oficial de Control Escolar / Dirección</span>
+        </div>
+        <span class="badge-updated">Actualizado 30-Sep</span>
+      </div>
+      <div class="urgent-body">
+        La entrega de calificaciones del <strong>Primer Parcial</strong> se prorrogó oficialmente para el <strong>Viernes 9 de Octubre de 2026</strong> (autorizado por la Directora del Plantel). 
+        Se cuentan con 4 días hábiles adicionales en la Semana 06 para asentar evidencias, promedios en Sábanas/iDoceo y captura en PACE.
+      </div>
+      <div class="urgent-source">
+        <span>💬 <strong>Fuente:</strong> Grindelia Martínez Flores (WhatsApp Grupo CEB 5/4 · 08:54 a. m.)</span>
+        <span>·</span>
+        <span>✅ Confirmado por Subdirección y Colegiado</span>
+      </div>
+    </div>
+
+    <!-- Metrics Row -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-label">Progreso del Semestre</div>
+        <div class="metric-value">31.25% <span class="metric-sub">(5/16 sem)</span></div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" style="width: 31.25%;"></div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Próxima Entrega Crítica</div>
+        <div class="metric-value" style="color: #fbbf24;">9 Oct <span class="metric-sub">Calificaciones P1</span></div>
+        <div class="metric-sub" id="countdown-p1">⏳ Faltan 9 días hábiles</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Fin de Clases / Listas</div>
+        <div class="metric-value" style="color: #f43f5e;">11 Dic <span class="metric-sub">Cierre Total</span></div>
+        <div class="metric-sub">Semana 15 · Evaluaciones finales</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Pendientes Registrados</div>
+        <div class="metric-value" id="pending-counter">5 <span class="metric-sub">activos</span></div>
+        <div class="metric-sub" id="completed-counter">0 completados hoy</div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('radar')">🧭 Radar de Parciales</button>
+      <button class="tab-btn" onclick="switchTab('semanas')">🗓️ Cronograma 16 Semanas</button>
+      <button class="tab-btn" onclick="switchTab('todo')">📋 Gestor de Pendientes</button>
+      <button class="tab-btn" onclick="switchTab('avisos')">💬 Bitácora WhatsApp & Oficios</button>
+      <button class="tab-btn" onclick="switchTab('sugerencias')">💡 Opciones & Sincronización</button>
+    </div>
+
+    <!-- TAB 1: RADAR DE PARCIALES -->
+    <div id="tab-radar" class="tab-content active">
+      <div class="parciales-row">
+        <!-- P1 -->
+        <div class="parcial-card p1">
+          <span class="parcial-badge">🟢 Parcial 1 · En Proceso (Cierre)</span>
+          <h3 style="margin-bottom: 4px;">Bloque I: Fundamentos</h3>
+          <p class="parcial-dates">31 Ago – 02 Oct 2026 (Semanas 01 a 05)</p>
+          <div class="parcial-keydates">
+            <div class="keydate-item">
+              <span class="keydate-label">Evaluación P1:</span>
+              <span class="keydate-val">28 Sep – 02 Oct (Esta semana)</span>
+            </div>
+            <div class="keydate-item">
+              <span class="keydate-label">PEC Fase 1:</span>
+              <span class="keydate-val">Recepción de propuesta</span>
+            </div>
+            <div class="keydate-item">
+              <span class="keydate-label">Entrega Calificaciones:</span>
+              <span class="keydate-val" style="color: #fbbf24; font-weight: 800;">Vie 09 de Octubre ⚠️</span>
+            </div>
+            <div class="keydate-item">
+              <span class="keydate-label">Boletas a Padres:</span>
+              <span class="keydate-val">12 al 14 de Octubre</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- P2 -->
+        <div class="parcial-card p2">
+          <span class="parcial-badge">🟡 Parcial 2 · Modificación SEMS</span>
+          <h3 style="margin-bottom: 4px;">Bloque II: Colaboración y Datos</h3>
+          <p class="parcial-dates">05 Oct – 13 Nov 2026 (Semanas 06 a 11)</p>
+          <div class="parcial-keydates">
+            <div class="keydate-item">
+              <span class="keydate-label">Inicio Bloque:</span>
+              <span class="keydate-val">Lunes 05 de Octubre</span>
+            </div>
+            <div class="keydate-item">
+              <span class="keydate-label">Intrasemestral:</span>
+              <span class="keydate-val">19 al 23 de Octubre</span>
+            </div>
+            <div class="keydate-item">
+              <span class="keydate-label">Suspensión Oficial:</span>
+              <span class="keydate-val" style="color: #f87171;">Lunes 02 Nov (Muertos)</span>
+            </div>
+            <div class="keydate-item">
+              <span class="keydate-label">Evaluación P2:</span>
+              <span class="keydate-val" style="color: #fbbf24; font-weight: 700;">09 al 13 de Noviembre</span>
+            </div>
+            <div class="keydate-item">
+              <span class="keydate-label">Límite Captura PACE:</span>
+              <span class="keydate-val" style="color: #38bdf8; font-weight: 700;">Martes 17 de Noviembre</span>
+            </div>
+            <div class="keydate-item">
+              <span class="keydate-label">Boletas a Padres:</span>
+              <span class="keydate-val">Jueves 19 de Noviembre</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- P3 -->
+        <div class="parcial-card p3">
+          <span class="parcial-badge">🔴 Parcial 3 · Cierre Semestral</span>
+          <h3 style="margin-bottom: 4px;">Bloque III: Algoritmos y Cierre</h3>
+          <p class="parcial-dates">16 Nov – 11 Dic 2026 (Semanas 12 a 16)</p>
+          <div class="parcial-keydates">
+            <div class="keydate-item">
+              <span class="keydate-label">Suspensión Oficial:</span>
+              <span class="keydate-val" style="color: #f87171;">Lunes 16 Nov (Revolución)</span>
+            </div>
+            <div class="keydate-item">
+              <span class="keydate-label">Muestra PEC:</span>
+              <span class="keydate-val">30 Nov – 04 Dic (S14)</span>
+            </div>
+            <div class="keydate-item">
+              <span class="keydate-label">Evaluación P3 y Globales:</span>
+              <span class="keydate-val">07 al 11 de Diciembre</span>
+            </div>
+            <div class="keydate-item">
+              <span class="keydate-label">Fin de Clases / Listas:</span>
+              <span class="keydate-val" style="color: #f43f5e; font-weight: 800;">Viernes 11 de Diciembre</span>
+            </div>
+            <div class="keydate-item">
+              <span class="keydate-label">Exámenes Finales:</span>
+              <span class="keydate-val">14 al 18 de Diciembre</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: CRONOGRAMA 16 SEMANAS -->
+    <div id="tab-semanas" class="tab-content">
+      <div class="weeks-container" id="weeks-list">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </div>
+
+    <!-- TAB 3: GESTOR DE PENDIENTES -->
+    <div id="tab-todo" class="tab-content">
+      <div class="todo-section">
+        <div class="todo-header">
+          <div>
+            <h2 style="font-size: 1.25rem;">Gestor Interactivo de Tareas y Compromisos</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Sincronizado localmente en este navegador · Marca tareas y añade nuevas</p>
+          </div>
+          <div class="todo-filters">
+            <button class="filter-btn active" onclick="filterTasks('all')">Todos</button>
+            <button class="filter-btn" onclick="filterTasks('eval')">Evaluación P1</button>
+            <button class="filter-btn" onclick="filterTasks('pec')">PEC</button>
+            <button class="filter-btn" onclick="filterTasks('tuto')">Tutoría</button>
+            <button class="filter-btn" onclick="filterTasks('admin')">Administrativo</button>
+          </div>
+        </div>
+
+        <!-- Add Task Input -->
+        <div class="todo-input-bar">
+          <input type="text" id="new-task-text" class="todo-input" placeholder="Escribe un nuevo pendiente semestral..." onkeypress="handleTaskKey(event)">
+          <select id="new-task-category" class="todo-select">
+            <option value="eval">Evaluación P1</option>
+            <option value="pec">Proyecto PEC</option>
+            <option value="tuto">Tutorías V110</option>
+            <option value="admin">Administrativo / DGB</option>
+          </select>
+          <button class="add-task-btn" onclick="addNewTask()">+ Añadir</button>
+        </div>
+
+        <!-- Task List Container -->
+        <div class="todo-list" id="tasks-container">
+          <!-- Rendered via JS from localStorage or default state -->
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: BITÁCORA WHATSAPP & OFICIOS -->
+    <div id="tab-avisos" class="tab-content">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        
+        <div class="parcial-card" style="border-left: 4px solid #f59e0b;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+            <strong style="color: #fbbf24; font-size: 1.05rem;">Prórroga Calificaciones 1er Parcial al 9 de Octubre</strong>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">30 Sep 2026 · 08:54 a. m.</span>
+          </div>
+          <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 8px;">
+            <strong>Emite:</strong> Grindelia Martínez Flores (Control Escolar) · <strong>Autoriza:</strong> Dirección Plantel CEB 5/4.
+          </p>
+          <div style="background: rgba(15, 23, 42, 0.7); border-radius: 8px; padding: 10px 14px; font-family: monospace; font-size: 0.88rem; color: #fde68a;">
+            "Lindo día la entrega de calificaciones es para el día 9 de octubre, la directora autorizó"
+          </div>
+        </div>
+
+        <div class="parcial-card" style="border-left: 4px solid #38bdf8;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+            <strong style="color: #38bdf8; font-size: 1.05rem;">Segundo Simulacro Nacional 2026</strong>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">18 Sep 2026 · 12:00 h</span>
+          </div>
+          <p style="font-size: 0.9rem; color: #cbd5e1;">
+            Oficio <code>DE/CEB-5/4-PC/016/2026</code>. Activación de protocolo de evacuación ante hipótesis de sismo M7.7. Ejercicio completado satisfactoriamente.
+          </p>
+        </div>
+
+        <div class="parcial-card" style="border-left: 4px solid #a855f7;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+            <strong style="color: #c084fc; font-size: 1.05rem;">Convocatorias DGB: Beca Comisión y Periodo Sabático</strong>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">27 Ago 2026</span>
+          </div>
+          <p style="font-size: 0.9rem; color: #cbd5e1;">
+            Oficios <code>DGB/538/2026</code> y <code>DGB/539/2026</code> remitidos por Subdirección Académica para el proceso de reconocimiento docente.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 5: SUGERENCIAS Y SINCRONIZACIÓN -->
+    <div id="tab-sugerencias" class="tab-content">
+      <div class="suggestions-grid">
+        
+        <div class="suggestion-card">
+          <div class="suggestion-icon">📅</div>
+          <div class="suggestion-title">Sincronización a Apple Calendar / Google Calendar (.ics)</div>
+          <div class="suggestion-desc">
+            Podemos generar un archivo <code>.ics</code> con todos los hitos del semestre (16 semanas, fechas de exámenes, entrega del 9 de octubre y suspensiones) para que lo abras con 1 clic y se sincronice en tu iPhone, iPad y Mac.
+          </div>
+          <div class="suggestion-action">
+            <button class="btn-action" onclick="downloadICalendar()">📥 Descargar Calendario .ICS</button>
+          </div>
+        </div>
+
+        <div class="suggestion-card">
+          <div class="suggestion-icon">🌐</div>
+          <div class="suggestion-title">Visualización Directa en Navegador & Acceso Rápido</div>
+          <div class="suggestion-desc">
+            Este Dashboard HTML vive de forma soberana dentro de tu Mac en <code>/Users/felipelopezsalazar/CEB/Dashboard_Agenda_Semestral_CEB.html</code>. Puedes guardarlo en la barra de favoritos de Safari/Chrome o abrirlo directo con Doble Clic.
+          </div>
+          <div class="suggestion-action">
+            <span class="btn-action" style="cursor: default;">⚡ Acceso Local 100% Offline</span>
+          </div>
+        </div>
+
+        <div class="suggestion-card">
+          <div class="suggestion-icon">⌨️</div>
+          <div class="suggestion-title">Acceso con Raycast o Atajo de macOS (Keyboard Shortcut)</div>
+          <div class="suggestion-desc">
+            Podemos configurar un atajo de teclado global en macOS (por ejemplo <code>Cmd + Shift + C</code>) para abrir este Cockpit instantáneamente sin importar qué aplicación tengas abierta.
+          </div>
+          <div class="suggestion-action">
+            <span class="btn-action" style="cursor: default;">🛠️ Disponible para configurar</span>
+          </div>
+        </div>
+
+        <div class="suggestion-card">
+          <div class="suggestion-icon">📝</div>
+          <div class="suggestion-title">Integración Obsidian (Dataview / Tasks)</div>
+          <div class="suggestion-desc">
+            En tu bóveda de Obsidian ya quedó creada la nota maestra <code>00_Agenda_Fechas_y_Pendientes_2026-2027.md</code> y actualizada la referencia en <code>000_Dashboard.md</code>. Cualquier cambio se sincroniza a iCloud.
+          </div>
+          <div class="suggestion-action">
+            <span class="btn-action" style="cursor: default;">✅ Ya activo en Obsidian</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Weeks data structure
+    const WEEKS_DATA = [
+      { id: 1, p: 1, dates: "31 Ago – 04 Sep", title: "Encuadre institucional y Diagnóstico", detail: "Presentación de la materia Cultura Digital I, lineamientos de laboratorio, evaluación diagnóstica inicial.", isCurrent: false },
+      { id: 2, p: 1, dates: "07 Sep – 11 Sep", title: "Laboratorio: Hardware y Software", detail: "Componentes del equipo de cómputo, sistemas operativos, gestión de archivos locales y en la nube.", isCurrent: false },
+      { id: 3, p: 1, dates: "14 Sep – 18 Sep", title: "PEC: Equipos · Ciudadanía Digital", detail: "Conformación de equipos del Proyecto Comunitario. (16-Sep Feriado Independencia. 18-Sep 2° Simulacro Nacional 12:00 h).", isCurrent: false },
+      { id: 4, p: 1, dates: "21 Sep – 25 Sep", title: "Curaduría digital y Guía de Examen", detail: "Búsqueda crítica de información, validación de fuentes, entrega de guía de estudio resuelta.", isCurrent: false },
+      { id: 5, p: 1, dates: "28 Sep – 02 Oct", title: "📝 Aplicación Examen P1 y Cierre PEC 1", detail: "Semana activa de exámenes parciales (Kahoot / Google Forms) y recepción de propuesta comunitaria PEC Fase 1.", isCurrent: false },
+      { id: 6, p: 1, dates: "05 Oct – 09 Oct", title: "⚠️ Entrega Calificaciones P1 a Control Escolar", detail: "Procesamiento de textos. Calificación y vaciado de sábanas/iDoceo. Límite improrrogable: Viernes 09 de Octubre (autorizado por Dirección).", isCurrent: false },
+      { id: 7, p: 2, dates: "12 Oct – 16 Oct", title: "Documentos Colaborativos y Hoja de Cálculo", detail: "Trabajo en la nube (Docs/Sheets), permisos y versiones. Entrega de boletas a padres de familia (12-14 Oct).", isCurrent: false },
+      { id: 8, p: 2, dates: "19 Oct – 23 Oct", title: "Fórmulas y Funciones en Hoja de Cálculo", detail: "Operadores matemáticos, fórmulas lógicas y gráficos estadísticos. Evaluación del curso intrasemestral.", isCurrent: false },
+      { id: 9, p: 2, dates: "26 Oct – 30 Oct", title: "Métricas de Velocidad · Actividades Subdirección", detail: "Typing.com, fórmulas estadísticas. Subdirección: 3ª Jornada Modelo 2025 (26-Oct), Simulacro Código 3 (27-Oct), Día de Muertos y 2ª Academia (28-Oct), Cierre Curso Didáctica y Estudio Independiente (30-Oct).", isCurrent: true },
+      { id: 10, p: 2, dates: "02 Nov – 06 Nov", title: "Cierre Contenidos P2 (02-Nov Feriado)", detail: "Lunes 02 de Noviembre suspensión oficial (Día de Muertos). Clases regulares de consolidación y cierre de portafolios P2.", isCurrent: false },
+      { id: 11, p: 2, dates: "09 Nov – 13 Nov", title: "📝 Examen Parcial 2 (Ajuste SEMS)", detail: "Periodo oficial de Segunda Evaluación Parcial establecido por SEMS (del 09 al 13 de Noviembre).", isCurrent: false },
+      { id: 12, p: 3, dates: "16 Nov – 20 Nov", title: "Lógica · 🏛️ Mar 17 SIN CLASES · Mar 17 PACE · Jue 19 Boletas", detail: "Lunes 16 Feriado Revolución. Martes 17 Asamblea Sindical D-II-79 (NO HAY CLASES) y límite captura PACE P2. Jueves 19 entrega boletas a padres.", isCurrent: false },
+      { id: 13, p: 3, dates: "23 Nov – 27 Nov", title: "Desarrollo de Solución Programada", detail: "Codificación y prueba del prototipo digital. Validación comunitaria del PEC.", isCurrent: false },
+      { id: 14, p: 3, dates: "30 Nov – 04 Dic", title: "PEC: Exhibición Final Comunitaria", detail: "Muestra comunitaria de proyectos PEC y evaluación mediante rúbrica institucional.", isCurrent: false },
+      { id: 15, p: 3, dates: "07 Dic – 11 Dic", title: "📝 Examen Parcial 3 · Fin de Clases", detail: "Evaluaciones ordinarias P3 y globales. Viernes 11 de Diciembre: Cierre oficial de clases y listas docentes.", isCurrent: false },
+      { id: 16, p: 3, dates: "14 Dic – 18 Dic", title: "📝 Exámenes Finales y Captura PACE", detail: "Periodo de regularizaciones, exámenes finales y firma de actas oficiales de evaluación.", isCurrent: false }
+    ];
+
+    // Default To-Do tasks
+    const DEFAULT_TASKS = [
+      { id: 1, text: "Aplicar Examen Parcial 1 en Cultura Digital I (Kahoot / Forms)", cat: "eval", date: "02-Oct-2026", done: false },
+      { id: 2, text: "Recibir y evaluar primer producto del PEC (Fase 1 - Equipos y problemática)", cat: "pec", date: "02-Oct-2026", done: false },
+      { id: 3, text: "⚠️ Entregar calificaciones P1 y sábanas a Control Escolar (Prórroga Grindelia / Dirección)", cat: "eval", date: "09-Oct-2026", done: false },
+      { id: 4, text: "Monitorear ausentismo en Tutorías V110 tras exámenes parciales", cat: "tuto", date: "09-Oct-2026", done: false },
+      { id: 5, text: "Verificar registro de firmas e incidencias del mes de septiembre", cat: "admin", date: "05-Oct-2026", done: false }
+    ];
+
+    // Tab switcher
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      
+      const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+      if (activeBtn) activeBtn.classList.add('active');
+      
+      const target = document.getElementById(`tab-${tabId}`);
+      if (target) target.classList.add('active');
+    }
+
+    // Render weeks accordion
+    function renderWeeks() {
+      const container = document.getElementById('weeks-list');
+      if (!container) return;
+
+      container.innerHTML = WEEKS_DATA.map(w => `
+        <div class="week-card ${w.isCurrent ? 'current open' : ''}" id="week-card-${w.id}">
+          <div class="week-header" onclick="toggleWeek(${w.id})">
+            <div class="week-title-group">
+              <span class="week-badge">S${String(w.id).padStart(2, '0')}</span>
+              <div>
+                <div class="week-name">${w.title} ${w.isCurrent ? '<span style="color: #38bdf8; font-size: 0.75rem; font-weight: 800; margin-left: 6px;">● EN CURSO</span>' : ''}</div>
+                <div class="week-dates">${w.dates} · Bloque P${w.p}</div>
+              </div>
+            </div>
+            <div style="font-size: 1.1rem; color: var(--text-muted);">▾</div>
+          </div>
+          <div class="week-body">
+            <p>${w.detail}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleWeek(id) {
+      const card = document.getElementById(`week-card-${id}`);
+      if (card) card.classList.toggle('open');
+    }
+
+    // To-Do list management with localStorage
+    let tasks = [];
+    let currentFilter = 'all';
+
+    function initTasks() {
+      const saved = localStorage.getItem('ceb54_agenda_tasks_v1');
+      if (saved) {
+        try { tasks = JSON.parse(saved); } catch(e) { tasks = DEFAULT_TASKS; }
+      } else {
+        tasks = DEFAULT_TASKS;
+      }
+      renderTasks();
+    }
+
+    function saveTasks() {
+      localStorage.setItem('ceb54_agenda_tasks_v1', JSON.stringify(tasks));
+      renderTasks();
+    }
+
+    function renderTasks() {
+      const container = document.getElementById('tasks-container');
+      if (!container) return;
+
+      const filtered = tasks.filter(t => currentFilter === 'all' || t.cat === currentFilter);
+
+      const pendingCount = tasks.filter(t => !t.done).length;
+      const completedCount = tasks.filter(t => t.done).length;
+
+      document.getElementById('pending-counter').innerHTML = `${pendingCount} <span class="metric-sub">activos</span>`;
+      document.getElementById('completed-counter').textContent = `${completedCount} completados`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div style="text-align: center; padding: 24px; color: var(--text-muted); font-size: 0.9rem;">No hay tareas en esta categoría.</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(t => {
+        const catLabels = { eval: 'Evaluación', pec: 'PEC', tuto: 'Tutoría', admin: 'Admin' };
+        return `
+          <div class="todo-item ${t.done ? 'completed' : ''}">
+            <input type="checkbox" class="todo-checkbox" ${t.done ? 'checked' : ''} onchange="toggleTask(${t.id})">
+            <div class="todo-content">
+              <span class="todo-text">${t.text}</span>
+              <div class="todo-meta">
+                <span class="tag-category tag-${t.cat}">${catLabels[t.cat] || t.cat}</span>
+                <span>📅 Límite: ${t.date || 'Sin fecha'}</span>
+              </div>
+            </div>
+            <button class="delete-task-btn" onclick="deleteTask(${t.id})" title="Eliminar pendiente">✕</button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleTask(id) {
+      const t = tasks.find(x => x.id === id);
+      if (t) {
+        t.done = !t.done;
+        saveTasks();
+      }
+    }
+
+    function deleteTask(id) {
+      tasks = tasks.filter(x => x.id !== id);
+      saveTasks();
+    }
+
+    function addNewTask() {
+      const textInput = document.getElementById('new-task-text');
+      const catSelect = document.getElementById('new-task-category');
+      const text = textInput.value.trim();
+      if (!text) return;
+
+      const newTask = {
+        id: Date.now(),
+        text: text,
+        cat: catSelect.value,
+        date: "09-Oct-2026",
+        done: false
+      };
+
+      tasks.unshift(newTask);
+      textInput.value = '';
+      saveTasks();
+    }
+
+    function handleTaskKey(e) {
+      if (e.key === 'Enter') addNewTask();
+    }
+
+    function filterTasks(cat) {
+      currentFilter = cat;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = Array.from(document.querySelectorAll('.filter-btn')).find(b => b.getAttribute('onclick').includes(cat));
+      if (activeBtn) activeBtn.classList.add('active');
+      renderTasks();
+    }
+
+    // iCalendar (.ics) Generator
+    function downloadICalendar() {
+      const icsLines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//CEB 5-4//Cockpit Docente 2026-2027//ES",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "X-WR-CALNAME:CEB 5/4 - Agenda Semestral 2026-2027",
+        "X-WR-TIMEZONE:America/Mexico_City"
+      ];
+
+      // Add critical dates
+      const events = [
+        { title: "Inicio de Clases Subciclo 1 (CEB 5/4)", start: "20260831", end: "20260831", desc: "Arranque oficial de la Semana 01" },
+        { title: "Evaluación 1er Parcial (Cultura Digital)", start: "20260928", end: "20261002", desc: "Semana 05: Exámenes P1 y cierre de evidencias" },
+        { title: "⚠️ Entrega Calificaciones P1 (Prórroga Dirección)", start: "20261009", end: "20261009", desc: "Entrega autorizada por Dirección a Control Escolar / PACE" },
+        { title: "Entrega de Boletas P1 a Padres de Familia", start: "20261012", end: "20261014", desc: "Atención a tutores" },
+        { title: "Evaluación Intrasemestral", start: "20261019", end: "20261023", desc: "Alumnos rezagados" },
+        { title: "Suspensión Oficial: Día de Muertos", start: "20261102", end: "20261102", desc: "Día inhábil oficial" },
+        { title: "Evaluación 2o Parcial", start: "20261030", end: "20261106", desc: "Cierre de Bloque P2" },
+        { title: "Entrega Calificaciones 2o Parcial", start: "20261109", end: "20261109", desc: "Captura en Control Escolar" },
+        { title: "Suspensión Oficial: Revolución Mexicana", start: "20261116", end: "20261116", desc: "Tercer lunes de noviembre" },
+        { title: "Muestra y Evaluación PEC (Fase Final)", start: "20261130", end: "20261204", desc: "Semana 14: Exhibición comunitaria" },
+        { title: "Evaluación 3er Parcial y Globales", start: "20261207", end: "20261211", desc: "Evaluaciones ordinarias" },
+        { title: "🛑 Fin de Clases y Cierre de Listas", start: "20261211", end: "20261211", desc: "Fecha crítica de cierre docente" },
+        { title: "Periodo de Exámenes Finales", start: "20261214", end: "20261218", desc: "Regularización y actas finales" }
+      ];
+
+      events.forEach((ev, idx) => {
+        icsLines.push("BEGIN:VEVENT");
+        icsLines.push(`UID:ceb54-sem-a-${idx}@ceb54.edu.mx`);
+        icsLines.push(`DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z`);
+        icsLines.push(`DTSTART;VALUE=DATE:${ev.start}`);
+        icsLines.push(`DTEND;VALUE=DATE:${ev.end}`);
+        icsLines.push(`SUMMARY:${ev.title}`);
+        icsLines.push(`DESCRIPTION:${ev.desc}`);
+        icsLines.push("STATUS:CONFIRMED");
+        icsLines.push("END:VEVENT");
+      });
+
+      icsLines.push("END:VCALENDAR");
+
+      const blob = new Blob([icsLines.join("\r\n")], { type: 'text/calendar;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.setAttribute("download", "CEB54_Agenda_Semestre_A_2026-2027.ics");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderWeeks();
+      initTasks();
+    });
+  </script>
+</body>
+</html>

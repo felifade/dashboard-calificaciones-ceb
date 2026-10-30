@@ -1,0 +1,278 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CEB 5-4//Cockpit Docente 2026-2027//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:CEB 5/4 - Agenda Semestre A 2026-2027
+X-WR-TIMEZONE:America/Mexico_City
+BEGIN:VEVENT
+UID:ceb54-sem-a-0@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20260831
+DTEND;VALUE=DATE:20260901
+SUMMARY:🚀 Inicio de Clases Subciclo 1 (CEB 5/4)
+DESCRIPTION:Arranque oficial de la Semana 01. Encuadre institucional y diagnóstico de Cultura Digital I.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-1@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20260916
+DTEND;VALUE=DATE:20260917
+SUMMARY:🇲🇽 Suspensión Oficial: Día de la Independencia
+DESCRIPTION:Día festivo nacional e inhábil oficial.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-2@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20260918
+DTEND;VALUE=DATE:20260919
+SUMMARY:🚨 Segundo Simulacro Nacional 2026 (12:00 h)
+DESCRIPTION:Oficio DE/CEB-5/4-PC/016/2026. Activación de Unidad Interna de Protección Civil ante hipótesis Sismo M7.7.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-3@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20260928
+DTEND;VALUE=DATE:20261003
+SUMMARY:📝 Semana de Exámenes Primer Parcial (S05)
+DESCRIPTION:Semana 05: Aplicación de exámenes parciales P1 (Kahoot / Google Forms) y recepción de entregable PEC Fase 1.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-4@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+SUMMARY:⚠️ Entrega de Calificaciones 1er Parcial a Control Escolar
+DESCRIPTION:Prórroga oficial autorizada por Dirección (comunicada por Grindelia Martínez Flores). Entrega de sábanas y captura en PACE.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-5@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20261012
+DTEND;VALUE=DATE:20261015
+SUMMARY:📋 Entrega de Boletas 1er Parcial a Padres de Familia
+DESCRIPTION:Atención a tutores y entrega de boletas del Primer Parcial por parte de Control Escolar y Tutorías.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-6@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20261019
+DTEND;VALUE=DATE:20261024
+SUMMARY:🛠️ Evaluación Curso Intrasemestral
+DESCRIPTION:Primer periodo de evaluación del curso intrasemestral para alumnos con asignaturas pendientes.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-7@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20261026
+DTEND;VALUE=DATE:20261030
+SUMMARY:💻 Captura Calificaciones Intrasemestral
+DESCRIPTION:Captura y entrega final de calificaciones del curso intrasemestral (Límite: 29 de octubre).
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sub-s09-1@ceb54.edu.mx
+DTSTAMP:20261026T060000Z
+DTSTART:20261026T120000
+DTEND:20261026T140000
+SUMMARY:🏛️ 3ª Jornada Discusión Bachillerato Nacional (MCCEMS 2025)
+DESCRIPTION:Convocatoria docente en Biblioteca del Plantel. Reflexión sobre implementación del Modelo Educativo 2025. Participación Turno Matutino.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sub-s09-2@ceb54.edu.mx
+DTSTAMP:20261026T060000Z
+DTSTART:20261027T091000
+DTEND:20261027T093000
+SUMMARY:🚨 Simulacro Código 3: Accidente en Viaje Escolar (TM)
+DESCRIPTION:Circular 04 Subdirección. Protocolo de seguridad y auxilio en aula con Grupo 106 / Grupo 103 (09:10 h).
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sub-s09-3@ceb54.edu.mx
+DTSTAMP:20261026T060000Z
+DTSTART:20261027T151000
+DTEND:20261027T153000
+SUMMARY:🚨 Simulacro Código 3: Accidente en Viaje Escolar (TV)
+DESCRIPTION:Circular 04 Subdirección. Protocolo en aula con Grupo 108 / Grupo 111 (15:10 h).
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sub-s09-4@ceb54.edu.mx
+DTSTAMP:20261026T060000Z
+DTSTART:20261028T110000
+DTEND:20261028T150000
+SUMMARY:📚 2ª Reunión General de Academia CEB 5/4
+DESCRIPTION:Reunión obligatoria para todo el colectivo docente (11:00 a 15:00 h). Entrega del calendario ajustado SEMS P2 y acuerdos colegiados.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sub-s09-5@ceb54.edu.mx
+DTSTAMP:20261026T060000Z
+DTSTART:20261028T084000
+DTEND:20261028T104000
+SUMMARY:💀 Evento Cultural Día de Muertos (Turno Matutino)
+DESCRIPTION:Actividades y presentaciones a cargo de la Academia de Ciencias Sociales y Humanidades.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sub-s09-6@ceb54.edu.mx
+DTSTAMP:20261026T060000Z
+DTSTART:20261028T144000
+DTEND:20261028T164000
+SUMMARY:💀 Evento Cultural Día de Muertos (Turno Vespertino)
+DESCRIPTION:Actividades culturales y muestra de Día de Muertos (Sociales y Humanidades).
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sub-s09-7@ceb54.edu.mx
+DTSTAMP:20261026T060000Z
+DTSTART:20261030T180000
+DTEND:20261030T235900
+SUMMARY:💻 Cierre Plataforma Moodle: Curso "Introducción a la Didáctica"
+DESCRIPTION:Fecha límite oficial DGB COSDAC para acreditación del curso autoinstructivo docente.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sub-s09-8@ceb54.edu.mx
+DTSTAMP:20261026T060000Z
+DTSTART:20261030T090000
+DTEND:20261030T100000
+SUMMARY:📚 Difusión Recursos Estudio Independiente (DGB y Portal Web)
+DESCRIPTION:Entrega formal de notificación y publicación de recursos de autoestudio a Subdirección Académica.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-8@ceb54.edu.mx
+DTSTAMP:20261024T070000Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261114
+SUMMARY:📝 Periodo Segunda Evaluación Parcial (P2) - Ajuste SEMS
+DESCRIPTION:Semana 11: Aplicación oficial de exámenes del Segundo Parcial según acuerdo SEMS (09 al 13 de Noviembre).
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-9@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20261102
+DTEND;VALUE=DATE:20261103
+SUMMARY:💀 Suspensión Oficial: Día de Muertos
+DESCRIPTION:Día inhábil del calendario escolar oficial SEP.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-10@ceb54.edu.mx
+DTSTAMP:20261024T070000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:📥 Límite Captura Calificaciones 2o Parcial en PACE (SEMS)
+DESCRIPTION:Fecha límite oficial emitida por SEMS para captura en PACE y entrega de sábanas a Control Escolar (primer día hábil tras puente de Revolución).
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-10b@ceb54.edu.mx
+DTSTAMP:20261029T093000Z
+DTSTART:20261117T093000
+DTEND:20261117T140000
+SUMMARY:🏛️ Reunión Delegacional D-II-79 (XXIV Congreso SNTE) - SUSPENSIÓN DE CLASES
+DESCRIPTION:Asamblea general en el plantel para análisis de convocatorias del XXIV Congreso Seccional Extraordinario SNTE Sección 15. Suspensión de labores docentes y administrativas.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-11@ceb54.edu.mx
+DTSTAMP:20261024T070000Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+SUMMARY:📋 Entrega de Boletas 2o Parcial a Padres (SEMS)
+DESCRIPTION:Fecha oficial emitida por SEMS para atención y entrega de boletas de calificaciones P2 a padres de familia.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-12@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+SUMMARY:🏇 Suspensión Oficial: Revolución Mexicana
+DESCRIPTION:Conmemoración oficial del 20 de Noviembre (Tercer lunes de noviembre).
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-13@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261205
+SUMMARY:🌍 Exhibición y Muestra Final PEC (S14)
+DESCRIPTION:Semana 14: Exhibición comunitaria y cierre de rúbricas del Proyecto Escolar Comunitario.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-14@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20261207
+DTEND;VALUE=DATE:20261212
+SUMMARY:📝 Tercera Evaluación Parcial y Globales (S15)
+DESCRIPTION:Semana 15: Exámenes finales ordinarios del Bloque III.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-15@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261212
+SUMMARY:🛑 Fin de Clases y Cierre Definitivo de Listas
+DESCRIPTION:Último día de clases regulares del Subciclo 1. Cierre total de listas de asistencia y evidencias.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-16@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20261214
+DTEND;VALUE=DATE:20261219
+SUMMARY:📝 Periodo de Exámenes Finales (S16)
+DESCRIPTION:Semana 16: Regularización, exámenes extraordinarios y captura final en PACE.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-17@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20261221
+DTEND;VALUE=DATE:20270106
+SUMMARY:🎄 Periodo Vacacional Decembrino
+DESCRIPTION:Receso escolar de fin de año 2026-2027.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-18@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20270106
+DTEND;VALUE=DATE:20270107
+SUMMARY:📜 Calificaciones Finales y Actas Subciclo 1
+DESCRIPTION:Entrega definitiva de actas de evaluación final a DGB / Control Escolar.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-19@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20270111
+DTEND;VALUE=DATE:20270123
+SUMMARY:🛠️ Curso Intersemestral Enero 2027
+DESCRIPTION:Primer curso intersemestral para regularización de estudiantes no acreditados.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-sem-a-20@ceb54.edu.mx
+DTSTAMP:20260930T090000Z
+DTSTART;VALUE=DATE:20270208
+DTEND;VALUE=DATE:20270209
+SUMMARY:🚀 Inicio de Clases Semestre B (Subciclo 2)
+DESCRIPTION:Arranque del segundo semestre del Ciclo 2026-2027.
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

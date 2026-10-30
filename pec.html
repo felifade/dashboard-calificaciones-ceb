@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CEB 5/4 · Reporte Rápido PEC 2° Parcial (Cultura Digital I)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b1329;
+            --surface: #152243;
+            --surface-hover: #1c2d59;
+            --surface-card: #131d3b;
+            --border: #233566;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --success: #10b981;
+            --success-bg: rgba(16, 185, 129, 0.15);
+            --warning: #f59e0b;
+            --warning-bg: rgba(245, 158, 11, 0.15);
+            --danger: #ef4444;
+            --danger-bg: rgba(239, 68, 68, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 24px 20px;
+            background: linear-gradient(180deg, var(--surface) 0%, rgba(21, 34, 67, 0.5) 100%);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .school-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent-glow);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* BANNER ACLARACIONES */
+        .notice-banner {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-left: 5px solid var(--warning);
+            padding: 14px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .notice-banner .icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .notice-banner .text {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #fde68a;
+        }
+
+        .notice-banner strong {
+            color: #fff;
+        }
+
+        /* KPI STATS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .stat-val {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-val.c-success { color: var(--success); }
+        .stat-val.c-danger { color: var(--danger); }
+        .stat-val.c-accent { color: var(--accent); }
+
+        .stat-lbl {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* CONTROLS (SEARCH & FILTERS) */
+        .controls-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 14px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 14px 12px 40px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .search-box .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 16px;
+            pointer-events: none;
+        }
+
+        .group-filters {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: none;
+        }
+
+        .group-filters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-btn {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            color: #fff;
+            background: var(--surface-hover);
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #0b1329;
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        /* TEAMS GRID */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .teams-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .team-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .team-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .team-header {
+            background: var(--surface);
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .team-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .team-badge-pill {
+            background: var(--accent);
+            color: #0b1329;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .team-name {
+            font-size: 15px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .team-count {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* STUDENT LIST IN CARD */
+        .student-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .student-item:last-child {
+            border-bottom: none;
+        }
+
+        .student-info {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .student-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 2px;
+        }
+
+        .student-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .score-pill {
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 800;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .badge-success {
+            background: var(--success-bg);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-warning {
+            background: var(--warning-bg);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .badge-danger {
+            background: var(--danger-bg);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .badge-neutral {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .motivo-text {
+            font-size: 10px;
+            display: block;
+            margin-top: 2px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--surface);
+            border: 1px dashed var(--border);
+            border-radius: 16px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="school-badge">🏛️ CEB 5/4 "Profr. Rafael Ramírez"</div>
+            <h1>📊 Consulta Rápida de Calificaciones PEC</h1>
+            <p><strong>Cultura Digital I · Segundo Parcial (Turno Matutino)</strong><br>Docente: Felipe López Salazar · Ciclo 2026-2027</p>
+        </header>
+
+        <!-- BANNER DE ACLARACIONES -->
+        <div class="notice-banner">
+            <div class="icon">💡</div>
+            <div class="text">
+                <strong>¿Falta tu nombre o tienes calificación de 0.0 pts y sí entregaste?</strong><br>
+                Revisa tu equipo. Si detectas un error o subiste tu trabajo con retraso, acércate directamente en clase con el <strong>Profr. Felipe</strong> mostrando tu archivo en Google Classroom para aclaración inmediata.
+            </div>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-val c-accent" id="statTotal">--</div>
+                <div class="stat-lbl">Alumnos Registrados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val c-success" id="statAcreditados">--</div>
+                <div class="stat-lbl">2.0 pts (Completo)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val c-danger" id="statNoEntrego">--</div>
+                <div class="stat-lbl">0.0 pts (Sin entrega)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-val" style="color:#fbbf24;" id="statOtros">--</div>
+                <div class="stat-lbl">Destiempo / Parcial</div>
+            </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <div class="controls-card">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Escribe tu apellido, nombre, matrícula o 'no entregó'..." autocomplete="off">
+            </div>
+            <div class="group-filters" id="groupFilters">
+                <button class="filter-btn active" data-group="ALL">🌟 Todos los Grupos</button>
+                <button class="filter-btn" data-group="M101">Grupo 101</button>
+                <button class="filter-btn" data-group="M102">Grupo 102</button>
+                <button class="filter-btn" data-group="M103">Grupo 103</button>
+                <button class="filter-btn" data-group="M104">Grupo 104</button>
+                <button class="filter-btn" data-group="M105">Grupo 105</button>
+                <button class="filter-btn" data-group="M106">Grupo 106</button>
+            </div>
+        </div>
+
+        <!-- TEAMS GRID -->
+        <div class="teams-grid" id="teamsContainer"></div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            Sistema Oficial PEC · Centro de Estudios de Bachillerato CEB 5/4<br>
+            Actualizado en tiempo real desde el Centro de Mandos Soberano · Corte: 30 de Octubre de 2026
+        </footer>
+    </div>
+
+    <script>
+        const TEAMS_DATA = [{"grupo": "M101", "grupo_num": "101", "equipo_id": "EQ-M101-EQUIPO-1", "equipo_nombre": "Equipo 1", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M101-001", "alumno": "ACULTECO TOTO ANGEL MANUEL", "curp": "AUTA100914HVZCTNA9", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-002", "alumno": "AQUINO ISLAS LUIS ESTEBAN", "curp": "AUIL110311HHGQSSA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-003", "alumno": "CAMPOS SANCHEZ ANDREA", "curp": "CASA110131MQRMNNA9", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-004", "alumno": "CASTRO PEREZ SARA FERNANDA", "curp": "CAPS110425MMCSRRA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-005", "alumno": "CHAVEZ LAMPON NATALY", "curp": "CALN111109MHGHMTA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M101", "grupo_num": "101", "equipo_id": "EQ-M101-EQUIPO-2", "equipo_nombre": "Equipo 2", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M101-006", "alumno": "CORTES OCADIZ JOSHUA", "curp": "COOJ110927HHGRCSA9", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-007", "alumno": "CURIEL ROCHA MARIA CAROLINA", "curp": "CURC111208MHGRCRA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-008", "alumno": "DE LA ROSA JUAREZ MATIAS", "curp": "ROJM091103HHGSRTA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-009", "alumno": "DOMINGUEZ SAN AGUSTIN JUDITH YANELI", "curp": "DOSJ110209MHGMNDA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-010", "alumno": "GARCIA BAUTISTA YARETZI SUJEI", "curp": "GABY111214MHGRTRA9", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M101", "grupo_num": "101", "equipo_id": "EQ-M101-EQUIPO-3", "equipo_nombre": "Equipo 3", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M101-011", "alumno": "GOMEZ RAMIREZ VICTOR MANUEL", "curp": "GORV100218HDFMMCA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-012", "alumno": "GUILLERMO VITE YARETZI", "curp": "GUVY110219MHGLTRA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-013", "alumno": "HERNANDEZ CORTES CAMILA ALEJANDRA", "curp": "HECC101210MHGRRMA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-014", "alumno": "HERNANDEZ ESCALANTE YOSGAR DANIEL", "curp": "HEEY110509HHGRSSA0", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M101-015", "alumno": "HERNANDEZ MEDINA CAMILA JOCELYN", "curp": "HEMC110624MHGRDMA6", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M101", "grupo_num": "101", "equipo_id": "EQ-M101-EQUIPO-4", "equipo_nombre": "Equipo 4", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M101-016", "alumno": "HERNANDEZ MONTER MELISSA", "curp": "HEMM100924MHGRNLA9", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M101-017", "alumno": "HERNANDEZ MONTER YULISSA", "curp": "HEMY100924MHGRNLA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-018", "alumno": "ISLAS DE LUCIO SANTIAGO", "curp": "IALS091014HHGSCNA7", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M101-019", "alumno": "JACOBO CEDILLO ROSA ELENA", "curp": "JACR110405MHGCDSA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-020", "alumno": "JUAREZ VIGUERAS FELIPE KOTHAN", "curp": "JUVF090215HHGRGLA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M101", "grupo_num": "101", "equipo_id": "EQ-M101-EQUIPO-5", "equipo_nombre": "Equipo 5", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M101-021", "alumno": "LANGARICA LOZANO NICOLE", "curp": "LALN111118MHGNZCA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-022", "alumno": "MARTINEZ CRUZ DALILA", "curp": "MACD091230MVZRRLA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-023", "alumno": "MAYORAL REYES MARIAN FERNANDA", "curp": "MARM111201MHGYYRA6", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-037", "alumno": "MEDINA CANCHOLA ZAID ISRAEL", "curp": "MECZ110508HGTDNDA6", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M101-024", "alumno": "MELENDEZ PEREZ MARCO ANTONIO", "curp": "MEPM111231HHGLRRA8", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M101-025", "alumno": "MUNOZ BAUTISTA LUCEYDI YAQUELIN", "curp": "MUBL110404MHGXTCA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M101", "grupo_num": "101", "equipo_id": "EQ-M101-EQUIPO-6", "equipo_nombre": "Equipo 6", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M101-026", "alumno": "OLMEDO CASANOVA MONICA", "curp": "OECM101106MMCLSNA7", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M101-027", "alumno": "REYES BARRAGAN ALEXANDRA", "curp": "REBA110919MHGYRLA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-028", "alumno": "RUBIO LUNA MARIA INES", "curp": "RULI100905MHGBNNA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-029", "alumno": "SALINAS SOTO CRISTIAN", "curp": "SASC110402HHGLTRA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-030", "alumno": "SANCHEZ ESCALANTE ANGEL GAEL", "curp": "SAEA110409HHGNSNA1", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}]}, {"grupo": "M101", "grupo_num": "101", "equipo_id": "EQ-M101-EQUIPO-7", "equipo_nombre": "Equipo 7", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M101-031", "alumno": "SOLIS CRUZ MIGUEL ANGEL", "curp": "SOCM110903HHGLRGA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entrego a destiempo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-032", "alumno": "SUAREZ GONZALEZ KAROLINE", "curp": "SUGK110508MHGRNRA4", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M101-033", "alumno": "TORICES ESPINOSA XIMENA", "curp": "TOEX100530MMCRSMA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-034", "alumno": "TORRES MORENO DIEGO", "curp": "TOMD100913HHGRRGA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-035", "alumno": "URENO BELLO MARIA DE LA LUZ CARIDAD", "curp": "UEBL110716MHGRLZA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M101-036", "alumno": "VALENCIA RAMIREZ NAOMI JATHZIRY", "curp": "VARN110129MHGLMMA2", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}]}, {"grupo": "M102", "grupo_num": "102", "equipo_id": "EQ-M102-EQUIPO-1", "equipo_nombre": "Equipo 1", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M102-001", "alumno": "ALEJOS HERNANDEZ SAMANTHA NICOLE", "curp": "AEHS110323MMCLRMA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-002", "alumno": "AVILA GOMEZ PEDRO DE JESUS", "curp": "AIGP110503HHGVMDA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-003", "alumno": "BAEZ RAMIREZ DIANA VERONICA", "curp": "BARD110731MDFZMNA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-004", "alumno": "BALMACEDA SANCHEZ EMILIANO", "curp": "BASE110831HHGLNMA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-005", "alumno": "BAZAN VARGAS ERICK DANIEL", "curp": "BAVE091014HHGZRRA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M102", "grupo_num": "102", "equipo_id": "EQ-M102-EQUIPO-2", "equipo_nombre": "Equipo 2", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M102-006", "alumno": "CERVANTES FLORES JOSELIN", "curp": "CEFJ110921MHGRLSA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-007", "alumno": "COMPARAN MARTINEZ NEYTAN", "curp": "COMN111230HHGMRYA3", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M102-035", "alumno": "DURAN CRUZ EMILIANO DE JESUS", "curp": "DUCE100610HHGRRMA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-008", "alumno": "FLORES VARGAS VANESSA", "curp": "FOVV110329MMCLRNA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-009", "alumno": "GARCIA HERNANDEZ DAYANNA", "curp": "GAHD111130MHGRRYA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-010", "alumno": "HERNANDEZ ESPINOSA EVANYELIN", "curp": "HEEE110717MHGRSVA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M102", "grupo_num": "102", "equipo_id": "EQ-M102-EQUIPO-3", "equipo_nombre": "Equipo 3", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M102-011", "alumno": "HERNANDEZ GARCIA KEYLA PAULINA", "curp": "HEGK111221MHGRRYA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-012", "alumno": "HERNANDEZ GAYOSSO BRIZA BELEN", "curp": "HEGB110818MHGRYRA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-013", "alumno": "HERNANDEZ LUGO ALAN YUDIEL", "curp": "HELA110712HTSRGLA1", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M102-014", "alumno": "HERNANDEZ MARTINEZ DAIAN BELEN", "curp": "HEMD110125MHGRRNA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-015", "alumno": "HERNANDEZ ROSALES BRENDA YAQUELIN", "curp": "HERB110126MHGRSRA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M102", "grupo_num": "102", "equipo_id": "EQ-M102-EQUIPO-4", "equipo_nombre": "Equipo 4", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M102-016", "alumno": "ISLAS DE LUCIO EMILIANO", "curp": "IALE091014HHGSCMA5", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M102-017", "alumno": "LOPEZ GARCIA MARIANA", "curp": "LOGM110920MHGPRRA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-018", "alumno": "LOZANO PEREZ MIA AMBER", "curp": "LOPM110831MHGZRXA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-019", "alumno": "MARTINEZ CASTRO ALEXA ELIZABETH", "curp": "MACA090625MHGRSLA4", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M102-020", "alumno": "MARTINEZ GARCIA IVANA ELVIRA", "curp": "MAGI111213MHGRRVA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M102", "grupo_num": "102", "equipo_id": "EQ-M102-EQUIPO-5", "equipo_nombre": "Equipo 5", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M102-021", "alumno": "MAYORGA RAMIREZ YOSEF JOSTIN", "curp": "MARY101019HHGYMSA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-022", "alumno": "MENESES MENDOZA NICOLE", "curp": "MEMN100910MHGNNCA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-023", "alumno": "MILLAN CABRERA MARIA AILYN", "curp": "MICA111101MHGLBLA4", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M102-024", "alumno": "MUÑOZ SANCHEZ DIEGO ANTONIO", "curp": "MUSD111006HHGXNGA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-025", "alumno": "OLVERA HERNANDEZ NAOMI SHERLYN", "curp": "OEHN111114MHGLRMA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M102", "grupo_num": "102", "equipo_id": "EQ-M102-EQUIPO-6", "equipo_nombre": "Equipo 6", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M102-026", "alumno": "ORTEGA HERNANDEZ GUILLERMO ROMAN", "curp": "OEHG090607HHGRRLA8", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M102-027", "alumno": "ORTIZ ORDAZ NESTOR ODVAN", "curp": "OION110605HHGRRSA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-028", "alumno": "RAMIREZ HERNANDEZ SAMARA DENNIS", "curp": "RAHS110731MHGMRMA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-029", "alumno": "RESENDIZ FRANCISCO ADRIAN", "curp": "REFA110313HDFSRDA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-030", "alumno": "RIVERA CANALES JOSE ANTONIO", "curp": "RICA110415HHGVNNA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M102", "grupo_num": "102", "equipo_id": "EQ-M102-EQUIPO-7", "equipo_nombre": "Equipo 7", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M102-031", "alumno": "RIVERO GONZALEZ CITLALI GUADALUPE", "curp": "RIGC110331MHGVNTA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-032", "alumno": "SANCHEZ RUBIO JOSE ANGEL", "curp": "SARA100827HMCNBNA5", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M102-033", "alumno": "VARGAS MARTINEZ DIEGO ERICK", "curp": "VAMD110206HHGRRGA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M102-034", "alumno": "VEGA MEJIA FERNANDA DANNAE", "curp": "VEMF111004MHGGJRA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M103", "grupo_num": "103", "equipo_id": "EQ-M103-EQUIPO-1", "equipo_nombre": "Equipo 1", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M103-001", "alumno": "ACUNA CONTRERAS LUNA SOFIA", "curp": "AUCL110625MHGCNNA6", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-002", "alumno": "BRINDIS GALLARDO JESUS ALEXIS", "curp": "BIGJ111027HMCRLSA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-003", "alumno": "CASTRO CRUZ GABRIELA", "curp": "CACG110714MHGSRBA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-004", "alumno": "CHAVEZ PALMA XIMENA GUADALUPE", "curp": "CAPX111108MHGHLMA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-005", "alumno": "COMPARAN MARTINEZ EYTAN", "curp": "COME111230HHGMRYA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M103", "grupo_num": "103", "equipo_id": "EQ-M103-EQUIPO-2", "equipo_nombre": "Equipo 2", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M103-006", "alumno": "COPCA ORTEGA SOFIA MARISOL", "curp": "COOS101011MHGPRFA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Calificación grupal", "tipo_calif": "equipo", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-007", "alumno": "CRUZ HERNANDEZ HECTOR MIGUEL", "curp": "CUHH111206HHGRRCA6", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Calificación grupal", "tipo_calif": "equipo", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-008", "alumno": "DE LUCIO ESCALANTE RENATA MONSERRAT", "curp": "LUER110204MHGCSNA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Calificación grupal", "tipo_calif": "equipo", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-009", "alumno": "GARCIA HERNANDEZ AXEL FARID", "curp": "GAHA110410HGRRRXA9", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Calificación grupal", "tipo_calif": "equipo", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-010", "alumno": "GARCIA HERNANDEZ FATIMA", "curp": "GAHF110527MHGRRTA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M103", "grupo_num": "103", "equipo_id": "EQ-M103-EQUIPO-3", "equipo_nombre": "Equipo 3", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M103-011", "alumno": "GARCIA LUNA ARI AIDE", "curp": "GALA110508MHGRNRA5", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M103-012", "alumno": "GONZALEZ RESENDIZ JUAN FRANCISCO", "curp": "GORJ110409HHGNSNA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-013", "alumno": "GUTIERREZ HUERTA ARLETH AYELEN", "curp": "GUHA101123MMCTRRA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entrega a Destiempo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-014", "alumno": "HERNANDEZ BALTAZAR JULIAN MAURICIO", "curp": "HEBJ101202HDFRLLA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-015", "alumno": "HERNANDEZ CASTANEDA DANIEL ENOC", "curp": "HECD110207HMSRSNA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M103", "grupo_num": "103", "equipo_id": "EQ-M103-EQUIPO-4", "equipo_nombre": "Equipo 4", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M103-016", "alumno": "HERNANDEZ GARCIA KEVIN ROBERT", "curp": "HEGK110531HHGRRVA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-017", "alumno": "HERNANDEZ LUGO ALISON YUSBEYDI", "curp": "HELA110712MTSRGLA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-018", "alumno": "HERNANDEZ ROMERO MAYRA MICHELLE", "curp": "HERM110602MHGRMYA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-019", "alumno": "HERNANDEZ SOTO ESTEFANY", "curp": "HESE110612MHGRTSA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-020", "alumno": "JIMENEZ MIRANDA HECTOR GABRIEL", "curp": "JIMH110920HHGMRCA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M103", "grupo_num": "103", "equipo_id": "EQ-M103-EQUIPO-5", "equipo_nombre": "Equipo 5", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M103-021", "alumno": "JUAREZ MACIAS OMAR ISAI", "curp": "JUMO090915HHGRCMA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-022", "alumno": "MANCILLA ALFARO GERALDINE", "curp": "MAAG110404MDFNLRA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-023", "alumno": "MEDINA CORONADO SANTIAGO", "curp": "MECS110913HTCDRNA2", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M103-024", "alumno": "MEJIA MARTINEZ KAMILA ANALY", "curp": "MEMK111224MHGJRMA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-025", "alumno": "PALAFOX SANCHEZ AMYLEE PAOLA", "curp": "PASA091126MHGLNMA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M103", "grupo_num": "103", "equipo_id": "EQ-M103-EQUIPO-6", "equipo_nombre": "Equipo 6", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M103-026", "alumno": "PENA SANDOVAL FRIDA", "curp": "PESF111022MMCXNRA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-027", "alumno": "RAMIREZ ALMANZA CARLOS ALBERTO", "curp": "RAAC111020HHGMLRA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-028", "alumno": "RAMIREZ BARRERA ISABEL", "curp": "RABI111220MHGMRSA9", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-029", "alumno": "RIVAS GONZALEZ NATHALY LIZZETH", "curp": "RIGN111028MHGVNTA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-030", "alumno": "ROJAS TENORIO ANGEL EMILIO", "curp": "ROTA090305HHGJNNA9", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M103", "grupo_num": "103", "equipo_id": "EQ-M103-EQUIPO-7", "equipo_nombre": "Equipo 7", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M103-031", "alumno": "SANCHEZ LOPEZ ALAIN GENARO", "curp": "SALA090927HHGNPLA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-032", "alumno": "SOLIS MONTERRUBIO STEPHANIE", "curp": "SOMS110324MHGLNTA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-033", "alumno": "SOLIS SEGUNDO JHADE", "curp": "SOSJ110318MHGLGHA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-034", "alumno": "TINOCO BANOS KAMILA", "curp": "TIBK101025MHGNXMA9", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M103-035", "alumno": "VITE ROJAS JESUS EMMANUEL", "curp": "VIRJ110306HHGTJSA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M104", "grupo_num": "104", "equipo_id": "EQ-M104-EQUIPO-1", "equipo_nombre": "Equipo 1", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M104-001", "alumno": "AGUSTIN HERNANDEZ ERIK", "curp": "AUHE090520HHGGRRA2", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "NO ENTREGO", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M104-002", "alumno": "ALVARADO SANCHEZ HUGO ADRIAN", "curp": "AASH111011HDFLNGA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-003", "alumno": "ANGELES CRUZ MARIELA", "curp": "AECM110103MHGNRRA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-004", "alumno": "ANTONIO RAMIREZ IAN", "curp": "AORI110312HHGNMNA6", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-005", "alumno": "BADILLO HERNANDEZ RAFAEL ALEXANDER", "curp": "BAHR110410HHGDRFA6", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M104", "grupo_num": "104", "equipo_id": "EQ-M104-EQUIPO-2", "equipo_nombre": "Equipo 2", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M104-006", "alumno": "BENITEZ CRUZ DAVID SABINO", "curp": "BECD110218HHGNRVA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entrega a destiempo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-007", "alumno": "BOLANOS DE PAZ AURORA", "curp": "BOPA090129MDFLZRA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-008", "alumno": "BOLANOS ISLAS CARLA IRANY", "curp": "BOIC110109MMCLSRA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-009", "alumno": "CERVANTES FLORES KEVIN ARMANDO", "curp": "CEFK110522HHGRLVA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-010", "alumno": "CHAPA CARRANZA ASHLY YOLETH", "curp": "CXCA110502MHGHRSA9", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "NO ENTREGO", "tipo_calif": "ajuste", "badge_class": "badge-danger"}]}, {"grupo": "M104", "grupo_num": "104", "equipo_id": "EQ-M104-EQUIPO-3", "equipo_nombre": "Equipo 3", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M104-011", "alumno": "COTONIETO VAZQUEZ JAIME", "curp": "COVJ100910HHGTZMA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-012", "alumno": "DAMIAN RIVERA DIEGO", "curp": "DARD110722HHGMVGA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-013", "alumno": "ELIZARRARAS TERRAZAS DIEGO NAHUM", "curp": "EITD111122HHGLRGA3", "calificacion": 1.8, "calificacion_num": 1.8, "motivo": "Entrega a destiempo", "tipo_calif": "ajuste", "badge_class": "badge-warning"}, {"matricula": "OFICIAL-M104-014", "alumno": "ESCALANTE ANGELINO RODRIGO", "curp": "EAAR110517HHGSNDA6", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-015", "alumno": "FLORES NAJERA MARIANA", "curp": "FONM110120MHGLJRA3", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "NO ENTREGO", "tipo_calif": "ajuste", "badge_class": "badge-danger"}]}, {"grupo": "M104", "grupo_num": "104", "equipo_id": "EQ-M104-EQUIPO-4", "equipo_nombre": "Equipo 4", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M104-016", "alumno": "GARCIA RENDON DULCE NATALIA", "curp": "GARD110205MHGRNLA9", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-017", "alumno": "GAYOSSO PEREZ GUSTAVO DANIEL", "curp": "GAPG110120HHGYRSA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-018", "alumno": "GUERRERO RODRIGUEZ NEIDELYN ANALLETZY", "curp": "GURN110630MHGRDDA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-019", "alumno": "HERNANDEZ MONTANO RENATA NATALIA", "curp": "HEMR110608MDFRNNA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-020", "alumno": "HERNANDEZ SANTIAGO IKER DANIEL", "curp": "HESI110523HHGRNKA0", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "NO ENTREGO", "tipo_calif": "ajuste", "badge_class": "badge-danger"}]}, {"grupo": "M104", "grupo_num": "104", "equipo_id": "EQ-M104-EQUIPO-5", "equipo_nombre": "Equipo 5", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M104-021", "alumno": "JUAREZ GALINDO ELISA NOEMI", "curp": "JUGE111117MHGRLLA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-022", "alumno": "LARA IBARRA ESAU", "curp": "LAIE110502HHGRBSA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-023", "alumno": "LUCIO CASTILLO YAIR", "curp": "LUCY101109HHGCSRA9", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-024", "alumno": "MANRIQUE HERNANDEZ ALAN IVAN", "curp": "MAHA111126HHGNRLA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-025", "alumno": "MARTINEZ MENDEZ ALFONSO", "curp": "MAMA110621HDFRNLA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M104", "grupo_num": "104", "equipo_id": "EQ-M104-EQUIPO-6", "equipo_nombre": "Equipo 6", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M104-026", "alumno": "MARTINEZ MEZA DIEGO ZAID", "curp": "MAMD110707HHGRZGA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-027", "alumno": "MENDOZA RUELAS BIBAANY NAZARETH", "curp": "MERB110708MDFNLBA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-028", "alumno": "MERA GONZALEZ JESUS ADRIAN", "curp": "MEGJ091119HMCRNSA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-029", "alumno": "PEREZ AVILA DANNA ANGELICA", "curp": "PEAD111030MHGRVNA2", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "NO ENTREGO", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M104-030", "alumno": "PEREZ DOMINGUEZ CARMEN XIMENA", "curp": "PEDC110415MHGRMRA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Calificación grupal", "tipo_calif": "equipo", "badge_class": "badge-success"}]}, {"grupo": "M104", "grupo_num": "104", "equipo_id": "EQ-M104-EQUIPO-7", "equipo_nombre": "Equipo 7", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M104-031", "alumno": "QUIROZ MENDOZA LEONARDO YAZAEL", "curp": "QUML111115HHGRNNA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-032", "alumno": "RAMIREZ FIGUEROA LESLIE SUGEY", "curp": "RAFL110513MHGMGSA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-033", "alumno": "ROSALES HERRERA DALIA NATHALY", "curp": "ROHD100902MGTSRLA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M104-034", "alumno": "SANCHEZ PEREZ MIGUEL BRANDON", "curp": "SAPM110930HMCNRGA9", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "NO ENTREGO", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M104-035", "alumno": "VAZQUEZ FERNANDEZ CAMILA MONSERRAT", "curp": "VAFC101230MHGZRMA7", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "NO ENTREGO", "tipo_calif": "ajuste", "badge_class": "badge-danger"}]}, {"grupo": "M105", "grupo_num": "105", "equipo_id": "EQ-M105-EQUIPO-1", "equipo_nombre": "Equipo 1", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M105-001", "alumno": "AVILA FLORES FERNANDA MICHAEL", "curp": "AIFF100123MHGVLRA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-002", "alumno": "BARRON MARTINEZ AISHA GUADALUPE", "curp": "BAMA110702MHGRRSA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-003", "alumno": "CALVA SALVADOR CRISTIAN", "curp": "CASC100329HHGLLRA8", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-004", "alumno": "CRUZ ENQUEL ZAILY MAILIN", "curp": "CUEZ110308MHGRNLA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-005", "alumno": "DEL VALLE CONTRERAS JESUS EMMANUEL", "curp": "VACJ110817HHGLNSA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M105", "grupo_num": "105", "equipo_id": "EQ-M105-EQUIPO-2", "equipo_nombre": "Equipo 2", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M105-006", "alumno": "DIAZ GONZALEZ ANA MARIELY", "curp": "DIGA110827MHGZNNA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-007", "alumno": "FRANCO LUNA MARIA JOSE", "curp": "FALJ110106MHGRNSA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-008", "alumno": "GARCIA ALONSO ANDREA NAXIELY", "curp": "GAAA110717MHGRLNA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-009", "alumno": "GARCIA FLORES DARINA", "curp": "GAFD111021MHGRLRA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-010", "alumno": "GARCIA GARCIA NAHOMI TSASNAI", "curp": "GAGN090430MMCRRHA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M105", "grupo_num": "105", "equipo_id": "EQ-M105-EQUIPO-3", "equipo_nombre": "Equipo 3", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M105-011", "alumno": "GARCIA RAMIREZ ANGEL NICOLAZ", "curp": "GARA110802HHGRMNA3", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-012", "alumno": "GODINEZ GARCIA CHRISTOPHER", "curp": "GOGC100305HHGDRHA0", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-013", "alumno": "HIDALGO GONZALEZ MONSERRAT", "curp": "HIGM090223MMCDNNA8", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-014", "alumno": "JUAREZ PEREZ DANNA", "curp": "JUPD110224MMCRRNA2", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-015", "alumno": "LOPEZ MONTIEL LISSET SARAI", "curp": "LOML110201MHGPNSA2", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}]}, {"grupo": "M105", "grupo_num": "105", "equipo_id": "EQ-M105-EQUIPO-4", "equipo_nombre": "Equipo 4", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M105-016", "alumno": "LOPEZ TELLEZ ROCIO NAHOMY", "curp": "LOTR111021MMCPLCA7", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-017", "alumno": "MARQUEZ GUZMAN JOSE RAMON", "curp": "MAGR110626HHGRZMA0", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-018", "alumno": "MARTINEZ CERON EDEN ARIADNE", "curp": "MACE110820MHGRRDA5", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-019", "alumno": "MARTINEZ GUTIERREZ VALERIA", "curp": "MAGV110526MHGRTLA8", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-020", "alumno": "MENDOZA QUITERIO JORDAN EMMANUEL", "curp": "MEQJ110405HHGNTRA3", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}]}, {"grupo": "M105", "grupo_num": "105", "equipo_id": "EQ-M105-EQUIPO-5", "equipo_nombre": "Equipo 5", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M105-021", "alumno": "MONTIEL HERNANDEZ DULCE VICTORIA", "curp": "MOHD110329MHGNRLA0", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-022", "alumno": "MORALES ESQUIVEL ALEXA ROMINA", "curp": "MOEA111004MHGRSLA0", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-024", "alumno": "PEREZ ESQUIVEL FERNANDO MIGUEL", "curp": "PEEF110113HHGRSRA9", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-023", "alumno": "PEÑA PEREZ EMILIANO", "curp": "PEPE110311HHGXRMA0", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-025", "alumno": "RAMIREZ NAVA ABEL VASSILI", "curp": "RANA110831HHGMVBA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M105", "grupo_num": "105", "equipo_id": "EQ-M105-EQUIPO-6", "equipo_nombre": "Equipo 6", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M105-026", "alumno": "RUIZ ZAMBRANO GUADALUPE ISABEL", "curp": "RUZG110120MHGZMDA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-027", "alumno": "SAMPERIO HERNANDEZ ANGEL DOLORES", "curp": "SAHA100419HHGMRNA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-028", "alumno": "SANCHEZ SALINAS MONTSERRAT", "curp": "SASM110814MHGNLNA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-029", "alumno": "SARMIENTO CIPRIANO ALONDRA", "curp": "SACA090504MDFRPLA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-030", "alumno": "SEGURA CORONADO DENCEL MICHELLE", "curp": "SECD100622MTCGRNA6", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}]}, {"grupo": "M105", "grupo_num": "105", "equipo_id": "EQ-M105-EQUIPO-7", "equipo_nombre": "Equipo 7", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M105-031", "alumno": "SERNA BADILLO MARIA GUADALUPE", "curp": "SEBG110218MHGRDDA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-032", "alumno": "SOLANO HURTADO ALEX YAIR", "curp": "SOHA101019HHGLRLA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-033", "alumno": "TREJO QUIJANO FERNANDA", "curp": "TEQF111116MHGRJRA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M105-034", "alumno": "VALENCIA MEJIA YOAV ISAIAS", "curp": "VAMY090706HHGLJVA1", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M105-035", "alumno": "YAÑEZ CASTRO LEILANI JAZMIN", "curp": "YACL110218MHGXSLA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M106", "grupo_num": "106", "equipo_id": "EQ-M106-EQUIPO-1", "equipo_nombre": "Equipo 1", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M106-001", "alumno": "AGUILAR DE LA CRUZ IRIS CELESTE", "curp": "AUCI111010MHGGRRA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-002", "alumno": "ALEGRIA CERVANTES MICHELL", "curp": "AECM110929MHGLRCA9", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M106-003", "alumno": "BERNAL CHIRINO ANA ELISABET", "curp": "BECA091222MHGRHNA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-004", "alumno": "CALIXTO GARCIA BRANDON ALEXANDER", "curp": "CAGB110315HHGLRRA6", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-005", "alumno": "CARBAJAL ROMERO FRIDA", "curp": "CARF110804MHGRMRA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M106", "grupo_num": "106", "equipo_id": "EQ-M106-EQUIPO-2", "equipo_nombre": "Equipo 2", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M106-006", "alumno": "CERON GOMEZ EDWIN ALAN", "curp": "CEGE090420HDFRMDA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-007", "alumno": "DOMINGUEZ GARNICA RUBI", "curp": "DOGR110611MHGMRBA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-008", "alumno": "ENSASTIGA VILLEDA DARIO ALEXANDER", "curp": "EAVD110129HHGNLRA8", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "Ajuste individual", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M106-009", "alumno": "GARCIA GARCIA ESVEYDY PAULINA", "curp": "GAGE110107MHGRRSA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-010", "alumno": "GARCIA GOMEZ CITLALI", "curp": "GAGC110302MHGRMTA9", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M106", "grupo_num": "106", "equipo_id": "EQ-M106-EQUIPO-3", "equipo_nombre": "Equipo 3", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M106-011", "alumno": "HERNANDEZ AQUINO NESTOR", "curp": "HEAN100323HHGRQSA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-012", "alumno": "HERNANDEZ CABRERA ALICIA KAREINA", "curp": "HECA100327MHGRBLA6", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-013", "alumno": "HERNANDEZ GALLEGOS MIGUEL ANGEL", "curp": "HEGM110520HHGRLGA5", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entrego", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M106-014", "alumno": "HERNANDEZ LOPEZ GABRIELA", "curp": "HELG110813MHGRPBA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-015", "alumno": "HERNANDEZ VELASCO CAMILA CELESTE", "curp": "HEVC110423MHGRLMA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M106", "grupo_num": "106", "equipo_id": "EQ-M106-EQUIPO-4", "equipo_nombre": "Equipo 4", "base_score": null, "integrantes": [{"matricula": "OFICIAL-M106-016", "alumno": "HINOJOSA OLIVER ALEYDA ZOE", "curp": "HIOA110623MHGNLLA5", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-017", "alumno": "LOPEZ GONZALEZ MARIANA YOSELIN", "curp": "LOGM110106MHGPNRA2", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No trabajo", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M106-018", "alumno": "LOPEZ MORALES KARYME JAHDAI", "curp": "LOMK110127MHGPRRA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-019", "alumno": "MACHORRO ZAMORA XIMENA YUTZIL", "curp": "MAZX110601MHGCMMA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-020", "alumno": "MARTINEZ AYALA KATHLEEN ESTEFANIA", "curp": "MAAK110727MHGRYTA6", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M106", "grupo_num": "106", "equipo_id": "EQ-M106-EQUIPO-5", "equipo_nombre": "Equipo 5", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M106-021", "alumno": "MARTINEZ BUSTOS SIOMARA MACBANAI", "curp": "MABS110716MHGRSMA2", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-022", "alumno": "MARTINEZ LOPEZ VILLICANA YARETZI", "curp": "MALY110810MDFRPRA3", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M106-023", "alumno": "MENDOZA SANCHEZ KARLA PAULET", "curp": "MESK111024MHGNNRA5", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M106-024", "alumno": "MEZA BAUTISTA JOSE ROBERTO", "curp": "MEBR111209HHGZTBA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-025", "alumno": "OLVERA LUNA REGINA JASMIN", "curp": "OELR111203MDFLNGA6", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M106", "grupo_num": "106", "equipo_id": "EQ-M106-EQUIPO-6", "equipo_nombre": "Equipo 6", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M106-026", "alumno": "PEREZ BARRIENTOS FERNANDA MARIEL", "curp": "PEBF110610MHGRRRA3", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-027", "alumno": "PEREZ ISLAS ZURIEL", "curp": "PEIZ110609HHGRSRA1", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-028", "alumno": "PEREZ OSORNO XOCHITL ARANZA", "curp": "PEOX111022MHGRSCA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-029", "alumno": "RAMIREZ RANGEL ZIANYA", "curp": "RARZ111031MHGMNNA8", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-030", "alumno": "RODRIGUEZ GUTIERREZ SANTIAGO", "curp": "ROGS110224HHGDTNA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}, {"grupo": "M106", "grupo_num": "106", "equipo_id": "EQ-M106-EQUIPO-7", "equipo_nombre": "Equipo 7", "base_score": 2.0, "integrantes": [{"matricula": "OFICIAL-M106-031", "alumno": "ROSALES GARDUNO YENI LIZZETH", "curp": "ROGY110402MHGSRNA4", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-032", "alumno": "SOTO LECHUGA ASTRID YAMILETH", "curp": "SOLA111018MHGTCSA0", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-033", "alumno": "TECPILE TECPILE JOSE ANTONIO", "curp": "TXTA110207HDFCCNA6", "calificacion": 0.0, "calificacion_num": 0.0, "motivo": "No entregó", "tipo_calif": "ajuste", "badge_class": "badge-danger"}, {"matricula": "OFICIAL-M106-034", "alumno": "VARGAS DOMINGUEZ SANTIAGO", "curp": "VADS110819HHGRMNA7", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}, {"matricula": "OFICIAL-M106-035", "alumno": "VITE ORTIZ JOSE ELIAS", "curp": "VIOE110627HHGTRLA6", "calificacion": 2.0, "calificacion_num": 2.0, "motivo": "Entregado / Completo", "tipo_calif": "ajuste", "badge_class": "badge-success"}]}];
+
+        let currentGroup = 'ALL';
+        let searchQuery = '';
+
+        function render() {
+            const container = document.getElementById('teamsContainer');
+            const q = searchQuery.toLowerCase().trim();
+
+            let filtered = TEAMS_DATA.filter(team => {
+                const matchGroup = (currentGroup === 'ALL' || team.grupo === currentGroup);
+                if (!matchGroup) return false;
+                if (!q) return true;
+
+                // Match in team name or group
+                if (team.equipo_nombre.toLowerCase().includes(q)) return true;
+                if (team.grupo.toLowerCase().includes(q)) return true;
+
+                // Match in students
+                return team.integrantes.some(st => 
+                    st.alumno.toLowerCase().includes(q) || 
+                    st.matricula.toLowerCase().includes(q) ||
+                    st.motivo.toLowerCase().includes(q) ||
+                    String(st.calificacion).includes(q)
+                );
+            });
+
+            // Update stats
+            let countTotal = 0;
+            let count2 = 0;
+            let count0 = 0;
+            let countOther = 0;
+
+            filtered.forEach(team => {
+                team.integrantes.forEach(st => {
+                    countTotal++;
+                    if (st.calificacion_num === 2.0) count2++;
+                    else if (st.calificacion_num === 0.0) count0++;
+                    else if (st.calificacion_num > 0) countOther++;
+                });
+            });
+
+            document.getElementById('statTotal').innerText = countTotal;
+            document.getElementById('statAcreditados').innerText = count2;
+            document.getElementById('statNoEntrego').innerText = count0;
+            document.getElementById('statOtros').innerText = countOther;
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="empty-state" style="grid-column: 1 / -1;">No se encontraron resultados para la búsqueda actual.</div>';
+                return;
+            }
+
+            container.innerHTML = filtered.map(team => {
+                const visibleStudents = q ? team.integrantes.filter(st => 
+                    st.alumno.toLowerCase().includes(q) || 
+                    st.matricula.toLowerCase().includes(q) ||
+                    st.motivo.toLowerCase().includes(q) ||
+                    String(st.calificacion).includes(q) ||
+                    team.equipo_nombre.toLowerCase().includes(q)
+                ) : team.integrantes;
+
+                if (visibleStudents.length === 0) return '';
+
+                const studentsHtml = visibleStudents.map(st => `
+                    <div class="student-item">
+                        <div class="student-info">
+                            <div class="student-name" title="${st.alumno}">${st.alumno}</div>
+                            <div class="student-sub">
+                                <span>${st.matricula}</span>
+                            </div>
+                        </div>
+                        <div class="score-pill ${st.badge_class}">
+                            <div>${st.calificacion_num >= 0 ? st.calificacion_num.toFixed(1) + ' pts' : 'Pendiente'}</div>
+                            <span class="motivo-text">${st.motivo}</span>
+                        </div>
+                    </div>
+                `).join('');
+
+                return `
+                    <div class="team-card">
+                        <div class="team-header">
+                            <div class="team-title-wrap">
+                                <span class="team-badge-pill">G${team.grupo_num}</span>
+                                <span class="team-name">${team.equipo_nombre}</span>
+                            </div>
+                            <span class="team-count">👥 ${team.integrantes.length} alumnos</span>
+                        </div>
+                        <div class="students-list">
+                            ${studentsHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Search event
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            render();
+        });
+
+        // Filter group buttons
+        document.getElementById('groupFilters').addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-btn')) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                currentGroup = e.target.getAttribute('data-group');
+                render();
+            }
+        });
+
+        // Initial render
+        render();
+    </script>
+</body>
+</html>

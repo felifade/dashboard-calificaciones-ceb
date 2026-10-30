@@ -112,6 +112,20 @@
             border: 1px solid #bae6fd;
         }
 
+        .badge-parcial {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #fef3c7;
+            color: #92400e;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 30px;
+            border: 1px solid #fde68a;
+            letter-spacing: 0.3px;
+        }
+
         .masthead h1 {
             font-family: 'Poppins', sans-serif;
             font-size: 23px;
@@ -611,20 +625,23 @@
         <!-- MASTHEAD INSTITUCIONAL -->
         <header class="masthead">
             <div class="top-meta">
-                <span class="badge-ceb">🏛️ CEB 5/4 "Profr. Rafael Ramírez"</span>
-                <span class="badge-subject">💻 Cultura Digital I (Componente PEC)</span>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+                    <span class="badge-ceb">🏛️ CEB 5/4 "Profr. Rafael Ramírez"</span>
+                    <span class="badge-subject">💻 Cultura Digital I</span>
+                </div>
+                <span class="badge-parcial">📅 SEGUNDO PARCIAL (P2)</span>
             </div>
-            <h1>Registro de Evaluación PEC · Segundo Parcial</h1>
+            <h1>Registro de Evaluación PEC · Segundo Parcial (P2)</h1>
             <p class="subtitle">
-                Turno: <strong>Matutino (Grupos 101 al 106)</strong> &bull; Titular: <strong>Mtro. Felipe López Salazar</strong> &bull; Ciclo: <strong>2026-2027</strong>
+                Turno: <strong>Matutino (Grupos 101 al 106)</strong> &bull; Periodo Evaluado: <strong style="color: #92400e; background: #fef3c7; padding: 2px 8px; border-radius: 6px; border: 1px solid #fde68a;">Segundo Parcial (P2)</strong> &bull; Titular: <strong>Mtro. Felipe López Salazar</strong> &bull; Ciclo: <strong>2026-2027</strong>
             </p>
         </header>
 
         <!-- CLARIFICACIÓN: SÓLO CULTURA DIGITAL I -->
         <div class="pec-explainer-card">
-            <h3>ℹ️ ¿Cómo funciona esta calificación?</h3>
+            <h3>ℹ️ ¿Cómo funciona esta calificación en el Segundo Parcial (P2)?</h3>
             <p>
-                La calificación mostrada abajo corresponde <strong>únicamente a la materia de Cultura Digital I</strong> (hasta <strong>2.0 puntos</strong> que se suman en tu evaluación de esta materia). El promedio general del PEC en tu boleta semestral se compone con las demás materias participantes del Segundo Parcial.
+                La calificación mostrada abajo corresponde <strong>únicamente a la evaluación del Segundo Parcial (P2)</strong> en la materia de <strong>Cultura Digital I</strong> (hasta <strong>2.0 puntos</strong> que se suman en tu evaluación de este parcial). Esta nota es independiente del Primer Parcial y no representa la boleta final del PEC; el promedio colegiado se integrará conforme las demás materias participantes registren sus resultados.
             </p>
         </div>
 
@@ -672,15 +689,15 @@
             </div>
             <div class="kpi-box">
                 <div class="kpi-value" style="color: var(--success-text);" id="kpiSuccess">--</div>
-                <div class="kpi-label">🟢 2.0 pts en Cultura Digital</div>
+                <div class="kpi-label">🟢 2.0 pts Cultura Digital (P2)</div>
             </div>
             <div class="kpi-box">
                 <div class="kpi-value" style="color: var(--danger-text);" id="kpiDanger">--</div>
-                <div class="kpi-label">🔴 0.0 pts (Por aclarar)</div>
+                <div class="kpi-label">🔴 0.0 pts P2 (Por aclarar)</div>
             </div>
             <div class="kpi-box">
                 <div class="kpi-value" style="color: var(--warning-text);" id="kpiWarning">--</div>
-                <div class="kpi-label">🟡 Destiempo / Parcial</div>
+                <div class="kpi-label">🟡 Ajustes P2</div>
             </div>
         </section>
 
@@ -784,9 +801,9 @@
                         </div>
                         <div class="student-right">
                             <span class="grade-chip ${st.badge_type}">
-                                ${st.calificacion_num >= 0 ? st.calificacion_num.toFixed(1) + ' pts' : 'Pendiente'}
+                                ${st.calificacion_num >= 0 ? '+' + st.calificacion_num.toFixed(1) + ' pts' : 'Pendiente'}
                             </span>
-                            <span class="reason-caption" title="${st.motivo}">${st.motivo}</span>
+                            <span class="reason-caption" title="${st.motivo}">P2 &bull; ${st.motivo}</span>
                         </div>
                     </div>
                 `).join('');
@@ -797,6 +814,7 @@
                             <div class="team-card-title">
                                 <span class="pill-group-tag">G${t.grupo_num}</span>
                                 <h2>${t.equipo_nombre}</h2>
+                                <span style="font-size: 10px; font-weight: 800; color: #92400e; background: #fef3c7; padding: 2px 6px; border-radius: 4px; border: 1px solid #fde68a;">P2</span>
                             </div>
                             <span class="team-card-count">👥 ${t.integrantes.length} alumnos</span>
                         </header>

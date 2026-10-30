@@ -11,7 +11,7 @@ DTSTAMP:20260930T090000Z
 DTSTART;VALUE=DATE:20260831
 DTEND;VALUE=DATE:20260901
 SUMMARY:🚀 Inicio de Clases Subciclo 1 (CEB 5/4)
-DESCRIPTION:Arranque oficial de la Semana 01. Encuadre institucional y diagnóstico de Cultura Digital I.
+DESCRIPTION:Arranque oficial de la Semana 01 del Ciclo Escolar 2026-2027. Encuadre institucional y diagnóstico académico inicial.
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -92,7 +92,7 @@ DTSTAMP:20261026T060000Z
 DTSTART:20261027T091000
 DTEND:20261027T093000
 SUMMARY:🚨 Simulacro Código 3: Accidente en Viaje Escolar (TM)
-DESCRIPTION:Circular 04 Subdirección. Protocolo de seguridad y auxilio en aula con Grupo 106 / Grupo 103 (09:10 h).
+DESCRIPTION:Circular 04 Subdirección. Protocolo de seguridad y auxilio en aula (Turno Matutino 09:10 h).
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -101,7 +101,7 @@ DTSTAMP:20261026T060000Z
 DTSTART:20261027T151000
 DTEND:20261027T153000
 SUMMARY:🚨 Simulacro Código 3: Accidente en Viaje Escolar (TV)
-DESCRIPTION:Circular 04 Subdirección. Protocolo en aula con Grupo 108 / Grupo 111 (15:10 h).
+DESCRIPTION:Circular 04 Subdirección. Protocolo de seguridad y auxilio en aula (Turno Vespertino 15:10 h).
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -145,8 +145,8 @@ UID:ceb54-sub-s09-8@ceb54.edu.mx
 DTSTAMP:20261026T060000Z
 DTSTART:20261030T090000
 DTEND:20261030T100000
-SUMMARY:📚 Difusión Recursos Estudio Independiente (DGB y Portal Web)
-DESCRIPTION:Entrega formal de notificación y publicación de recursos de autoestudio a Subdirección Académica.
+SUMMARY:📚 Difusión de Guías de Estudio Independiente (DGB)
+DESCRIPTION:Difusión y entrega de recursos didácticos de estudio independiente a Subdirección Académica según lineamientos federales DGB.
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

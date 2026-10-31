@@ -1859,6 +1859,135 @@
       }
     }
 
+  
+    /* ========================================================== */
+    /* NAVEGACIÓN DUAL: ARRIBA EN COMPUTADORA, ABAJO EN CELULAR   */
+    /* ========================================================== */
+    /* En Computadora / Desktop: Pestañas arriba, dock oculto */
+    @media (min-width: 769px) {
+      .app-nav-bar {
+        display: block !important;
+      }
+      .mobile-bottom-bar {
+        display: none !important;
+      }
+    }
+
+    /* En Celular / Móvil: Pestañas de arriba ocultas, barra abajo activa */
+    @media (max-width: 768px) {
+      .app-nav-bar {
+        display: none !important; /* Elimina el acceso duplicado de arriba */
+      }
+      body {
+        padding-bottom: 74px !important; /* Espacio exacto para el dock inferior */
+      }
+      .mobile-bottom-bar {
+        display: flex !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 62px !important;
+        background: var(--bg-surface) !important;
+        border-top: 1px solid var(--border) !important;
+        z-index: 9999 !important;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.06) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+      }
+      .mob-tab-btn {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 2px !important;
+        background: transparent !important;
+        border: none !important;
+        color: var(--text-muted) !important;
+        cursor: pointer !important;
+        padding: 6px 0 !important;
+        transition: color 0.15s ease !important;
+      }
+      .mob-tab-btn.active {
+        color: var(--guinda) !important;
+        font-weight: 800 !important;
+      }
+      .mob-tab-icon {
+        font-size: 1.25rem !important;
+        line-height: 1 !important;
+      }
+      .mob-tab-label {
+        font-size: 0.68rem !important;
+        font-weight: 700 !important;
+      }
+    }
+
+    /* Selector de Mes Ultra-Minimalista (Cero repetición de 2026) */
+    .month-nav-minimal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .month-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .month-hero-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-main);
+      min-width: 140px;
+    }
+    .month-mini-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .m-mini-btn {
+      padding: 5px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      font-size: 0.80rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .m-mini-btn:hover {
+      background: var(--bg-hover);
+      color: var(--text-main);
+    }
+    .m-mini-btn.active {
+      background: var(--guinda);
+      color: #FFFFFF;
+      border-color: var(--guinda);
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (max-width: 768px) {
+      .month-nav-minimal {
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+      }
+      .month-hero-title {
+        font-size: 1.05rem;
+      }
+      .m-mini-btn {
+        padding: 4px 8px;
+        font-size: 0.74rem;
+      }
+    }
+
   </style>
 
 </head>
@@ -1902,19 +2031,20 @@
     <!-- TAB PANE 1: VISTA MENSUAL (PROTAGONISTA Y PORTADA INICIAL) -->
 <section class="tab-pane active" id="pane-month">
       <div class="month-view-card">
-        <div class="month-nav-header">
-          <div class="month-nav-controls">
+        <div class="month-nav-minimal">
+          <div class="month-title-wrap">
             <button class="m-nav-arrow" onclick="navMonth(-1)" title="Mes Anterior" aria-label="Mes Anterior">‹</button>
-            <div class="month-tabs" id="monthTabsGroup">
-              <button class="m-tab-btn active" id="btn-m-2026-10" onclick="renderMonth('2026-10', this)">Octubre 2026</button>
-              <button class="m-tab-btn" id="btn-m-2026-11" onclick="renderMonth('2026-11', this)">Noviembre 2026</button>
-              <button class="m-tab-btn" id="btn-m-2026-12" onclick="renderMonth('2026-12', this)">Diciembre 2026</button>
-              <button class="m-tab-btn" id="btn-m-2027-01" onclick="renderMonth('2027-01', this)">Enero 2027 (Ajuste)</button>
-              <button class="m-tab-btn" id="btn-m-2027-02" onclick="renderMonth('2027-02', this)">Febrero 2027 (Sem B)</button>
-            </div>
+            <span class="month-hero-title" id="monthHeadingText">Octubre 2026</span>
             <button class="m-nav-arrow" onclick="navMonth(1)" title="Mes Siguiente" aria-label="Mes Siguiente">›</button>
           </div>
-          <span class="month-header-badge">Calendario Oficial CEB 5/4 · Lunes a Viernes</span>
+
+          <div class="month-mini-pills" id="monthTabsGroup">
+            <button class="m-mini-btn active" id="btn-m-2026-10" onclick="renderMonth('2026-10', this)">Oct</button>
+            <button class="m-mini-btn" id="btn-m-2026-11" onclick="renderMonth('2026-11', this)">Nov</button>
+            <button class="m-mini-btn" id="btn-m-2026-12" onclick="renderMonth('2026-12', this)">Dic</button>
+            <button class="m-mini-btn" id="btn-m-2027-01" onclick="renderMonth('2027-01', this)">Ene</button>
+            <button class="m-mini-btn" id="btn-m-2027-02" onclick="renderMonth('2027-02', this)">Feb</button>
+          </div>
         </div>
 
         <div class="cal-grid" id="monthCalendarGrid">
@@ -3065,12 +3195,14 @@ const CULTURAL_EVENTS = [
 
     // Navegación de Tabs Principales
     function switchMainTab(tabId) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-btn, .nav-tab-btn, .mob-tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
 
-      const btn = document.getElementById('btn-tab-' + tabId);
+      const topBtn = document.getElementById('btn-tab-' + tabId);
+      const mobBtn = document.getElementById('mob-btn-' + tabId);
       const pane = document.getElementById('pane-' + tabId);
-      if (btn) btn.classList.add('active');
+      if (topBtn) topBtn.classList.add('active');
+      if (mobBtn) mobBtn.classList.add('active');
       if (pane) pane.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -3329,9 +3461,21 @@ const CULTURAL_EVENTS = [
       const idx = AVAILABLE_MONTHS.indexOf(yearMonth);
       if (idx !== -1) currentMonthIndex = idx;
 
-      document.querySelectorAll('.m-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.m-tab-btn, .m-mini-btn').forEach(b => b.classList.remove('active'));
       const activeBtn = btn || document.getElementById('btn-m-' + yearMonth);
       if (activeBtn) activeBtn.classList.add('active');
+
+      const monthTitleMap = {
+        '2026-08': 'Agosto 2026',
+        '2026-09': 'Septiembre 2026',
+        '2026-10': 'Octubre 2026',
+        '2026-11': 'Noviembre 2026',
+        '2026-12': 'Diciembre 2026',
+        '2027-01': 'Enero 2027',
+        '2027-02': 'Febrero 2027'
+      };
+      const titleEl = document.getElementById('monthHeadingText');
+      if (titleEl) titleEl.textContent = monthTitleMap[yearMonth] || yearMonth;
       const [yrStr, moStr] = yearMonth.split('-');
       const yr = parseInt(yrStr);
       const mo = parseInt(moStr);
@@ -3577,9 +3721,13 @@ ${desc}`);
 
   </script>
 
-  <!-- Barra de Navegación Inferior Fija para Móviles (Estilo App) -->
+  <!-- Barra de Navegación Inferior Fija para Móviles (Estilo App Nativa Apple) -->
   <nav class="mobile-bottom-bar">
-    <button class="mob-tab-btn active" id="mob-btn-week" onclick="switchMainTab('week')">
+    <button class="mob-tab-btn active" id="mob-btn-month" onclick="switchMainTab('month')">
+      <span class="mob-tab-icon">🗓️</span>
+      <span class="mob-tab-label">Mes</span>
+    </button>
+    <button class="mob-tab-btn" id="mob-btn-week" onclick="switchMainTab('week')">
       <span class="mob-tab-icon">📅</span>
       <span class="mob-tab-label">Semana</span>
     </button>
@@ -3587,21 +3735,13 @@ ${desc}`);
       <span class="mob-tab-icon">🎭</span>
       <span class="mob-tab-label">Eventos</span>
     </button>
-    <button class="mob-tab-btn" id="mob-btn-month" onclick="switchMainTab('month')">
-      <span class="mob-tab-icon">🗓️</span>
-      <span class="mob-tab-label">Mes</span>
-    </button>
-    <button class="mob-tab-btn" id="mob-btn-timeline" onclick="switchMainTab('timeline')">
-      <span class="mob-tab-icon">🧭</span>
-      <span class="mob-tab-label">S00–S20</span>
+    <button class="mob-tab-btn" id="mob-btn-table" onclick="switchMainTab('table')">
+      <span class="mob-tab-icon">📋</span>
+      <span class="mob-tab-label">SEMS</span>
     </button>
     <button class="mob-tab-btn" id="mob-btn-audit" onclick="switchMainTab('audit')">
       <span class="mob-tab-icon">📬</span>
       <span class="mob-tab-label">Correos</span>
-    </button>
-    <button class="mob-tab-btn" id="mob-btn-more" onclick="toggleMobileMoreSheet()">
-      <span class="mob-tab-icon">☰</span>
-      <span class="mob-tab-label">Más</span>
     </button>
   </nav>
 

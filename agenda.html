@@ -2287,6 +2287,48 @@
     [data-theme="dark"] .pill-parents { background: rgba(249, 115, 22, 0.2); color: #FDBA74; border-color: rgba(249, 115, 22, 0.35); }
     [data-theme="dark"] .pill-cumple { background: rgba(236, 72, 153, 0.2); color: #F472B6; border-color: rgba(236, 72, 153, 0.35); }
 
+
+    /* Tarjeta Secundaria de Cumpleaños en Inspector */
+    .inspector-birthday-box {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: rgba(236, 72, 153, 0.05);
+      border: 1px dashed rgba(236, 72, 153, 0.35);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    [data-theme="dark"] .inspector-birthday-box {
+      background: rgba(244, 114, 182, 0.08);
+      border-color: rgba(244, 114, 182, 0.25);
+    }
+    .inspector-birthday-title {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #be185d;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    [data-theme="dark"] .inspector-birthday-title {
+      color: #f472b6;
+    }
+    .inspector-bday-person {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(236, 72, 153, 0.12);
+    }
+    .inspector-bday-person:last-child {
+      border-bottom: none;
+    }
+
   </style>
 
 </head>
@@ -4208,31 +4250,40 @@ const CULTURAL_EVENTS = [
       const day = parseInt(dayStr);
       const bdaysDay = getBirthdaysForDay(mo, day);
 
-      let bdayInspectorBanner = '';
+      // Desglose Secundario de Cumpleaños (Abajito de las actividades oficiales)
+      let bdaysHtmlSecondary = '';
       if (bdaysDay.length > 0) {
-        bdayInspectorBanner = `
-          <div class="birthday-badge-banner">
-            <span>🎂</span>
-            <div>
-              <strong>¡Feliz Cumpleaños!</strong>
-              <div>${bdaysDay.map(b => `${b.nombre} <span style="font-weight: normal; opacity: 0.85;">(${b.tipo})</span>`).join(', ')}</div>
+        const personsList = bdaysDay.map(b => `
+          <div class="inspector-bday-person">
+            <span style="font-weight: 700;">🎂 ${b.nombre}</span>
+            <span class="badge ${b.tipo === 'Docente' ? 'badge-wine' : 'badge-gold'}" style="font-size: 0.65rem;">${b.tipo}</span>
+          </div>
+        `).join('');
+
+        bdaysHtmlSecondary = `
+          <div class="inspector-birthday-box">
+            <div class="inspector-birthday-title">
+              <span>🎉</span> Cumpleaños del Personal CEB 5/4
             </div>
+            <div>${personsList}</div>
           </div>
         `;
       }
 
+      // Si no hay actividades oficiales registradas
       if (evs.length === 0) {
         inspector.innerHTML = `
           <div class="inspector-head">
             <span class="inspector-date-title">📅 ${dateLabel}</span>
             <span class="badge badge-green">Clases Ordinarias</span>
           </div>
-          ${bdayInspectorBanner}
-          <p style="color: var(--text-muted); font-size: 0.86rem; margin: 4px 0; line-height: 1.45;">
+          <p style="color: var(--text-muted); font-size: 0.86rem; margin: 4px 0 10px 0; line-height: 1.45;">
             Jornada de actividades académicas ordinarias frente a grupo según horario escolar oficial del CEB 5/4.
           </p>
+          ${bdaysHtmlSecondary}
         `;
       } else {
+        // Primero se muestran en orden de prioridad las actividades académicas / institucionales
         const cardsHtml = evs.map(e => `
           <div class="inspector-event-card ${e.cat}">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;">
@@ -4248,14 +4299,15 @@ const CULTURAL_EVENTS = [
         inspector.innerHTML = `
           <div class="inspector-head">
             <span class="inspector-date-title">📅 ${dateLabel}</span>
-            <span class="badge badge-wine">${evs.length} ${evs.length === 1 ? 'Evento Registrado' : 'Eventos Registrados'}</span>
+            <span class="badge badge-wine">${evs.length} ${evs.length === 1 ? 'Actividad Oficial' : 'Actividades Oficiales'}</span>
           </div>
           <div class="inspector-events-list">
             ${cardsHtml}
           </div>
+          ${bdaysHtmlSecondary}
         `;
       }
-    
+
       // Auto-scroll suave hacia el inspector en pantallas móviles
       if (window.innerWidth <= 768) {
         setTimeout(() => {
@@ -4263,6 +4315,7 @@ const CULTURAL_EVENTS = [
         }, 60);
       }
     }
+
     // RENDER: Auditoría de Correos (14)
     function renderAuditEmails(filter = '') {
       const cont = document.getElementById('auditEmailsContainer');

@@ -2329,6 +2329,81 @@
       border-bottom: none;
     }
 
+
+    /* Banner Festivo Superior de Cumpleaños del Día */
+    .today-birthday-toast {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.12), rgba(168, 85, 247, 0.12));
+      border: 1px solid rgba(236, 72, 153, 0.35);
+      border-radius: 12px;
+      padding: 10px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 2px 8px rgba(236, 72, 153, 0.08);
+      animation: fadeInDown 0.35s ease;
+    }
+    [data-theme="dark"] .today-birthday-toast {
+      background: linear-gradient(135deg, rgba(244, 114, 182, 0.18), rgba(168, 85, 247, 0.16));
+      border-color: rgba(244, 114, 182, 0.3);
+    }
+    .today-birthday-toast-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+    .today-birthday-toast-icon {
+      font-size: 1.4rem;
+      animation: bounceCake 2s infinite ease-in-out;
+    }
+    @keyframes bounceCake {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px) scale(1.08); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .today-birthday-toast-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #9d174d;
+      margin-bottom: 2px;
+    }
+    [data-theme="dark"] .today-birthday-toast-title {
+      color: #fbcfe8;
+    }
+    .today-birthday-toast-sub {
+      font-size: 0.80rem;
+      color: var(--text-main);
+    }
+    .today-birthday-toast-btn {
+      background: rgba(236, 72, 153, 0.15);
+      border: 1px solid rgba(236, 72, 153, 0.35);
+      color: #be185d;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: 5px 12px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .today-birthday-toast-btn:hover {
+      background: #be185d;
+      color: #FFFFFF;
+    }
+    [data-theme="dark"] .today-birthday-toast-btn {
+      color: #f472b6;
+      background: rgba(244, 114, 182, 0.2);
+    }
+    [data-theme="dark"] .today-birthday-toast-btn:hover {
+      background: #ec4899;
+      color: #FFFFFF;
+    }
+
   </style>
 
 </head>
@@ -2368,6 +2443,9 @@
   </nav>
 
   <main class="container main-content-wrap">
+
+    <!-- BANNER DINÁMICO DE CUMPLEAÑOS DE HOY -->
+    <div id="todayBirthdayBannerContainer"></div>
 
     <!-- TAB PANE 1: VISTA MENSUAL (PROTAGONISTA Y PORTADA INICIAL) -->
 <section class="tab-pane active" id="pane-month">
@@ -3526,7 +3604,8 @@ const CULTURAL_EVENTS = [
     document.addEventListener('DOMContentLoaded', () => {
       renderWeekChips();
       renderActiveWeekView(currentWeekKey);
-      renderCulturalEvents();
+      renderTodayBirthdayBanner();
+      renderCebEventsTimeline();
       renderTimelineWeeks();
       renderMonth('2026-10');
       renderAuditEmails();
@@ -4119,6 +4198,42 @@ const CULTURAL_EVENTS = [
     let currentSelectedIso = null;
 
     // RENDER: Vista Mensual Escolar (5 Días: Lunes a Viernes, Sin Sábados ni Domingos)
+    
+    // BANNER DINÁMICO DE BIENVENIDA: Cumpleañeros de Hoy en el CEB 5/4
+    function renderTodayBirthdayBanner() {
+      const container = document.getElementById('todayBirthdayBannerContainer');
+      if (!container) return;
+
+      const now = new Date();
+      // Tomar mes (1-12) y día actual
+      const currentMonth = now.getMonth() + 1;
+      const currentDay = now.getDate();
+
+      const bdaysToday = getBirthdaysForDay(currentMonth, currentDay);
+
+      if (bdaysToday.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const namesFormatted = bdaysToday.map(b => `<strong>${b.nombre}</strong> <span style="font-weight: 600; opacity: 0.85;">(${b.tipo})</span>`).join(', ');
+
+      container.innerHTML = `
+        <div class="today-birthday-toast">
+          <div class="today-birthday-toast-left">
+            <span class="today-birthday-toast-icon">🎂</span>
+            <div>
+              <div class="today-birthday-toast-title">¡Hoy es un día especial en el CEB 5/4! 🎉</div>
+              <div class="today-birthday-toast-sub">Hoy cumple años: ${namesFormatted}. ¡No olvides felicitarle!</div>
+            </div>
+          </div>
+          <button class="today-birthday-toast-btn" onclick="switchMainTab('cultural'); filterCebEventsCategory('cumpleanos', document.querySelector('[onclick*=\'cumpleanos\']'));" title="Ver catálogo de cumpleaños">
+            Ver Todos 🎁
+          </button>
+        </div>
+      `;
+    }
+
     function renderMonth(yearMonth, btn) {
       const idx = AVAILABLE_MONTHS.indexOf(yearMonth);
       if (idx !== -1) currentMonthIndex = idx;

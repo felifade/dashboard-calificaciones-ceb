@@ -2792,9 +2792,9 @@ ${desc}`);
     function showCellDetail(iso, dateStr) {
       const evs = MONTH_MAP[iso] || [];
       if (evs.length === 0) return;
-      const text = evs.map(e => `• ${e.label}: ${e.desc}`).join('
+      const text = evs.map(e => `• ${e.label}: ${e.desc}`).join(`
 
-');
+`);
       alert(`📅 ${dateStr}
 
 ${text}`);

@@ -2436,7 +2436,6 @@
         <button class="nav-tab-btn" id="btn-tab-cultural" onclick="switchMainTab('cultural')">🎭 Eventos</button>
         <button class="nav-tab-btn" id="btn-tab-table" onclick="switchMainTab('table')">📋 Tabla SEMS</button>
         <button class="nav-tab-btn" id="btn-tab-audit" onclick="switchMainTab('audit')">📬 Correos</button>
-        <button class="nav-tab-btn" id="btn-tab-timeline" onclick="switchMainTab('timeline')">🧭 S00–S20</button>
         <button class="nav-tab-btn" id="btn-tab-sync" onclick="switchMainTab('sync')">📲 Suscribir</button>
       </div>
     </div>
@@ -2571,13 +2570,6 @@
     <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (14) -->
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
-        <!-- Inyectado por JS -->
-      </div>
-    </section>
-
-    <!-- TAB PANE 6: CRONOGRAMA GENERAL (S00 - S20) -->
-<section class="tab-pane" id="pane-timeline">
-      <div class="timeline-weeks-container" id="timelineWeeksContainer">
         <!-- Inyectado por JS -->
       </div>
     </section>
@@ -3606,7 +3598,6 @@ const CULTURAL_EVENTS = [
       renderActiveWeekView(currentWeekKey);
       renderTodayBirthdayBanner();
       renderCebEventsTimeline();
-      renderTimelineWeeks();
       renderMonth('2026-10');
       renderAuditEmails();
       renderTable23();

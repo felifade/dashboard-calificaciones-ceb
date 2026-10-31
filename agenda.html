@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="CEB 5/4">
+  <link rel="apple-touch-icon" href="escudo-ceb54.png">
+  <meta name="theme-color" content="#691C32">
   <title>Centro de Mandos y Calendario Institucional · CEB 5/4</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1038,7 +1043,240 @@
     .tab-pane.active {
       display: block;
     }
+
+    /* ========================================================== */
+    /* ADAPTACIONES MÓVILES AVANZADAS (PRESERVANDO TODAS LAS VISTAS) */
+    /* ========================================================== */
+    .mobile-bottom-bar {
+      display: none;
+    }
+    .mobile-day-filter {
+      display: none;
+    }
+    .mobile-more-sheet {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: 95px; /* Espacio para barra inferior */
+      }
+      .container {
+        padding: 0 12px;
+      }
+      .top-ribbon {
+        font-size: 0.72rem;
+        padding: 6px 12px;
+      }
+      .exec-header {
+        padding: 14px 0;
+        margin-bottom: 16px;
+      }
+      .brand-wrap {
+        gap: 12px;
+      }
+      .brand-logo-img {
+        width: 44px;
+        height: 54px;
+      }
+      .brand-title-wrap h1 {
+        font-size: 1.15rem;
+      }
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .header-actions .btn {
+        flex: 1;
+        justify-content: center;
+        font-size: 0.78rem;
+        padding: 8px 10px;
+      }
+
+      /* KPI Strip en móvil */
+      .kpi-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+      .kpi-pill {
+        padding: 10px 12px;
+        border-radius: 12px;
+        gap: 8px;
+      }
+      .kpi-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 1.1rem;
+      }
+      .kpi-value {
+        font-size: 0.85rem;
+      }
+
+      /* Barra de navegación superior oculta o compacta */
+      .nav-tabs-wrapper {
+        margin-bottom: 16px;
+        gap: 10px;
+      }
+      .nav-tabs {
+        width: 100%;
+      }
+      .global-search {
+        width: 100%;
+      }
+
+      /* Selector de día en vista semanal */
+      .mobile-day-filter {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        overflow-x: auto;
+        padding: 8px 0;
+        margin-bottom: 14px;
+        border-bottom: 1px dashed var(--border);
+        -webkit-overflow-scrolling: touch;
+      }
+      .mob-filter-label {
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: var(--text-muted);
+        text-transform: uppercase;
+      }
+      .m-day-btn {
+        padding: 5px 12px;
+        border-radius: 16px;
+        font-size: 0.76rem;
+        font-weight: 700;
+        border: 1px solid var(--border);
+        background: var(--bg-surface);
+        color: var(--text-muted);
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .m-day-btn.active {
+        background: var(--guinda);
+        color: #ffffff;
+        border-color: var(--guinda);
+      }
+
+      /* Vista semanal 5 días: una columna completa en móvil */
+      .week-view-container {
+        padding: 16px 14px;
+        border-radius: 16px;
+      }
+      .week-5days-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      /* Vista Mensual en móvil (100% preservada con toque táctil) */
+      .month-view-card {
+        padding: 16px 12px;
+      }
+      .month-tabs {
+        overflow-x: auto;
+        width: 100%;
+        padding-bottom: 4px;
+      }
+      .m-tab-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+      }
+      .cal-grid {
+        gap: 4px;
+      }
+      .cal-cell {
+        min-height: 62px;
+        padding: 4px 2px;
+        border-radius: 8px;
+        align-items: center;
+      }
+      .cal-date-num {
+        font-size: 0.75rem;
+      }
+      .cal-chip {
+        font-size: 0.6rem;
+        padding: 1px 3px;
+        max-width: 95%;
+        border-radius: 3px;
+      }
+
+      /* Barra de Navegación Inferior Móvil (Estilo App Nativa iOS/Android) */
+      .mobile-bottom-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 68px;
+        background: var(--bg-surface);
+        border-top: 1px solid var(--border);
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+        z-index: 900;
+        justify-content: space-around;
+        align-items: center;
+        padding-bottom: env(safe-area-inset-bottom, 6px);
+      }
+      .mob-tab-btn {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        height: 100%;
+        padding: 6px 0;
+      }
+      .mob-tab-btn.active {
+        color: var(--guinda);
+        font-weight: 800;
+      }
+      .mob-tab-icon {
+        font-size: 1.25rem;
+        line-height: 1;
+      }
+      .mob-tab-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      /* Hoja de 'Más' en móvil */
+      .mobile-more-sheet {
+        position: fixed;
+        bottom: 70px;
+        right: 12px;
+        left: 12px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: var(--shadow-lg);
+        z-index: 950;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .mob-sheet-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: var(--bg-subtle);
+        border: 1px solid var(--border);
+        color: var(--text-main);
+        font-size: 0.85rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
   </style>
+
 </head>
 <body>
 
@@ -1173,6 +1411,17 @@
         </div>
 
         <!-- Rejilla de 5 Días (Lunes a Viernes) -->
+        <!-- Selector de Día para Móvil (Sin perder la vista de todos) -->
+        <div class="mobile-day-filter">
+          <span class="mob-filter-label">Día:</span>
+          <button class="m-day-btn active" onclick="filterMobileDay('all', this)">⭐ Todos (5 Días)</button>
+          <button class="m-day-btn" onclick="filterMobileDay('Lunes', this)">Lun</button>
+          <button class="m-day-btn" onclick="filterMobileDay('Martes', this)">Mar</button>
+          <button class="m-day-btn" onclick="filterMobileDay('Miércoles', this)">Mié</button>
+          <button class="m-day-btn" onclick="filterMobileDay('Jueves', this)">Jue</button>
+          <button class="m-day-btn" onclick="filterMobileDay('Viernes', this)">Vie 📍</button>
+        </div>
+
         <div class="week-5days-grid" id="weekDaysGrid">
           <!-- Inyectado por JS -->
         </div>
@@ -2540,6 +2789,95 @@ const CULTURAL_EVENTS = [
     function closeModal() {
       document.getElementById('semsModal').style.display = 'none';
     }
+  
+    // Filtro de día táctil en móvil
+    let currentMobileDay = 'all';
+
+    function filterMobileDay(dayName, btn) {
+      currentMobileDay = dayName;
+      document.querySelectorAll('.m-day-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const cols = document.querySelectorAll('.day-column');
+      cols.forEach(col => {
+        if (dayName === 'all') {
+          col.style.display = 'flex';
+        } else {
+          const colDayName = col.querySelector('.day-name').textContent.trim();
+          if (colDayName.toLowerCase().startsWith(dayName.toLowerCase().slice(0, 3))) {
+            col.style.display = 'flex';
+          } else {
+            col.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    // Toggle de la hoja 'Más' en móvil
+    function toggleMobileMoreSheet() {
+      const sheet = document.getElementById('mobileMoreSheet');
+      const cur = sheet.style.display;
+      sheet.style.display = (cur === 'none' || cur === '') ? 'flex' : 'none';
+    }
+
+    // Modal de día en vista mensual móvil
+    function showDayModal(dateStr, label, desc) {
+      alert(`📅 ${dateStr}
+
+📌 ${label}
+
+${desc}`);
+    }
+
   </script>
+
+  <!-- Barra de Navegación Inferior Fija para Móviles (Estilo App) -->
+  <nav class="mobile-bottom-bar">
+    <button class="mob-tab-btn active" id="mob-btn-week" onclick="switchMainTab('week')">
+      <span class="mob-tab-icon">📅</span>
+      <span class="mob-tab-label">Semana</span>
+    </button>
+    <button class="mob-tab-btn" id="mob-btn-cultural" onclick="switchMainTab('cultural')">
+      <span class="mob-tab-icon">🎭</span>
+      <span class="mob-tab-label">Eventos</span>
+    </button>
+    <button class="mob-tab-btn" id="mob-btn-month" onclick="switchMainTab('month')">
+      <span class="mob-tab-icon">🗓️</span>
+      <span class="mob-tab-label">Mes</span>
+    </button>
+    <button class="mob-tab-btn" id="mob-btn-timeline" onclick="switchMainTab('timeline')">
+      <span class="mob-tab-icon">🧭</span>
+      <span class="mob-tab-label">S00–S20</span>
+    </button>
+    <button class="mob-tab-btn" id="mob-btn-audit" onclick="switchMainTab('audit')">
+      <span class="mob-tab-icon">📬</span>
+      <span class="mob-tab-label">Correos</span>
+    </button>
+    <button class="mob-tab-btn" id="mob-btn-more" onclick="toggleMobileMoreSheet()">
+      <span class="mob-tab-icon">☰</span>
+      <span class="mob-tab-label">Más</span>
+    </button>
+  </nav>
+
+  <!-- Menú emergente 'Más' en móvil -->
+  <div class="mobile-more-sheet" id="mobileMoreSheet" style="display: none;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+      <span style="font-size: 0.8rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Otras Secciones Oficiales</span>
+      <button onclick="toggleMobileMoreSheet()" style="background: none; border: none; font-size: 1.1rem; color: var(--text-muted);">✕</button>
+    </div>
+    <div class="mob-sheet-item" onclick="switchMainTab('table'); toggleMobileMoreSheet();">
+      <span>📋</span> <span>Tabla Oficial SEMS (23 Fechas)</span>
+    </div>
+    <div class="mob-sheet-item" onclick="switchMainTab('sync'); toggleMobileMoreSheet();">
+      <span>📲</span> <span>Suscripción Google / Apple Calendar</span>
+    </div>
+    <div class="mob-sheet-item" onclick="openModal(); toggleMobileMoreSheet();">
+      <span>📷</span> <span>Ver Calendario Oficial SEMS (Hoja)</span>
+    </div>
+    <div class="mob-sheet-item" onclick="toggleTheme();">
+      <span>🌓</span> <span>Alternar Modo Claro / Oscuro</span>
+    </div>
+  </div>
+
 </body>
 </html>

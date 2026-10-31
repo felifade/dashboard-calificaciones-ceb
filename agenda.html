@@ -917,8 +917,31 @@
     }
     .cal-grid {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .cal-day-mobile {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .cal-grid {
+        gap: 6px;
+      }
+      .cal-day-desktop {
+        display: none;
+      }
+      .cal-day-mobile {
+        display: inline;
+      }
+      .cal-cell {
+        min-height: 80px;
+        padding: 6px 4px;
+        border-radius: 10px;
+      }
+      .cal-chip {
+        font-size: 0.65rem;
+        padding: 2px 4px;
+      }
     }
     .cal-day-name {
       text-align: center;
@@ -2680,7 +2703,7 @@ const CULTURAL_EVENTS = [
       }).join('');
     }
 
-    // RENDER: Vista Mensual
+    // RENDER: Vista Mensual Escolar (5 Días: Lunes a Viernes, Sin Sábados ni Domingos)
     function renderMonth(yearMonth, btn) {
       if (btn) {
         document.querySelectorAll('.m-tab-btn').forEach(b => b.classList.remove('active'));
@@ -2691,35 +2714,90 @@ const CULTURAL_EVENTS = [
       const mo = parseInt(moStr);
 
       const daysInMonth = new Date(yr, mo, 0).getDate();
-      const firstDay = new Date(yr, mo - 1, 1).getDay();
 
       const calGrid = document.getElementById('monthCalendarGrid');
-      const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+      const dayNames = [
+        { full: 'Lunes', short: 'Lun' },
+        { full: 'Martes', short: 'Mar' },
+        { full: 'Miércoles', short: 'Mié' },
+        { full: 'Jueves', short: 'Jue' },
+        { full: 'Viernes', short: 'Vie' }
+      ];
       
-      let html = dayNames.map(d => `<div class="cal-day-name">${d}</div>`).join('');
+      let html = dayNames.map(d => `
+        <div class="cal-day-name">
+          <span class="cal-day-desktop">${d.full}</span>
+          <span class="cal-day-mobile">${d.short}</span>
+        </div>
+      `).join('');
 
-      for (let i = 0; i < firstDay; i++) {
-        html += `<div class="cal-cell empty"></div>`;
-      }
+      let firstWeekdayRendered = false;
 
       for (let d = 1; d <= daysInMonth; d++) {
+        const dt = new Date(yr, mo - 1, d);
+        const dow = dt.getDay(); // 0 = Dom, 1 = Lun, ..., 5 = Vie, 6 = Sáb
+
+        // Omitir Sábados (6) y Domingos (0)
+        if (dow === 0 || dow === 6) continue;
+
+        // Rellenar celdas vacías previas al primer día laborable
+        if (!firstWeekdayRendered) {
+          firstWeekdayRendered = true;
+          const emptyCount = dow - 1; // 1 = Lun (0 vacíos), 2 = Mar (1 vacío), etc.
+          for (let e = 0; e < emptyCount; e++) {
+            html += `<div class="cal-cell empty"></div>`;
+          }
+        }
+
         const iso = `${yr}-${String(mo).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
         const evs = MONTH_MAP[iso] || [];
         const isToday = (iso === '2026-10-30') ? 'today' : '';
+        const hasHoliday = evs.some(e => e.cat === 'holiday');
+        const holidayCls = hasHoliday ? 'has-holiday' : '';
 
         const evsHtml = evs.map(e => `
-          <div class="cal-chip ${e.cat}" title="${e.desc}">${e.label}</div>
+          <div class="cal-chip ${e.cat}" title="${e.desc}" onclick="showDayEvent('${d} de ${monthNamesEs[mo]}', '${e.label}', '${e.desc}')">${e.label}</div>
         `).join('');
 
         html += `
-          <div class="cal-cell ${isToday}">
-            <span class="cal-date-num">${d}</span>
+          <div class="cal-cell ${isToday} ${holidayCls}" onclick="showCellDetail('${iso}', '${d} de ${monthNamesEs[mo]}')">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="cal-date-num">${d}</span>
+              ${isToday ? '<span class="today-pill" style="font-size: 0.55rem; padding: 1px 4px;">HOY</span>' : ''}
+            </div>
             ${evsHtml}
           </div>
         `;
       }
 
       calGrid.innerHTML = html;
+    }
+
+    const monthNamesEs = {
+      10: 'Octubre',
+      11: 'Noviembre',
+      12: 'Diciembre',
+      1: 'Enero'
+    };
+
+    function showDayEvent(dateStr, label, desc) {
+      event.stopPropagation();
+      alert(`📅 ${dateStr}
+
+📌 ${label}
+
+${desc}`);
+    }
+
+    function showCellDetail(iso, dateStr) {
+      const evs = MONTH_MAP[iso] || [];
+      if (evs.length === 0) return;
+      const text = evs.map(e => `• ${e.label}: ${e.desc}`).join('
+
+');
+      alert(`📅 ${dateStr}
+
+${text}`);
     }
 
     // RENDER: Auditoría de Correos (14)

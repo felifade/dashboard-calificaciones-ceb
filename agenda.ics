@@ -142,6 +142,16 @@ DESCRIPTION:Festival PAEC "Nuestras Raíces Cobran Vida" en explanada del plante
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
+UID:ceb54-2627-asueto-tradicion-30oct@ceb54.edu.mx
+DTSTAMP:20261031T120000Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
+SUMMARY:🎉 Día Concedido Institucional: Asueto y Disfrute de Tradiciones
+DESCRIPTION:Día otorgado a la comunidad escolar y docente por la Autoridad Educativa y Dirección del CEB 5/4 para el disfrute y preservación de las tradiciones de Día de Muertos.
+STATUS:CONFIRMED
+CATEGORIES:Asueto,Tradición,Institucional
+END:VEVENT
+BEGIN:VEVENT
 UID:ceb54-2627-guiasdgb@ceb54.edu.mx
 DTSTAMP:20261030T150000Z
 DTSTART:20261030T090000

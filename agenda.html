@@ -2112,10 +2112,11 @@
           Repositorio clasificado por gestión sindical, tradiciones culturales, salud integral y protocolos de seguridad.
         </p>
 
-        <!-- Filtros Rápidos por Categoría (Sindicato vs Cultural vs Salud vs Seguridad) -->
+        <!-- Filtros Rápidos por Categoría: Subdirección vs Sindicato vs Cultural vs Salud vs Seguridad -->
         <div class="cult-filter-bar">
           <button class="cult-filter-btn active" onclick="filterCulturalCategory('all', this)">⭐ Todos (12)</button>
-          <button class="cult-filter-btn" onclick="filterCulturalCategory('sindicato', this)">🏛️ Sindicato D-II-79 (2)</button>
+          <button class="cult-filter-btn" onclick="filterCulturalCategory('subdireccion', this)">📚 Subdirección Académica (1)</button>
+          <button class="cult-filter-btn" onclick="filterCulturalCategory('sindicato', this)">🏛️ Sindicato D-II-79 (1)</button>
           <button class="cult-filter-btn" onclick="filterCulturalCategory('cultural', this)">🎭 Cultural y Tradición (5)</button>
           <button class="cult-filter-btn" onclick="filterCulturalCategory('salud', this)">🩺 Salud y Tutorías (3)</button>
           <button class="cult-filter-btn" onclick="filterCulturalCategory('seguridad', this)">🚨 Protección Civil (2)</button>
@@ -2611,7 +2612,7 @@
   "2026-10-09": [{ label: "⚠️ Entrega Calif. P1", cat: "pace", desc: "Fecha límite de entrega de calificaciones P1 a Control Escolar / captura PACE." }],
   "2026-10-12": [{ label: "👨‍👩‍👧 Boletas P1 Padres", cat: "parents", desc: "Entrega de boletas del Primer Parcial a padres de familia (12 al 14 Oct)." }],
   "2026-10-19": [{ label: "🛠️ Eval. Intrasemestral", cat: "normal", desc: "Periodo de evaluación del curso intrasemestral de regularización (19 al 23 Oct)." }],
-  "2026-10-26": [{ label: "🏛️ 3ª Jornada MCCEMS", cat: "union", desc: "3.ª Jornada de Discusión del Modelo Educativo 2025 (12:00 h TM / 17:40 h TV) y captura intrasemestral." }],
+  "2026-10-26": [{ label: "🏛️ 3ª Jornada Modelo 2025", cat: "normal", desc: "Subdirección Académica / SEMS: 3.ª Jornada de Discusión del Modelo Educativo 2025 (12:00 h TM / 17:40 h TV) y captura intrasemestral." }],
   "2026-10-27": [{ label: "🚨 Simulacro Código 3", cat: "normal", desc: "Simulacro Código 3: Accidente en Viaje Escolar en aula (09:10 h TM G103 / 15:10 h TV G108)." }],
   "2026-10-28": [{ label: "📚 2ª Reunión Academia", cat: "union", desc: "Actividad Oficial SEMS #01: Segunda Reunión General de Academia (13:00 a 15:30 h). Aprobación unánime del Calendario Ajustado SEMS (Exámenes Globales pasan formalmente al 11–14 de Enero 2027)." }],
   "2026-10-29": [
@@ -3015,16 +3016,16 @@ const CULTURAL_EVENTS = [
     id: "cult-04",
     title: "🏛️ 3.ª Jornada Nacional de Discusión: Modelo Educativo 2025",
     date: "Lunes 26 de Octubre de 2026",
-    category: "Política Educativa Colegiada",
+    category: "Subdirección Académica / SEMS",
     venue: "Salas de Academia y Biblioteca",
     participants: "Mesas multidisciplinarias: Matemáticas, Ciencias, Humanidades, Comunicación y Cultura Digital",
-    desc: "Análisis participativo de la propuesta pedagógica nacional para el bachillerato federal. Elaboración colegiada de respuestas oficiales, firmas de mesa y entrega de relatoría a moderación institucional.",
+    desc: "Convocatoria oficial de Subdirección Académica y la Dirección General del Bachillerato (SEMS). Análisis participativo de la propuesta pedagógica nacional para el bachillerato federal. Elaboración colegiada de respuestas oficiales, firmas de mesa y entrega de relatoría a moderación institucional.",
     files: [
       { name: "Relatoria_Modelo_Educativo_2025.md", type: "md" },
       { name: "Respuestas con Firmas (Word)", type: "doc" }
     ],
     status: "Entregado a Moderación",
-    tag: "Modelo 2025"
+    tag: "Subdirección Académica"
   },
   {
     id: "cult-05",
@@ -3311,7 +3312,9 @@ const CULTURAL_EVENTS = [
       const filtered = CULTURAL_EVENTS.filter(e => {
         // Filtro por categoría institucional
         if (currentCultCategory === 'sindicato') {
-          if (e.id !== 'cult-00' && e.id !== 'cult-04') return false;
+          if (e.id !== 'cult-00') return false; // Exclusivo Gestión Sindical D-II-79
+        } else if (currentCultCategory === 'subdireccion') {
+          if (e.id !== 'cult-04') return false; // Exclusivo Subdirección Académica / SEMS
         } else if (currentCultCategory === 'cultural') {
           if (!['cult-01', 'cult-02', 'cult-06', 'cult-10', 'cult-11'].includes(e.id)) return false;
         } else if (currentCultCategory === 'salud') {

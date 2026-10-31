@@ -1596,6 +1596,107 @@
       }
     }
 
+  
+    /* Filtros por Categoría en Eventos */
+    .cult-filter-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 6px 0;
+      margin-top: 10px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .cult-filter-bar::-webkit-scrollbar {
+      display: none;
+    }
+    .cult-filter-btn {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      font-size: 0.80rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.18s ease;
+    }
+    .cult-filter-btn:hover {
+      background: var(--bg-hover);
+      color: var(--text-main);
+      border-color: var(--border-strong);
+    }
+    .cult-filter-btn.active {
+      background: var(--guinda);
+      color: #FFFFFF;
+      border-color: var(--guinda);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* KPI Strip en Móvil: Barra horizontal compacta deslizable de 36px */
+    @media (max-width: 768px) {
+      .kpi-strip {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        gap: 8px !important;
+        margin-bottom: 12px !important;
+        padding-bottom: 4px !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .kpi-strip::-webkit-scrollbar {
+        display: none;
+      }
+      .kpi-pill {
+        flex: 0 0 auto !important;
+        padding: 5px 10px !important;
+        border-radius: 20px !important;
+        gap: 6px !important;
+        box-shadow: none !important;
+        background: var(--bg-surface) !important;
+      }
+      .kpi-icon {
+        width: 22px !important;
+        height: 22px !important;
+        border-radius: 6px !important;
+        font-size: 0.80rem !important;
+      }
+      .kpi-content {
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 6px !important;
+      }
+      .kpi-label {
+        display: none !important; /* Ocultar texto largo en celular */
+      }
+      .kpi-value {
+        font-size: 0.78rem !important;
+        margin: 0 !important;
+        white-space: nowrap !important;
+        font-weight: 800 !important;
+      }
+      .kpi-sub {
+        font-size: 0.70rem !important;
+        white-space: nowrap !important;
+        color: var(--text-muted) !important;
+      }
+
+      /* Compactar encabezado en Vista Semanal para ver los días de inmediato */
+      .week-header-info {
+        padding: 8px 12px !important;
+        margin-bottom: 10px !important;
+      }
+      .week-header-info h2 {
+        font-size: 0.95rem !important;
+        line-height: 1.25 !important;
+      }
+      .week-header-info p {
+        font-size: 0.74rem !important;
+      }
+    }
+
   </style>
 
 </head>
@@ -1687,13 +1788,13 @@
     <!-- Navigation Tabs Bar -->
     <nav class="nav-tabs-wrapper">
       <div class="nav-tabs">
-        <button class="tab-btn active" id="btn-tab-week" onclick="switchMainTab('week')">📅 Vista Semanal (5 Días)</button>
-        <button class="tab-btn" id="btn-tab-cultural" onclick="switchMainTab('cultural')">🎭 Memoria Cultural y Cívica</button>
-        <button class="tab-btn" id="btn-tab-timeline" onclick="switchMainTab('timeline')">🧭 Cronograma Semestral (S00–S20)</button>
-        <button class="tab-btn" id="btn-tab-month" onclick="switchMainTab('month')">🗓️ Vista Mensual</button>
-        <button class="tab-btn" id="btn-tab-audit" onclick="switchMainTab('audit')">📬 Auditoría de Correos (14)</button>
-        <button class="tab-btn" id="btn-tab-table" onclick="switchMainTab('table')">📋 Tabla SEMS (23 Fechas)</button>
-        <button class="tab-btn" id="btn-tab-sync" onclick="switchMainTab('sync')">📲 Suscribir Calendario</button>
+        <button class="tab-btn active" id="btn-tab-month" onclick="switchMainTab('month')">🗓️ Vista Mensual</button>
+        <button class="tab-btn" id="btn-tab-week" onclick="switchMainTab('week')">📅 Vista Semanal (5 Días)</button>
+        <button class="tab-btn" id="btn-tab-cultural" onclick="switchMainTab('cultural')">🎭 Eventos y Gestión</button>
+        <button class="tab-btn" id="btn-tab-timeline" onclick="switchMainTab('timeline')">🧭 Cronograma Semestral</button>
+        <button class="tab-btn" id="btn-tab-audit" onclick="switchMainTab('audit')">📬 Correos (14)</button>
+        <button class="tab-btn" id="btn-tab-table" onclick="switchMainTab('table')">📋 Tabla SEMS (23)</button>
+        <button class="tab-btn" id="btn-tab-sync" onclick="switchMainTab('sync')">📲 Suscribir</button>
       </div>
 
       <div class="global-search">
@@ -1705,7 +1806,7 @@
     <!-- ============================================================== -->
     <!-- TAB PANE 1: VISTA SEMANAL EJECUTIVA (LUNES A VIERNES)           -->
     <!-- ============================================================== -->
-    <section class="tab-pane active" id="pane-week">
+    <section class="tab-pane" id="pane-week">
       <div class="week-view-container">
         
         <!-- Selector de Semanas -->
@@ -1754,11 +1855,20 @@
     <!-- TAB PANE 2: MEMORIA CULTURAL Y CÍVICA (REPOSITORIO INSTITUCIONAL)-->
     <!-- ============================================================== -->
     <section class="tab-pane" id="pane-cultural">
-      <div style="margin-bottom: 20px;">
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main);">🎭 Memoria Viva: Eventos Culturales, Cívicos y Formativos</h2>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">
-          Repositorio histórico soberano de altares, certámenes, jornadas nacionales, simulacros y actividades cívicas custodiadas en CEB 5/4.
+      <div style="margin-bottom: 16px;">
+        <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main);">🎭 Eventos, Actividades y Gestión Institucional</h2>
+        <p style="color: var(--text-muted); font-size: 0.86rem; margin-top: 2px;">
+          Repositorio clasificado por gestión sindical, tradiciones culturales, salud integral y protocolos de seguridad.
         </p>
+
+        <!-- Filtros Rápidos por Categoría (Sindicato vs Cultural vs Salud vs Seguridad) -->
+        <div class="cult-filter-bar">
+          <button class="cult-filter-btn active" onclick="filterCulturalCategory('all', this)">⭐ Todos (12)</button>
+          <button class="cult-filter-btn" onclick="filterCulturalCategory('sindicato', this)">🏛️ Sindicato D-II-79 (2)</button>
+          <button class="cult-filter-btn" onclick="filterCulturalCategory('cultural', this)">🎭 Cultural y Tradición (5)</button>
+          <button class="cult-filter-btn" onclick="filterCulturalCategory('salud', this)">🩺 Salud y Tutorías (3)</button>
+          <button class="cult-filter-btn" onclick="filterCulturalCategory('seguridad', this)">🚨 Protección Civil (2)</button>
+        </div>
       </div>
 
       <div class="cultural-grid" id="culturalGridContainer">
@@ -1778,7 +1888,7 @@
     <!-- ============================================================== -->
     <!-- TAB PANE 4: VISTA MENSUAL DESAHOGADA                           -->
     <!-- ============================================================== -->
-        <section class="tab-pane" id="pane-month">
+        <section class="tab-pane active" id="pane-month">
       <div class="month-view-card">
         <div class="month-nav-header">
           <div class="month-nav-controls">
@@ -2930,18 +3040,49 @@ const CULTURAL_EVENTS = [
       }).join('');
     }
 
-    // RENDER: Memoria Cultural y Cívica (Tab 2)
-    function renderCulturalEvents(filter = '') {
+    let currentCultCategory = 'all';
+
+    function filterCulturalCategory(cat, btn) {
+      currentCultCategory = cat;
+      document.querySelectorAll('.cult-filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderCulturalEvents();
+    }
+
+    // RENDER: Memoria Cultural y Cívica (Con Filtro por Categorías)
+    function renderCulturalEvents(searchFilter = '') {
       const cont = document.getElementById('culturalGridContainer');
-      const f = filter.toLowerCase();
+      if (!cont) return;
+      const f = (searchFilter || '').toLowerCase();
 
       const filtered = CULTURAL_EVENTS.filter(e => {
+        // Filtro por categoría institucional
+        if (currentCultCategory === 'sindicato') {
+          if (e.id !== 'cult-00' && e.id !== 'cult-04') return false;
+        } else if (currentCultCategory === 'cultural') {
+          if (!['cult-01', 'cult-02', 'cult-06', 'cult-10', 'cult-11'].includes(e.id)) return false;
+        } else if (currentCultCategory === 'salud') {
+          if (!['cult-07', 'cult-08', 'cult-09'].includes(e.id)) return false;
+        } else if (currentCultCategory === 'seguridad') {
+          if (!['cult-03', 'cult-05'].includes(e.id)) return false;
+        }
+
+        // Filtro por texto de búsqueda
         if (!f) return true;
         return e.title.toLowerCase().includes(f) ||
                e.category.toLowerCase().includes(f) ||
                e.venue.toLowerCase().includes(f) ||
                e.desc.toLowerCase().includes(f);
       });
+
+      if (filtered.length === 0) {
+        cont.innerHTML = `
+          <div style="grid-column: 1/-1; padding: 30px; text-align: center; color: var(--text-muted); background: var(--bg-surface); border: 1px dashed var(--border); border-radius: 14px;">
+            No se encontraron eventos en esta categoría.
+          </div>
+        `;
+        return;
+      }
 
       cont.innerHTML = filtered.map(e => `
         <div class="cultural-card">

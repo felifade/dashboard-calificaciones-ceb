@@ -51,7 +51,6 @@
       --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
       --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
-      --shadow-hover: 0 12px 24px -4px rgba(0, 0, 0, 0.09);
     }
 
     :root[data-theme="dark"] {
@@ -97,7 +96,6 @@
       --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
       --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
       --shadow-lg: 0 12px 24px rgba(0,0,0,0.6);
-      --shadow-hover: 0 16px 28px rgba(0,0,0,0.7);
     }
 
     * {
@@ -137,10 +135,6 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;
-    }
-    .top-ribbon a {
-      color: #ffffff;
-      text-decoration: underline;
     }
 
     /* Executive Header */
@@ -201,6 +195,7 @@
     .badge-gold { background: var(--oro-soft); color: var(--oro); border: 1px solid var(--oro-border); }
     .badge-green { background: var(--green-soft); color: var(--green); border: 1px solid var(--green-border); }
     .badge-blue { background: var(--blue-soft); color: var(--blue); border: 1px solid var(--blue-border); }
+    .badge-purple { background: var(--purple-soft); color: var(--purple); border: 1px solid var(--purple-border); }
 
     .header-actions {
       display: flex;
@@ -347,9 +342,6 @@
       box-shadow: var(--shadow-sm);
       font-weight: 800;
     }
-    :root[data-theme="dark"] .tab-btn.active {
-      color: var(--guinda);
-    }
 
     .global-search {
       position: relative;
@@ -379,7 +371,7 @@
     }
 
     /* ========================================================== */
-    /* TAB 1: VISTA SEMANAL EJECUTIVA (5 DÍAS LUNES A VIERNES)    */
+    /* TAB 1: VISTA SEMANAL EJECUTIVA (LUNES A VIERNES)           */
     /* ========================================================== */
     .week-view-container {
       background: var(--bg-surface);
@@ -390,7 +382,6 @@
       margin-bottom: 30px;
     }
     
-    /* Week Selector Bar (Pills) */
     .week-selector-bar {
       display: flex;
       align-items: center;
@@ -439,18 +430,17 @@
       margin-bottom: 20px;
     }
     .week-header-info h2 {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
       letter-spacing: -0.01em;
       color: var(--text-main);
     }
     .week-header-info p {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       margin-top: 2px;
     }
 
-    /* 5-Column Weekday Grid */
     .week-5days-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -512,7 +502,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* Day Events Container */
     .day-events {
       display: flex;
       flex-direction: column;
@@ -520,7 +509,7 @@
       flex: 1;
     }
 
-    /* FICHAS RELEVANTES (HERO CARDS) */
+    /* Hero Card (Ficha Relevante) */
     .hero-card {
       background: var(--bg-surface);
       border: 1px solid var(--border);
@@ -564,17 +553,8 @@
       color: var(--text-muted);
       line-height: 1.35;
     }
-    .hero-card-meta {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--text-subtle);
-      margin-top: 2px;
-    }
 
-    /* FICHAS PEQUEÑAS (MICRO-CHIPS DESAHOGADOS) */
+    /* Micro-Chip (Ficha Pequeña) */
     .micro-chip {
       background: var(--bg-surface);
       border: 1px solid var(--border);
@@ -607,27 +587,107 @@
       color: var(--text-muted);
     }
 
-    /* Bonus Holiday Banner */
-    .bonus-holiday-bar {
-      margin-top: 16px;
-      background: var(--amber-soft);
-      border: 1px dashed var(--amber-border);
-      border-radius: 12px;
-      padding: 12px 18px;
+    /* ========================================================== */
+    /* TAB 2: MEMORIA CULTURAL Y CÍVICA (REPOSITORIO / ALMACÉN)   */
+    /* ========================================================== */
+    .cultural-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 18px;
+    }
+    .cultural-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+    .cultural-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-strong);
+    }
+    .cultural-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .cult-category {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--oro);
+    }
+    .cult-date {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .cult-title {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.3;
+    }
+    .cult-venue {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 0.88rem;
-      color: var(--text-main);
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-subtle);
     }
-    .bonus-holiday-bar strong {
-      color: var(--amber);
+    .cult-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    .cult-files-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cult-files-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+    }
+    .cult-pills-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .file-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     /* ========================================================== */
-    /* TAB 2: CRONOGRAMA SEMESTRAL (S00 - S20)                    */
+    /* TAB 3: CRONOGRAMA SEMESTRAL (S00 - S20)                    */
     /* ========================================================== */
     .timeline-weeks-container {
       display: flex;
@@ -718,7 +778,7 @@
     }
 
     /* ========================================================== */
-    /* TAB 3: AUDITORÍA DE CORREOS Y ENTREGAS                     */
+    /* TAB 4: AUDITORÍA DE CORREOS Y ENTREGAS                     */
     /* ========================================================== */
     .audit-container {
       display: flex;
@@ -781,7 +841,7 @@
     }
 
     /* ========================================================== */
-    /* TAB 4: TABLA OFICIAL SEMS (23 ACTIVIDADES)                 */
+    /* TAB 5: TABLA OFICIAL SEMS (23 ACTIVIDADES)                 */
     /* ========================================================== */
     .table-card {
       background: var(--bg-surface);
@@ -816,7 +876,7 @@
     }
 
     /* ========================================================== */
-    /* TAB 5: VISTA MENSUAL DESAHOGADA                            */
+    /* TAB 6: VISTA MENSUAL DESAHOGADA                            */
     /* ========================================================== */
     .month-view-card {
       background: var(--bg-surface);
@@ -905,7 +965,7 @@
     .cal-chip.pace { background: var(--amber-soft); color: var(--amber); border-color: var(--amber-border); }
 
     /* ========================================================== */
-    /* TAB 6: SUSCRIPCIÓN Y SINCRONIZACIÓN                        */
+    /* TAB 7: SUSCRIPCIÓN Y SINCRONIZACIÓN                        */
     /* ========================================================== */
     .sync-card {
       background: var(--bg-surface);
@@ -1000,6 +1060,7 @@
             <span class="badge badge-wine">DGB Federal Directa</span>
             <span class="badge badge-gold">CCT 13DBP0001Z</span>
             <span class="badge badge-green">● Ajustado 2.ª Academia</span>
+            <span class="badge badge-purple">🎭 Memoria Cultural y Cívica</span>
           </div>
         </div>
       </div>
@@ -1059,6 +1120,7 @@
     <nav class="nav-tabs-wrapper">
       <div class="nav-tabs">
         <button class="tab-btn active" id="btn-tab-week" onclick="switchMainTab('week')">📅 Vista Semanal (5 Días)</button>
+        <button class="tab-btn" id="btn-tab-cultural" onclick="switchMainTab('cultural')">🎭 Memoria Cultural y Cívica</button>
         <button class="tab-btn" id="btn-tab-timeline" onclick="switchMainTab('timeline')">🧭 Cronograma Semestral (S00–S20)</button>
         <button class="tab-btn" id="btn-tab-month" onclick="switchMainTab('month')">🗓️ Vista Mensual</button>
         <button class="tab-btn" id="btn-tab-audit" onclick="switchMainTab('audit')">📬 Auditoría de Correos (14)</button>
@@ -1068,7 +1130,7 @@
 
       <div class="global-search">
         <span>🔍</span>
-        <input type="text" id="globalSearchInput" placeholder="Buscar fecha, examen, circular, PACE..." oninput="onGlobalSearch()">
+        <input type="text" id="globalSearchInput" placeholder="Buscar evento cultural, examen, circular, PACE..." oninput="onGlobalSearch()">
       </div>
     </nav>
 
@@ -1093,11 +1155,11 @@
         <div class="week-header-info">
           <div>
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-              <span class="badge badge-wine" id="activeWeekTag">SEMANA 10</span>
-              <span class="badge badge-gold" id="activeWeekDates">26 AL 30 DE OCTUBRE 2026</span>
+              <span class="badge badge-wine" id="activeWeekTag">SEMANA 10 (ACTIVA)</span>
+              <span class="badge badge-gold" id="activeWeekDates">30 OCT AL 06 NOV 2026</span>
             </div>
-            <h2 id="activeWeekTitle">Cierre de Progresiones Bloque II y 2.ª Academia</h2>
-            <p id="activeWeekSub">Acuerdo colegiado oficial y tradiciones de Día de Muertos en plantel</p>
+            <h2 id="activeWeekTitle">📍 Semana Activa: Consolidación Bloque II, Puente Día de Muertos y ABC Emociones</h2>
+            <p id="activeWeekSub">Inicia hoy Vie 30 Oct · Lunes 02 Nov Asueto Oficial SEP · Cierra Vie 06 Nov con entrega tutoría</p>
           </div>
         </div>
 
@@ -1106,14 +1168,27 @@
           <!-- Inyectado por JS -->
         </div>
 
-        <!-- Bonus Holiday Banner si aplica -->
-        <div id="bonusHolidayWrap"></div>
-
       </div>
     </section>
 
     <!-- ============================================================== -->
-    <!-- TAB PANE 2: CRONOGRAMA SEMESTRAL COMPLETO (S00 - S20)          -->
+    <!-- TAB PANE 2: MEMORIA CULTURAL Y CÍVICA (REPOSITORIO INSTITUCIONAL)-->
+    <!-- ============================================================== -->
+    <section class="tab-pane" id="pane-cultural">
+      <div style="margin-bottom: 20px;">
+        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main);">🎭 Memoria Viva: Eventos Culturales, Cívicos y Formativos</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Repositorio histórico soberano de altares, certámenes, jornadas nacionales, simulacros y actividades cívicas custodiadas en CEB 5/4.
+        </p>
+      </div>
+
+      <div class="cultural-grid" id="culturalGridContainer">
+        <!-- Inyectado por JS -->
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TAB PANE 3: CRONOGRAMA SEMESTRAL COMPLETO (S00 - S20)          -->
     <!-- ============================================================== -->
     <section class="tab-pane" id="pane-timeline">
       <div class="timeline-weeks-container" id="timelineWeeksContainer">
@@ -1122,7 +1197,7 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- TAB PANE 3: VISTA MENSUAL DESAHOGADA                           -->
+    <!-- TAB PANE 4: VISTA MENSUAL DESAHOGADA                           -->
     <!-- ============================================================== -->
     <section class="tab-pane" id="pane-month">
       <div class="month-view-card">
@@ -1143,7 +1218,7 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- TAB PANE 4: HISTORIAL DE CORREOS Y ENTREGAS (14 AUDITADOS)     -->
+    <!-- TAB PANE 5: HISTORIAL DE CORREOS Y ENTREGAS (14 AUDITADOS)     -->
     <!-- ============================================================== -->
     <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
@@ -1152,7 +1227,7 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- TAB PANE 5: TABLA OFICIAL SEMS (23 ACTIVIDADES)                -->
+    <!-- TAB PANE 6: TABLA OFICIAL SEMS (23 ACTIVIDADES)                -->
     <!-- ============================================================== -->
     <section class="tab-pane" id="pane-table">
       <div class="table-card">
@@ -1175,7 +1250,7 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- TAB PANE 6: SUSCRIPCIÓN Y SINCRONIZACIÓN AUTOMÁTICA            -->
+    <!-- TAB PANE 7: SUSCRIPCIÓN Y SINCRONIZACIÓN AUTOMÁTICA            -->
     <!-- ============================================================== -->
     <section class="tab-pane" id="pane-sync">
       <div class="sync-card">
@@ -1697,92 +1772,112 @@
     };
     
 const WEEK_VIEWS = {
-  "S09": {
-    weekNum: "Semana 09",
+  "S08": {
+    weekNum: "Semana 08",
     range: "19 al 23 de Octubre de 2026",
-    title: "Avance Curricular y Cierre de Bloque II",
-    highlight: "Preparación hacia la 2.ª Academia Ordinaria",
+    title: "Avance Temático Bloque II y Evaluación Intrasemestral",
+    highlight: "Hojas de cálculo, fórmulas aritméticas y carpetas de evidencia PEC",
     days: [
-      {
-        name: "Lunes", date: "19 Oct", isToday: false, isHoliday: false,
-        events: [
-          { title: "Seguimiento Curricular", sub: "Avance en progresiones del 2° Parcial", cat: "normal", priority: "normal", shift: "Ambos turnos" }
-        ]
-      },
-      {
-        name: "Martes", date: "20 Oct", isToday: false, isHoliday: false,
-        events: [
-          { title: "Tutorías Académicas", sub: "Atención a rezago y portafolios", cat: "normal", priority: "normal", shift: "Ambos turnos" }
-        ]
-      },
-      {
-        name: "Miércoles", date: "21 Oct", isToday: false, isHoliday: false,
-        events: [
-          { title: "Lineamientos Desafiliación", sub: "Oficio 045 Lic. Alexa Bahena sobre protocolos INDES", cat: "normal", priority: "normal", shift: "Colegiado" }
-        ]
-      },
-      {
-        name: "Jueves", date: "22 Oct", isToday: false, isHoliday: false,
-        events: [
-          { title: "Convocatoria 2.ª Academia", sub: "Emisión de citatorio oficial para docentes", cat: "normal", priority: "normal", shift: "Subdirección" }
-        ]
-      },
-      {
-        name: "Viernes", date: "23 Oct", isToday: false, isHoliday: false,
-        events: [
-          { title: "Guías de Estudio P2", sub: "Acuerdo de reactivos y distribución de temarios", cat: "exam", priority: "high", shift: "Docentes" }
-        ]
-      }
+      { name: "Lunes", date: "19 Oct", isToday: false, isHoliday: false, events: [{ title: "Arranque Semana 08", sub: "Evaluación curso intrasemestral y revisión formativa", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
+      { name: "Martes", date: "20 Oct", isToday: false, isHoliday: false, events: [{ title: "Tutorías Grupales", sub: "Atención a rezago y seguimiento pedagógico", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
+      { name: "Miércoles", date: "21 Oct", isToday: false, isHoliday: false, events: [{ title: "Lineamientos Desafiliación", sub: "Análisis Oficio 045 Lic. Alexa Bahena sobre protocolos INDES", cat: "normal", priority: "normal", shift: "Colegiado" }] },
+      { name: "Jueves", date: "22 Oct", isToday: false, isHoliday: false, events: [{ title: "Convocatoria 2.ª Academia", sub: "Emisión formal de citatorio por Subdirección Académica", cat: "normal", priority: "normal", shift: "Subdirección" }] },
+      { name: "Viernes", date: "23 Oct", isToday: false, isHoliday: false, events: [{ title: "Cierre de Bloque Intrasemestral", sub: "Consolidación de calificaciones y portafolios", cat: "normal", priority: "high", shift: "Docentes", tag: "Corte S08" }] }
     ]
   },
-  "S10": {
-    weekNum: "Semana 10",
-    range: "26 al 30 de Octubre de 2026",
-    title: "Semana Activa · 2.ª Academia y Tradiciones de Día de Muertos",
-    highlight: "Aprobación oficial de exámenes globales en enero 2027",
-    isCurrent: true,
+  "S09": {
+    weekNum: "Semana 09",
+    range: "26 al 29 de Octubre de 2026",
+    title: "Semana Cultural, 2.ª Academia, Simulacro Código 3 y Altares",
+    highlight: "Eventos institucionales, relatorías colegiadas y acuerdo oficial de exámenes globales en enero 2027",
     days: [
       {
         name: "Lunes", date: "26 Oct", isToday: false, isHoliday: false,
         events: [
-          { title: "Arranque de Semana 10", sub: "Seguimiento de progresiones y encuadre de cierre P2", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+          { title: "🏛️ 3.ª Jornada Nacional de Discusión Modelo 2025", sub: "Mesa colegiada multidisciplinaria y relatoría oficial de acuerdos firmada", cat: "meeting", priority: "high", shift: "Colegiado CEB 5/4", tag: "Jornada Nacional" },
+          { title: "Captura Intrasemestral y Trámites RH", sub: "Periodo oficial de captura y entrega de solicitud constancia de 15 años", cat: "normal", priority: "normal", shift: "Ambos turnos" }
         ]
       },
       {
         name: "Martes", date: "27 Oct", isToday: false, isHoliday: false,
         events: [
-          { title: "Clase Ciberseguridad DGB", sub: "Sesión nacional vía Google Meet (11:00 h)", cat: "union", priority: "normal", shift: "Virtual" }
+          { title: "🚨 Simulacro Institucional Código 3 (Accidente en Viaje)", sub: "Protocolos de seguridad escolar DGB: TM G103 (09:10 h) y TV G108 (15:10 h). Fichas en PDF y fotos archivadas.", cat: "union", priority: "high", shift: "Ambos turnos", tag: "Protección Civil" },
+          { title: "🛡️ Clase Magistral: Ciberseguridad para Servidores Públicos", sub: "Sesión nacional vía Google Meet DGB / Gabino Pérez (11:00 h)", cat: "union", priority: "normal", shift: "Virtual" }
         ]
       },
       {
         name: "Miércoles", date: "28 Oct", isToday: false, isHoliday: false,
         events: [
-          { title: "🏛️ 2.ª Reunión Ordinaria de Academia", sub: "Actividad SEMS #01: Aprobación unánime del Calendario Ajustado. Exámenes Globales pasan formalmente al 11–14 de Enero 2027.", cat: "meeting", priority: "high", shift: "13:00 a 15:30 h · Colegiado", tag: "Acuerdo Oficial" }
+          { title: "📚 2.ª Reunión General de Academia (Oficial)", sub: "Actividad SEMS #01: Aprobación unánime del Calendario Ajustado. Exámenes Globales pasan formalmente al 11–14 de Enero 2027.", cat: "meeting", priority: "high", shift: "13:00 a 15:30 h · Colegiado", tag: "Acuerdo Oficial SEMS" }
         ]
       },
       {
         name: "Jueves", date: "29 Oct", isToday: false, isHoliday: false,
         events: [
-          { title: "Muestra Cultural y Concurso de Catrinas", sub: "Celebración y exhibición comunitaria de Día de Muertos en explanada", cat: "normal", priority: "normal", shift: "Plantel CEB 5/4" }
+          { title: "🎭 Muestra Cultural de Altares y Concurso de Catrinas", sub: "Celebración y exhibición comunitaria de Día de Muertos en explanada del plantel", cat: "normal", priority: "high", shift: "Comunidad CEB 5/4", tag: "Tradición Comunitaria" },
+          { title: "Cierre de Captura Intrasemestral", sub: "Límite para concentración de avances pedagógicos en plataforma", cat: "normal", priority: "normal", shift: "Control Escolar" }
         ]
       },
       {
         name: "Viernes", date: "30 Oct", isToday: true, isHoliday: false,
         events: [
-          { title: "📚 Difusión de Guías de Estudio DGB", sub: "Oficio formal a Subdirección y entrega a estudiantes", cat: "normal", priority: "high", shift: "08:30 hrs", tag: "Atendido" },
+          { title: "📚 Difusión de Guías de Estudio Independiente DGB", sub: "Oficio formal remitido a Subdirección y entrega de materiales a estudiantes", cat: "normal", priority: "high", shift: "08:30 hrs", tag: "Atendido" },
           { title: "💻 Cierre Plataforma Moodle Didáctica", sub: "Término del curso Introducción a la Didáctica DGB (18:00 h)", cat: "union", priority: "normal", shift: "Docentes inscritos" }
         ]
       }
-    ],
-    bonusHoliday: {
-      name: "Lunes 02 Nov", title: "💀 SUSPENSIÓN OFICIAL: Tradición Día de Muertos", sub: "Inhábil oficial SEP / DGB (Ambos turnos)"
-    }
+    ]
+  },
+  "S10": {
+    weekNum: "Semana 10 (Activa)",
+    range: "30 de Octubre al 06 de Noviembre de 2026",
+    title: "📍 Semana Activa: Consolidación Bloque II, Puente Día de Muertos y ABC Emociones",
+    highlight: "Inicia hoy Vie 30 Oct · Lunes 02 Nov Asueto Oficial SEP · Cierra Vie 06 Nov con entrega tutoría",
+    isCurrent: true,
+    days: [
+      {
+        name: "Viernes", date: "30 Oct", isToday: true, isHoliday: false,
+        events: [
+          { title: "📚 Difusión de Guías de Estudio Independiente DGB", sub: "Oficio formal a Subdirección y difusión web a estudiantes", cat: "normal", priority: "high", shift: "08:30 hrs", tag: "HOY" },
+          { title: "💻 Cierre Moodle Didáctica DGB", sub: "Término formal del curso a las 18:00 h", cat: "union", priority: "normal", shift: "Docentes inscritos" }
+        ]
+      },
+      {
+        name: "Lunes", date: "02 Nov", isToday: false, isHoliday: true,
+        events: [
+          { title: "💀 SUSPENSIÓN OFICIAL: Día de Muertos", sub: "Inhábil oficial de calendario federal SEP / DGB. Sin actividades docentes ni escolares.", cat: "holiday", priority: "high", shift: "Inhábil Federal", tag: "Asueto SEP" }
+        ]
+      },
+      {
+        name: "Martes", date: "03 Nov", isToday: false, isHoliday: false,
+        events: [
+          { title: "Reanudación de Clases y Cierre Progresiones P2", sub: "Resolución de dudas y consolidación de temas Bloque II", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+        ]
+      },
+      {
+        name: "Miércoles", date: "04 Nov", isToday: false, isHoliday: false,
+        events: [
+          { title: "Revisión Colegiada de Portafolios", sub: "Cotejo de evidencias de aprendizaje Semanas 06 a 09", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+        ]
+      },
+      {
+        name: "Jueves", date: "05 Nov", isToday: false, isHoliday: false,
+        events: [
+          { title: "Preparación Rol de Exámenes P2", sub: "Ejercicios de repaso y verificación de reactivos", cat: "exam", priority: "normal", shift: "Ambos turnos" }
+        ]
+      },
+      {
+        name: "Viernes", date: "06 Nov", isToday: false, isHoliday: false,
+        events: [
+          { title: "💚 Entrega Evidencias «El ABC de las Emociones»", sub: "Fichas completas de Aula Abierta y Cuadernillos entregados a Lic. Mayra Alexandra Bahena (Tutoría V110)", cat: "normal", priority: "high", shift: "Tutorías V110", tag: "Compromiso Oficial" }
+        ]
+      }
+    ]
   },
   "S11": {
     weekNum: "Semana 11",
     range: "09 al 13 de Noviembre de 2026",
     title: "Segunda Evaluación Parcial (P2) · Turnos Matutino y Vespertino",
-    highlight: "Actividad Oficial SEMS #03 · Aplicación de exámenes por turnos",
+    highlight: "Actividad Oficial SEMS #03 · 09–11 Nov (TM) y 12–13 Nov (TV)",
     days: [
       {
         name: "Lunes", date: "09 Nov", isToday: false, isHoliday: false,
@@ -1793,27 +1888,27 @@ const WEEK_VIEWS = {
       {
         name: "Martes", date: "10 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "📝 Examen 2° Parcial · Turno Matutino (Día 2)", sub: "Continuación de rol de exámenes matutinos", cat: "exam", priority: "high", shift: "☀️ Turno Matutino", tag: "Actividad #03" }
+          { title: "📝 Examen 2° Parcial · Turno Matutino (Día 2)", sub: "Segundo día de rol de exámenes matutinos", cat: "exam", priority: "high", shift: "☀️ Turno Matutino", tag: "Actividad #03" }
         ]
       },
       {
         name: "Miércoles", date: "11 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "📝 Examen P2 (TM Día 3) · Cierre Matutino", sub: "Última jornada de evaluaciones para Turno Matutino", cat: "exam", priority: "high", shift: "☀️ Turno Matutino", tag: "Cierre TM" },
-          { title: "🏥 Feria de la Salud", sub: "Jornada de salud integral para Turno Vespertino", cat: "normal", priority: "normal", shift: "🌙 Turno Vespertino" }
+          { title: "📝 Examen P2 (TM Día 3) · Cierre Matutino", sub: "Última jornada de evaluaciones matutinas", cat: "exam", priority: "high", shift: "☀️ Turno Matutino", tag: "Cierre TM" },
+          { title: "🏥 Feria de la Salud Institucional", sub: "Jornada de salud integral y prevención para el Turno Vespertino", cat: "normal", priority: "high", shift: "🌙 Turno Vespertino", tag: "Salud TV" }
         ]
       },
       {
         name: "Jueves", date: "12 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "📝 Examen 2° Parcial · Turno Vespertino (Día 1)", sub: "Inicio de rol de exámenes en Turno Vespertino", cat: "exam", priority: "high", shift: "🌙 Turno Vespertino", tag: "Actividad #03" }
+          { title: "📝 Examen 2° Parcial · Turno Vespertino (Día 1)", sub: "Inicio de evaluaciones para el Turno Vespertino", cat: "exam", priority: "high", shift: "🌙 Turno Vespertino", tag: "Actividad #03" }
         ]
       },
       {
         name: "Viernes", date: "13 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "📝 Examen 2° Parcial · Turno Vespertino (Día 2)", sub: "Cierre oficial de exámenes del Segundo Parcial", cat: "exam", priority: "high", shift: "🌙 Turno Vespertino", tag: "Cierre P2" },
-          { title: "Calificación y concentración de sábanas", sub: "Cálculo de promedios para captura PACE", cat: "normal", priority: "normal", shift: "Docentes" }
+          { title: "📝 Examen 2° Parcial · Turno Vespertino (Día 2)", sub: "Cierre oficial de exámenes del 2° Parcial y fin del periodo P2", cat: "exam", priority: "high", shift: "🌙 Turno Vespertino", tag: "Cierre P2" },
+          { title: "Calificación y concentración de sábanas", sub: "Preparación de promedios para captura PACE", cat: "normal", priority: "normal", shift: "Docentes" }
         ]
       }
     ]
@@ -1822,40 +1917,40 @@ const WEEK_VIEWS = {
     weekNum: "Semana 12",
     range: "16 al 20 de Noviembre de 2026",
     title: "Revolución, Asamblea Sindical D-II-79, Límite PACE y Boletas",
-    highlight: "Semana crítica de entrega de cuentas y captura oficial",
+    highlight: "Semana crítica: Asamblea sin clases, cierre PACE y entrega a padres",
     days: [
       {
         name: "Lunes", date: "16 Nov", isToday: false, isHoliday: true,
         events: [
-          { title: "🐎 SUSPENSIÓN OFICIAL: Revolución Mexicana", sub: "Inhábil oficial de calendario SEP", cat: "holiday", priority: "high", shift: "Todos", tag: "Asueto SEP" },
-          { title: "🔴 Inicia Periodo Tercer Parcial", sub: "Actividad SEMS #06: Arranque formal del Bloque III (16 Nov–17 Dic)", cat: "normal", priority: "normal", shift: "Oficial" }
+          { title: "🐎 SUSPENSIÓN OFICIAL: Revolución Mexicana", sub: "Inhábil oficial de calendario federal SEP", cat: "holiday", priority: "high", shift: "Inhábil Oficial", tag: "Asueto SEP" },
+          { title: "🔴 Inicia Periodo Tercer Parcial", sub: "Actividad SEMS #06: Arranque formal del Bloque III (16 Nov al 17 Dic)", cat: "normal", priority: "normal", shift: "Oficial" }
         ]
       },
       {
         name: "Martes", date: "17 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "🏛️ ASAMBLEA SINDICAL D-II-79 (NO HAY CLASES)", sub: "Convocatoria por XXIV Congreso SNTE 15 (09:30 h). Suspensión total de actividades frente a grupo.", cat: "union", priority: "high", shift: "Ambos turnos", tag: "Sin Clases" },
-          { title: "⚠️ LÍMITE CAPTURA PACE 2° PARCIAL", sub: "Actividad SEMS #04: Cierre del sistema de Control Escolar para calificaciones P2.", cat: "pace", priority: "high", shift: "Plataforma DGB", tag: "Crítico" }
+          { title: "🏛️ ASAMBLEA SINDICAL D-II-79 (NO HAY CLASES)", sub: "Convocatoria por XXIV Congreso Seccional SNTE 15 (09:30 h). Suspensión total de clases frente a grupo.", cat: "union", priority: "high", shift: "Ambos turnos", tag: "Sin Clases" },
+          { title: "⚠️ LÍMITE CAPTURA PACE 2° PARCIAL", sub: "Actividad SEMS #04: Cierre del sistema de Control Escolar para calificaciones P2.", cat: "pace", priority: "high", shift: "Control Escolar", tag: "Crítico PACE" }
         ]
       },
       {
         name: "Miércoles", date: "18 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "👨‍👩‍👧 Entrega de Boletas P2 a Padres de Familia", sub: "Actividad SEMS #05: Sesión presencial con tutores de Turno Matutino", cat: "parents", priority: "high", shift: "☀️ Turno Matutino", tag: "Actividad #05" }
+          { title: "👨‍👩‍👧 Entrega de Boletas P2 a Padres (Turno Matutino)", sub: "Actividad SEMS #05: Sesión presencial con tutores matutinos", cat: "parents", priority: "high", shift: "☀️ Turno Matutino", tag: "Actividad #05" }
         ]
       },
       {
         name: "Jueves", date: "19 Nov", isToday: false, isHoliday: false,
         events: [
           { title: "👨‍👩‍👧 Entrega de Boletas P2 · Turno Vespertino (Día 1)", sub: "Reunión con tutores legales Turno Vespertino", cat: "parents", priority: "high", shift: "🌙 Turno Vespertino", tag: "Actividad #05" },
-          { title: "🎓 Feria Vocacional 2026", sub: "Orientación educativa y oferta universitaria (08:30 a 13:00 h)", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+          { title: "🎓 Feria Vocacional 2026", sub: "Orientación educativa y vinculación universitaria (08:30 a 13:00 h)", cat: "normal", priority: "high", shift: "Ambos turnos", tag: "Vocacional" }
         ]
       },
       {
         name: "Viernes", date: "20 Nov", isToday: false, isHoliday: false,
         events: [
           { title: "👨‍👩‍👧 Entrega de Boletas P2 · Turno Vespertino (Día 2)", sub: "Segundo día de atención a tutores en Turno Vespertino", cat: "parents", priority: "high", shift: "🌙 Turno Vespertino" },
-          { title: "Consolidación de canalizaciones tutoría", sub: "Seguimiento a alumnos con 2 o más materias reprobadas", cat: "normal", priority: "normal", shift: "Tutorías" }
+          { title: "Canalización de alumnos en rezago", sub: "Seguimiento tutorial a estudiantes reprobados", cat: "normal", priority: "normal", shift: "Tutorías" }
         ]
       }
     ]
@@ -1864,13 +1959,13 @@ const WEEK_VIEWS = {
     weekNum: "Semana 13",
     range: "23 al 27 de Noviembre de 2026",
     title: "Avance Temático P3 y Feria de la Salud Matutina",
-    highlight: "Desarrollo de proyectos transversales Bloque III",
+    highlight: "Desarrollo de proyectos formativos Bloque III",
     days: [
-      { name: "Lunes", date: "23 Nov", isToday: false, isHoliday: false, events: [{ title: "Retroalimentación de Boletas P2", sub: "Análisis de desempeño con estudiantes", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
+      { name: "Lunes", date: "23 Nov", isToday: false, isHoliday: false, events: [{ title: "Retroalimentación Boletas P2", sub: "Análisis de desempeño pedagógico", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
       { name: "Martes", date: "24 Nov", isToday: false, isHoliday: false, events: [{ title: "Clases y Talleres Curriculares", sub: "Avance de progresiones pedagógicas", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Miércoles", date: "25 Nov", isToday: false, isHoliday: false, events: [{ title: "Acompañamiento Socioemocional", sub: "Actividades de tutoría grupal", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
+      { name: "Miércoles", date: "25 Nov", isToday: false, isHoliday: false, events: [{ title: "Acompañamiento Socioemocional", sub: "Tutorías y orientación formativa", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
       { name: "Jueves", date: "26 Nov", isToday: false, isHoliday: false, events: [{ title: "Trabajo en Laboratorios y Aulas", sub: "Desarrollo de proyectos formativos", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Viernes", date: "27 Nov", isToday: false, isHoliday: false, events: [{ title: "🏥 Feria de la Salud · Turno Matutino", sub: "Actividad institucional de prevención y bienestar", cat: "normal", priority: "high", shift: "☀️ Turno Matutino", tag: "Salud TM" }] }
+      { name: "Viernes", date: "27 Nov", isToday: false, isHoliday: false, events: [{ title: "🏥 Feria de la Salud · Turno Matutino", sub: "Jornada institucional de bienestar estudiantil y prevención", cat: "normal", priority: "high", shift: "☀️ Turno Matutino", tag: "Salud TM" }] }
     ]
   },
   "S14": {
@@ -1882,8 +1977,8 @@ const WEEK_VIEWS = {
       { name: "Lunes", date: "30 Nov", isToday: false, isHoliday: false, events: [{ title: "Arranque de Semana 14", sub: "Encuadre final de criterios P3", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
       { name: "Martes", date: "01 Dic", isToday: false, isHoliday: false, events: [{ title: "Asesorías y Tutorías", sub: "Atención personalizada a rezago", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
       { name: "Miércoles", date: "02 Dic", isToday: false, isHoliday: false, events: [{ title: "Revisión de Portafolios", sub: "Concentración de evidencias de aprendizaje", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Jueves", date: "03 Dic", isToday: false, isHoliday: false, events: [{ title: "Consolidación de Exámenes P3", sub: "Elaboración y revisión de instrumentos", cat: "normal", priority: "normal", shift: "Docentes" }] },
-      { name: "Viernes", date: "04 Dic", isToday: false, isHoliday: false, events: [{ title: "📋 Límite de Propuesta de Reactivos P3", sub: "Entrega de instrumentos a Subdirección Académica", cat: "exam", priority: "high", shift: "Colegiado", tag: "Entrega" }] }
+      { name: "Jueves", date: "03 Dic", isToday: false, isHoliday: false, events: [{ title: "Consolidación de Exámenes P3", sub: "Elaboración y revisión colegiada de instrumentos", cat: "normal", priority: "normal", shift: "Docentes" }] },
+      { name: "Viernes", date: "04 Dic", isToday: false, isHoliday: false, events: [{ title: "📋 Límite de Propuesta de Reactivos P3", sub: "Entrega de instrumentos a Subdirección Académica", cat: "exam", priority: "high", shift: "Colegiado", tag: "Entrega Reactivos" }] }
     ]
   },
   "S15": {
@@ -1902,18 +1997,18 @@ const WEEK_VIEWS = {
   "S16": {
     weekNum: "Semana 16",
     range: "14 al 18 de Diciembre de 2026",
-    title: "Fin de Listas, Límite PACE P3, Firma PEC y Receso Invernal",
-    highlight: "Cierre del periodo regular de clases y receso SEP",
+    title: "Fin de Listas, Límite PACE P3, Muestra PEC y Receso Invernal",
+    highlight: "Cierre del periodo regular de clases y receso decembrino SEP",
     days: [
       { name: "Lunes", date: "14 Dic", isToday: false, isHoliday: false, events: [{ title: "📝 Examen 3er Parcial (Día 3)", sub: "Rol de evaluaciones ordinarias", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "P3" }] },
-      { name: "Martes", date: "15 Dic", isToday: false, isHoliday: false, events: [{ title: "📝 Examen 3er Parcial (Día 4)", sub: "Penúltimo día de evaluaciones", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "P3" }] },
+      { name: "Martes", date: "15 Dic", isToday: false, isHoliday: false, events: [{ title: "📝 Examen 3er Parcial (Día 4)", sub: "Penúltimo día de evaluaciones ordinarias", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "P3" }] },
       { name: "Miércoles", date: "16 Dic", isToday: false, isHoliday: false, events: [
         { title: "📝 Examen P3 (Día 5) y Conclusión de Evaluaciones", sub: "Cierre de exámenes del 3er Parcial", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "P3 Fin" },
         { title: "📋 FIN DE LISTAS DE ASISTENCIA Y CLASES REGULARES", sub: "Actividad SEMS #07: Conclusión formal de clases del Semestre A", cat: "normal", priority: "high", shift: "Plantel CEB 5/4", tag: "Hito SEMS" }
       ]},
       { name: "Jueves", date: "17 Dic", isToday: false, isHoliday: false, events: [
         { title: "⚠️ LÍMITE CAPTURA PACE 3° PARCIAL", sub: "Actividad SEMS #09: Registro obligatorio de calificaciones P3", cat: "pace", priority: "high", shift: "Control Escolar", tag: "Crítico" },
-        { title: "⚖️ Firma de Plantilla de Estructura y Compatibilidad (PEC)", sub: "Oficio 050 Subdirección y Recursos Humanos", cat: "union", priority: "high", shift: "Docentes base y horas", tag: "Firma RH" }
+        { title: "🌟 MUESTRA INSTITUCIONAL PEC Y FIRMA DE PLANTILLA", sub: "Presentación comunitaria de proyectos transversales y firma de estructura PEC", cat: "union", priority: "high", shift: "Ambos turnos", tag: "Muestra PEC" }
       ]},
       { name: "Viernes", date: "18 Dic", isToday: false, isHoliday: true, events: [
         { title: "🎄 INICIO DEL RECESO INVERNAL SEP / DGB", sub: "Actividad SEMS #10: Periodo vacacional docente del 18 Dic 2026 al 05 Ene 2027", cat: "holiday", priority: "high", shift: "Vacaciones Oficiales", tag: "Receso Invernal" }
@@ -1924,13 +2019,13 @@ const WEEK_VIEWS = {
     weekNum: "Semanas 17–18 (Enero 2027)",
     range: "06 al 15 de Enero de 2027",
     title: "🎓 Ajuste Oficial SEMS: Exámenes Globales y Actas Finales",
-    highlight: "Avalado en 2.ª Academia Ordinaria (28-Oct-2026)",
+    highlight: "Acuerdo colegiado avalado en 2.ª Academia Ordinaria (28-Oct-2026)",
     days: [
       { name: "Mié 06 Ene", date: "06 Ene", isToday: false, isHoliday: false, events: [{ title: "🚀 Reanudación de Labores en Plantel", sub: "Actividad SEMS #11: Retorno presencial docente y administrativo", cat: "normal", priority: "high", shift: "Ambos turnos", tag: "Reanudación" }] },
       { name: "Jue 07 Ene", date: "07 Ene", isToday: false, isHoliday: false, events: [{ title: "Asesorías y Guías Examen Global", sub: "Atención y preparación de estudiantes para evaluación semestral", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
       { name: "Vie 08 Ene", date: "08 Ene", isToday: false, isHoliday: false, events: [{ title: "Asignación definitiva de temarios Globales", sub: "Publicación de guías y horarios de examen", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
       { name: "Lun–Jue", date: "11–14 Ene", isToday: false, isHoliday: false, events: [
-        { title: "🎓 PERIODO DE EXÁMENES GLOBALES 2026-2027", sub: "Acuerdo de Academia: Evaluación semestral global aplicada del 11 al 14 de Enero 2027.", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Ajuste SEMS" }
+        { title: "🎓 PERIODO DE EXÁMENES GLOBALES 2026-2027", sub: "Acuerdo oficial: Evaluación semestral global aplicada del 11 al 14 de Enero 2027.", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Ajuste SEMS" }
       ]},
       { name: "Vie 15 Ene", date: "15 Ene", isToday: false, isHoliday: false, events: [
         { title: "📄 LÍMITE CAPTURA Y ENTREGA DE ACTAS FINALES", sub: "Actividad SEMS #12: Cierre definitivo de actas oficiales del Semestre A", cat: "pace", priority: "high", shift: "Control Escolar", tag: "Crítico" },
@@ -1940,15 +2035,182 @@ const WEEK_VIEWS = {
   }
 };
 
+    
+const CULTURAL_EVENTS = [
+  {
+    id: "cult-01",
+    title: "🎭 Muestra Cultural de Altares y Concurso de Catrinas 2026",
+    date: "Jueves 29 de Octubre de 2026",
+    category: "Tradición y Comunidad",
+    venue: "Explanada Cívica del Plantel CEB 5/4",
+    participants: "Alumnos, Docentes y Directivos (Ambos Turnos)",
+    desc: "Celebración y rescate de las tradiciones mexicanas de Día de Muertos. Montaje colectivo de ofrendas tradicionales, caracterización y desfile del concurso de catrinas y catrines, vinculando valores de identidad y cultura nacional.",
+    files: [
+      { name: "Reseña Institucional", type: "doc" },
+      { name: "Memoria Fotográfica", type: "img" }
+    ],
+    status: "Concluido y Custodiado",
+    tag: "Día de Muertos"
+  },
+  {
+    id: "cult-02",
+    title: "🕊️ Jornada Nacional por la Paz: Juegos Tradicionales Mexicanos",
+    date: "Octubre de 2026",
+    category: "Convivencia Escolar y Deporte",
+    venue: "Patios y Áreas Recreativas del Plantel",
+    participants: "Comunidad Estudiantil frente a grupo",
+    desc: "Convocatoria federal emitida por SEP y SEMS mediante Oficio CEB5-4/SUB/No.060/2026-2027/1. Práctica de juegos autóctonos y tradicionales para promover la salud integral, estilos de vida activos y reducción del tiempo en pantallas.",
+    files: [
+      { name: "Oficio No. 060 Subdirección", type: "pdf" },
+      { name: "Ficha Técnica de Evidencia", type: "md" }
+    ],
+    status: "Realizado en Grupo",
+    tag: "Oficio 060"
+  },
+  {
+    id: "cult-03",
+    title: "🚨 Simulacro Institucional Código 3: Accidente en Viaje Escolar",
+    date: "Martes 27 de Octubre de 2026",
+    category: "Protección Civil y Seguridad",
+    venue: "Laboratorios de Informática y Plantel",
+    participants: "Turno Matutino: Grupo 103 (09:10 h) · Turno Vespertino: Grupo 108 (15:10 h)",
+    desc: "Activación formal de los Protocolos de Seguridad Escolar de la DGB (Circular 04, pp. 30-32). Ejercicio con brigadistas estudiantiles, resguardo en estaciones y reporte fotográfico oficial unificado.",
+    files: [
+      { name: "Ficha Oficial G103 Matutino (PDF)", type: "pdf" },
+      { name: "Ficha Oficial G108 Vespertino (PDF)", type: "pdf" },
+      { name: "Galería de 6 Fotos Originales", type: "img" }
+    ],
+    status: "Expediente Completo",
+    tag: "Protección Civil"
+  },
+  {
+    id: "cult-04",
+    title: "🏛️ 3.ª Jornada Nacional de Discusión: Modelo Educativo 2025",
+    date: "Lunes 26 de Octubre de 2026",
+    category: "Política Educativa Colegiada",
+    venue: "Salas de Academia y Biblioteca",
+    participants: "Mesas multidisciplinarias: Matemáticas, Ciencias, Humanidades, Comunicación y Cultura Digital",
+    desc: "Análisis participativo de la propuesta pedagógica nacional para el bachillerato federal. Elaboración colegiada de respuestas oficiales, firmas de mesa y entrega de relatoría a moderación institucional.",
+    files: [
+      { name: "Relatoria_Modelo_Educativo_2025.md", type: "md" },
+      { name: "Respuestas con Firmas (Word)", type: "doc" }
+    ],
+    status: "Entregado a Moderación",
+    tag: "Modelo 2025"
+  },
+  {
+    id: "cult-05",
+    title: "🚨 Segundo Simulacro Nacional 2026 (Hipótesis Sismo M7.7)",
+    date: "Viernes 18 de Septiembre de 2026 (12:00 hrs)",
+    category: "Protección Civil Nacional",
+    venue: "Todo el Plantel (Aulas, Talleres y Áreas Comunes)",
+    participants: "Comunidad Escolar en pleno",
+    desc: "Evacuación preventiva y repliegue estratégico ante hipótesis de sismo de magnitud 7.7. Coordinación con comités de seguridad de la DGB y Protección Civil.",
+    files: [
+      { name: "Acta de Evacuación", type: "pdf" }
+    ],
+    status: "Concluido",
+    tag: "Simulacro Nal."
+  },
+  {
+    id: "cult-06",
+    title: "🇲🇽 Ceremonia Cívica y Conmemoración de la Independencia",
+    date: "15 y 16 de Septiembre de 2026",
+    category: "Efeméride Cívica",
+    venue: "Plaza Cívica del Plantel",
+    participants: "Turnos Matutino y Vespertino",
+    desc: "Honores solemnes a los símbolos patrios, declamación histórica y asueto oficial de calendario nacional en celebración del Grito de Independencia.",
+    files: [
+      { name: "Programa Cívico", type: "doc" }
+    ],
+    status: "Concluido",
+    tag: "Fiestas Patrias"
+  },
+  {
+    id: "cult-07",
+    title: "🧠 Estrategia Aula Abierta: «El ABC de las Emociones»",
+    date: "Octubre a Noviembre de 2026",
+    category: "Desarrollo Socioemocional",
+    venue: "Aula de Tutoría Grupo V110",
+    participants: "Alumnado Grupo V110 y Docente Tutor Felipe López Salazar",
+    desc: "Implementación de dinámicas grupales, cuadernillos de trabajo emocional y análisis reflexivo para el autocuidado y prevención del abandono escolar.",
+    files: [
+      { name: "Lámina Ejecutiva Gráfica (PDF)", type: "pdf" },
+      { name: "Ficha Técnica de Aula Abierta", type: "doc" },
+      { name: "Fotografías de Cuadernillos", type: "img" }
+    ],
+    status: "En Proceso / Cierre 06-Nov",
+    tag: "Tutorías V110"
+  },
+  {
+    id: "cult-08",
+    title: "🏥 Feria Institucional de la Salud 2026",
+    date: "11 de Noviembre (TV) y 27 de Noviembre (TM)",
+    category: "Salud y Bienestar Integral",
+    venue: "Explanada y Aulas Multidisciplinarias",
+    participants: "Sector Salud aliado y Estudiantes de ambos turnos",
+    desc: "Instalación de módulos interactivos de vacunación, salud bucal, orientación nutricional, prevención de adicciones y salud mental.",
+    files: [
+      { name: "Convocatoria y Roles", type: "doc" }
+    ],
+    status: "Programado (Actividad SEMS)",
+    tag: "Salud Escolar"
+  },
+  {
+    id: "cult-09",
+    title: "🎓 Feria Vocacional Universitaria 2026",
+    date: "Jueves 19 de Noviembre de 2026 (08:30 a 13:00 h)",
+    category: "Orientación Vocacional",
+    venue: "Explanada y Auditorio del Plantel",
+    participants: "Alumnos de 1°, 3° y 5° Semestre de ambos turnos",
+    desc: "Exposición de oferta académica, módulos de vinculación con instituciones de educación superior del estado y orientación profesiográfica.",
+    files: [
+      { name: "Directorio de Universidades", type: "doc" }
+    ],
+    status: "Programado",
+    tag: "Vocacional"
+  },
+  {
+    id: "cult-10",
+    title: "🌟 Muestra Institucional de Proyectos Transversales PEC",
+    date: "Jueves 17 de Diciembre de 2026",
+    category: "Proyecto Escolar Comunitario",
+    venue: "Todo el Plantel CEB 5/4",
+    participants: "Docentes, Alumnos y Tutores",
+    desc: "Exhibición comunitaria de los proyectos transversales desarrollados a lo largo del Semestre A vinculados al entorno social y ambiental.",
+    files: [
+      { name: "Lineamientos PEC", type: "doc" }
+    ],
+    status: "Programado",
+    tag: "Muestra PEC"
+  },
+  {
+    id: "cult-11",
+    title: "🤖 Club de Robótica y Tecnología VEX",
+    date: "Ciclo Escolar 2026-2027",
+    category: "Ciencia y Tecnología",
+    venue: "Laboratorio de Cómputo",
+    participants: "Estudiantes interesados en mecatrónica y programación",
+    desc: "Capacitación técnica en diseño, ensamblaje y programación de robots autónomos y teleoperados para representación del CEB 5/4 en torneos VEX.",
+    files: [
+      { name: "Presentación VEX (MD)", type: "md" },
+      { name: "Índice Maestro de Robótica", type: "md" }
+    ],
+    status: "Activo",
+    tag: "Robótica"
+  }
+];
+
 
     // Estado Global
     let currentWeekKey = 'S10';
-    const weekKeys = ['S09', 'S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17-18'];
+    const weekKeys = ['S08', 'S09', 'S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17-18'];
 
     // Inicialización
     document.addEventListener('DOMContentLoaded', () => {
       renderWeekChips();
       renderActiveWeekView(currentWeekKey);
+      renderCulturalEvents();
       renderTimelineWeeks();
       renderMonth('2026-11');
       renderAuditEmails();
@@ -2004,7 +2266,7 @@ const WEEK_VIEWS = {
       if (idx < weekKeys.length - 1) selectWeek(weekKeys[idx + 1]);
     }
 
-    // RENDER: Vista de 5 Días de la Semana Activa (Desahogada con Fichas Grandes y Pequeñas)
+    // RENDER: Vista de 5 Días de la Semana Seleccionada
     function renderActiveWeekView(k) {
       const w = WEEK_VIEWS[k];
       if (!w) return;
@@ -2061,21 +2323,44 @@ const WEEK_VIEWS = {
           </div>
         `;
       }).join('');
+    }
 
-      // Bonus Holiday si existe
-      const bonusWrap = document.getElementById('bonusHolidayWrap');
-      if (w.bonusHoliday) {
-        bonusWrap.innerHTML = `
-          <div class="bonus-holiday-bar">
-            <div>
-              <strong>${w.bonusHoliday.name}</strong>: ${w.bonusHoliday.title}
-            </div>
-            <span style="font-size: 0.78rem; color: var(--text-muted);">${w.bonusHoliday.sub}</span>
+    // RENDER: Memoria Cultural y Cívica (Tab 2)
+    function renderCulturalEvents(filter = '') {
+      const cont = document.getElementById('culturalGridContainer');
+      const f = filter.toLowerCase();
+
+      const filtered = CULTURAL_EVENTS.filter(e => {
+        if (!f) return true;
+        return e.title.toLowerCase().includes(f) ||
+               e.category.toLowerCase().includes(f) ||
+               e.venue.toLowerCase().includes(f) ||
+               e.desc.toLowerCase().includes(f);
+      });
+
+      cont.innerHTML = filtered.map(e => `
+        <div class="cultural-card">
+          <div class="cultural-card-top">
+            <span class="cult-category">🎭 ${e.category}</span>
+            <span class="cult-date">📅 ${e.date}</span>
           </div>
-        `;
-      } else {
-        bonusWrap.innerHTML = '';
-      }
+          <h3 class="cult-title">${e.title}</h3>
+          <div class="cult-venue">
+            <span>📍 ${e.venue}</span> · <span>👥 ${e.participants}</span>
+          </div>
+          <p class="cult-desc">${e.desc}</p>
+          <div class="cult-files-box">
+            <span class="cult-files-label">Archivos y Evidencias en Custodia:</span>
+            <div class="cult-pills-row">
+              ${e.files.map(fl => `<span class="file-pill">📁 ${fl.name}</span>`).join('')}
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+            <span class="badge badge-gold">${e.tag}</span>
+            <span class="badge badge-green">✓ ${e.status}</span>
+          </div>
+        </div>
+      `).join('');
     }
 
     // RENDER: Cronograma General Semestral (S00 - S20)
@@ -2214,7 +2499,7 @@ const WEEK_VIEWS = {
     function onGlobalSearch() {
       const q = document.getElementById('globalSearchInput').value;
       renderAuditEmails(q);
-      // Si busca, puede saltar a correos si hay coincidencia
+      renderCulturalEvents(q);
     }
 
     // Copiar URL de Suscripción iCal

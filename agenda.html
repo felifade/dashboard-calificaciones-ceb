@@ -1429,6 +1429,173 @@
         cursor: pointer;
       }
     }
+  
+    /* KPI Strip Interactivo */
+    .kpi-pill {
+      cursor: pointer;
+      transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease, border-color 0.18s ease;
+      user-select: none;
+    }
+    .kpi-pill:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue);
+      box-shadow: var(--shadow-md);
+    }
+    .kpi-pill:active {
+      transform: translateY(0);
+    }
+
+    /* Pestañas con Desvanecimiento Lateral en Móvil */
+    .nav-tabs {
+      scroll-behavior: smooth;
+    }
+    @media (max-width: 768px) {
+      .nav-tabs-wrapper {
+        position: relative;
+      }
+      .nav-tabs {
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+      }
+    }
+
+    /* Controles de Navegación del Mes (Flechas Rápidas) */
+    .month-nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .m-nav-arrow {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      font-size: 1.25rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      user-select: none;
+    }
+    .m-nav-arrow:hover {
+      background: var(--bg-hover);
+      border-color: var(--guinda);
+      color: var(--guinda);
+      transform: translateY(-1px);
+    }
+    .month-header-badge {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      background: var(--bg-subtle);
+      padding: 5px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    /* Pulso Suave en el Día Activo (HOY) */
+    @keyframes todayPulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.45); }
+      70% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    }
+    .cal-cell.today {
+      border: 2px solid var(--blue) !important;
+      background: var(--bg-surface);
+      animation: todayPulse 2.4s infinite;
+    }
+    .today-pill {
+      animation: pulseBadge 2.2s infinite ease-in-out;
+    }
+    @keyframes pulseBadge {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    /* Animación de Entrada Suave del Inspector */
+    .month-day-inspector {
+      animation: inspectorFade 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes inspectorFade {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Micro-chips con Estilo Ejecutivo */
+    .micro-chip {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 8px 11px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.80rem;
+      line-height: 1.3;
+      color: var(--text-main);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      transition: all 0.18s ease;
+    }
+    .micro-chip:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ========================================================== */
+    /* MODO IMPRESIÓN OFICIAL (PDF Y EXPEDIENTE FÍSICO)           */
+    /* ========================================================== */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        font-size: 10.5pt !important;
+      }
+      .top-ribbon, .theme-btn, .header-actions, .global-search, .nav-tabs-wrapper,
+      .week-selector-card, .mobile-day-filter, .m-nav-arrow, .sync-box, .sync-btn-large {
+        display: none !important;
+      }
+      .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+      }
+      .exec-header {
+        border-bottom: 2px solid #333333 !important;
+        padding-bottom: 10px !important;
+        margin-bottom: 14px !important;
+      }
+      .tab-pane {
+        display: none !important;
+      }
+      .tab-pane.active {
+        display: block !important;
+      }
+      .hero-card, .micro-chip, .cal-cell, .inspector-event-card, .table-card {
+        border: 1px solid #CCCCCC !important;
+        box-shadow: none !important;
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        break-inside: avoid;
+      }
+      .data-table th {
+        background: #F0F0F0 !important;
+        color: #000000 !important;
+      }
+    }
+
   </style>
 
 </head>
@@ -1471,48 +1638,48 @@
 
     <!-- KPI Strip (Horizontal & Clean) -->
     <section class="kpi-strip">
-      <div class="kpi-pill">
+      <div class="kpi-pill" onclick="goToKpi('s10')" title="Tocar para ver Semana 10 Activa">
         <div class="kpi-icon holiday">🎉</div>
         <div class="kpi-content">
           <span class="kpi-label">Gestión Sindical D-II-79</span>
           <span class="kpi-value">Vie 30 Oct</span>
-          <span class="kpi-sub">Avalado por Dirección · Asueto</span>
+          <span class="kpi-sub">Avalado por Dirección · Asueto ↗</span>
         </div>
       </div>
 
-      <div class="kpi-pill">
+      <div class="kpi-pill" onclick="goToKpi('s10-lun')" title="Tocar para ver Suspensión Día de Muertos">
         <div class="kpi-icon holiday">💀</div>
         <div class="kpi-content">
           <span class="kpi-label">Asueto Oficial SEP</span>
           <span class="kpi-value" id="kpi-muertos">Lun 02 Nov</span>
-          <span class="kpi-sub">Día de Muertos (Inhábil)</span>
+          <span class="kpi-sub">Día de Muertos (Inhábil) ↗</span>
         </div>
       </div>
 
-      <div class="kpi-pill">
+      <div class="kpi-pill" onclick="goToKpi('s11')" title="Tocar para ver Exámenes P2 (Semana 11)">
         <div class="kpi-icon exam">📝</div>
         <div class="kpi-content">
           <span class="kpi-label">Segunda Evaluación (P2)</span>
           <span class="kpi-value">09 al 13 Nov</span>
-          <span class="kpi-sub">Inicia Lun 09 para Todos los Grupos</span>
+          <span class="kpi-sub">Inicia Lun 09 (Todos los Grupos) ↗</span>
         </div>
       </div>
 
-      <div class="kpi-pill">
+      <div class="kpi-pill" onclick="goToKpi('pace-p2')" title="Tocar para ver Asamblea y Límite PACE en Noviembre">
         <div class="kpi-icon union">🏛️</div>
         <div class="kpi-content">
           <span class="kpi-label">Asamblea D-II-79 y PACE</span>
           <span class="kpi-value">Mar 17 Nov</span>
-          <span class="kpi-sub">NO HAY CLASES · Límite PACE</span>
+          <span class="kpi-sub">NO HAY CLASES · Límite PACE ↗</span>
         </div>
       </div>
 
-      <div class="kpi-pill">
+      <div class="kpi-pill" onclick="goToKpi('globales')" title="Tocar para ver Exámenes Globales en Enero 2027">
         <div class="kpi-icon global">🎓</div>
         <div class="kpi-content">
           <span class="kpi-label">Exámenes Globales 2027</span>
           <span class="kpi-value">11 al 14 Ene</span>
-          <span class="kpi-sub">Ajuste Oficial 2.ª Academia</span>
+          <span class="kpi-sub">Ajuste Oficial 2.ª Academia ↗</span>
         </div>
       </div>
     </section>
@@ -1614,14 +1781,18 @@
         <section class="tab-pane" id="pane-month">
       <div class="month-view-card">
         <div class="month-nav-header">
-          <div class="month-tabs">
-            <button class="m-tab-btn active" onclick="renderMonth('2026-10', this)">Octubre 2026</button>
-            <button class="m-tab-btn" onclick="renderMonth('2026-11', this)">Noviembre 2026</button>
-            <button class="m-tab-btn" onclick="renderMonth('2026-12', this)">Diciembre 2026</button>
-            <button class="m-tab-btn" onclick="renderMonth('2027-01', this)">Enero 2027 (Ajuste)</button>
-            <button class="m-tab-btn" onclick="renderMonth('2027-02', this)">Febrero 2027 (Sem B)</button>
+          <div class="month-nav-controls">
+            <button class="m-nav-arrow" onclick="navMonth(-1)" title="Mes Anterior" aria-label="Mes Anterior">‹</button>
+            <div class="month-tabs" id="monthTabsGroup">
+              <button class="m-tab-btn active" id="btn-m-2026-10" onclick="renderMonth('2026-10', this)">Octubre 2026</button>
+              <button class="m-tab-btn" id="btn-m-2026-11" onclick="renderMonth('2026-11', this)">Noviembre 2026</button>
+              <button class="m-tab-btn" id="btn-m-2026-12" onclick="renderMonth('2026-12', this)">Diciembre 2026</button>
+              <button class="m-tab-btn" id="btn-m-2027-01" onclick="renderMonth('2027-01', this)">Enero 2027 (Ajuste)</button>
+              <button class="m-tab-btn" id="btn-m-2027-02" onclick="renderMonth('2027-02', this)">Febrero 2027 (Sem B)</button>
+            </div>
+            <button class="m-nav-arrow" onclick="navMonth(1)" title="Mes Siguiente" aria-label="Mes Siguiente">›</button>
           </div>
-          <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">Calendario Oficial CEB 5/4 · Lunes a Viernes</span>
+          <span class="month-header-badge">Calendario Oficial CEB 5/4 · Lunes a Viernes</span>
         </div>
 
         <div class="cal-grid" id="monthCalendarGrid">
@@ -2842,6 +3013,43 @@ const CULTURAL_EVENTS = [
       }).join('');
     }
 
+    // SALTO DIRECTO DESDE KPIS A VISTA Y FECHA CORRESPONDIENTE
+    function goToKpi(target) {
+      if (target === 's10') {
+        switchMainTab('week');
+        selectWeek('S10');
+      } else if (target === 's10-lun') {
+        switchMainTab('week');
+        selectWeek('S10');
+        if (typeof filterMobileDay === 'function') filterMobileDay('02 Nov');
+      } else if (target === 's11') {
+        switchMainTab('week');
+        selectWeek('S11');
+      } else if (target === 'pace-p2') {
+        switchMainTab('month');
+        renderMonth('2026-11', document.getElementById('btn-m-2026-11'));
+        setTimeout(() => inspectMonthDay('2026-11-17', '17 de Noviembre de 2026'), 80);
+      } else if (target === 'globales') {
+        switchMainTab('month');
+        renderMonth('2027-01', document.getElementById('btn-m-2027-01'));
+        setTimeout(() => inspectMonthDay('2027-01-11', '11 de Enero de 2027'), 80);
+      }
+    }
+
+    // NAVEGACIÓN RÁPIDA DE MESES CON FLECHAS
+    const AVAILABLE_MONTHS = ['2026-10', '2026-11', '2026-12', '2027-01', '2027-02'];
+    let currentMonthIndex = 0; // '2026-10'
+
+    function navMonth(delta) {
+      const newIdx = currentMonthIndex + delta;
+      if (newIdx >= 0 && newIdx < AVAILABLE_MONTHS.length) {
+        currentMonthIndex = newIdx;
+        const ym = AVAILABLE_MONTHS[currentMonthIndex];
+        const btn = document.getElementById('btn-m-' + ym);
+        renderMonth(ym, btn);
+      }
+    }
+
     const monthNamesEs = {
       8: 'Agosto',
       9: 'Septiembre',
@@ -2856,10 +3064,12 @@ const CULTURAL_EVENTS = [
 
     // RENDER: Vista Mensual Escolar (5 Días: Lunes a Viernes, Sin Sábados ni Domingos)
     function renderMonth(yearMonth, btn) {
-      if (btn) {
-        document.querySelectorAll('.m-tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      }
+      const idx = AVAILABLE_MONTHS.indexOf(yearMonth);
+      if (idx !== -1) currentMonthIndex = idx;
+
+      document.querySelectorAll('.m-tab-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = btn || document.getElementById('btn-m-' + yearMonth);
+      if (activeBtn) activeBtn.classList.add('active');
       const [yrStr, moStr] = yearMonth.split('-');
       const yr = parseInt(yrStr);
       const mo = parseInt(moStr);
@@ -2988,8 +3198,14 @@ const CULTURAL_EVENTS = [
           </div>
         `;
       }
+    
+      // Auto-scroll suave hacia el inspector en pantallas móviles
+      if (window.innerWidth <= 768) {
+        setTimeout(() => {
+          inspector.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 60);
+      }
     }
-
     // RENDER: Auditoría de Correos (14)
     function renderAuditEmails(filter = '') {
       const cont = document.getElementById('auditEmailsContainer');

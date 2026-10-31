@@ -142,6 +142,16 @@ DESCRIPTION:Festival PAEC "Nuestras Raíces Cobran Vida" en explanada del plante
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
+UID:ceb54-2627-cierre-intersemestral-oct29@ceb54.edu.mx
+DTSTAMP:20261031T120000Z
+DTSTART;VALUE=DATE:20261029
+DTEND;VALUE=DATE:20261030
+SUMMARY:🏁 Cierre Oficial de Evaluación Intersemestral en Classroom
+DESCRIPTION:Fecha límite e improrrogable fijada en el calendario DGB y Subdirección Académica para el periodo de evaluación y regularización intersemestral en Google Classroom.
+STATUS:CONFIRMED
+CATEGORIES:Evaluación,Control Escolar,Oficial
+END:VEVENT
+BEGIN:VEVENT
 UID:ceb54-2627-asueto-tradicion-30oct@ceb54.edu.mx
 DTSTAMP:20261031T120000Z
 DTSTART;VALUE=DATE:20261030

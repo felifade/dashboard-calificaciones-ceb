@@ -883,38 +883,9 @@
     /* ========================================================== */
     /* TAB 6: VISTA MENSUAL DESAHOGADA                            */
     /* ========================================================== */
-    .month-view-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: var(--shadow-md);
-    }
-    .month-nav-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-    .month-tabs {
-      display: flex;
-      gap: 6px;
-    }
-    .m-tab-btn {
-      padding: 7px 16px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--bg-subtle);
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .m-tab-btn.active {
-      background: var(--guinda);
-      color: #ffffff;
-      border-color: var(--guinda);
-    }
+    /* ========================================================== */
+    /* VISTA MENSUAL ESCOLAR (5 DÍAS: LUNES A VIERNES)            */
+    /* ========================================================== */
     .month-view-card {
       background: var(--bg-surface);
       border: 1px solid var(--border);
@@ -925,6 +896,40 @@
       max-width: 100%;
       box-sizing: border-box;
     }
+    .month-nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .month-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .m-tab-btn {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .m-tab-btn:hover {
+      background: var(--bg-hover);
+      color: var(--text-main);
+    }
+    .m-tab-btn.active {
+      background: var(--guinda);
+      border-color: var(--guinda);
+      color: #FFFFFF;
+      box-shadow: var(--shadow-sm);
+    }
     .cal-grid {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -932,17 +937,17 @@
       width: 100%;
       box-sizing: border-box;
     }
-    .cal-day-mobile {
-      display: none;
-    }
     .cal-day-name {
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 800;
       color: var(--text-muted);
       text-transform: uppercase;
-      padding: 6px 0;
+      padding: 8px 0;
       letter-spacing: 0.04em;
+    }
+    .cal-day-mobile {
+      display: none;
     }
     .cal-cell {
       background: var(--bg-subtle);
@@ -961,7 +966,7 @@
       transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
     .cal-cell:hover {
-      border-color: var(--border-strong);
+      border-color: var(--blue);
       box-shadow: var(--shadow-sm);
     }
     .cal-cell.empty {
@@ -1006,6 +1011,24 @@
       display: block;
       line-height: 1.25;
     }
+    .cal-chip.exam { background: var(--blue-soft); color: var(--blue); border-color: var(--blue-border); border-left: 3px solid var(--blue); }
+    .cal-chip.holiday { background: var(--red-soft); color: var(--red); border-color: var(--red-border); border-left: 3px solid var(--red); }
+    .cal-chip.union { background: var(--purple-soft); color: var(--purple); border-color: var(--purple-border); border-left: 3px solid var(--purple); }
+    .cal-chip.pace { background: var(--amber-soft); color: var(--amber); border-color: var(--amber-border); border-left: 3px solid var(--amber); }
+    .cal-chip.parents { background: var(--indigo-soft); color: var(--indigo); border-color: var(--indigo-border); border-left: 3px solid var(--indigo); }
+    .cal-chip.normal { background: var(--green-soft); color: var(--green); border-color: var(--green-border); border-left: 3px solid var(--green); }
+
+    .cal-more-badge {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      background: var(--bg-hover);
+      padding: 2px 5px;
+      border-radius: 4px;
+      align-self: flex-start;
+      margin-top: 1px;
+    }
+
     .month-day-inspector {
       margin-top: 20px;
       background: var(--bg-subtle);
@@ -1016,6 +1039,7 @@
       flex-direction: column;
       gap: 10px;
       box-sizing: border-box;
+      animation: fadeIn 0.2s ease-in-out;
     }
     .inspector-head {
       display: flex;
@@ -1041,23 +1065,32 @@
       background: var(--bg-surface);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 10px 14px;
+      padding: 12px 14px;
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 4px;
+      box-shadow: var(--shadow-sm);
     }
     .inspector-event-card.exam { border-left: 4px solid var(--blue); }
     .inspector-event-card.holiday { border-left: 4px solid var(--red); background: var(--red-soft); }
     .inspector-event-card.union { border-left: 4px solid var(--purple); }
     .inspector-event-card.pace { border-left: 4px solid var(--amber); background: var(--amber-soft); }
+    .inspector-event-card.parents { border-left: 4px solid var(--indigo); }
+    .inspector-event-card.normal { border-left: 4px solid var(--green); }
 
     @media (max-width: 768px) {
       .month-view-card {
         padding: 14px 8px;
       }
+      .month-nav-header {
+        margin-bottom: 12px;
+      }
+      .m-tab-btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+      }
       .cal-grid {
         gap: 4px;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
       }
       .cal-day-desktop {
         display: none;
@@ -1066,30 +1099,31 @@
         display: inline;
       }
       .cal-cell {
-        min-height: 65px;
-        padding: 4px 2px;
+        min-height: 72px;
+        padding: 5px 3px;
         border-radius: 8px;
-        gap: 2px;
       }
       .cal-date-num {
-        font-size: 0.76rem;
+        font-size: 0.78rem;
       }
       .cal-chip {
-        font-size: 0.58rem;
-        padding: 1px 3px;
+        font-size: 0.60rem;
+        padding: 2px 3px;
         border-radius: 3px;
+      }
+      .cal-more-badge {
+        font-size: 0.55rem;
+        padding: 1px 3px;
       }
       .month-day-inspector {
         padding: 12px 14px;
         margin-top: 14px;
       }
+      .inspector-date-title {
+        font-size: 0.95rem;
+      }
     }
-    .cal-chip.exam { background: var(--blue-soft); color: var(--blue); border-color: var(--blue-border); }
-    .cal-chip.holiday { background: var(--red-soft); color: var(--red); border-color: var(--red-border); }
-    .cal-chip.union { background: var(--purple-soft); color: var(--purple); border-color: var(--purple-border); }
-    .cal-chip.pace { background: var(--amber-soft); color: var(--amber); border-color: var(--amber-border); }
-
-    /* ========================================================== */
+    
     /* TAB 7: SUSCRIPCIÓN Y SINCRONIZACIÓN                        */
     /* ========================================================== */
     .sync-card {
@@ -1577,16 +1611,17 @@
     <!-- ============================================================== -->
     <!-- TAB PANE 4: VISTA MENSUAL DESAHOGADA                           -->
     <!-- ============================================================== -->
-    <section class="tab-pane" id="pane-month">
+        <section class="tab-pane" id="pane-month">
       <div class="month-view-card">
         <div class="month-nav-header">
           <div class="month-tabs">
-            <button class="m-tab-btn" onclick="renderMonth('2026-10', this)">Octubre 2026</button>
-            <button class="m-tab-btn active" onclick="renderMonth('2026-11', this)">Noviembre 2026</button>
+            <button class="m-tab-btn active" onclick="renderMonth('2026-10', this)">Octubre 2026</button>
+            <button class="m-tab-btn" onclick="renderMonth('2026-11', this)">Noviembre 2026</button>
             <button class="m-tab-btn" onclick="renderMonth('2026-12', this)">Diciembre 2026</button>
             <button class="m-tab-btn" onclick="renderMonth('2027-01', this)">Enero 2027 (Ajuste)</button>
+            <button class="m-tab-btn" onclick="renderMonth('2027-02', this)">Febrero 2027 (Sem B)</button>
           </div>
-          <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">Calendario Oficial CEB 5/4</span>
+          <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">Calendario Oficial CEB 5/4 · Lunes a Viernes</span>
         </div>
 
         <div class="cal-grid" id="monthCalendarGrid">
@@ -2072,87 +2107,89 @@
     // EVENTOS PARA LA VISTA MENSUAL
     // =========================================================================
     const MONTH_MAP = {
-      "2026-08-24": [{ label: "🏫 Inducción S00", cat: "normal", desc: "Semana 00: Inducción a nuevo ingreso y planeación colegiada." }],
-      "2026-08-31": [{ label: "🚀 Inicio Clases Sem A", cat: "normal", desc: "Arranque oficial de clases del Semestre A (Semana 01)." }],
-      "2026-09-16": [{ label: "🇲🇽 Independencia", cat: "holiday", desc: "Suspensión oficial de labores por el Día de la Independencia." }],
-      "2026-09-18": [{ label: "🚨 2° Simulacro Nal.", cat: "normal", desc: "Segundo Simulacro Nacional 2026 (12:00 h)." }],
-      "2026-09-28": [{ label: "📝 Inicio Exámenes P1", cat: "exam", desc: "Semana 05: Primera Evaluación Parcial (28 Sep al 02 Oct)." }],
-      "2026-10-02": [{ label: "📝 Fin Exámenes P1", cat: "exam", desc: "Conclusión de exámenes P1 y entrega Fase 1 PEC." }],
-      "2026-10-05": [{ label: "🟡 Inicia 2° Parcial", cat: "normal", desc: "Actividad Oficial #02: Inicia Periodo del 2° Parcial (05 Oct al 13 Nov)." }],
-      "2026-10-09": [{ label: "⚠️ Entrega Calif. P1", cat: "pace", desc: "Fecha límite de entrega de calificaciones P1 a Control Escolar / PACE." }],
-      "2026-10-12": [{ label: "👨‍👩‍👧 Boletas P1 Padres", cat: "parents", desc: "Entrega de boletas del Primer Parcial a padres de familia (12 al 14 Oct)." }],
-      "2026-10-19": [{ label: "🛠️ Eval. Intrasemestral", cat: "normal", desc: "Periodo de evaluación del curso intrasemestral (19 al 23 Oct)." }],
-      "2026-10-26": [{ label: "🏛️ 3ª Jornada MCCEMS", cat: "union", desc: "3.ª Jornada de Discusión del Bachillerato Nacional (12:00 h TM / 17:40 h TV)." }],
-      "2026-10-27": [{ label: "🚨 Simulacro Código 3", cat: "normal", desc: "Simulacro Código 3 en aula (09:10 h TM / 15:10 h TV)." }],
-      "2026-10-28": [
-        { label: "📚 2ª Reunión Academia", cat: "union", desc: "Actividad Oficial #01: Segunda Reunión General de Academia (11:00 a 15:00 h). Entrega del Calendario Ajustado SEMS." },
-        { label: "💀 Altar Día de Muertos", cat: "normal", desc: "Muestra cultural de Día de Muertos en explanada del plantel." }
-      ],
-      "2026-10-30": [
-        { label: "📚 Guías Estudio DGB", cat: "union", desc: "Inicio de Semana 10. Difusión de Guías de Estudio Independiente DGB." },
-        { label: "💻 Cierre Didáctica", cat: "union", desc: "Cierre de plataforma Moodle del curso Introducción a la Didáctica." }
-      ],
-      "2026-11-02": [{ label: "💀 Día de Muertos (Inhábil)", cat: "holiday", desc: "Suspensión oficial de labores SEP por Día de Muertos." }],
-      "2026-11-06": [{ label: "💚 Evidencias ABC", cat: "normal", desc: "Entrega de fichas de evidencias de El ABC de las Emociones a Lic. Alexa." }],
-      "2026-11-09": [{ label: "📝 Examen P2 (TM Día 1)", cat: "exam", desc: "Actividad Oficial #03: Segunda Evaluación Parcial en Turno Matutino (09 al 11 Nov)." }],
-      "2026-11-10": [{ label: "📝 Examen P2 (TM Día 2)", cat: "exam", desc: "Segunda Evaluación Parcial en Turno Matutino." }],
-      "2026-11-11": [
-        { label: "📝 Examen P2 (TM Día 3)", cat: "exam", desc: "Cierre de exámenes P2 para el Turno Matutino." },
-        { label: "🏥 Feria Salud (TV)", cat: "normal", desc: "Feria de la Salud para el Turno Vespertino." }
-      ],
-      "2026-11-12": [{ label: "📝 Examen P2 (TV Día 1)", cat: "exam", desc: "Actividad Oficial #03: Segunda Evaluación Parcial en Turno Vespertino (12 y 13 Nov)." }],
-      "2026-11-13": [{ label: "📝 Examen P2 (TV Día 2)", cat: "exam", desc: "Cierre de exámenes P2 en Turno Vespertino y conclusión del 2° Parcial." }],
-      "2026-11-16": [
-        { label: "🐎 Revolución (Inhábil)", cat: "holiday", desc: "Suspensión oficial de labores por el Aniversario de la Revolución Mexicana." },
-        { label: "🔴 Inicia Periodo P3", cat: "normal", desc: "Actividad Oficial #06: Inicia Periodo del Tercer Parcial (16 Nov al 17 Dic)." }
-      ],
-      "2026-11-17": [
-        { label: "🏛️ Asamblea D-II-79 (NO HAY CLASES)", cat: "union", desc: "Asamblea Delegacional D-II-79 (09:30 h) por XXIV Congreso SNTE 15. NO HAY CLASES." },
-        { label: "⚠️ LÍMITE CAPTURA PACE P2", cat: "pace", desc: "Actividad Oficial #04: Fecha límite de captura de calificaciones del 2° Parcial en PACE." }
-      ],
-      "2026-11-18": [{ label: "👨‍👩‍👧 Boletas P2 (TM)", cat: "parents", desc: "Actividad Oficial #05: Entrega de boletas del 2° Parcial a padres del Turno Matutino." }],
-      "2026-11-19": [
-        { label: "👨‍👩‍👧 Boletas P2 (TV Día 1)", cat: "parents", desc: "Actividad Oficial #05: Entrega de boletas del 2° Parcial a padres del Turno Vespertino (19 y 20 Nov)." },
-        { label: "🎓 Feria Vocacional", cat: "normal", desc: "Feria Vocacional 2026 (08:30 a 13:00 h, ambos turnos)." }
-      ],
-      "2026-11-20": [{ label: "👨‍👩‍👧 Boletas P2 (TV Día 2)", cat: "parents", desc: "Actividad Oficial #05: Segundo día de entrega de boletas P2 en Turno Vespertino." }],
-      "2026-11-27": [{ label: "🏥 Feria Salud (TM)", cat: "normal", desc: "Feria de la Salud para el Turno Matutino." }],
-      "2026-12-04": [{ label: "💚 Cierre ABC Emociones", cat: "normal", desc: "Fecha límite de carga de evidencias de El ABC de las Emociones en Drive." }],
-      "2026-12-10": [{ label: "📝 Inicia Examen P3", cat: "exam", desc: "Actividad Oficial #07: Inicia Tercera Evaluación Parcial (10 al 16 de Diciembre)." }],
-      "2026-12-16": [
-        { label: "🛑 FIN CLASES LISTAS", cat: "pace", desc: "Actividad Oficial #08: Fin de clases para listas de asistencia." },
-        { label: "📝 Cierre Examen P3", cat: "exam", desc: "Conclusión de exámenes del Tercer Parcial." }
-      ],
-      "2026-12-17": [{ label: "🌟 Muestra PEC", cat: "normal", desc: "Actividad Oficial #09: Presentación de Proyectos Transversales (PEC) y fin del 3er Parcial." }],
-      "2026-12-18": [{ label: "🎄 Vacaciones Invierno", cat: "holiday", desc: "Inicia el Receso Vacacional de Invierno (18 Dic 2026 al 05 Ene 2027)." }],
-      "2027-01-06": [{ label: "🔄 Retro P3 y Asign. Global", cat: "exam", desc: "Actividad Oficial #10 (Semana 17 · 06 al 08 Ene): Retroalimentación de evaluaciones, entrega de calificaciones P3, promedio global y/o asignación de examen global." }],
-      "2027-01-11": [{ label: "📝 EVALUACIÓN FINAL / GLOBAL", cat: "exam", desc: "Actividad Oficial #11 (Semana 18 · 11 al 14 Ene): Periodo de Evaluación Final / Aplicación de Examen Global." }],
-      "2027-01-12": [{ label: "📥 Entrega Calif. Semestrales", cat: "pace", desc: "Actividad Oficial #12 (12 al 15 Ene): Entrega de evaluaciones semestrales a control.escolar54@dgb.edu.mx." }],
-      "2027-01-15": [
-        { label: "🏛️ 3ª Reunión Academia", cat: "union", desc: "Actividad Oficial #13: Tercera Reunión General de Academia (Subdirección)." },
-        { label: "📜 CAPTURA ACTAS FINALES", cat: "pace", desc: "Actividad Oficial #14: Fecha oficial de Captura de Actas Finales." }
-      ],
-      "2027-01-18": [
-        { label: "👨‍👩‍👧 Historiales Padres (TV)", cat: "parents", desc: "Actividad Oficial #15: Entrega de historiales académicos a padres del Turno Vespertino." },
-        { label: "📚 Capacitación Docente", cat: "union", desc: "Actividad Oficial #22: Curso intersemestral de capacitación docente (18 al 20 y 29 Ene)." }
-      ],
-      "2027-01-20": [
-        { label: "👨‍👩‍👧 Historiales Padres (TM)", cat: "parents", desc: "Actividad Oficial #15: Entrega de historiales académicos a padres del Turno Matutino." },
-        { label: "⚡ Solicitudes Inter/Extra", cat: "pace", desc: "Actividad Oficial #16 (ÚNICO DÍA): Solicitudes de curso intersemestral y examen extraordinario." }
-      ],
-      "2027-01-21": [{ label: "🛠️ Inicia Intersemestral", cat: "normal", desc: "Actividad Oficial #17: Inicia Periodo de Curso Intersemestral (21 al 27 de Enero)." }],
-      "2027-01-22": [{ label: "📋 Entrega Calif. Inter", cat: "pace", desc: "Actividad Oficial #19 (22 al 28 Ene): Entrega de calificaciones de intersemestral y firmas a Subdirección." }],
-      "2027-01-27": [{ label: "🛠️ Fin Intersemestral", cat: "normal", desc: "Actividad Oficial #17: Conclusión del Curso Intersemestral." }],
-      "2027-01-28": [{ label: "🤝 Labor Social", cat: "normal", desc: "Actividad Oficial #18: Jornada de Labor Social coordinada por Subdirección." }],
-      "2027-01-29": [{ label: "📚 Cierre Capacitación", cat: "union", desc: "Actividad Oficial #22: Cierre del curso intersemestral de capacitación docente." }],
-      "2027-02-01": [{ label: "🇲🇽 Constitución", cat: "holiday", desc: "Suspensión oficial de labores por el Aniversario de la Constitución Política." }],
-      "2027-02-02": [
-        { label: "📋 Planeación Sem B", cat: "union", desc: "Actividad Oficial #23 (02 al 05 Feb): Planeación Didáctica Semestre B 2026-2027." },
-        { label: "🎟️ Inscripción Regulares", cat: "pace", desc: "Actividad Oficial #20 (02 y 03 Feb): Inscripción de estudiantes regulares." }
-      ],
-      "2027-02-04": [{ label: "🎟️ Insc. Irregulares", cat: "pace", desc: "Actividad Oficial #21: Inscripción de estudiantes irregulares, reingresos y cambios." }],
-      "2027-02-08": [{ label: "🚀 INICIO CLASES SEM B", cat: "normal", desc: "Apertura formal de clases del Semestre B (Subciclo 2 · 2026-2027)." }]
-    };
+  "2026-08-24": [{ label: "🏫 Inducción S00", cat: "normal", desc: "Semana 00: Inducción a nuevo ingreso y planeación colegiada del Semestre A." }],
+  "2026-08-31": [{ label: "🚀 Inicio Clases Sem A", cat: "normal", desc: "Arranque oficial de clases del Semestre A (Semana 01)." }],
+  "2026-09-16": [{ label: "🇲🇽 Independencia", cat: "holiday", desc: "Suspensión oficial de labores por el Día de la Independencia (SEP / DGB)." }],
+  "2026-09-18": [{ label: "🚨 2° Simulacro Nal.", cat: "normal", desc: "Segundo Simulacro Nacional 2026 (12:00 h). Oficio DE/CEB-5/4-PC/016/2026." }],
+  "2026-09-28": [{ label: "📝 Inicio Exámenes P1", cat: "exam", desc: "Semana 05: Periodo de Primera Evaluación Parcial (28 Sep al 02 Oct)." }],
+  "2026-10-02": [{ label: "📝 Fin Exámenes P1", cat: "exam", desc: "Conclusión de exámenes P1 y entrega Fase 1 PEC transversal." }],
+  "2026-10-05": [{ label: "🟡 Inicia 2° Parcial", cat: "normal", desc: "Actividad Oficial SEMS #02: Inicia Periodo del Segundo Parcial (05 Oct al 13 Nov)." }],
+  "2026-10-09": [{ label: "⚠️ Entrega Calif. P1", cat: "pace", desc: "Fecha límite de entrega de calificaciones P1 a Control Escolar / captura PACE." }],
+  "2026-10-12": [{ label: "👨‍👩‍👧 Boletas P1 Padres", cat: "parents", desc: "Entrega de boletas del Primer Parcial a padres de familia (12 al 14 Oct)." }],
+  "2026-10-19": [{ label: "🛠️ Eval. Intrasemestral", cat: "normal", desc: "Periodo de evaluación del curso intrasemestral de regularización (19 al 23 Oct)." }],
+  "2026-10-26": [{ label: "🏛️ 3ª Jornada MCCEMS", cat: "union", desc: "3.ª Jornada de Discusión del Modelo Educativo 2025 (12:00 h TM / 17:40 h TV) y captura intrasemestral." }],
+  "2026-10-27": [{ label: "🚨 Simulacro Código 3", cat: "normal", desc: "Simulacro Código 3: Accidente en Viaje Escolar en aula (09:10 h TM G103 / 15:10 h TV G108)." }],
+  "2026-10-28": [{ label: "📚 2ª Reunión Academia", cat: "union", desc: "Actividad Oficial SEMS #01: Segunda Reunión General de Academia (13:00 a 15:30 h). Aprobación unánime del Calendario Ajustado SEMS (Exámenes Globales pasan formalmente al 11–14 de Enero 2027)." }],
+  "2026-10-29": [
+    { label: "🏁 Cierre Intersemestral", cat: "exam", desc: "Fecha límite e improrrogable fijada en el calendario DGB y Subdirección Académica para el periodo de evaluación y regularización intersemestral en Google Classroom." },
+    { label: "🎭 Altares y Catrinas", cat: "normal", desc: "Muestra Cultural de Altares y Concurso de Catrinas en la explanada cívica del plantel CEB 5/4 (Tradición comunitaria de Día de Muertos)." }
+  ],
+  "2026-10-30": [
+    { label: "🎉 Asueto D-II-79 / Dirección", cat: "holiday", desc: "Día de asueto concedido gestionado por la Delegación Sindical D-II-79 (Sección 15 SNTE) en acuerdo bilateral y avalado plenamente por la Dirección del CEB 5/4 para el disfrute y preservación de las tradiciones." },
+    { label: "📚 Guías Estudio DGB", cat: "union", desc: "Inicio de Semana 10. Difusión de Guías de Estudio Independiente DGB (Oficio formal a Subdirección y estudiantes)." },
+    { label: "💻 Cierre Didáctica", cat: "union", desc: "Cierre formal de plataforma Moodle del curso DGB COSDAC Introducción a la Didáctica (18:00 h)." }
+  ],
+  "2026-11-02": [{ label: "💀 Suspensión Día de Muertos", cat: "holiday", desc: "Lunes inhábil oficial de calendario federal SEP / DGB por conmemoración del Día de Muertos. Sin actividades escolares." }],
+  "2026-11-06": [{ label: "💚 Evidencias ABC", cat: "normal", desc: "Entrega oficial de fichas de evidencias de Aula Abierta y Cuadernillos de «El ABC de las Emociones» a Lic. Alexa Bahena (Tutoría V110)." }],
+  "2026-11-09": [{ label: "📝 Inicio Exámenes P2 (Todos)", cat: "exam", desc: "Actividad Oficial SEMS #03 (Semana 11): Arranque simultáneo y general de evaluaciones del Segundo Parcial para todos los semestres en Turno Matutino y Turno Vespertino." }],
+  "2026-11-10": [{ label: "📝 Exámenes P2 (Día 2)", cat: "exam", desc: "Segundo día de evaluaciones del Segundo Parcial en ambos turnos." }],
+  "2026-11-11": [
+    { label: "📝 Exámenes P2 (Día 3)", cat: "exam", desc: "Evaluaciones del Segundo Parcial en ambos turnos." },
+    { label: "🏥 Feria Salud (TV)", cat: "normal", desc: "Feria Institucional de la Salud para estudiantes del Turno Vespertino." }
+  ],
+  "2026-11-12": [{ label: "📝 Exámenes P2 (Día 4)", cat: "exam", desc: "Evaluaciones del Segundo Parcial en ambos turnos." }],
+  "2026-11-13": [{ label: "🏁 Fin Exámenes P2", cat: "exam", desc: "Conclusión de evaluaciones del 2° Parcial en ambos turnos y concentración de sábanas para PACE." }],
+  "2026-11-16": [
+    { label: "🐎 Suspensión Revolución", cat: "holiday", desc: "Suspensión oficial de labores docentes SEP por el Aniversario de la Revolución Mexicana." },
+    { label: "🔴 Inicia Periodo P3", cat: "normal", desc: "Actividad Oficial SEMS #06: Inicia Periodo del Tercer Parcial (16 Nov al 17 Dic)." }
+  ],
+  "2026-11-17": [
+    { label: "🏛️ Asamblea D-II-79 (NO HAY CLASES)", cat: "union", desc: "Asamblea Delegacional D-II-79 (09:30 h) por XXIV Congreso Extraordinario Sección 15 SNTE. NO HAY CLASES." },
+    { label: "⚠️ LÍMITE CAPTURA PACE P2", cat: "pace", desc: "Actividad Oficial SEMS #04: Fecha límite improrrogable de captura de calificaciones del 2° Parcial en plataforma PACE." }
+  ],
+  "2026-11-18": [{ label: "👨‍👩‍👧 Boletas P2 (TM)", cat: "parents", desc: "Actividad Oficial SEMS #05: Entrega de boletas del 2° Parcial a padres de familia del Turno Matutino." }],
+  "2026-11-19": [
+    { label: "👨‍👩‍👧 Boletas P2 (TV Día 1)", cat: "parents", desc: "Actividad Oficial SEMS #05: Entrega de boletas del 2° Parcial a padres de familia del Turno Vespertino (19 y 20 Nov)." },
+    { label: "🎓 Feria Vocacional", cat: "normal", desc: "Feria Vocacional Universitaria 2026 (08:30 a 13:00 h, ambos turnos)." }
+  ],
+  "2026-11-20": [{ label: "👨‍👩‍👧 Boletas P2 (TV Día 2)", cat: "parents", desc: "Actividad Oficial SEMS #05: Segundo día de entrega de boletas del 2° Parcial en Turno Vespertino." }],
+  "2026-11-27": [{ label: "🏥 Feria Salud (TM)", cat: "normal", desc: "Feria Institucional de la Salud para estudiantes del Turno Matutino." }],
+  "2026-12-04": [{ label: "💚 Cierre ABC Emociones", cat: "normal", desc: "Fecha límite de carga y concentración de evidencias de El ABC de las Emociones en Google Drive institucional." }],
+  "2026-12-10": [{ label: "📝 Inicia Examen P3", cat: "exam", desc: "Actividad Oficial SEMS #07: Inicia Tercera Evaluación Parcial (10 al 16 de Diciembre)." }],
+  "2026-12-16": [
+    { label: "🛑 FIN CLASES LISTAS", cat: "pace", desc: "Actividad Oficial SEMS #08: Fin formal de clases para listas de asistencia." },
+    { label: "📝 Cierre Examen P3", cat: "exam", desc: "Conclusión de exámenes del Tercer Parcial." }
+  ],
+  "2026-12-17": [{ label: "🌟 Muestra PEC", cat: "normal", desc: "Actividad Oficial SEMS #09: Presentación Comunitaria de Proyectos Transversales (PEC) y fin del 3er Parcial." }],
+  "2026-12-18": [{ label: "🎄 Vacaciones Invierno", cat: "holiday", desc: "Inicia el Receso Vacacional Decembrino de Invierno (18 Dic 2026 al 05 Ene 2027)." }],
+  "2027-01-06": [{ label: "🔄 Retro P3 y Asign. Global", cat: "exam", desc: "Actividad Oficial SEMS #10 (Semana 17 · 06 al 08 Ene): Retroalimentación de evaluaciones, entrega de calificaciones P3, promedio global y/o asignación de examen global." }],
+  "2027-01-11": [{ label: "📝 EVALUACIÓN FINAL / GLOBAL", cat: "exam", desc: "Actividad Oficial SEMS #11 (Semana 18 · 11 al 14 Ene): Periodo Oficial de Evaluación Final / Aplicación de Examen Global (Reajuste formal aprobado en 2.ª Academia)." }],
+  "2027-01-12": [{ label: "📥 Entrega Calif. Semestrales", cat: "pace", desc: "Actividad Oficial SEMS #12 (12 al 15 Ene): Entrega de evaluaciones semestrales a control.escolar54@dgb.edu.mx." }],
+  "2027-01-15": [
+    { label: "🏛️ 3ª Reunión Academia", cat: "union", desc: "Actividad Oficial SEMS #13: Tercera Reunión General de Academia (Subdirección)." },
+    { label: "📜 CAPTURA ACTAS FINALES", cat: "pace", desc: "Actividad Oficial SEMS #14: Fecha oficial institucional para Captura de Actas Finales." }
+  ],
+  "2027-01-18": [
+    { label: "👨‍👩‍👧 Historiales Padres (TV)", cat: "parents", desc: "Actividad Oficial SEMS #15: Entrega de historiales académicos y reunión con padres de familia del Turno Vespertino." },
+    { label: "📚 Capacitación Docente", cat: "union", desc: "Actividad Oficial SEMS #22: Curso intersemestral de capacitación docente (18 al 20 y 29 Ene)." }
+  ],
+  "2027-01-20": [
+    { label: "👨‍👩‍👧 Historiales Padres (TM)", cat: "parents", desc: "Actividad Oficial SEMS #15: Entrega de historiales académicos y reunión con padres de familia del Turno Matutino." },
+    { label: "⚡ Solicitudes Inter/Extra", cat: "pace", desc: "Actividad Oficial SEMS #16 (ÚNICO DÍA): Registro formal de solicitudes estudiantiles de curso intersemestral y examen extraordinario." }
+  ],
+  "2027-01-21": [{ label: "🛠️ Inicia Intersemestral", cat: "normal", desc: "Actividad Oficial SEMS #17: Inicia Periodo del Curso Intersemestral de regularización (21 al 27 de Enero)." }],
+  "2027-01-22": [{ label: "📋 Entrega Calif. Inter", cat: "pace", desc: "Actividad Oficial SEMS #19 (22 al 28 Ene): Entrega de calificaciones de curso intersemestral y firma de estudiantes a Subdirección y Control Escolar." }],
+  "2027-01-27": [{ label: "🛠️ Fin Intersemestral", cat: "normal", desc: "Actividad Oficial SEMS #17: Conclusión formal del Curso Intersemestral." }],
+  "2027-01-28": [{ label: "🤝 Labor Social", cat: "normal", desc: "Actividad Oficial SEMS #18: Jornada Institucional de Labor Social coordinada por Subdirección." }],
+  "2027-01-29": [{ label: "📚 Cierre Capacitación", cat: "union", desc: "Actividad Oficial SEMS #22: Cierre del curso intersemestral de capacitación docente." }],
+  "2027-02-01": [{ label: "🇲🇽 Constitución", cat: "holiday", desc: "Suspensión oficial de labores SEP en conmemoración del Aniversario de la Constitución Política." }],
+  "2027-02-02": [
+    { label: "📋 Planeación Sem B", cat: "union", desc: "Actividad Oficial SEMS #23 (02 al 05 Feb): Elaboración y entrega de Planeación Didáctica para el Semestre B 2026-2027." },
+    { label: "🎟️ Inscripción Regulares", cat: "pace", desc: "Actividad Oficial SEMS #20 (02 y 03 Feb): Proceso de reinscripción en Control Escolar para estudiantes regulares." }
+  ],
+  "2027-02-04": [{ label: "🎟️ Insc. Irregulares", cat: "pace", desc: "Actividad Oficial SEMS #21: Proceso de inscripción en Control Escolar para estudiantes irregulares, reingresos y cambios de plantel." }],
+  "2027-02-08": [{ label: "🚀 INICIO CLASES SEM B", cat: "normal", desc: "Apertura formal de clases del Semestre B (Subciclo 2 · 2026-2027) en el CEB 5/4 «Profr. Rafael Ramírez»." }]
+};
     
 const WEEK_VIEWS = {
   "S08": {
@@ -2609,7 +2646,7 @@ const CULTURAL_EVENTS = [
       renderActiveWeekView(currentWeekKey);
       renderCulturalEvents();
       renderTimelineWeeks();
-      renderMonth('2026-11');
+      renderMonth('2026-10');
       renderAuditEmails();
       renderTable23();
     });
@@ -2805,6 +2842,18 @@ const CULTURAL_EVENTS = [
       }).join('');
     }
 
+    const monthNamesEs = {
+      8: 'Agosto',
+      9: 'Septiembre',
+      10: 'Octubre',
+      11: 'Noviembre',
+      12: 'Diciembre',
+      1: 'Enero',
+      2: 'Febrero'
+    };
+
+    let currentSelectedIso = null;
+
     // RENDER: Vista Mensual Escolar (5 Días: Lunes a Viernes, Sin Sábados ni Domingos)
     function renderMonth(yearMonth, btn) {
       if (btn) {
@@ -2834,6 +2883,7 @@ const CULTURAL_EVENTS = [
       `).join('');
 
       let firstWeekdayRendered = false;
+      let defaultIsoToInspect = null;
 
       for (let d = 1; d <= daysInMonth; d++) {
         const dt = new Date(yr, mo - 1, d);
@@ -2857,49 +2907,87 @@ const CULTURAL_EVENTS = [
         const hasHoliday = evs.some(e => e.cat === 'holiday');
         const holidayCls = hasHoliday ? 'has-holiday' : '';
 
-        const evsHtml = evs.map(e => `
-          <div class="cal-chip ${e.cat}" title="${e.desc}" onclick="showDayEvent('${d} de ${monthNamesEs[mo]}', '${e.label}', '${e.desc}')">${e.label}</div>
+        if (!defaultIsoToInspect && evs.length > 0) {
+          defaultIsoToInspect = iso;
+        }
+        if (isToday) {
+          defaultIsoToInspect = iso;
+        }
+
+        const visibleEvs = evs.slice(0, 2);
+        const evsHtml = visibleEvs.map(e => `
+          <div class="cal-chip ${e.cat}" title="${e.desc}">${e.label}</div>
         `).join('');
 
+        const moreCount = evs.length - visibleEvs.length;
+        const moreHtml = moreCount > 0 ? `<span class="cal-more-badge">+${moreCount} más</span>` : '';
+
         html += `
-          <div class="cal-cell ${isToday} ${holidayCls}" onclick="showCellDetail('${iso}', '${d} de ${monthNamesEs[mo]}')">
+          <div class="cal-cell ${isToday} ${holidayCls}" id="cell-${iso}" onclick="inspectMonthDay('${iso}', '${d} de ${monthNamesEs[mo]} de ${yr}')">
             <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
               <span class="cal-date-num">${d}</span>
               ${isToday ? '<span class="today-pill" style="font-size: 0.55rem; padding: 1px 4px;">HOY</span>' : ''}
             </div>
             ${evsHtml}
+            ${moreHtml}
           </div>
         `;
       }
 
       calGrid.innerHTML = html;
+
+      // Auto-inspeccionar día relevante al renderizar el mes
+      if (defaultIsoToInspect) {
+        const [y, m, d] = defaultIsoToInspect.split('-');
+        inspectMonthDay(defaultIsoToInspect, `${parseInt(d)} de ${monthNamesEs[parseInt(m)]} de ${y}`);
+      } else {
+        inspectMonthDay(`${yr}-${String(mo).padStart(2, '0')}-01`, `01 de ${monthNamesEs[mo]} de ${yr}`);
+      }
     }
 
-    const monthNamesEs = {
-      10: 'Octubre',
-      11: 'Noviembre',
-      12: 'Diciembre',
-      1: 'Enero'
-    };
+    function inspectMonthDay(iso, dateLabel) {
+      currentSelectedIso = iso;
+      document.querySelectorAll('.cal-cell').forEach(c => c.classList.remove('selected'));
+      const activeCell = document.getElementById('cell-' + iso);
+      if (activeCell) activeCell.classList.add('selected');
 
-    function showDayEvent(dateStr, label, desc) {
-      event.stopPropagation();
-      alert(`📅 ${dateStr}
-
-📌 ${label}
-
-${desc}`);
-    }
-
-    function showCellDetail(iso, dateStr) {
       const evs = MONTH_MAP[iso] || [];
-      if (evs.length === 0) return;
-      const text = evs.map(e => `• ${e.label}: ${e.desc}`).join(`
+      const inspector = document.getElementById('monthDayInspector');
+      if (!inspector) return;
 
-`);
-      alert(`📅 ${dateStr}
+      if (evs.length === 0) {
+        inspector.innerHTML = `
+          <div class="inspector-head">
+            <span class="inspector-date-title">📅 ${dateLabel}</span>
+            <span class="badge badge-green">Clases Ordinarias</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.86rem; margin: 4px 0; line-height: 1.45;">
+            Jornada de actividades académicas ordinarias frente a grupo según horario escolar oficial del CEB 5/4.
+          </p>
+        `;
+      } else {
+        const cardsHtml = evs.map(e => `
+          <div class="inspector-event-card ${e.cat}">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+              <strong style="color: var(--text-main); font-size: 0.95rem;">${e.label}</strong>
+              <span class="badge ${e.cat === 'holiday' ? 'badge-wine' : e.cat === 'exam' ? 'badge-blue' : 'badge-gold'}" style="font-size: 0.65rem;">
+                ${e.cat === 'holiday' ? 'Asueto / Inhábil' : e.cat === 'exam' ? 'Evaluación Parcial' : 'Oficial CEB 5/4'}
+              </span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.45; margin-top: 4px;">${e.desc}</p>
+          </div>
+        `).join('');
 
-${text}`);
+        inspector.innerHTML = `
+          <div class="inspector-head">
+            <span class="inspector-date-title">📅 ${dateLabel}</span>
+            <span class="badge badge-wine">${evs.length} ${evs.length === 1 ? 'Evento Registrado' : 'Eventos Registrados'}</span>
+          </div>
+          <div class="inspector-events-list">
+            ${cardsHtml}
+          </div>
+        `;
+      }
     }
 
     // RENDER: Auditoría de Correos (14)

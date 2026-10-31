@@ -1988,6 +1988,100 @@
       }
     }
 
+
+    /* --- ESTILOS DE CUMPLEAÑOS INSTITUCIONALES (CEB 5/4) --- */
+    .cal-chip.birthday-chip {
+      background: rgba(236, 72, 153, 0.12);
+      color: #be185d;
+      border: 1px solid rgba(236, 72, 153, 0.28);
+      font-size: 0.68rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+    [data-theme="dark"] .cal-chip.birthday-chip {
+      background: rgba(244, 114, 182, 0.18);
+      color: #f472b6;
+      border-color: rgba(244, 114, 182, 0.35);
+    }
+    .birthday-badge-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(244, 114, 182, 0.15), rgba(168, 85, 247, 0.12));
+      border: 1px solid rgba(244, 114, 182, 0.35);
+      border-radius: 8px;
+      padding: 6px 12px;
+      margin-bottom: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #9d174d;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    [data-theme="dark"] .birthday-badge-banner {
+      color: #fbcfe8;
+      background: linear-gradient(135deg, rgba(244, 114, 182, 0.22), rgba(168, 85, 247, 0.18));
+    }
+    .birthday-card {
+      background: var(--bg-surface);
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .birthday-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: #ec4899;
+    }
+    .birthday-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ec4899, #8b5cf6, #f59e0b);
+    }
+    .bday-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bday-date-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #be185d;
+      background: rgba(236, 72, 153, 0.12);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    [data-theme="dark"] .bday-date-tag {
+      color: #f472b6;
+      background: rgba(244, 114, 182, 0.2);
+    }
+    .bday-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 2px 0 0 0;
+    }
+    .bday-role {
+      font-size: 0.80rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
   </style>
 
 </head>
@@ -2120,6 +2214,7 @@
           <button class="cult-filter-btn" onclick="filterCulturalCategory('cultural', this)">🎭 Cultural y Tradición (5)</button>
           <button class="cult-filter-btn" onclick="filterCulturalCategory('salud', this)">🩺 Salud y Tutorías (3)</button>
           <button class="cult-filter-btn" onclick="filterCulturalCategory('seguridad', this)">🚨 Protección Civil (2)</button>
+          <button class="cult-filter-btn" onclick="filterCulturalCategory('cumpleanos', this)">🎂 Cumpleaños CEB (81)</button>
         </div>
       </div>
 
@@ -3131,6 +3226,14 @@ const CULTURAL_EVENTS = [
 ];
 
 
+    // Padrón Oficial de Cumpleaños del Personal CEB 5/4 (Docentes y Administrativos)
+    const CEB_BIRTHDAYS = [{"m": 1, "d": 1, "nombre": "Galan Mireles Eva Maria", "tipo": "Docente"}, {"m": 1, "d": 4, "nombre": "Canseco Prado Gabriel", "tipo": "Docente"}, {"m": 1, "d": 9, "nombre": "Enriquez Aguilar Leticia", "tipo": "Docente"}, {"m": 1, "d": 9, "nombre": "Jurado Hernandez Elsa Erika", "tipo": "Administrativo"}, {"m": 1, "d": 10, "nombre": "Ortega Monroy Cristian Jovanny", "tipo": "Administrativo"}, {"m": 1, "d": 13, "nombre": "Martinez Ruiz Martin", "tipo": "Docente"}, {"m": 1, "d": 15, "nombre": "Carranza Quiroz Claudia", "tipo": "Docente"}, {"m": 1, "d": 17, "nombre": "Gonzalez Hernandez Jose", "tipo": "Administrativo"}, {"m": 1, "d": 20, "nombre": "Arias Licea Alicia", "tipo": "Administrativo"}, {"m": 1, "d": 26, "nombre": "Garcia Lopez Juana Maria", "tipo": "Docente"}, {"m": 2, "d": 2, "nombre": "Espinosa Arteaga Martin", "tipo": "Docente"}, {"m": 2, "d": 19, "nombre": "Perez Bautista Gabino", "tipo": "Administrativo"}, {"m": 2, "d": 20, "nombre": "Vite Barrera Saul Elias", "tipo": "Docente"}, {"m": 2, "d": 25, "nombre": "Estrada Contreras Guillermo", "tipo": "Administrativo"}, {"m": 2, "d": 27, "nombre": "Suarez Dorantes Roberto Carlos", "tipo": "Administrativo"}, {"m": 3, "d": 7, "nombre": "Gonzalez Cervantes Julio", "tipo": "Docente"}, {"m": 3, "d": 8, "nombre": "Naranjos Gomez Eduardo Yair", "tipo": "Docente"}, {"m": 3, "d": 21, "nombre": "Blancas Ventura Yessica Yoselin", "tipo": "Administrativo"}, {"m": 3, "d": 22, "nombre": "Lopez Salazar Felipe", "tipo": "Docente"}, {"m": 3, "d": 24, "nombre": "Castillo Moreno Veronica Dolores", "tipo": "Docente"}, {"m": 3, "d": 24, "nombre": "Hernandez Hernandez Luis Ignacio", "tipo": "Docente"}, {"m": 3, "d": 28, "nombre": "Perez Picazo Delfino", "tipo": "Docente"}, {"m": 3, "d": 30, "nombre": "Camargo Contreras Pedro", "tipo": "Docente"}, {"m": 4, "d": 2, "nombre": "Hernandez Picazo Luis Francisco", "tipo": "Administrativo"}, {"m": 4, "d": 7, "nombre": "Sanchez Reyes Omar Alejandro", "tipo": "Administrativo"}, {"m": 4, "d": 8, "nombre": "Cadena Galindo Laura Maria", "tipo": "Docente"}, {"m": 4, "d": 8, "nombre": "Gonzalez Gardini Claudia Nayeli", "tipo": "Docente"}, {"m": 4, "d": 11, "nombre": "Herrera Gomez Alfonso", "tipo": "Docente"}, {"m": 4, "d": 12, "nombre": "Lugo Cabrera Gustavo Leon", "tipo": "Docente"}, {"m": 4, "d": 14, "nombre": "Vazquez Alamilla Ismael", "tipo": "Docente"}, {"m": 4, "d": 15, "nombre": "Melo Balderas Maria De La Luz", "tipo": "Administrativo"}, {"m": 4, "d": 16, "nombre": "Zamudio Fonseca Sandra Maria Del Rocio", "tipo": "Administrativo"}, {"m": 4, "d": 21, "nombre": "Trejo Martinez Julia Dallan", "tipo": "Administrativo"}, {"m": 4, "d": 22, "nombre": "Mendoza Garcia Maria Isabel", "tipo": "Docente"}, {"m": 4, "d": 30, "nombre": "Vilchis Aldana Jorge Daivids", "tipo": "Administrativo"}, {"m": 5, "d": 3, "nombre": "Cano Lopez Teresa", "tipo": "Docente"}, {"m": 5, "d": 6, "nombre": "Lopez Mejia Jose Luis", "tipo": "Administrativo"}, {"m": 5, "d": 9, "nombre": "Camargo Azpeitia Rosalia", "tipo": "Administrativo"}, {"m": 5, "d": 20, "nombre": "Alvarez Perez Irma", "tipo": "Docente"}, {"m": 5, "d": 28, "nombre": "Canuto Chavez German", "tipo": "Docente"}, {"m": 6, "d": 1, "nombre": "Baños Ruiz Victor Arturo", "tipo": "Docente"}, {"m": 6, "d": 23, "nombre": "Arteaga Badillo Alicia", "tipo": "Docente"}, {"m": 7, "d": 6, "nombre": "Canseco Prado Angela Gabriela", "tipo": "Docente"}, {"m": 7, "d": 20, "nombre": "Gomez Castillo Edgar", "tipo": "Docente"}, {"m": 7, "d": 21, "nombre": "Bahena Lozano Mayra Alexandra", "tipo": "Administrativo"}, {"m": 7, "d": 29, "nombre": "Arenas Orozco Elvia Abigail", "tipo": "Docente"}, {"m": 8, "d": 4, "nombre": "Lopez Vazquez Luz Maria Del Carmen", "tipo": "Docente"}, {"m": 8, "d": 9, "nombre": "Becerra Hernandez Fabiola Alejandra", "tipo": "Docente"}, {"m": 8, "d": 18, "nombre": "Hernandez Ortiz Jose Alejandro", "tipo": "Docente"}, {"m": 8, "d": 18, "nombre": "Rubio Garcia Maria Elena", "tipo": "Docente"}, {"m": 8, "d": 22, "nombre": "Ramirez Enciso Jaime Abraham", "tipo": "Administrativo"}, {"m": 8, "d": 28, "nombre": "Lopez Garcia Martha Maria", "tipo": "Docente"}, {"m": 8, "d": 30, "nombre": "Sanchez Meza Jerusalen", "tipo": "Docente"}, {"m": 9, "d": 2, "nombre": "Blancas Hernandez Antolin", "tipo": "Administrativo"}, {"m": 9, "d": 7, "nombre": "Hernandez Camargo Sivonney", "tipo": "Docente"}, {"m": 9, "d": 9, "nombre": "Licona Gomez Teodorico", "tipo": "Administrativo"}, {"m": 9, "d": 10, "nombre": "Juarez Flores Aurora", "tipo": "Docente"}, {"m": 9, "d": 11, "nombre": "Hernandez Vargas Soila", "tipo": "Docente"}, {"m": 9, "d": 28, "nombre": "Garcia Maximo Marisandra", "tipo": "Administrativo"}, {"m": 10, "d": 3, "nombre": "Castillo Cruz Javier", "tipo": "Administrativo"}, {"m": 10, "d": 8, "nombre": "Cortez Hernandez Itzel Naomi", "tipo": "Docente"}, {"m": 10, "d": 19, "nombre": "Gonzalez Munive Laura", "tipo": "Administrativo"}, {"m": 10, "d": 20, "nombre": "Rios Silva Josue Emanuel", "tipo": "Docente"}, {"m": 10, "d": 22, "nombre": "Pedraza Espinosa Ana Karen", "tipo": "Administrativo"}, {"m": 10, "d": 24, "nombre": "Hernandez Lopez Martin", "tipo": "Administrativo"}, {"m": 10, "d": 31, "nombre": "Cervantes Guevara Miguel Angel", "tipo": "Administrativo"}, {"m": 11, "d": 6, "nombre": "Villegas Sanchez Elizabeth", "tipo": "Docente"}, {"m": 11, "d": 10, "nombre": "Priego Cardoza Olga Leticia", "tipo": "Docente"}, {"m": 11, "d": 21, "nombre": "Bustamante Abonce Jose Mauro Roberto", "tipo": "Docente"}, {"m": 11, "d": 29, "nombre": "Agudo Garcia Jose Alfredo", "tipo": "Docente"}, {"m": 11, "d": 29, "nombre": "Martinez Flores Grindelia", "tipo": "Docente"}, {"m": 12, "d": 2, "nombre": "Oviedo Juarez Hernan Saide", "tipo": "Docente"}, {"m": 12, "d": 3, "nombre": "Rios Silva Diana Bethsabe", "tipo": "Administrativo"}, {"m": 12, "d": 4, "nombre": "Covarrubias Sanchez Luis Antonio", "tipo": "Administrativo"}, {"m": 12, "d": 8, "nombre": "Jaen Gaspar J. Concepcion", "tipo": "Docente"}, {"m": 12, "d": 10, "nombre": "Islas Montes Lirio Yuselin", "tipo": "Administrativo"}, {"m": 12, "d": 10, "nombre": "Martinez Flores Daniel", "tipo": "Administrativo"}, {"m": 12, "d": 14, "nombre": "Flores Mendoza Martha", "tipo": "Administrativo"}, {"m": 12, "d": 15, "nombre": "Hernandez Ortiz Jose Yoshimar", "tipo": "Administrativo"}, {"m": 12, "d": 18, "nombre": "Espinosa Angeles Karla", "tipo": "Docente"}, {"m": 12, "d": 18, "nombre": "Fernandez Hernandez Marco Antonio", "tipo": "Docente"}];
+
+    // Helper: Obtener cumpleañeros por mes y día
+    function getBirthdaysForDay(month, day) {
+      return CEB_BIRTHDAYS.filter(function(b) { return b.m === month && b.d === day; });
+    }
+
     // Estado Global
     let currentWeekKey = 'S10';
     const weekKeys = ['S08', 'S09', 'S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17-18'];
@@ -3250,6 +3353,26 @@ const CULTURAL_EVENTS = [
         const todayCls = d.isToday ? 'is-today' : '';
         const todayTag = d.isToday ? '<span class="today-pill">HOY</span>' : '';
 
+        // Buscar cumpleañeros para este día
+        let bdaysInDay = [];
+        const monthMapAbr = { 'Ene': 1, 'Feb': 2, 'Mar': 3, 'Abr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Ago': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dic': 12 };
+        const parts = (d.date || '').split(' ');
+        if (parts.length >= 2) {
+          const dNum = parseInt(parts[0]);
+          const mNum = monthMapAbr[parts[1]];
+          if (dNum && mNum) {
+            bdaysInDay = getBirthdaysForDay(mNum, dNum);
+          }
+        }
+        let bdayWeekBanner = '';
+        if (bdaysInDay.length > 0) {
+          bdayWeekBanner = `
+            <div style="background: rgba(236,72,153,0.1); border: 1px solid rgba(236,72,153,0.25); border-radius: 6px; padding: 4px 8px; margin-bottom: 8px; font-size: 0.72rem; font-weight: 700; color: #be185d;">
+              🎂 Cumpleaños: ${bdaysInDay.map(b => b.nombre.split(' ')[0]).join(', ')}
+            </div>
+          `;
+        }
+
         const eventsHtml = d.events.map(ev => {
           if (ev.priority === 'high') {
             // Ficha Relevante Grande (Hero Card)
@@ -3304,10 +3427,55 @@ const CULTURAL_EVENTS = [
     }
 
     // RENDER: Memoria Cultural y Cívica (Con Filtro por Categorías)
+    // RENDER: Catálogo General de Cumpleaños del Personal CEB 5/4
+    function renderBirthdaysCatalog(searchFilter = '') {
+      const cont = document.getElementById('culturalGridContainer');
+      if (!cont) return;
+      const f = (searchFilter || '').toLowerCase();
+
+      const monthNames = ['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+      const filtered = CEB_BIRTHDAYS.filter(b => {
+        if (!f) return true;
+        const mName = monthNames[b.m].toLowerCase();
+        return b.nombre.toLowerCase().includes(f) ||
+               b.tipo.toLowerCase().includes(f) ||
+               mName.includes(f) ||
+               String(b.d).includes(f);
+      });
+
+      if (filtered.length === 0) {
+        cont.innerHTML = `
+          <div style="grid-column: 1/-1; padding: 40px; text-align: center; color: var(--text-muted); background: var(--bg-surface); border-radius: 12px; border: 1px dashed var(--border);">
+            🎂 No se encontraron compañeros cumpleañeros que coincidan con la búsqueda.
+          </div>
+        `;
+        return;
+      }
+
+      cont.innerHTML = filtered.map(b => `
+        <div class="birthday-card">
+          <div class="bday-header">
+            <span class="bday-date-tag">🎂 ${b.d} de ${monthNames[b.m]}</span>
+            <span class="badge ${b.tipo === 'Docente' ? 'badge-wine' : 'badge-gold'}" style="font-size: 0.70rem;">${b.tipo}</span>
+          </div>
+          <h3 class="bday-name">${b.nombre}</h3>
+          <div class="bday-role">
+            <span>🏫 CEB 5/4 «Profr. Rafael Ramírez»</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
     function renderCulturalEvents(searchFilter = '') {
       const cont = document.getElementById('culturalGridContainer');
       if (!cont) return;
       const f = (searchFilter || '').toLowerCase();
+
+      if (currentCultCategory === 'cumpleanos') {
+        renderBirthdaysCatalog(f);
+        return;
+      }
 
       const filtered = CULTURAL_EVENTS.filter(e => {
         // Filtro por categoría institucional
@@ -3533,12 +3701,23 @@ const CULTURAL_EVENTS = [
           defaultIsoToInspect = iso;
         }
 
-        const visibleEvs = evs.slice(0, 2);
+        const bdaysDay = getBirthdaysForDay(mo, d);
+        let bdayChipHtml = '';
+        if (bdaysDay.length > 0) {
+          const bNames = bdaysDay.map(b => b.nombre.split(' ')[0]).join(', ');
+          const fullBnames = bdaysDay.map(b => `${b.nombre} (${b.tipo})`).join(' · ');
+          bdayChipHtml = `<div class="cal-chip birthday-chip" title="🎂 Cumpleaños: ${fullBnames}">🎂 ${bNames}</div>`;
+        }
+
+        const maxRegular = bdaysDay.length > 0 ? 1 : 2;
+        const visibleEvs = evs.slice(0, maxRegular);
         const evsHtml = visibleEvs.map(e => `
           <div class="cal-chip ${e.cat}" title="${e.desc}">${e.label}</div>
         `).join('');
 
-        const moreCount = evs.length - visibleEvs.length;
+        const totalItems = evs.length + (bdaysDay.length > 0 ? 1 : 0);
+        const totalVisible = visibleEvs.length + (bdaysDay.length > 0 ? 1 : 0);
+        const moreCount = totalItems - totalVisible;
         const moreHtml = moreCount > 0 ? `<span class="cal-more-badge">+${moreCount} más</span>` : '';
 
         html += `
@@ -3547,6 +3726,7 @@ const CULTURAL_EVENTS = [
               <span class="cal-date-num">${d}</span>
               ${isToday ? '<span class="today-pill" style="font-size: 0.55rem; padding: 1px 4px;">HOY</span>' : ''}
             </div>
+            ${bdayChipHtml}
             ${evsHtml}
             ${moreHtml}
           </div>
@@ -3574,12 +3754,31 @@ const CULTURAL_EVENTS = [
       const inspector = document.getElementById('monthDayInspector');
       if (!inspector) return;
 
+      const [yrStr, moStr, dayStr] = iso.split('-');
+      const mo = parseInt(moStr);
+      const day = parseInt(dayStr);
+      const bdaysDay = getBirthdaysForDay(mo, day);
+
+      let bdayInspectorBanner = '';
+      if (bdaysDay.length > 0) {
+        bdayInspectorBanner = `
+          <div class="birthday-badge-banner">
+            <span>🎂</span>
+            <div>
+              <strong>¡Feliz Cumpleaños!</strong>
+              <div>${bdaysDay.map(b => `${b.nombre} <span style="font-weight: normal; opacity: 0.85;">(${b.tipo})</span>`).join(', ')}</div>
+            </div>
+          </div>
+        `;
+      }
+
       if (evs.length === 0) {
         inspector.innerHTML = `
           <div class="inspector-head">
             <span class="inspector-date-title">📅 ${dateLabel}</span>
             <span class="badge badge-green">Clases Ordinarias</span>
           </div>
+          ${bdayInspectorBanner}
           <p style="color: var(--text-muted); font-size: 0.86rem; margin: 4px 0; line-height: 1.45;">
             Jornada de actividades académicas ordinarias frente a grupo según horario escolar oficial del CEB 5/4.
           </p>

@@ -915,33 +915,25 @@
       color: #ffffff;
       border-color: var(--guinda);
     }
+    .month-view-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
     .cal-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .cal-day-mobile {
       display: none;
-    }
-    @media (max-width: 768px) {
-      .cal-grid {
-        gap: 6px;
-      }
-      .cal-day-desktop {
-        display: none;
-      }
-      .cal-day-mobile {
-        display: inline;
-      }
-      .cal-cell {
-        min-height: 80px;
-        padding: 6px 4px;
-        border-radius: 10px;
-      }
-      .cal-chip {
-        font-size: 0.65rem;
-        padding: 2px 4px;
-      }
     }
     .cal-day-name {
       text-align: center;
@@ -950,27 +942,49 @@
       color: var(--text-muted);
       text-transform: uppercase;
       padding: 6px 0;
+      letter-spacing: 0.04em;
     }
     .cal-cell {
       background: var(--bg-subtle);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      min-height: 90px;
-      padding: 6px;
+      border-radius: 12px;
+      min-height: 100px;
+      padding: 8px 6px;
       display: flex;
       flex-direction: column;
       gap: 4px;
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
+      cursor: pointer;
+      box-sizing: border-box;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .cal-cell:hover {
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow-sm);
     }
     .cal-cell.empty {
       background: transparent;
       border: none;
+      cursor: default;
     }
     .cal-cell.today {
       background: var(--bg-surface);
       border: 2px solid var(--blue);
+      box-shadow: 0 0 0 1px var(--blue);
+    }
+    .cal-cell.selected {
+      border: 2px solid var(--guinda) !important;
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-md);
+    }
+    .cal-cell.has-holiday {
+      background: var(--red-soft);
+      border-color: var(--red-border);
     }
     .cal-date-num {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 800;
       font-family: 'Outfit', sans-serif;
       color: var(--text-main);
@@ -978,14 +992,97 @@
     .cal-chip {
       font-size: 0.68rem;
       font-weight: 700;
-      padding: 2px 4px;
-      border-radius: 4px;
+      padding: 3px 6px;
+      border-radius: 5px;
       background: var(--bg-surface);
       border: 1px solid var(--border);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       cursor: pointer;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      display: block;
+      line-height: 1.25;
+    }
+    .month-day-inspector {
+      margin-top: 20px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-sizing: border-box;
+    }
+    .inspector-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .inspector-date-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-main);
+    }
+    .inspector-events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .inspector-event-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .inspector-event-card.exam { border-left: 4px solid var(--blue); }
+    .inspector-event-card.holiday { border-left: 4px solid var(--red); background: var(--red-soft); }
+    .inspector-event-card.union { border-left: 4px solid var(--purple); }
+    .inspector-event-card.pace { border-left: 4px solid var(--amber); background: var(--amber-soft); }
+
+    @media (max-width: 768px) {
+      .month-view-card {
+        padding: 14px 8px;
+      }
+      .cal-grid {
+        gap: 4px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+      .cal-day-desktop {
+        display: none;
+      }
+      .cal-day-mobile {
+        display: inline;
+      }
+      .cal-cell {
+        min-height: 65px;
+        padding: 4px 2px;
+        border-radius: 8px;
+        gap: 2px;
+      }
+      .cal-date-num {
+        font-size: 0.76rem;
+      }
+      .cal-chip {
+        font-size: 0.58rem;
+        padding: 1px 3px;
+        border-radius: 3px;
+      }
+      .month-day-inspector {
+        padding: 12px 14px;
+        margin-top: 14px;
+      }
     }
     .cal-chip.exam { background: var(--blue-soft); color: var(--blue); border-color: var(--blue-border); }
     .cal-chip.holiday { background: var(--red-soft); color: var(--red); border-color: var(--red-border); }
@@ -1494,6 +1591,11 @@
 
         <div class="cal-grid" id="monthCalendarGrid">
           <!-- Inyectado por JS -->
+        </div>
+
+        <!-- Inspector de Eventos del Día Seleccionado (Cero Desbordamiento) -->
+        <div class="month-day-inspector" id="monthDayInspector">
+          <!-- Inyectado dinámicamente al tocar cualquier día -->
         </div>
       </div>
     </section>

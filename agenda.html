@@ -1102,7 +1102,7 @@
         <div class="kpi-content">
           <span class="kpi-label">Segunda Evaluación (P2)</span>
           <span class="kpi-value">09 al 13 Nov</span>
-          <span class="kpi-sub">TM: 09–11 · TV: 12–13 Nov</span>
+          <span class="kpi-sub">Inicia Lun 09 para Todos los Grupos</span>
         </div>
       </div>
 
@@ -1886,39 +1886,38 @@ const WEEK_VIEWS = {
   "S11": {
     weekNum: "Semana 11",
     range: "09 al 13 de Noviembre de 2026",
-    title: "Segunda Evaluación Parcial (P2) · Turnos Matutino y Vespertino",
-    highlight: "Actividad Oficial SEMS #03 · 09–11 Nov (TM) y 12–13 Nov (TV)",
+    title: "Segunda Evaluación Parcial (P2) · Todos los Grupos y Turnos",
+    highlight: "Inicio general el Lunes 09 de Noviembre para todos los semestres de Turno Matutino y Vespertino",
     days: [
       {
         name: "Lunes", date: "09 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "📝 Examen 2° Parcial · Turno Matutino (Día 1)", sub: "Inicio de evaluaciones escritas y prácticas del Bloque II", cat: "exam", priority: "high", shift: "☀️ Turno Matutino", tag: "Actividad #03" }
+          { title: "📝 Inicio General de Exámenes P2 (Todos los Grupos)", sub: "Arranque simultáneo de evaluaciones del 2° Parcial para todos los semestres en Turno Matutino y Vespertino.", cat: "exam", priority: "high", shift: "Ambos Turnos", tag: "Inicio P2" }
         ]
       },
       {
         name: "Martes", date: "10 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "📝 Examen 2° Parcial · Turno Matutino (Día 2)", sub: "Segundo día de rol de exámenes matutinos", cat: "exam", priority: "high", shift: "☀️ Turno Matutino", tag: "Actividad #03" }
+          { title: "Rol de Exámenes P2 · Día 2", sub: "Aplicación de evaluaciones en ambos turnos", cat: "exam", priority: "normal", shift: "Ambos turnos" }
         ]
       },
       {
         name: "Miércoles", date: "11 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "📝 Examen P2 (TM Día 3) · Cierre Matutino", sub: "Última jornada de evaluaciones matutinas", cat: "exam", priority: "high", shift: "☀️ Turno Matutino", tag: "Cierre TM" },
-          { title: "🏥 Feria de la Salud Institucional", sub: "Jornada de salud integral y prevención para el Turno Vespertino", cat: "normal", priority: "high", shift: "🌙 Turno Vespertino", tag: "Salud TV" }
+          { title: "Rol de Exámenes P2 · Día 3", sub: "Continuación de rol de evaluaciones ordinarias", cat: "exam", priority: "normal", shift: "Ambos turnos" },
+          { title: "🏥 Feria de la Salud Institucional", sub: "Jornada de salud integral y prevención para Turno Vespertino", cat: "normal", priority: "high", shift: "🌙 Turno Vespertino", tag: "Salud TV" }
         ]
       },
       {
         name: "Jueves", date: "12 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "📝 Examen 2° Parcial · Turno Vespertino (Día 1)", sub: "Inicio de evaluaciones para el Turno Vespertino", cat: "exam", priority: "high", shift: "🌙 Turno Vespertino", tag: "Actividad #03" }
+          { title: "Rol de Exámenes P2 · Día 4", sub: "Penúltima jornada de instrumentos de evaluación", cat: "exam", priority: "normal", shift: "Ambos turnos" }
         ]
       },
       {
         name: "Viernes", date: "13 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "📝 Examen 2° Parcial · Turno Vespertino (Día 2)", sub: "Cierre oficial de exámenes del 2° Parcial y fin del periodo P2", cat: "exam", priority: "high", shift: "🌙 Turno Vespertino", tag: "Cierre P2" },
-          { title: "Calificación y concentración de sábanas", sub: "Preparación de promedios para captura PACE", cat: "normal", priority: "normal", shift: "Docentes" }
+          { title: "🏁 Conclusión de Exámenes P2 y Cierre de Parcial", sub: "Último día de evaluaciones del 2° Parcial en ambos turnos y concentración de sábanas para captura PACE.", cat: "exam", priority: "high", shift: "Ambos Turnos", tag: "Cierre P2" }
         ]
       }
     ]

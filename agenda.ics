@@ -202,8 +202,8 @@ UID:ceb54-2627-p2eval-full@ceb54.edu.mx
 DTSTAMP:20261030T150000Z
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261114
-SUMMARY:📝 Segunda Evaluación Parcial (P2 · 09-11 Nov TM / 12-13 Nov TV)
-DESCRIPTION:Actividad Oficial #03 (Calendario Ajustado SEMS): Periodo de Segunda Evaluación Parcial en Semana 11. Turno Matutino: Lunes 09 al Miércoles 11 de Noviembre. Turno Vespertino: Jueves 12 y Viernes 13 de Noviembre.
+SUMMARY:📝 Segunda Evaluación Parcial (P2 · Inicia 09 Nov para todos los grupos)
+DESCRIPTION:Actividad Oficial #03 (Calendario Ajustado SEMS): Periodo de Segunda Evaluación Parcial en Semana 11 (09 al 13 de Noviembre). Aplicación simultánea que inicia el Lunes 09 de Noviembre para todos los grupos y turnos (Matutino y Vespertino).
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

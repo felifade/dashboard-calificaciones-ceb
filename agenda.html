@@ -3569,6 +3569,44 @@ const CULTURAL_EVENTS = [
       return CEB_BIRTHDAYS.filter(function(b) { return b.m === month && b.d === day; });
     }
 
+    // =========================================================================
+    // AUTO-DETECCIÓN INTELIGENTE DE FECHA, SEMANA ACTIVA Y MES ESCOLAR
+    // =========================================================================
+    const SEMESTER_WEEKS_TIMETABLE = [
+      { key: "S08", start: "2026-10-19", end: "2026-10-23", label: "Semana 08" },
+      { key: "S09", start: "2026-10-26", end: "2026-10-29", label: "Semana 09" },
+      { key: "S10", start: "2026-10-30", end: "2026-11-06", label: "Semana 10" },
+      { key: "S11", start: "2026-11-07", end: "2026-11-13", label: "Semana 11" },
+      { key: "S12", start: "2026-11-14", end: "2026-11-20", label: "Semana 12" },
+      { key: "S13", start: "2026-11-21", end: "2026-11-27", label: "Semana 13" },
+      { key: "S14", start: "2026-11-28", end: "2026-12-04", label: "Semana 14" },
+      { key: "S15", start: "2026-12-05", end: "2026-12-11", label: "Semana 15" },
+      { key: "S16", start: "2026-12-12", end: "2026-12-18", label: "Semana 16" }
+    ];
+
+    function getTodayIsoString() {
+      const now = new Date();
+      const yr = now.getFullYear();
+      const mo = String(now.getMonth() + 1).padStart(2, '0');
+      const da = String(now.getDate()).padStart(2, '0');
+      return `${yr}-${mo}-${da}`;
+    }
+
+    function autoDetectActiveSchoolWeek(isoToday) {
+      const match = SEMESTER_WEEKS_TIMETABLE.find(w => isoToday >= w.start && isoToday <= w.end);
+      if (match) return match.key;
+      if (isoToday < SEMESTER_WEEKS_TIMETABLE[0].start) return "S08";
+      return "S10"; // Por defecto Semana 10
+    }
+
+    function autoDetectActiveMonth(isoToday) {
+      const prefix = isoToday.substring(0, 7); // 'YYYY-MM'
+      if (AVAILABLE_MONTHS.includes(prefix)) {
+        return prefix;
+      }
+      return '2026-11';
+    }
+
     // Estado Global
     let currentWeekKey = 'S10';
     const weekKeys = ['S08', 'S09', 'S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17-18'];
@@ -3613,11 +3651,19 @@ const CULTURAL_EVENTS = [
     const origSwitchMainTab = window.switchMainTab;
 
     document.addEventListener('DOMContentLoaded', () => {
+      const todayIso = getTodayIsoString();
+      const detectedWeek = autoDetectActiveSchoolWeek(todayIso);
+      const detectedMonth = autoDetectActiveMonth(todayIso);
+
+      currentWeekKey = detectedWeek;
       renderWeekChips();
       renderActiveWeekView(currentWeekKey);
       renderTodayBirthdayBanner();
       renderCebEventsTimeline();
-      renderMonth('2026-10');
+
+      // Abrir el mes correspondiente detectado automáticamente
+      renderMonth(detectedMonth, document.getElementById('btn-m-' + detectedMonth));
+
       renderAuditEmails();
       renderTable23();
     });
@@ -3895,11 +3941,17 @@ const CULTURAL_EVENTS = [
     // RENDER: Chips de Semanas en Tab 1
     function renderWeekChips() {
       const cont = document.getElementById('weekChipsContainer');
+      const todayIso = getTodayIsoString();
+      const detectedWeek = autoDetectActiveSchoolWeek(todayIso);
+
       cont.innerHTML = weekKeys.map(k => {
         const w = WEEK_VIEWS[k];
         const isAct = (k === currentWeekKey) ? 'active' : '';
-        const star = (k === 'S10') ? '⭐ ' : '';
-        return `<button class="w-chip ${isAct}" onclick="selectWeek('${k}')">${star}${w.weekNum}</button>`;
+        const isCurrentNow = (k === detectedWeek);
+        const star = isCurrentNow ? '⭐ ' : '';
+        const currentTag = isCurrentNow ? ' (Activa)' : '';
+        const cleanName = w.weekNum.replace(' (Activa)', '');
+        return `<button class="w-chip ${isAct}" onclick="selectWeek('${k}')">${star}${cleanName}${currentTag}</button>`;
       }).join('');
     }
 
@@ -3930,14 +3982,28 @@ const CULTURAL_EVENTS = [
       document.getElementById('activeWeekSub').textContent = w.highlight;
 
       const grid = document.getElementById('weekDaysGrid');
+      const todayIso = getTodayIsoString();
+      const monthMapAbr = { 'Ene': 1, 'Feb': 2, 'Mar': 3, 'Abr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Ago': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dic': 12 };
+
       grid.innerHTML = w.days.map(d => {
-        const todayCls = d.isToday ? 'is-today' : '';
-        const todayTag = d.isToday ? '<span class="today-pill">HOY</span>' : '';
+        // Verificar si la fecha de este día coincide con la fecha de hoy
+        let isRealToday = false;
+        const parts = (d.date || '').split(' ');
+        if (parts.length >= 2) {
+          const dNum = parseInt(parts[0]);
+          const mNum = monthMapAbr[parts[1]];
+          const now = new Date();
+          if (dNum === now.getDate() && mNum === (now.getMonth() + 1)) {
+            isRealToday = true;
+          }
+        }
+        if (d.isToday) isRealToday = true; // Mantener compatibilidad si venía marcado
+
+        const todayCls = isRealToday ? 'is-today' : '';
+        const todayTag = isRealToday ? '<span class="today-pill">HOY</span>' : '';
 
         // Buscar cumpleañeros para este día
         let bdaysInDay = [];
-        const monthMapAbr = { 'Ene': 1, 'Feb': 2, 'Mar': 3, 'Abr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Ago': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dic': 12 };
-        const parts = (d.date || '').split(' ');
         if (parts.length >= 2) {
           const dNum = parseInt(parts[0]);
           const mNum = monthMapAbr[parts[1]];
@@ -4307,7 +4373,8 @@ const CULTURAL_EVENTS = [
 
         const iso = `${yr}-${String(mo).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
         const evs = MONTH_MAP[iso] || [];
-        const isToday = (iso === '2026-10-30') ? 'today' : '';
+        const realTodayIso = getTodayIsoString();
+        const isToday = (iso === realTodayIso) ? 'today' : '';
         const hasHoliday = evs.some(e => e.cat === 'holiday');
         const holidayCls = hasHoliday ? 'has-holiday' : '';
 

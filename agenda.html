@@ -3036,6 +3036,9 @@
     { label: "💻 Cierre Didáctica", cat: "union", desc: "Cierre formal de plataforma Moodle del curso DGB COSDAC Introducción a la Didáctica (18:00 h)." }
   ],
   "2026-11-02": [{ label: "💀 Suspensión Día de Muertos", cat: "holiday", desc: "Lunes inhábil oficial de calendario federal SEP / DGB por conmemoración del Día de Muertos. Sin actividades escolares." }],
+  "2026-11-04": [
+    { label: "🌟 Presentación del PEC", cat: "normal", desc: "Presentación de proyectos PEC en Audiorama: 5° Semestre (TM 09:00-10:40 h / TV 15:50-16:40 h) y 3° Semestre (TM 11:00-12:40 h). Nota Informativa S10 Subdirección." }
+  ],
   "2026-11-06": [{ label: "💚 Evidencias ABC", cat: "normal", desc: "Entrega oficial de fichas de evidencias de Aula Abierta y Cuadernillos de «El ABC de las Emociones» a Lic. Alexa Bahena (Tutoría V110)." }],
   "2026-11-09": [{ label: "📝 Inicio Exámenes P2 (Todos)", cat: "exam", desc: "Actividad Oficial SEMS #03 (Semana 11): Arranque simultáneo y general de evaluaciones del Segundo Parcial para todos los semestres en Turno Matutino y Turno Vespertino." }],
   "2026-11-10": [{ label: "📝 Exámenes P2 (Día 2)", cat: "exam", desc: "Segundo día de evaluaciones del Segundo Parcial en ambos turnos." }],
@@ -3183,7 +3186,9 @@ const WEEK_VIEWS = {
       {
         name: "Miércoles", date: "04 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "Revisión Colegiada de Portafolios", sub: "Cotejo de evidencias de aprendizaje Semanas 06 a 09", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+          { title: "🌟 Presentación del PEC (Audiorama)", sub: "5° Sem: TM 09:00-10:40 h (montaje 09:00) / TV 15:50-16:40 h · 3° Sem: TM 11:00-12:40 h en Audiorama", cat: "normal", priority: "high", shift: "5° y 3° Semestre", tag: "Audiorama · Subdirección" },
+          { title: "🐕 Operativos K9 y Cultura de la Legalidad", sub: "Operativos aleatorios en aulas y pláticas coordinadas por Lic. Rosy", cat: "normal", priority: "normal", shift: "Ambos turnos" },
+          { title: "Revisión Colegiada de Portafolios", sub: "Cotejo de evidencias de aprendizaje previo al arranque de P2", cat: "normal", priority: "normal", shift: "Docentes" }
         ]
       },
       {
@@ -3538,7 +3543,21 @@ const CULTURAL_EVENTS = [
     ],
     status: "Activo",
     tag: "Robótica"
-  }
+  },
+  {
+    id: "cult-12",
+    title: "🌟 Presentación del PEC: Proyectos Escolares Comunitarios (Audiorama)",
+    date: "Miércoles 04 de Noviembre de 2026",
+    category: "Proyectos Comunitarios y Academia",
+    venue: "Audiorama del Plantel CEB 5/4",
+    participants: "Estudiantes de 3° y 5° Semestre, Asesores y Docentes",
+    desc: "Presentación institucional de proyectos comunitarios conforme a programación de Subdirección: Quinto semestre (TM 09:00-10:40 h, montaje 09:00 a 09:15 h; TV 15:50-16:40 h) y Tercer semestre (TM 11:00-12:40 h).",
+    files: [
+      { name: "Nota Informativa Semana 10", type: "doc" }
+    ],
+    status: "Programado Oficial",
+    tag: "PEC Semestre A"
+  },
 ];
 
 
@@ -3713,7 +3732,8 @@ const CULTURAL_EVENTS = [
         'cult-08': '2026-11-11',
         'cult-09': '2026-11-19',
         'cult-10': '2026-12-17',
-        'cult-11': '2026-12-04'
+        'cult-11': '2026-12-04',
+        'cult-12': '2026-11-04'
       };
 
       CULTURAL_EVENTS.forEach(ce => {

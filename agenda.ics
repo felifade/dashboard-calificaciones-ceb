@@ -1387,4 +1387,16 @@ CATEGORIES:🌟 PROYECTO TRANSVERSAL PEC,SUBDIRECCIÓN ACADÉMICA
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
+BEGIN:VEVENT
+UID:direccion-form-sem-b-20261103@ceb54.dgb.edu.mx
+DTSTAMP:20261103T164500Z
+DTSTART:20261103T150000Z
+DTEND:20261103T200000Z
+SUMMARY:🚨 CEB 5/4: Formulario Estructura Semestre B y Promoción Horizontal (HOY 20:00 h)
+DESCRIPTION:Requerimiento urgente de Dirección (Maribel Alba Monroy / Mtra. Aurora):\n- Estructura educativa semestre B, proyección y cambio de categorías.\n- Llenado obligatorio antes de las 20:00 h.\n- Enlace: https://docs.google.com/forms/d/e/1FAIpQLScQYoOXd_H-QKoo--paOUBd0gn_aq5Q5boqLdnaFkUiSqhfaQ/viewform
+LOCATION:Google Forms · Dirección CEB 5/4
+CATEGORIES:🚨 URGENTE,DIRECCIÓN DEL PLANTEL,TRÁMITES RH
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
 END:VCALENDAR

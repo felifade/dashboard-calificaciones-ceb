@@ -2656,6 +2656,16 @@
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
       {
+        id: 15,
+        date: "03 de Noviembre de 2026 (15:01 hrs)",
+        sender: "Dirección (Maribel Alba Monroy / Mtra. Aurora)",
+        title: "🚨 Estructura Semestre B y Promoción Horizontal / Cambio de Categorías",
+        req: "Llenado obligatorio de formulario institucional en Google Forms antes de las 20:00 horas del día de hoy.",
+        delivery: "Formulario digital: https://docs.google.com/forms/d/e/1FAIpQLScQYoOXd_H-QKoo--paOUBd0gn_aq5Q5boqLdnaFkUiSqhfaQ/viewform",
+        status: "Atención Urgente (Hoy 20:00 h)",
+        ref: "Correo Oficial Dirección"
+      },
+      {
         id: 14,
         date: "30 de Octubre de 2026 (08:30 hrs)",
         sender: "Subdirección Académica / Dirección",
@@ -3036,6 +3046,9 @@
     { label: "💻 Cierre Didáctica", cat: "union", desc: "Cierre formal de plataforma Moodle del curso DGB COSDAC Introducción a la Didáctica (18:00 h)." }
   ],
   "2026-11-02": [{ label: "💀 Suspensión Día de Muertos", cat: "holiday", desc: "Lunes inhábil oficial de calendario federal SEP / DGB por conmemoración del Día de Muertos. Sin actividades escolares." }],
+  "2026-11-03": [
+    { label: "🚨 Formulario Semestre B / Categorías", cat: "pace", desc: "Requerimiento urgente Dirección: Estructura Semestre B, proyección y promoción horizontal / cambio de categorías. Límite: Hoy 20:00 h." }
+  ],
   "2026-11-04": [
     { label: "🌟 Presentación del PEC", cat: "normal", desc: "Presentación de proyectos PEC en Audiorama: 5° Semestre (TM 09:00-10:40 h / TV 15:50-16:40 h) y 3° Semestre (TM 11:00-12:40 h). Nota Informativa S10 Subdirección." }
   ],
@@ -3180,6 +3193,7 @@ const WEEK_VIEWS = {
       {
         name: "Martes", date: "03 Nov", isToday: false, isHoliday: false,
         events: [
+          { title: "🚨 LÍMITE HOY 20:00 H: Formulario Dirección", sub: "Estructura educativa semestre B, proyección y promoción horizontal / cambio de categorías (Google Forms Dirección).", cat: "pace", priority: "high", shift: "Dirección · Fatal Hoy 20:00 h", tag: "Término Fatal Hoy" },
           { title: "Reanudación de Clases y Cierre Progresiones P2", sub: "Resolución de dudas y consolidación de temas Bloque II", cat: "normal", priority: "normal", shift: "Ambos turnos" }
         ]
       },

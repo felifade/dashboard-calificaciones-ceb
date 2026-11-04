@@ -2499,7 +2499,7 @@
               <span class="badge badge-gold" id="activeWeekDates">30 OCT AL 06 NOV 2026</span>
             </div>
             <h2 id="activeWeekTitle">📍 Semana Activa: Consolidación Bloque II, Puente Día de Muertos y ABC Emociones</h2>
-            <p id="activeWeekSub">Inicia hoy Vie 30 Oct · Lunes 02 Nov Asueto Oficial SEP · Cierra Vie 06 Nov con entrega tutoría</p>
+            <p id="activeWeekSub">Consolidación Bloque II · Presentación PEC Mié 04 Nov · Cierra Vie 06 Nov con entrega tutoría</p>
           </div>
         </div>
 
@@ -2512,7 +2512,7 @@
           <button class="m-day-btn" onclick="filterMobileDay('Martes', this)">Mar</button>
           <button class="m-day-btn" onclick="filterMobileDay('Miércoles', this)">Mié</button>
           <button class="m-day-btn" onclick="filterMobileDay('Jueves', this)">Jue</button>
-          <button class="m-day-btn" onclick="filterMobileDay('Viernes', this)">Vie 📍</button>
+          <button class="m-day-btn" onclick="filterMobileDay('Viernes', this)">Vie</button>
         </div>
 
         <div class="week-5days-grid" id="weekDaysGrid">
@@ -3161,7 +3161,7 @@ const WEEK_VIEWS = {
         ]
       },
       {
-        name: "Viernes", date: "30 Oct", isToday: true, isHoliday: true,
+        name: "Viernes", date: "30 Oct", isToday: false, isHoliday: true,
         events: [
           { title: "🎉 DÍA DE ASUETO: Gestión Sindical D-II-79 avalada por Dirección", sub: "Día concedido gestionado por la Delegación Sindical D-II-79 (Sección 15 SNTE) y avalado por la Dirección para el disfrute y preservación de las tradiciones del Día de Muertos.", cat: "holiday", priority: "high", shift: "Comunidad Escolar", tag: "Gestión D-II-79 · Dirección" },
           { title: "📚 Difusión Guías de Estudio DGB", sub: "Oficio formal remitido a Subdirección", cat: "normal", priority: "normal", shift: "Atendido" }
@@ -3173,11 +3173,11 @@ const WEEK_VIEWS = {
     weekNum: "Semana 10 (Activa)",
     range: "30 de Octubre al 06 de Noviembre de 2026",
     title: "📍 Semana Activa: Consolidación Bloque II, Puente Día de Muertos y ABC Emociones",
-    highlight: "Inicia hoy Vie 30 Oct · Lunes 02 Nov Asueto Oficial SEP · Cierra Vie 06 Nov con entrega tutoría",
+    highlight: "Consolidación Bloque II · Presentación PEC Mié 04 Nov · Cierra Vie 06 Nov con entrega tutoría",
     isCurrent: true,
     days: [
       {
-        name: "Viernes", date: "30 Oct", isToday: true, isHoliday: true,
+        name: "Viernes", date: "30 Oct", isToday: false, isHoliday: true,
         events: [
           { title: "🎉 DÍA DE ASUETO: Gestión Sindical D-II-79 avalada por Dirección", sub: "Día concedido gestionado por la Delegación Sindical D-II-79 (Sección 15 SNTE) y avalado por la Dirección para el disfrute y preservación de las tradiciones del Día de Muertos.", cat: "holiday", priority: "high", shift: "Comunidad Escolar", tag: "Gestión D-II-79 · Dirección" },
           { title: "📚 Difusión de Guías de Estudio Independiente DGB", sub: "Oficio formal a Subdirección y entrega web a estudiantes", cat: "normal", priority: "normal", shift: "Atendido" },
@@ -4000,7 +4000,7 @@ const CULTURAL_EVENTS = [
       const monthMapAbr = { 'Ene': 1, 'Feb': 2, 'Mar': 3, 'Abr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Ago': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dic': 12 };
 
       grid.innerHTML = w.days.map(d => {
-        // Verificar si la fecha de este día coincide con la fecha de hoy
+        // Verificar dinámicamente si la fecha de esta columna coincide exactamente con la fecha de HOY
         let isRealToday = false;
         const parts = (d.date || '').split(' ');
         if (parts.length >= 2) {
@@ -4011,7 +4011,6 @@ const CULTURAL_EVENTS = [
             isRealToday = true;
           }
         }
-        if (d.isToday) isRealToday = true; // Mantener compatibilidad si venía marcado
 
         const todayCls = isRealToday ? 'is-today' : '';
         const todayTag = isRealToday ? '<span class="today-pill">HOY</span>' : '';

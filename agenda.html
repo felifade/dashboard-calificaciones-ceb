@@ -3052,6 +3052,9 @@
   "2026-11-04": [
     { label: "🌟 Presentación del PEC", cat: "normal", desc: "Presentación de proyectos PEC en Audiorama: 5° Semestre (TM 09:00-10:40 h / TV 15:50-16:40 h) y 3° Semestre (TM 11:00-12:40 h). Nota Informativa S10 Subdirección." }
   ],
+  "2026-11-05": [
+    { label: "🐕 Operativo K9 / Policía Municipal", cat: "normal", desc: "Operativo de inspección y seguridad escolar por parte de la Policía Municipal (Turno Matutino) para detección de sustancias ilícitas en aulas y mochilas." }
+  ],
   "2026-11-06": [{ label: "💚 Evidencias ABC", cat: "normal", desc: "Entrega oficial de fichas de evidencias de Aula Abierta y Cuadernillos de «El ABC de las Emociones» a Lic. Alexa Bahena (Tutoría V110)." }],
   "2026-11-09": [{ label: "📝 Inicio Exámenes P2 (Todos)", cat: "exam", desc: "Actividad Oficial SEMS #03 (Semana 11): Arranque simultáneo y general de evaluaciones del Segundo Parcial para todos los semestres en Turno Matutino y Turno Vespertino." }],
   "2026-11-10": [{ label: "📝 Exámenes P2 (Día 2)", cat: "exam", desc: "Segundo día de evaluaciones del Segundo Parcial en ambos turnos." }],
@@ -3200,7 +3203,8 @@ const WEEK_VIEWS = {
       {
         name: "Jueves", date: "05 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "Preparación Rol de Exámenes P2", sub: "Ejercicios de repaso y verificación de reactivos", cat: "exam", priority: "normal", shift: "Ambos turnos" }
+          { title: "🐕 Operativo Policía Municipal: Detección de Sustancias Ilícitas", sub: "Inspección preventiva y protocolo K9 en aulas del Turno Matutino por la Policía Municipal en coordinación con Subdirección.", cat: "normal", priority: "high", shift: "Turno Matutino", tag: "Seguridad y Prevención" },
+          { title: "Preparación Rol de Exámenes P2", sub: "Ejercicios de repaso y verificación de reactivos previo al arranque de P2", cat: "exam", priority: "normal", shift: "Ambos turnos" }
         ]
       },
       {
@@ -3564,6 +3568,20 @@ const CULTURAL_EVENTS = [
     status: "Programado Oficial",
     tag: "PEC Semestre A"
   },
+  {
+    id: "cult-13",
+    title: "🐕 Operativo de Seguridad Escolar: Policía Municipal (Sustancias Ilícitas)",
+    date: "Jueves 05 de Noviembre de 2026",
+    category: "Seguridad y Protección Escolar",
+    venue: "Aulas del Plantel CEB 5/4 (Turno Matutino)",
+    participants: "Policía Municipal, Directivos, Docentes y Alumnado Matutino",
+    desc: "Operativo sorpresa de inspección y prevención realizado por elementos de la Policía Municipal en el Turno Matutino para la detección y búsqueda de sustancias ilícitas en coordinación con los lineamientos de seguridad escolar y cultura de la legalidad.",
+    files: [
+      { name: "Reporte de Operativo K9 / Municipal", type: "doc" }
+    ],
+    status: "Concluido y Registrado",
+    tag: "Protección y Legalidad"
+  },
 ];
 
 
@@ -3785,7 +3803,8 @@ const CULTURAL_EVENTS = [
         'cult-09': '2026-11-19',
         'cult-10': '2026-12-17',
         'cult-11': '2026-12-04',
-        'cult-12': '2026-11-04'
+        'cult-12': '2026-11-04',
+        'cult-13': '2026-11-05'
       };
 
       CULTURAL_EVENTS.forEach(ce => {

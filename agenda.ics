@@ -1399,4 +1399,15 @@ CATEGORIES:🚨 URGENTE,DIRECCIÓN DEL PLANTEL,TRÁMITES RH
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 END:VEVENT
+BEGIN:VEVENT
+UID:operativo-policia-municipal-20261105@ceb54.dgb.edu.mx
+DTSTAMP:20261105T120000Z
+DTSTART;VALUE=DATE:20261105
+SUMMARY:🐕 CEB 5/4: Operativo Policía Municipal (Sustancias Ilícitas · TM)
+DESCRIPTION:Operativo de inspección preventiva y seguridad escolar realizado por la Policía Municipal en el Turno Matutino para la detección de sustancias ilícitas en coordinación con Subdirección Académica.
+LOCATION:Aulas CEB 5/4 · Turno Matutino
+CATEGORIES:🚨 SEGURIDAD ESCOLAR,PROTECCIÓN CIVIL
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

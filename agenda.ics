@@ -208,11 +208,38 @@ STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:ceb54-2627-feriasalud-tv@ceb54.edu.mx
-DTSTAMP:20261030T150000Z
-DTSTART;VALUE=DATE:20261111
-DTEND;VALUE=DATE:20261112
-SUMMARY:🏥 Feria de la Salud (Turno Vespertino)
-DESCRIPTION:Jornada institucional de promoción de la salud para la comunidad estudiantil del Turno Vespertino.
+DTSTAMP:20261109T120000Z
+DTSTART:20261111T150000
+DTEND:20261111T164000
+SUMMARY:🩺 Feria de Salud Integral (Turno Vespertino)
+DESCRIPTION:Feria de Salud Integral para estudiantes de Turno Vespertino (15:00 a 16:40 hrs). Responsable: Docente Fabiola Becerra.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-activismo-violencia@ceb54.edu.mx
+DTSTAMP:20261109T120000Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+SUMMARY:🧡 Inicio: 16 Días de Activismo contra la Violencia hacia Mujeres y Niñas
+DESCRIPTION:Coordina Departamento de Orientación Educativa en ambos turnos. Espacios educativos libres de violencia.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-caed-video-deadline@ceb54.edu.mx
+DTSTAMP:20261109T120000Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
+SUMMARY:🎥 Fecha Límite: Video Institucional CAED "Construyendo un Bachillerato Nacional Inclusivo"
+DESCRIPTION:Fecha límite para coordinar participación con el Área Académica para el video institucional incluyente del CAED.
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-encuesta-trayectorias@ceb54.edu.mx
+DTSTAMP:20261109T120000Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261205
+SUMMARY:📊 Encuesta Trayectorias en Transición (1er Semestre)
+DESCRIPTION:Aplicación en línea para estudiantes de primer semestre del 10 de noviembre al 4 de diciembre de 2026.
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

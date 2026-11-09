@@ -2656,6 +2656,16 @@
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
       {
+        id: 16,
+        date: "09 de Noviembre de 2026",
+        sender: "Subdirección Académica (CEB 5/4)",
+        title: "📌 Nota Informativa | Semana 11 (09 al 13 de Noviembre)",
+        req: "1. Evaluación P2 (considerar lineamientos y alumnos a distancia). 2. Feria Salud TV (11 Nov, 15:00-16:40 h, Mtra. Fabiola). 3. Inicio 16 días de activismo contra la violencia a mujeres/niñas (Orientación). 4. Agendar en Orientación entrega de boletas P2 (TM: 19 Nov / TV: 19 y 20 Nov). 5. Invitación video CAED 'Construyendo un Bachillerato Nacional Inclusivo' (Límite: 12 Nov). 6. Encuesta Trayectorias en Transición para 1er semestre (10 Nov al 04 Dic).",
+        delivery: "Orientación Educativa / Área Académica según actividad",
+        status: "En curso (Semana 11)",
+        ref: "Circular Oficial Semana 11"
+      },
+      {
         id: 15,
         date: "03 de Noviembre de 2026 (15:01 hrs)",
         sender: "Dirección (Maribel Alba Monroy / Mtra. Aurora)",
@@ -3072,12 +3082,11 @@
     { label: "🏛️ Asamblea D-II-79 (NO HAY CLASES)", cat: "union", desc: "Asamblea Delegacional D-II-79 (09:30 h) por XXIV Congreso Extraordinario Sección 15 SNTE. NO HAY CLASES." },
     { label: "⚠️ LÍMITE CAPTURA PACE P2", cat: "pace", desc: "Actividad Oficial SEMS #04: Fecha límite improrrogable de captura de calificaciones del 2° Parcial en plataforma PACE." }
   ],
-  "2026-11-18": [{ label: "👨‍👩‍👧 Boletas P2 (TM)", cat: "parents", desc: "Actividad Oficial SEMS #05: Entrega de boletas del 2° Parcial a padres de familia del Turno Matutino." }],
   "2026-11-19": [
-    { label: "👨‍👩‍👧 Boletas P2 (TV Día 1)", cat: "parents", desc: "Actividad Oficial SEMS #05: Entrega de boletas del 2° Parcial a padres de familia del Turno Vespertino (19 y 20 Nov)." },
+    { label: "👨‍👩‍👧 Boletas P2 (TM y TV Día 1)", cat: "parents", desc: "Entrega de boletas P2 a padres de familia: Turno Matutino (19 Nov) y Turno Vespertino (19 y 20 Nov). Nota Informativa S11." },
     { label: "🎓 Feria Vocacional", cat: "normal", desc: "Feria Vocacional Universitaria 2026 (08:30 a 13:00 h, ambos turnos)." }
   ],
-  "2026-11-20": [{ label: "👨‍👩‍👧 Boletas P2 (TV Día 2)", cat: "parents", desc: "Actividad Oficial SEMS #05: Segundo día de entrega de boletas del 2° Parcial en Turno Vespertino." }],
+  "2026-11-20": [{ label: "👨‍👩‍👧 Boletas P2 (TV Día 2)", cat: "parents", desc: "Actividad Oficial SEMS #05 / Nota S11: Segundo día de entrega de boletas del 2° Parcial en Turno Vespertino." }],
   "2026-11-27": [{ label: "🏥 Feria Salud (TM)", cat: "normal", desc: "Feria Institucional de la Salud para estudiantes del Turno Matutino." }],
   "2026-12-04": [{ label: "💚 Cierre ABC Emociones", cat: "normal", desc: "Fecha límite de carga y concentración de evidencias de El ABC de las Emociones en Google Drive institucional." }],
   "2026-12-10": [{ label: "📝 Inicia Examen P3", cat: "exam", desc: "Actividad Oficial SEMS #07: Inicia Tercera Evaluación Parcial (10 al 16 de Diciembre)." }],
@@ -3224,26 +3233,30 @@ const WEEK_VIEWS = {
       {
         name: "Lunes", date: "09 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "📝 Inicio General de Exámenes P2 (Todos los Grupos)", sub: "Arranque simultáneo de evaluaciones del 2° Parcial para todos los semestres en Turno Matutino y Vespertino.", cat: "exam", priority: "high", shift: "Ambos Turnos", tag: "Inicio P2" }
+          { title: "📝 Inicio General de Exámenes P2 (Todos los Grupos)", sub: "Arranque simultáneo de evaluaciones P2. Considerar lineamientos y seguimiento a alumnos a distancia.", cat: "exam", priority: "high", shift: "Ambos Turnos", tag: "Inicio P2" },
+          { title: "🧡 Inicio: 16 Días de Activismo", sub: "Sensibilización y prevención contra la violencia hacia las mujeres y niñas (Coordina Orientación Educativa)", cat: "normal", priority: "normal", shift: "Ambos Turnos", tag: "Orientación" },
+          { title: "📋 Agendar Entrega de Boletas P2", sub: "Tutores acudir a Orientación Educativa para agendar reunión con padres (19 Nov TM / 19 y 20 Nov TV)", cat: "parents", priority: "high", shift: "Tutores", tag: "Acción Tutorial" }
         ]
       },
       {
         name: "Martes", date: "10 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "Rol de Exámenes P2 · Día 2", sub: "Aplicación de evaluaciones en ambos turnos", cat: "exam", priority: "normal", shift: "Ambos turnos" }
+          { title: "Rol de Exámenes P2 · Día 2", sub: "Aplicación de evaluaciones en ambos turnos", cat: "exam", priority: "normal", shift: "Ambos turnos" },
+          { title: "📊 Encuesta Trayectorias en Transición", sub: "Apertura de aplicación en línea para estudiantes de 1er semestre (10 Nov al 04 Dic)", cat: "normal", priority: "normal", shift: "1er Semestre", tag: "SEP / DGB" }
         ]
       },
       {
         name: "Miércoles", date: "11 Nov", isToday: false, isHoliday: false,
         events: [
           { title: "Rol de Exámenes P2 · Día 3", sub: "Continuación de rol de evaluaciones ordinarias", cat: "exam", priority: "normal", shift: "Ambos turnos" },
-          { title: "🏥 Feria de la Salud Institucional", sub: "Jornada de salud integral y prevención para Turno Vespertino", cat: "normal", priority: "high", shift: "🌙 Turno Vespertino", tag: "Salud TV" }
+          { title: "🩺 Feria de Salud Integral (Turno Vespertino)", sub: "15:00 a 16:40 hrs en patio/aulas. Responsable: Docente Fabiola Becerra.", cat: "normal", priority: "high", shift: "🌙 Turno Vespertino", tag: "Salud TV" }
         ]
       },
       {
         name: "Jueves", date: "12 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "Rol de Exámenes P2 · Día 4", sub: "Penúltima jornada de instrumentos de evaluación", cat: "exam", priority: "normal", shift: "Ambos turnos" }
+          { title: "Rol de Exámenes P2 · Día 4", sub: "Penúltima jornada de instrumentos de evaluación", cat: "exam", priority: "normal", shift: "Ambos turnos" },
+          { title: "🎥 Límite Video CAED: 'Construyendo un Bachillerato Nacional Inclusivo'", sub: "Interesados acudir al Área Académica para coordinar participación antes de esta fecha.", cat: "normal", priority: "normal", shift: "Personal Docente", tag: "CAED Inclusivo" }
         ]
       },
       {

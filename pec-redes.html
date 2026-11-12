@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#003366">
+    <title>CEB 5/4 · Campaña PEC Transmedia y Redes Sociales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ceb-blue: #003366;
+            --ceb-blue-light: #eff6ff;
+            --ceb-navy: #0f2744;
+            --cd-cyan: #0284c7;
+            --cd-cyan-light: #e0f2fe;
+            --accent-gold: #b45309;
+            --accent-gold-bg: #fef3c7;
+            --accent-purple: #7c3aed;
+            --accent-purple-bg: #f3e8ff;
+            
+            --bg-page: #f8fafc;
+            --card-bg: #ffffff;
+            --border-subtle: #e2e8f0;
+            --border-strong: #cbd5e1;
+            
+            --text-heading: #0f172a;
+            --text-body: #334155;
+            --text-muted: #64748b;
+            
+            --success-text: #065f46;
+            --success-bg: #ecfdf5;
+            --success-border: #a7f3d0;
+            
+            --shadow-sm: 0 1px 3px rgba(0, 51, 102, 0.05);
+            --shadow-md: 0 4px 14px rgba(0, 51, 102, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 51, 102, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-body);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        .layout-wrapper {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        /* BARRA DE NAVEGACIÓN INSTITUCIONAL */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 10px 16px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-sm);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-nav .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--ceb-navy);
+        }
+
+        .top-nav .links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .top-nav a {
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 8px;
+            color: var(--text-muted);
+            background: #f1f5f9;
+            transition: all 0.2s;
+        }
+
+        .top-nav a:hover, .top-nav a.active {
+            background: var(--ceb-blue);
+            color: #ffffff;
+        }
+
+        /* HEADER PRINCIPAL */
+        .masthead {
+            background: linear-gradient(135deg, #003366 0%, #0f2744 100%);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 28px 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .masthead::after {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .masthead .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .badge-chip {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .badge-chip.cyan { background: #e0f2fe; color: #0369a1; }
+        .badge-chip.gold { background: #fef3c7; color: #92400e; }
+        .badge-chip.purple { background: #f3e8ff; color: #6b21a8; }
+
+        .masthead h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        @media (min-width: 768px) {
+            .masthead h1 { font-size: 30px; }
+        }
+
+        .masthead p.lead {
+            font-size: 14px;
+            color: #cbd5e1;
+            max-width: 820px;
+            line-height: 1.5;
+        }
+
+        /* SELECTOR DE PESTAÑAS (SEGMENTED CONTROL) */
+        .tabs-bar {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+            margin-bottom: 20px;
+            scrollbar-width: none;
+        }
+        .tabs-bar::-webkit-scrollbar { display: none; }
+
+        .tab-btn {
+            background: #ffffff;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--cd-cyan);
+            color: var(--cd-cyan);
+        }
+
+        .tab-btn.active {
+            background: var(--ceb-blue);
+            color: #ffffff;
+            border-color: var(--ceb-blue);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* CONTENIDO DE PESTAÑAS */
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* TARJETAS Y MÓDULOS VISUALES */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--ceb-navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* COMPARADOR LADO A LADO */
+        .compare-box {
+            border-radius: 14px;
+            padding: 18px;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .compare-box.matutino {
+            background: #fffbeb;
+            border-color: #fde68a;
+        }
+
+        .compare-box.vespertino {
+            background: #f5f3ff;
+            border-color: #ddd6fe;
+        }
+
+        .compare-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .compare-box.matutino h3 { color: #92400e; }
+        .compare-box.vespertino h3 { color: #5b21b6; }
+
+        .feature-list {
+            list-style: none;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+
+        .feature-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.4;
+        }
+
+        /* BUMPER CORTINILLA SHOWCASE */
+        .bumper-banner {
+            background: linear-gradient(90deg, #eff6ff 0%, #f0fdf4 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .bumper-text h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ceb-navy);
+            margin-bottom: 2px;
+        }
+
+        .bumper-text p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .bumper-badge {
+            background: var(--ceb-blue);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ESTRUCTURA DE GUION EN 3 PASOS */
+        .step-timeline {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        @media (min-width: 768px) {
+            .step-timeline { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .step-item {
+            background: #f8fafc;
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 14px;
+            position: relative;
+        }
+
+        .step-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--cd-cyan);
+            background: var(--cd-cyan-light);
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--text-heading);
+            margin-bottom: 4px;
+        }
+
+        .step-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* FÓRMULA DE COSTEO VISUAL */
+        .formula-box {
+            background: #ffffff;
+            border: 2px dashed #38bdf8;
+            border-radius: 12px;
+            padding: 14px;
+            margin: 14px 0;
+            text-align: center;
+        }
+
+        .formula-math {
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--ceb-navy);
+            margin-bottom: 4px;
+        }
+
+        .formula-note {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* CRONOGRAMA SEMANAL */
+        .week-card {
+            border-left: 4px solid var(--cd-cyan);
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .week-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .week-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--ceb-navy);
+        }
+
+        .week-dates {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .week-details {
+            font-size: 12px;
+            color: var(--text-body);
+            line-height: 1.5;
+        }
+
+        .week-tag-mat {
+            color: #b45309;
+            font-weight: 700;
+        }
+
+        .week-tag-ves {
+            color: #7c3aed;
+            font-weight: 700;
+        }
+
+        /* RÚBRICA COMPACTA */
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .rubric-table th, .rubric-table td {
+            border: 1px solid var(--border-subtle);
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .rubric-table th {
+            background: #f8fafc;
+            color: var(--ceb-navy);
+            font-weight: 700;
+        }
+
+        .rubric-table tr:hover td {
+            background: #f8fafc;
+        }
+
+        /* FOOTER */
+        .footer-note {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 30px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-subtle);
+        }
+    </style>
+</head>
+<body>
+    <div class="layout-wrapper">
+
+        <!-- NAVEGACIÓN -->
+        <nav class="top-nav">
+            <div class="brand">
+                <span>🏛️ CEB 5/4 "Profr. Rafael Ramírez"</span>
+                <span style="color:var(--border-strong);">|</span>
+                <span style="color:var(--cd-cyan);">Cultura Digital I</span>
+            </div>
+            <div class="links">
+                <a href="pec.html">📊 Calificaciones PEC (P2)</a>
+                <a href="alumnos.html">🎓 Consulta Alumnos</a>
+                <a href="agenda.html">📅 Agenda Escolar</a>
+                <a href="pec-redes.html" class="active">🌐 Redes PEC (P3)</a>
+            </div>
+        </nav>
+
+        <!-- MASTHEAD -->
+        <header class="masthead">
+            <div class="badges">
+                <span class="badge-chip cyan">Campaña Transmedia P3</span>
+                <span class="badge-chip gold">☀️ Matutino (M101–M106)</span>
+                <span class="badge-chip purple">🌙 Vespertino (V107–V111)</span>
+            </div>
+            <h1>Estrategia Unificada de Redes Sociales y Cierre PEC</h1>
+            <p class="lead">
+                Articulación pedagógica oficial de <strong>Cultura Digital I</strong> para el Tercer Parcial (Semanas 12 a 16). Integramos la producción de contenidos en redes (TikTok / Reels / Cortometrajes) unificando ambos turnos bajo el sello institucional del CEB 5/4.
+            </p>
+        </header>
+
+        <!-- BUMPER SHOWCASE COMÚN -->
+        <div class="bumper-banner">
+            <div class="bumper-text">
+                <h4>🎬 Sello Institucional Oficial Unificado (5 segundos)</h4>
+                <p>Todos los videos de ambos turnos llevan la misma cortinilla inicial con Ken Burns y sonido estéreo oficial en Do Mayor 9.</p>
+            </div>
+            <span class="bumper-badge">MP4 1080p · C Maj 9 Chime</span>
+        </div>
+
+        <!-- PESTAÑAS (SEGMENTED CONTROL) -->
+        <div class="tabs-bar">
+            <button class="tab-btn active" onclick="switchTab('general', this)">✨ Visión General</button>
+            <button class="tab-btn" onclick="switchTab('matutino', this)">☀️ Matutino (Mercado & Reels)</button>
+            <button class="tab-btn" onclick="switchTab('vespertino', this)">🌙 Vespertino (Cine & Trailers)</button>
+            <button class="tab-btn" onclick="switchTab('cronograma', this)">📅 Cronograma S12–S16</button>
+            <button class="tab-btn" onclick="switchTab('rubrica', this)">📐 Rúbrica & Tips de Celular</button>
+        </div>
+
+        <!-- 1. VISIÓN GENERAL -->
+        <div id="tab-general" class="tab-panel active">
+            <div class="card">
+                <div class="card-title">💡 El Eje Articulador: «Nuestras Manos, Nuestras Raíces y Nuestra Voz»</div>
+                <p style="font-size:13px; color:var(--text-body); margin-bottom:16px;">
+                    En Cultura Digital I unificamos el aprendizaje técnico (grabación con smartphone, licencias libres y edición no lineal) sin romper la soberanía temática de cada turno:
+                </p>
+                <div class="grid-2">
+                    <div class="compare-box matutino">
+                        <div>
+                            <h3>☀️ Turno Matutino</h3>
+                            <p style="font-size:12px; font-weight:700; color:#b45309; margin-bottom:8px;">«Ahorramos, Emprendemos y Viajamos»</p>
+                            <ul class="feature-list">
+                                <li>🛍️ <strong>Producto Físico:</strong> Artesanías (pulseras, bordados, lámparas) para fondear el viaje al Museo Memoria y Tolerancia (CDMX).</li>
+                                <li>📱 <strong>Campaña en Redes:</strong> Reels / TikToks verticales (9:16) de 45 a 60 seg explicando el costeo y convocando al Mercado.</li>
+                                <li>🗓️ <strong>Día Clave:</strong> <em>Miércoles 09 de Diciembre de 2026</em> (07:00 a 11:30 h).</li>
+                            </ul>
+                        </div>
+                        <span style="font-size:11px; background:#fde68a; color:#92400e; padding:4px 8px; border-radius:6px; font-weight:700; width:fit-content;">Manos que Crean</span>
+                    </div>
+
+                    <div class="compare-box vespertino">
+                        <div>
+                            <h3>🌙 Turno Vespertino</h3>
+                            <p style="font-size:12px; font-weight:700; color:#7c3aed; margin-bottom:8px;">«Raíces que Permanecen · Lo que Permanece»</p>
+                            <ul class="feature-list">
+                                <li>🎭 <strong>Producto Físico:</strong> Muestra comunitaria y reflexión ética de tradición viva (festival 28-octubre).</li>
+                                <li>🎬 <strong>Campaña en Redes:</strong> Micro-trailers verticales (9:16) de 30 a 45 seg + Cortometraje máster horizontal 16:9 (2 a 3 min).</li>
+                                <li>🗓️ <strong>Día Clave:</strong> <em>Semana 16</em> (Proyección en auditorio y muestra escolar).</li>
+                            </ul>
+                        </div>
+                        <span style="font-size:11px; background:#ddd6fe; color:#6b21a8; padding:4px 8px; border-radius:6px; font-weight:700; width:fit-content;">Voces que Recuerdan</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SINERGIA INTERTURNOS -->
+            <div class="card">
+                <div class="card-title">🤝 Dinámica Cruzada Interturnos</div>
+                <div class="step-timeline">
+                    <div class="step-item">
+                        <span class="step-number">Canal 1</span>
+                        <div class="step-title">Catálogo Digital en el Portal</div>
+                        <div class="step-desc">Se publican fotos, precios y pedidos previos de las artesanías del matutino para que la comunidad vespertina pueda encargar sus piezas.</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">Canal 2</span>
+                        <div class="step-title">Venta Testimonial Vespertina</div>
+                        <div class="step-desc">A la entrada del turno vespertino (13:30 h del 09 de dic) se mantendrá un stand para venta de remanentes del Mercado Artesanal.</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">Canal 3</span>
+                        <div class="step-title">Cineclub en Laboratorio</div>
+                        <div class="step-desc">En las clases del matutino se proyectan los micro-trailers del vespertino para coevaluación y comentarios constructivos entre turnos.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. TURNO MATUTINO -->
+        <div id="tab-matutino" class="tab-panel">
+            <div class="card">
+                <div class="card-title">🛍️ Plan de Campaña: Mercado Artesanal PEC Matutino</div>
+                <p style="font-size:13px; color:var(--text-body);">
+                    El producto final del matutino se expone y vende el <strong>Miércoles 09 de Diciembre de 2026</strong> en Estacionamiento Exterior y Audiorama. En Cultura Digital I cada equipo produce un Reel/TikTok para impulsar sus ventas.
+                </p>
+
+                <!-- GUION EN 3 ACTOS -->
+                <h4 style="font-size:13px; font-weight:700; margin:16px 0 8px; color:var(--ceb-navy);">Estructura del Video de 45 a 60 Segundos (Vertical 9:16):</h4>
+                <div class="step-timeline">
+                    <div class="step-item">
+                        <span class="step-number">0:00 - 0:05</span>
+                        <div class="step-title">1. El Gancho Visual</div>
+                        <div class="step-desc">Primer plano en movimiento de la pulsera, bordado o lámpara. Texto en pantalla: <em>«¿Sabías que una artesanía puede pagar un viaje?»</em></div>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">0:05 - 0:35</span>
+                        <div class="step-title">2. Proceso y Costeo Transparente</div>
+                        <div class="step-desc">Manos trabajando a velocidad rápida. Se explica el valor: horas de trabajo + costo de materiales. Muestra del empaque y logo con IA.</div>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">0:35 - 0:60</span>
+                        <div class="step-title">3. Llamado a la Acción (CTA)</div>
+                        <div class="step-desc">Invitación clara: <em>«Te esperamos este Miércoles 09 de Dic de 09:00 a 10:40 h en el CEB 5/4. ¡Apóyanos a llegar al Museo Memoria y Tolerancia!»</em>. Cortinilla oficial al final.</div>
+                    </div>
+                </div>
+
+                <!-- FÓRMULA DE COSTEO -->
+                <div class="formula-box">
+                    <div class="formula-math">Precio Sugerido = Costo de Materiales + (Horas de Trabajo × $40 a $50/h)</div>
+                    <div class="formula-note">Tope pedagógico para evitar precios fuera de mercado. Se incentiva vender paquetes: "1 por $60, 2 por $100".</div>
+                </div>
+
+                <!-- ESTÁNDARES DEL PUESTO -->
+                <div style="background:#f8fafc; border-radius:12px; padding:14px; font-size:12px; line-height:1.5;">
+                    <strong>📋 Requisitos por Changarrito:</strong>
+                    Mínimo <strong>30 productos terminados</strong> por equipo (5 integrantes × 6 piezas), bolsa de celofán individual con etiqueta/logo diseñado con IA, letrero visible del puesto y mantel personalizado para vestir la mesa.
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. TURNO VESPERTINO -->
+        <div id="tab-vespertino" class="tab-panel">
+            <div class="card">
+                <div class="card-title">🎬 Plan de Campaña: Cortometrajes «Lo que Permanece»</div>
+                <p style="font-size:13px; color:var(--text-body);">
+                    El turno vespertino sintetiza el rescate de tradiciones y memoria viva en una pieza cinematográfica escolar de <strong>2 a 3 minutos</strong> y un micro-trailer para redes.
+                </p>
+
+                <div class="grid-2" style="margin-top:14px;">
+                    <div style="background:#f8fafc; border:1px solid var(--border-subtle); border-radius:12px; padding:14px;">
+                        <h4 style="font-size:13px; color:#5b21b6; margin-bottom:6px;">📱 Micro-Trailer Vertical (9:16)</h4>
+                        <ul style="font-size:12px; list-style:none;">
+                            <li>• <strong>Duración:</strong> 30 a 45 segundos.</li>
+                            <li>• <strong>Uso:</strong> TikTok, Reels y Shorts.</li>
+                            <li>• <strong>Enfoque:</strong> Las 3 tomas más impactantes del festival de catrines/leyendas con música misteriosa y texto evocador.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background:#f8fafc; border:1px solid var(--border-subtle); border-radius:12px; padding:14px;">
+                        <h4 style="font-size:13px; color:#0369a1; margin-bottom:6px;">📽️ Cortometraje Máster (16:9)</h4>
+                        <ul style="font-size:12px; list-style:none;">
+                            <li>• <strong>Duración:</strong> 2:00 a 3:00 minutos exactos.</li>
+                            <li>• <strong>Uso:</strong> Muestra en auditorio, YouTube y Classroom.</li>
+                            <li>• <strong>Estructura:</strong> Cortinilla oficial obligatoria (5s) + Desarrollo de la leyenda + Reflexión ética de Humanidades + Créditos colegiados.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top:16px; background:#eff6ff; border-left:4px solid var(--cd-cyan); padding:12px; border-radius:8px; font-size:12px;">
+                    <strong>🌟 Pregunta Guía Reflexiva:</strong> <em>«¿Qué permanece de las personas, de sus historias y de nuestra identidad cuando el tiempo avanza?»</em> (30 segundos finales de voz en off).
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. CRONOGRAMA SEMANAL -->
+        <div id="tab-cronograma" class="tab-panel">
+            <div class="card">
+                <div class="card-title">📅 Cronograma Clase por Clase (Semanas 12 a 16)</div>
+                <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">
+                    Distribución de las 3 horas semanales frente a grupo en el Laboratorio de Informática:
+                </p>
+
+                <div class="week-card">
+                    <div class="week-header">
+                        <span class="week-title">Semana 12: Preproducción y Guion de Redes</span>
+                        <span class="week-dates">16 al 20 de Noviembre</span>
+                    </div>
+                    <div class="week-details">
+                        <span class="week-tag-mat">Matutino:</span> Diseño de logo con IA y guion del Reel comercial en 3 actos.<br>
+                        <span class="week-tag-ves">Vespertino:</span> Acopio de grabaciones del festival (28-Oct) y escaleta narrativa.
+                    </div>
+                </div>
+
+                <div class="week-card">
+                    <div class="week-header">
+                        <span class="week-title">Semana 13: Rodaje con Smartphone y Primer Montaje</span>
+                        <span class="week-dates">23 al 27 de Noviembre</span>
+                    </div>
+                    <div class="week-details">
+                        <span class="week-tag-mat">Matutino:</span> Grabación de productos y empaque con smartphone en aula. Ensamble en CapCut/Canva.<br>
+                        <span class="week-tag-ves">Vespertino:</span> Montaje del corte grueso (Rough Cut), voz en off y música Creative Commons.
+                    </div>
+                </div>
+
+                <div class="week-card">
+                    <div class="week-header">
+                        <span class="week-title">Semana 14: Cortinilla Institucional y Postproducción</span>
+                        <span class="week-dates">30 de Noviembre al 04 de Diciembre</span>
+                    </div>
+                    <div class="week-details">
+                        <strong>Ambos Turnos:</strong> Inserción de la <strong>Cortinilla Oficial CEB 5/4 (5 seg)</strong>, subtítulos automáticos para TikTok, corrección de color y renderizado en 1080p.
+                    </div>
+                </div>
+
+                <div class="week-card" style="border-left-color:#b45309;">
+                    <div class="week-header">
+                        <span class="week-title">Semana 15: Día Clave del Mercado y Lanzamiento</span>
+                        <span class="week-dates">07 al 11 de Diciembre</span>
+                    </div>
+                    <div class="week-details">
+                        <span class="week-tag-mat">🎉 Miércoles 09 de Diciembre:</span> <strong>Mercado Artesanal PEC Matutino (07:00 a 11:30 h · Venta: 09:00 a 10:40 h).</strong> Cobertura en redes y arqueo de caja.<br>
+                        <span class="week-tag-ves">Vespertino:</span> Auditoría técnica de cortometrajes y entrega en Classroom.
+                    </div>
+                </div>
+
+                <div class="week-card" style="border-left-color:#059669;">
+                    <div class="week-header">
+                        <span class="week-title">Semana 16: Muestra Comunitaria y Evaluación Final</span>
+                        <span class="week-dates">14 al 17 de Diciembre</span>
+                    </div>
+                    <div class="week-details">
+                        <strong>Ambos Turnos:</strong> Proyección de cortometrajes en auditorio, exhibición en el portal web, coevaluación con rúbrica sumativa y cierre de calificaciones en la Web App PEC.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. RÚBRICA Y TIPS DE CELULAR -->
+        <div id="tab-rubrica" class="tab-panel">
+            <!-- 4 MANDAMIENTOS DEL CELULAR -->
+            <div class="card">
+                <div class="card-title">📱 Los 4 Mandamientos del Video Cinematográfico con Celular</div>
+                <div class="grid-2">
+                    <div style="background:#f8fafc; border:1px solid var(--border-subtle); border-radius:10px; padding:12px; font-size:12px;">
+                        <strong>1. 🧼 Lente Impecable:</strong> Limpiar el cristal de la cámara antes de grabar. Evita el video opaco o lechoso.
+                    </div>
+                    <div style="background:#f8fafc; border:1px solid var(--border-subtle); border-radius:10px; padding:12px; font-size:12px;">
+                        <strong>2. 🚶‍♂️ Cero Zoom Digital:</strong> Nunca pellizcar la pantalla; acércate físicamente dando pasos suaves.
+                    </div>
+                    <div style="background:#f8fafc; border:1px solid var(--border-subtle); border-radius:10px; padding:12px; font-size:12px;">
+                        <strong>3. 🧱 Trípode Humano:</strong> Celular con dos manos, codos pegados a las costillas y rodillas flexionadas.
+                    </div>
+                    <div style="background:#f8fafc; border:1px solid var(--border-subtle); border-radius:10px; padding:12px; font-size:12px;">
+                        <strong>4. 🎵 Música sin Copyright:</strong> Solo pistas de YouTube Audio Library o Pixabay para evitar bloqueos en redes.
+                    </div>
+                </div>
+            </div>
+
+            <!-- RÚBRICA SUMATIVA -->
+            <div class="card">
+                <div class="card-title">📐 Rúbrica Sumativa de Redes y Multimedia (10 Puntos)</div>
+                <table class="rubric-table">
+                    <thead>
+                        <tr>
+                            <th style="width:25%;">Criterio (25% c/u)</th>
+                            <th style="width:40%;">Excelente (10–9 pts)</th>
+                            <th style="width:35%;">Por Mejorar (6–0 pts)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Ritmo y Estructura</strong></td>
+                            <td>Cumple la duración exacta (45-60s o 2-3m); gancho visual en los primeros 5s y llamado a la acción claro.</td>
+                            <td>Video improvisado, excede los tiempos o carece de gancho inicial.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Calidad de Grabación</strong></td>
+                            <td>Tomas estables, lente limpio, iluminación óptima y cero zoom digital. Planos detalle nítidos.</td>
+                            <td>Tomas temblorosas, lentes empañados o abuso de zoom que pixela la imagen.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Audio y Derechos</strong></td>
+                            <td>Sonido limpio, música nivelada que no satura y 100% libre de copyright (Creative Commons).</td>
+                            <td>Música comercial susceptible de bloqueo en redes o audio con eco/viento inaudible.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Identidad y Cortinilla</strong></td>
+                            <td>Incluye la <strong>Cortinilla Oficial CEB 5/4 (5 seg)</strong>, logo con IA, subtítulos legibles y créditos colegiados.</td>
+                            <td>Omite la cortinilla institucional o no tiene subtítulos ni créditos escolares.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer-note">
+            Centro de Estudios de Bachillerato CEB 5/4 "Profr. Rafael Ramírez" · CCT 13DBP0001Z<br>
+            Cultura Digital I · Mtro. Felipe López Salazar · Ciclo Escolar 2026-2027
+        </footer>
+
+    </div>
+
+    <!-- SCRIPT DE INTERACCIÓN -->
+    <script>
+        function switchTab(tabId, btn) {
+            // Desactivar todos los paneles
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            // Desactivar todos los botones
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            // Activar el seleccionado
+            const target = document.getElementById('tab-' + tabId);
+            if (target) {
+                target.classList.add('active');
+            }
+            if (btn) {
+                btn.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

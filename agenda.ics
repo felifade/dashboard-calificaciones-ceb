@@ -1437,4 +1437,16 @@ CATEGORIES:🚨 SEGURIDAD ESCOLAR,PROTECCIÓN CIVIL
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-evidencias-16-dias-activismo@ceb54.dgb.edu.mx
+DTSTAMP:20261113T103000Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+SUMMARY:📁 CEB 5/4: Límite Evidencias 16 Días de Activismo contra la Violencia de Género
+DESCRIPTION:Fecha límite para que los tutores carguen en Google Drive las evidencias correspondientes a las actividades de los 16 Días de Activismo contra la Violencia de Género organizadas por grupo.\nCarpeta Drive: https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi
+LOCATION:Google Drive Institucional · Tutorías y Orientación CEB 5/4
+CATEGORIES:🧡 TUTORÍAS,ORIENTACIÓN EDUCATIVA,EVIDENCIAS
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
 END:VCALENDAR

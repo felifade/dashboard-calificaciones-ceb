@@ -2567,7 +2567,7 @@
       </div>
     </section>
 
-    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (16) -->
+    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (17) -->
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
         <!-- Inyectado por JS -->
@@ -2655,6 +2655,16 @@
   <script>
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
+      {
+        id: 17,
+        date: "13 de Noviembre de 2026",
+        sender: "Orientación Educativa / Coordinación de Tutorías",
+        title: "🧡 16 Días de Activismo contra la Violencia de Género (Evidencias en Drive)",
+        req: "Se solicita apoyo a los tutores para ir agregando a la carpeta de Drive las evidencias correspondientes a las actividades de los 16 Días de Activismo contra la Violencia de Género, organizándolas según corresponda a cada grupo.",
+        delivery: "Carpeta Drive: https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi (Límite: 25 de noviembre)",
+        status: "En curso (Límite 25 Nov)",
+        ref: "Comunicado Oficial a Tutores"
+      },
       {
         id: 16,
         date: "09 de Noviembre de 2026",
@@ -2960,6 +2970,7 @@
         num: "Semana 13", dates: "23 al 27 de Noviembre 2026", title: "Desarrollo Académico Bloque III y Feria de la Salud Matutina", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false,
         events: [
           { date: "23–27 Nov", text: "Sesiones regulares del Tercer Parcial y avance de proyectos transversales", cat: "normal", shift: "ALL", ref: "S13 Oficial" },
+          { date: "Mié 25 Nov", text: "📁 Límite para integrar evidencias de los 16 Días de Activismo en Drive (Tutores)", cat: "normal", shift: "Tutores", ref: "Orientación" },
           { date: "Vie 27 Nov", text: "🏥 Feria de la Salud Institucional · TURNO MATUTINO", cat: "normal", shift: "TM", ref: "Subdirección" }
         ]
       },
@@ -3100,6 +3111,7 @@
     { label: "🎓 Feria Vocacional", cat: "normal", desc: "Feria Vocacional Universitaria 2026 (08:30 a 13:00 h, ambos turnos)." }
   ],
   "2026-11-20": [{ label: "👨‍👩‍👧 Boletas P2 (TV Día 2)", cat: "parents", desc: "Actividad Oficial SEMS #05 / Nota S11: Segundo día de entrega de boletas del 2° Parcial en Turno Vespertino." }],
+  "2026-11-25": [{ label: "📁 Evidencias 16 Días Activismo", cat: "normal", desc: "Fecha límite para que los tutores suban a Google Drive las evidencias correspondientes a las actividades de los 16 Días de Activismo contra la Violencia de Género organizadas por grupo (https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi)." }],
   "2026-11-27": [{ label: "🏥 Feria Salud (TM)", cat: "normal", desc: "Feria Institucional de la Salud para estudiantes del Turno Matutino." }],
   "2026-12-04": [{ label: "💚 Cierre ABC Emociones", cat: "normal", desc: "Fecha límite de carga y concentración de evidencias de El ABC de las Emociones en Google Drive institucional." }],
   "2026-12-10": [{ label: "📝 Inicia Examen P3", cat: "exam", desc: "Actividad Oficial SEMS #07: Inicia Tercera Evaluación Parcial (10 al 16 de Diciembre)." }],
@@ -3330,7 +3342,10 @@ const WEEK_VIEWS = {
     days: [
       { name: "Lunes", date: "23 Nov", isToday: false, isHoliday: false, events: [{ title: "Retroalimentación Boletas P2", sub: "Análisis de desempeño pedagógico", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
       { name: "Martes", date: "24 Nov", isToday: false, isHoliday: false, events: [{ title: "Clases y Talleres Curriculares", sub: "Avance de progresiones pedagógicas", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Miércoles", date: "25 Nov", isToday: false, isHoliday: false, events: [{ title: "Acompañamiento Socioemocional", sub: "Tutorías y orientación formativa", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
+      { name: "Miércoles", date: "25 Nov", isToday: false, isHoliday: false, events: [
+        { title: "📁 Límite: Evidencias 16 Días de Activismo (Drive)", sub: "Fecha límite para tutores: cargar a Drive evidencias de actividades contra la violencia de género organizadas por grupo.", cat: "normal", priority: "high", shift: "Tutores", tag: "Drive Activismo" },
+        { title: "Acompañamiento Socioemocional", sub: "Tutorías y orientación formativa", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+      ] },
       { name: "Jueves", date: "26 Nov", isToday: false, isHoliday: false, events: [{ title: "Trabajo en Laboratorios y Aulas", sub: "Desarrollo de proyectos formativos", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
       { name: "Viernes", date: "27 Nov", isToday: false, isHoliday: false, events: [{ title: "🏥 Feria de la Salud · Turno Matutino", sub: "Jornada institucional de bienestar estudiantil y prevención", cat: "normal", priority: "high", shift: "☀️ Turno Matutino", tag: "Salud TM" }] }
     ]
@@ -3608,6 +3623,20 @@ const CULTURAL_EVENTS = [
     status: "Concluido y Registrado",
     tag: "Protección y Legalidad"
   },
+  {
+    id: "cult-14",
+    title: "🧡 16 Días de Activismo contra la Violencia de Género (Evidencias Drive)",
+    date: "Del 09 al 25 de Noviembre de 2026",
+    category: "Orientación Educativa y Tutorías",
+    venue: "Aulas y Carpeta Institucional Google Drive",
+    participants: "Comunidad Escolar, Docentes y Tutores de Grupo",
+    desc: "Actividades de sensibilización y prevención de la violencia hacia las mujeres y niñas. Se solicita a los tutores concentrar las evidencias por grupo en la carpeta de Google Drive antes del 25 de noviembre.",
+    files: [
+      { name: "Carpeta Drive Evidencias", type: "link", url: "https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi" }
+    ],
+    status: "En Proceso (Límite 25 Nov)",
+    tag: "Activismo Género"
+  }
 ];
 
 
@@ -3830,7 +3859,8 @@ const CULTURAL_EVENTS = [
         'cult-10': '2026-12-17',
         'cult-11': '2026-12-04',
         'cult-12': '2026-11-04',
-        'cult-13': '2026-11-05'
+        'cult-13': '2026-11-05',
+        'cult-14': '2026-11-25'
       };
 
       CULTURAL_EVENTS.forEach(ce => {

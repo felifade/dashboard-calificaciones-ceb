@@ -2495,11 +2495,11 @@
         <div class="week-header-info">
           <div>
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-              <span class="badge badge-wine" id="activeWeekTag">SEMANA 11 (ACTIVA)</span>
-              <span class="badge badge-gold" id="activeWeekDates">09 AL 13 DE NOVIEMBRE DE 2026</span>
+              <span class="badge badge-wine" id="activeWeekTag">SEMANA 12 (ACTIVA)</span>
+              <span class="badge badge-gold" id="activeWeekDates">18 AL 20 DE NOVIEMBRE DE 2026</span>
             </div>
-            <h2 id="activeWeekTitle">📍 Semana 11: Segunda Evaluación Parcial (P2) · Todos los Grupos y Turnos</h2>
-            <p id="activeWeekSub">Evaluaciones P2 · Feria de Salud Integral (Mié 11) · 16 Días de Activismo · Agendar Boletas P2</p>
+            <h2 id="activeWeekTitle">📍 Semana 12: Entrega de Boletas P2, Feria Vocacional, SIPINNA y Conecta con Sentido</h2>
+            <p id="activeWeekSub">Mié 18 SIPINNA TV · Jue 19 Feria Vocacional (08:30–12:30 h) y Boletas TV · Vie 20 Boletas TM (07:00 h), Prevención y Diagnóstico Conecta con Sentido</p>
           </div>
         </div>
 
@@ -2567,7 +2567,7 @@
       </div>
     </section>
 
-    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (17) -->
+    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (18) -->
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
         <!-- Inyectado por JS -->
@@ -2655,6 +2655,16 @@
   <script>
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
+      {
+        id: 18,
+        date: "18 de Noviembre de 2026",
+        sender: "Subdirección Académica (CEB 5/4)",
+        title: "📌 Nota Informativa | Semana 14 (18 al 20 de Noviembre)",
+        req: "1. Mié 18 Nov: Conferencias SIPINNA (Turno Vespertino, Orientación Educativa). 2. Jue 19 Nov: Feria Vocacional para 5° Semestre de ambos turnos (08:30 a 12:30 h) y Entrega de boletas Turno Vespertino (Día 1). 3. Vie 20 Nov: Entrega de boletas Turno Matutino (07:00 h) y Turno Vespertino (Día 2); Conferencia Prevención del Delito; Envío de Encuesta Anónima diagnóstica 'Conecta con Sentido' (Acuerdo 09/09/26). 4. Encuesta Trayectorias en Transición: en espera de indicaciones oficiales DGB. 5. Guardias, filtros de entrada y recorridos de receso.",
+        delivery: "Personal Escolar, Tutores y Orientación Educativa",
+        status: "En curso (Semana Activa)",
+        ref: "Circular Oficial Semana 14 Subdirección"
+      },
       {
         id: 17,
         date: "13 de Noviembre de 2026",
@@ -2944,7 +2954,7 @@
         ]
       },
       {
-        num: "Semana 11", dates: "09 al 13 de Noviembre 2026", title: "📍 SEMANA ACTIVA: Evaluaciones P2, Feria de Salud, 16 Días de Activismo y Boletas", block: "🟡 Bloque II: Cierre del Segundo Parcial (Octubre – Noviembre 2026)", isPast: false, isCurrent: true,
+        num: "Semana 11", dates: "09 al 13 de Noviembre 2026", title: "Evaluaciones P2, Feria de Salud, 16 Días de Activismo y Boletas", block: "🟡 Bloque II: Cierre del Segundo Parcial (Octubre – Noviembre 2026)", isPast: true, isCurrent: false,
         events: [
           { date: "Lun 09–Vie 13 Nov", text: "📝 Segunda Evaluación Parcial (P2) · AMBOS TURNOS (Considerar lineamientos y distancia)", cat: "exam", shift: "ALL", ref: "Act. Oficial #03" },
           { date: "Lun 09 Nov", text: "🧡 Inicio de los 16 Días de Activismo contra la Violencia hacia Mujeres y Niñas (Orientación)", cat: "normal", shift: "ALL", ref: "Orientación Educativa" },
@@ -2956,14 +2966,18 @@
         ]
       },
       {
-        num: "Semana 12", dates: "16 al 20 de Noviembre 2026", title: "Revolución, Asamblea Sindical (Sin Clases), Límite PACE P2 y Boletas", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false,
+        num: "Semana 12", dates: "16 al 20 de Noviembre 2026", title: "📍 SEMANA ACTIVA: Boletas P2, Feria Vocacional, SIPINNA y Conecta con Sentido (Nota Subdirección: 18 al 20 Nov)", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false, isCurrent: true,
         events: [
           { date: "Lun 16 Nov", text: "🐎 SUSPENSIÓN OFICIAL: Aniversario de la Revolución Mexicana · Inicia Periodo P3", cat: "holiday", shift: "ALL", ref: "Asueto SEP / Act. #06" },
           { date: "Mar 17 Nov (09:30 h)", text: "🏛️ Asamblea Sindical D-II-79 (XXIV Congreso SNTE 15) · 🛑 NO HAY CLASES", cat: "union", shift: "ALL", ref: "Sindicato D-II-79" },
           { date: "Mar 17 Nov", text: "⚠️ FECHA LÍMITE DE CAPTURA EN PACE Y ENTREGA DE CALIFICACIONES 2° PARCIAL", cat: "pace", shift: "ALL", ref: "Act. Oficial #04" },
-          { date: "Mié 18 Nov", text: "👨‍👩‍👧 Entrega de Boletas del 2° Parcial a Padres · TURNO MATUTINO", cat: "parents", shift: "TM", ref: "Act. Oficial #05" },
-          { date: "Jue 19 y Vie 20 Nov", text: "👨‍👩‍👧 Entrega de Boletas del 2° Parcial a Padres · TURNO VESPERTINO", cat: "parents", shift: "TV", ref: "Act. Oficial #05" },
-          { date: "Jue 19 Nov (08:30–13:00 h)", text: "🎓 Feria Vocacional 2026 (Exposición de oferta universitaria)", cat: "normal", shift: "ALL", ref: "Orientación" }
+          { date: "Mié 18 Nov", text: "🔹 Conferencias de SIPINNA · TURNO VESPERTINO (Orientación Educativa)", cat: "normal", shift: "TV", ref: "Nota Subdirección" },
+          { date: "Jue 19 Nov (08:30–12:30 h)", text: "🎓 FERIA VOCACIONAL 2026 · 5° Semestre Ambos Turnos (Orientación)", cat: "normal", shift: "ALL", ref: "Nota Subdirección" },
+          { date: "Jue 19 y Vie 20 Nov", text: "👨‍👩‍👧‍👦 Entrega de Boletas del 2° Parcial a Padres · TURNO VESPERTINO (según rol de tutores)", cat: "parents", shift: "TV", ref: "Act. Oficial #05" },
+          { date: "Vie 20 Nov (07:00 h)", text: "👨‍👩‍👧‍👦 Entrega de Boletas del 2° Parcial a Padres · TURNO MATUTINO (07:00 hrs)", cat: "parents", shift: "TM", ref: "Nota Subdirección" },
+          { date: "Vie 20 Nov", text: "🛡️ Conferencia: Prevención del Delito (Orientación Educativa)", cat: "normal", shift: "ALL", ref: "Nota Subdirección" },
+          { date: "Vie 20 Nov", text: "📋 Envío de Encuesta Anónima: «Conecta con Sentido» (Diagnóstico Acuerdo 09/09/26)", cat: "normal", shift: "ALL", ref: "Nota Subdirección" },
+          { date: "Permanente", text: "📊 Encuesta Trayectorias en Transición (En espera de indicaciones oficiales de la DGB)", cat: "normal", shift: "1er Semestre", ref: "DGB Federal" }
         ]
       },
       {
@@ -3106,11 +3120,19 @@
     { label: "🏛️ Asamblea D-II-79 (NO HAY CLASES)", cat: "union", desc: "Asamblea Delegacional D-II-79 (09:30 h) por XXIV Congreso Extraordinario Sección 15 SNTE. NO HAY CLASES." },
     { label: "⚠️ LÍMITE CAPTURA PACE P2", cat: "pace", desc: "Actividad Oficial SEMS #04: Fecha límite improrrogable de captura de calificaciones del 2° Parcial en plataforma PACE." }
   ],
-  "2026-11-19": [
-    { label: "👨‍👩‍👧 Boletas P2 (TM y TV Día 1)", cat: "parents", desc: "Entrega de boletas P2 a padres de familia: Turno Matutino (19 Nov) y Turno Vespertino (19 y 20 Nov). Nota Informativa S11." },
-    { label: "🎓 Feria Vocacional", cat: "normal", desc: "Feria Vocacional Universitaria 2026 (08:30 a 13:00 h, ambos turnos)." }
+  "2026-11-18": [
+    { label: "🔹 Conferencias SIPINNA (TV)", cat: "normal", desc: "Conferencias en el Turno Vespertino conforme a la programación establecida por Orientación Educativa (OE). Nota Informativa S14." }
   ],
-  "2026-11-20": [{ label: "👨‍👩‍👧 Boletas P2 (TV Día 2)", cat: "parents", desc: "Actividad Oficial SEMS #05 / Nota S11: Segundo día de entrega de boletas del 2° Parcial en Turno Vespertino." }],
+  "2026-11-19": [
+    { label: "🎓 Feria Vocacional (08:30–12:30 h)", cat: "normal", desc: "Feria Vocacional 2026 dirigida a estudiantes de 5° semestre de ambos turnos (08:30 a 12:30 h). Nota Subdirección S14." },
+    { label: "👨‍👩‍👧 Boletas P2 (TV Día 1)", cat: "parents", desc: "Entrega de boletas del 2° Parcial a padres de familia del Turno Vespertino conforme a programación de tutores (19 y 20 de Noviembre)." }
+  ],
+  "2026-11-20": [
+    { label: "👨‍👩‍👧 Boletas P2 (TM 07:00 h)", cat: "parents", desc: "Entrega de boletas del 2° Parcial a padres de familia del Turno Matutino a las 07:00 hrs." },
+    { label: "👨‍👩‍👧 Boletas P2 (TV Día 2)", cat: "parents", desc: "Segundo día de entrega de boletas del 2° Parcial en Turno Vespertino según rol de tutores." },
+    { label: "🛡️ Prevención del Delito", cat: "normal", desc: "Conferencia de Prevención del Delito programada por Orientación Educativa." },
+    { label: "📋 Encuesta Conecta con Sentido", cat: "normal", desc: "Envío de encuesta anónima diagnóstica para la estrategia participativa 'Conecta con Sentido' (Acuerdo 09/09/26)." }
+  ],
   "2026-11-25": [{ label: "📁 Evidencias 16 Días Activismo", cat: "normal", desc: "Fecha límite para que los tutores suban a Google Drive las evidencias correspondientes a las actividades de los 16 Días de Activismo contra la Violencia de Género organizadas por grupo (https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi)." }],
   "2026-11-27": [{ label: "🏥 Feria Salud (TM)", cat: "normal", desc: "Feria Institucional de la Salud para estudiantes del Turno Matutino." }],
   "2026-12-04": [{ label: "💚 Cierre ABC Emociones", cat: "normal", desc: "Fecha límite de carga y concentración de evidencias de El ABC de las Emociones en Google Drive institucional." }],
@@ -3295,8 +3317,8 @@ const WEEK_VIEWS = {
   "S12": {
     weekNum: "Semana 12",
     range: "16 al 20 de Noviembre de 2026",
-    title: "Revolución, Asamblea Sindical D-II-79, Límite PACE y Boletas",
-    highlight: "Semana crítica: Asamblea sin clases, cierre PACE y entrega a padres",
+    title: "Boletas P2, Feria Vocacional, SIPINNA y Conecta con Sentido (Nota Subdirección: 18 al 20 Nov)",
+    highlight: "Semana activa: SIPINNA TV, Feria Vocacional 5° Semestre, entrega de boletas y encuesta diagnóstica",
     days: [
       {
         name: "Lunes", date: "16 Nov", isToday: false, isHoliday: true,
@@ -3315,21 +3337,24 @@ const WEEK_VIEWS = {
       {
         name: "Miércoles", date: "18 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "👨‍👩‍👧 Entrega de Boletas P2 a Padres (Turno Matutino)", sub: "Actividad SEMS #05: Sesión presencial con tutores matutinos", cat: "parents", priority: "high", shift: "☀️ Turno Matutino", tag: "Actividad #05" }
+          { title: "🔹 Conferencias de SIPINNA (Turno Vespertino)", sub: "Conferencias en el Turno Vespertino coordinadas por el Departamento de Orientación Educativa (OE).", cat: "normal", priority: "high", shift: "🌙 Turno Vespertino", tag: "SIPINNA TV" },
+          { title: "🔴 Clases Regulares Tercer Parcial", sub: "Avance de progresiones y encuadre formativo Bloque III.", cat: "normal", priority: "normal", shift: "Ambos turnos", tag: "Bloque III" }
         ]
       },
       {
         name: "Jueves", date: "19 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "👨‍👩‍👧 Entrega de Boletas P2 · Turno Vespertino (Día 1)", sub: "Reunión con tutores legales Turno Vespertino", cat: "parents", priority: "high", shift: "🌙 Turno Vespertino", tag: "Actividad #05" },
-          { title: "🎓 Feria Vocacional 2026", sub: "Orientación educativa y vinculación universitaria (08:30 a 13:00 h)", cat: "normal", priority: "high", shift: "Ambos turnos", tag: "Vocacional" }
+          { title: "🎓 FERIA VOCACIONAL 2026 (5° Semestre)", sub: "08:30 a 12:30 h. Dirigida a estudiantes de 5° semestre de ambos turnos. Considerar asistencia de grupos convocados.", cat: "normal", priority: "high", shift: "Ambos turnos", tag: "Vocacional" },
+          { title: "👨‍👩‍👧‍👦 Entrega de Boletas P2 · Turno Vespertino (Día 1)", sub: "Atención a madres y padres de familia conforme a la programación de tutores.", cat: "parents", priority: "high", shift: "🌙 Turno Vespertino", tag: "Boletas TV" }
         ]
       },
       {
         name: "Viernes", date: "20 Nov", isToday: false, isHoliday: false,
         events: [
-          { title: "👨‍👩‍👧 Entrega de Boletas P2 · Turno Vespertino (Día 2)", sub: "Segundo día de atención a tutores en Turno Vespertino", cat: "parents", priority: "high", shift: "🌙 Turno Vespertino" },
-          { title: "Canalización de alumnos en rezago", sub: "Seguimiento tutorial a estudiantes reprobados", cat: "normal", priority: "normal", shift: "Tutorías" }
+          { title: "👨‍👩‍👧‍👦 Entrega de Boletas P2 · Turno Matutino (07:00 h)", sub: "Reunión oficial con padres de familia del Turno Matutino a las 07:00 hrs.", cat: "parents", priority: "high", shift: "☀️ Turno Matutino", tag: "Boletas TM 07:00" },
+          { title: "👨‍👩‍👧‍👦 Entrega de Boletas P2 · Turno Vespertino (Día 2)", sub: "Segundo día de atención a tutores en Turno Vespertino conforme a rol.", cat: "parents", priority: "high", shift: "🌙 Turno Vespertino", tag: "Boletas TV" },
+          { title: "🛡️ Conferencia: Prevención del Delito", sub: "Conforme a la programación del Departamento de Orientación Educativa.", cat: "normal", priority: "normal", shift: "Orientación", tag: "Prevención" },
+          { title: "📋 Encuesta Anónima: «Conecta con Sentido»", sub: "Envío para diagnóstico de la estrategia participativa (Acuerdo 09/09/26). Difusión y seguimiento.", cat: "normal", priority: "normal", shift: "Personal Escolar", tag: "Conecta Sentido" }
         ]
       }
     ]
@@ -3636,6 +3661,20 @@ const CULTURAL_EVENTS = [
     ],
     status: "En Proceso (Límite 25 Nov)",
     tag: "Activismo Género"
+  },
+  {
+    id: "cult-15",
+    title: "🎓 Feria Vocacional 2026 (5° Semestre)",
+    date: "Jueves 19 de Noviembre de 2026 (08:30 a 12:30 hrs)",
+    category: "Orientación Vocacional y Vinculación",
+    venue: "Explanada y Aulas del Plantel CEB 5/4",
+    participants: "Estudiantes de 5° Semestre (Turnos Matutino y Vespertino)",
+    desc: "Feria Vocacional dirigida a estudiantes de 5° semestre de ambos turnos (08:30 a 12:30 h). Exposición de oferta académica y opciones universitarias coordinada por Orientación Educativa.",
+    files: [
+      { name: "Nota Informativa Semana 14", type: "doc" }
+    ],
+    status: "Programado Oficial",
+    tag: "Feria Vocacional"
   }
 ];
 
@@ -3860,7 +3899,8 @@ const CULTURAL_EVENTS = [
         'cult-11': '2026-12-04',
         'cult-12': '2026-11-04',
         'cult-13': '2026-11-05',
-        'cult-14': '2026-11-25'
+        'cult-14': '2026-11-25',
+        'cult-15': '2026-11-19'
       };
 
       CULTURAL_EVENTS.forEach(ce => {

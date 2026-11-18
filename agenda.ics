@@ -1449,4 +1449,64 @@ CATEGORIES:🧡 TUTORÍAS,ORIENTACIÓN EDUCATIVA,EVIDENCIAS
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-s14-sipinna-tv@ceb54.dgb.edu.mx
+DTSTAMP:20261118T064500Z
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+SUMMARY:🔹 CEB 5/4: Conferencias de SIPINNA (Turno Vespertino)
+DESCRIPTION:Conferencias de SIPINNA en el Turno Vespertino conforme a la programación establecida por el Departamento de Orientación Educativa (OE). Nota Informativa S14 de Subdirección Académica.
+LOCATION:Aulas CEB 5/4 · Turno Vespertino
+CATEGORIES:ORIENTACIÓN EDUCATIVA,FORMACIÓN INTEGRAL
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-s14-feria-vocacional@ceb54.dgb.edu.mx
+DTSTAMP:20261118T064500Z
+DTSTART:20261119T143000Z
+DTEND:20261119T183000Z
+SUMMARY:🎓 CEB 5/4: Feria Vocacional 2026 (5° Semestre · 08:30 a 12:30 h)
+DESCRIPTION:Feria Vocacional dirigida a estudiantes de 5° semestre de ambos turnos. Horario: 8:30 a 12:30 h. Considerar asistencia y participación de grupos convocados conforme a la organización establecida por Orientación Educativa.
+LOCATION:Explanada y Aulas · CEB 5/4
+CATEGORIES:🎓 ORIENTACIÓN VOCACIONAL,EVENTO INSTITUCIONAL
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-s14-boletas-p2-tv@ceb54.dgb.edu.mx
+DTSTAMP:20261118T064500Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261121
+SUMMARY:👨‍👩‍👧‍👦 CEB 5/4: Entrega de Boletas 2° Parcial (Turno Vespertino · 19 y 20 Nov)
+DESCRIPTION:Entrega de boletas del Segundo Parcial a padres de familia del Turno Vespertino los días 19 y 20 de noviembre conforme a la programación de los tutores de grupo.
+LOCATION:Aulas CEB 5/4 · Turno Vespertino
+CATEGORIES:📋 CONTROL ESCOLAR,TUTORÍAS,ENTREGA DE BOLETAS
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-s14-boletas-p2-tm@ceb54.dgb.edu.mx
+DTSTAMP:20261118T064500Z
+DTSTART:20261120T130000Z
+DTEND:20261120T150000Z
+SUMMARY:👨‍👩‍👧‍👦 CEB 5/4: Entrega de Boletas 2° Parcial (Turno Matutino · 07:00 h)
+DESCRIPTION:Entrega de boletas del Segundo Parcial a padres de familia del Turno Matutino a las 07:00 hrs.
+LOCATION:Aulas CEB 5/4 · Turno Matutino
+CATEGORIES:📋 CONTROL ESCOLAR,TUTORÍAS,ENTREGA DE BOLETAS
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-s14-conecta-sentido@ceb54.dgb.edu.mx
+DTSTAMP:20261118T064500Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:📋 CEB 5/4: Encuesta Anónima «Conecta con Sentido» (Diagnóstico Acuerdo 09/09/26)
+DESCRIPTION:Envío de encuesta anónima para la elaboración del diagnóstico correspondiente a la estrategia participativa 'Conecta con Sentido', de conformidad con el Acuerdo 09/09/26. Difusión y seguimiento por parte del personal escolar.
+LOCATION:Formulario en línea · Subdirección Académica CEB 5/4
+CATEGORIES:DIAGNÓSTICO DGB,ESTRATEGIA PARTICIPATIVA
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

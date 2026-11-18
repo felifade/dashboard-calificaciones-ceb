@@ -2981,9 +2981,10 @@
         ]
       },
       {
-        num: "Semana 13", dates: "23 al 27 de Noviembre 2026", title: "Desarrollo Académico Bloque III y Feria de la Salud Matutina", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false,
+        num: "Semana 13", dates: "23 al 27 de Noviembre 2026", title: "Desarrollo Académico Bloque III, Viaje 5° Semestre y Feria de Salud", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false,
         events: [
           { date: "23–27 Nov", text: "Sesiones regulares del Tercer Parcial y avance de proyectos transversales", cat: "normal", shift: "ALL", ref: "S13 Oficial" },
+          { date: "Mar 24 Nov", text: "🚌 Viaje escolar de 5° Semestre: Museo de Cera y Ripley (CDMX)", cat: "normal", shift: "5° Semestre", ref: "Extensión Cultural" },
           { date: "Mié 25 Nov", text: "📁 Límite para integrar evidencias de los 16 Días de Activismo en Drive (Tutores)", cat: "normal", shift: "Tutores", ref: "Orientación" },
           { date: "Vie 27 Nov", text: "🏥 Feria de la Salud Institucional · TURNO MATUTINO", cat: "normal", shift: "TM", ref: "Subdirección" }
         ]
@@ -3133,6 +3134,7 @@
     { label: "🛡️ Prevención del Delito", cat: "normal", desc: "Conferencia de Prevención del Delito programada por Orientación Educativa." },
     { label: "📋 Encuesta Conecta con Sentido", cat: "normal", desc: "Envío de encuesta anónima diagnóstica para la estrategia participativa 'Conecta con Sentido' (Acuerdo 09/09/26)." }
   ],
+  "2026-11-24": [{ label: "🚌 Viaje 5° Sem: Cera y Ripley", cat: "normal", desc: "Viaje escolar y formativo de estudiantes de 5° semestre al Museo de Cera y Museo de Ripley en la Ciudad de México." }],
   "2026-11-25": [{ label: "📁 Evidencias 16 Días Activismo", cat: "normal", desc: "Fecha límite para que los tutores suban a Google Drive las evidencias correspondientes a las actividades de los 16 Días de Activismo contra la Violencia de Género organizadas por grupo (https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi)." }],
   "2026-11-27": [{ label: "🏥 Feria Salud (TM)", cat: "normal", desc: "Feria Institucional de la Salud para estudiantes del Turno Matutino." }],
   "2026-12-04": [{ label: "💚 Cierre ABC Emociones", cat: "normal", desc: "Fecha límite de carga y concentración de evidencias de El ABC de las Emociones en Google Drive institucional." }],
@@ -3366,7 +3368,10 @@ const WEEK_VIEWS = {
     highlight: "Desarrollo de proyectos formativos Bloque III",
     days: [
       { name: "Lunes", date: "23 Nov", isToday: false, isHoliday: false, events: [{ title: "Retroalimentación Boletas P2", sub: "Análisis de desempeño pedagógico", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Martes", date: "24 Nov", isToday: false, isHoliday: false, events: [{ title: "Clases y Talleres Curriculares", sub: "Avance de progresiones pedagógicas", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
+      { name: "Martes", date: "24 Nov", isToday: false, isHoliday: false, events: [
+        { title: "🚌 Viaje de 5° Semestre: Museo de Cera y Ripley", sub: "Viaje escolar y formativo a la Ciudad de México para estudiantes de quinto semestre.", cat: "normal", priority: "high", shift: "5° Semestre", tag: "Viaje Cera/Ripley" },
+        { title: "Clases y Talleres Curriculares", sub: "Avance de progresiones pedagógicas (1° y 3° Semestre)", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+      ] },
       { name: "Miércoles", date: "25 Nov", isToday: false, isHoliday: false, events: [
         { title: "📁 Límite: Evidencias 16 Días de Activismo (Drive)", sub: "Fecha límite para tutores: cargar a Drive evidencias de actividades contra la violencia de género organizadas por grupo.", cat: "normal", priority: "high", shift: "Tutores", tag: "Drive Activismo" },
         { title: "Acompañamiento Socioemocional", sub: "Tutorías y orientación formativa", cat: "normal", priority: "normal", shift: "Ambos turnos" }
@@ -3675,6 +3680,20 @@ const CULTURAL_EVENTS = [
     ],
     status: "Programado Oficial",
     tag: "Feria Vocacional"
+  },
+  {
+    id: "cult-16",
+    title: "🚌 Viaje Escolar de 5° Semestre: Museo de Cera y Ripley",
+    date: "Martes 24 de Noviembre de 2026",
+    category: "Extensión Educativa y Cultural",
+    venue: "Museo de Cera y Ripley (Ciudad de México)",
+    participants: "Estudiantes de 5° Semestre y Docentes Acompañantes",
+    desc: "Viaje escolar extracurricular y formativo para estudiantes de quinto semestre del CEB 5/4 con visita cultural al Museo de Cera y Museo de Ripley en la Ciudad de México.",
+    files: [
+      { name: "Itinerario y Permisos de Viaje", type: "doc" }
+    ],
+    status: "Programado Oficial",
+    tag: "Viaje Escolar"
   }
 ];
 
@@ -3900,7 +3919,8 @@ const CULTURAL_EVENTS = [
         'cult-12': '2026-11-04',
         'cult-13': '2026-11-05',
         'cult-14': '2026-11-25',
-        'cult-15': '2026-11-19'
+        'cult-15': '2026-11-19',
+        'cult-16': '2026-11-24'
       };
 
       CULTURAL_EVENTS.forEach(ce => {

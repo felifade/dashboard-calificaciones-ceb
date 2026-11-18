@@ -2567,7 +2567,7 @@
       </div>
     </section>
 
-    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (18) -->
+    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (19) -->
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
         <!-- Inyectado por JS -->
@@ -2655,6 +2655,16 @@
   <script>
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
+      {
+        id: 19,
+        date: "18 de Noviembre de 2026",
+        sender: "Dirección / Subdirección Académica (CEB 5/4)",
+        title: "🚨 Convocatoria: Reunión Extraordinaria Docente en Biblioteca (Jueves 19 Nov)",
+        req: "Se informa que el día de mañana jueves 19 de noviembre se llevará a cabo una reunión extraordinaria con el personal docente de ambos turnos en biblioteca, durante el primer receso correspondiente a cada turno. Se solicita puntual asistencia y disposición.",
+        delivery: "Biblioteca Escolar · Ambos Turnos (Primer Receso)",
+        status: "Urgente (Mañana Jue 19)",
+        ref: "Convocatoria Extraordinaria a Docentes"
+      },
       {
         id: 18,
         date: "18 de Noviembre de 2026",
@@ -2972,6 +2982,7 @@
           { date: "Mar 17 Nov (09:30 h)", text: "🏛️ Asamblea Sindical D-II-79 (XXIV Congreso SNTE 15) · 🛑 NO HAY CLASES", cat: "union", shift: "ALL", ref: "Sindicato D-II-79" },
           { date: "Mar 17 Nov", text: "⚠️ FECHA LÍMITE DE CAPTURA EN PACE Y ENTREGA DE CALIFICACIONES 2° PARCIAL", cat: "pace", shift: "ALL", ref: "Act. Oficial #04" },
           { date: "Mié 18 Nov", text: "🔹 Conferencias de SIPINNA · TURNO VESPERTINO (Orientación Educativa)", cat: "normal", shift: "TV", ref: "Nota Subdirección" },
+          { date: "Jue 19 Nov (1.er Receso)", text: "🚨 Reunión Extraordinaria con Personal Docente en Biblioteca (Ambos Turnos)", cat: "union", shift: "Docentes", ref: "Convocatoria Extraordinaria" },
           { date: "Jue 19 Nov (08:30–12:30 h)", text: "🎓 FERIA VOCACIONAL 2026 · 5° Semestre Ambos Turnos (Orientación)", cat: "normal", shift: "ALL", ref: "Nota Subdirección" },
           { date: "Jue 19 y Vie 20 Nov", text: "👨‍👩‍👧‍👦 Entrega de Boletas del 2° Parcial a Padres · TURNO VESPERTINO (según rol de tutores)", cat: "parents", shift: "TV", ref: "Act. Oficial #05" },
           { date: "Vie 20 Nov (07:00 h)", text: "👨‍👩‍👧‍👦 Entrega de Boletas del 2° Parcial a Padres · TURNO MATUTINO (07:00 hrs)", cat: "parents", shift: "TM", ref: "Nota Subdirección" },
@@ -3125,6 +3136,7 @@
     { label: "🔹 Conferencias SIPINNA (TV)", cat: "normal", desc: "Conferencias en el Turno Vespertino conforme a la programación establecida por Orientación Educativa (OE). Nota Informativa S14." }
   ],
   "2026-11-19": [
+    { label: "🚨 Reunión Docente (1.er Receso)", cat: "union", desc: "Reunión extraordinaria con el personal docente de ambos turnos en biblioteca durante el primer receso correspondiente a cada turno." },
     { label: "🎓 Feria Vocacional (08:30–12:30 h)", cat: "normal", desc: "Feria Vocacional 2026 dirigida a estudiantes de 5° semestre de ambos turnos (08:30 a 12:30 h). Nota Subdirección S14." },
     { label: "👨‍👩‍👧 Boletas P2 (TV Día 1)", cat: "parents", desc: "Entrega de boletas del 2° Parcial a padres de familia del Turno Vespertino conforme a programación de tutores (19 y 20 de Noviembre)." }
   ],
@@ -3346,6 +3358,7 @@ const WEEK_VIEWS = {
       {
         name: "Jueves", date: "19 Nov", isToday: false, isHoliday: false,
         events: [
+          { title: "🚨 Reunión Extraordinaria Docente (Biblioteca)", sub: "Convocatoria a todo el personal docente de ambos turnos en biblioteca durante el primer receso de cada turno.", cat: "union", priority: "high", shift: "Ambos turnos (1.er Receso)", tag: "Reunión Docente" },
           { title: "🎓 FERIA VOCACIONAL 2026 (5° Semestre)", sub: "08:30 a 12:30 h. Dirigida a estudiantes de 5° semestre de ambos turnos. Considerar asistencia de grupos convocados.", cat: "normal", priority: "high", shift: "Ambos turnos", tag: "Vocacional" },
           { title: "👨‍👩‍👧‍👦 Entrega de Boletas P2 · Turno Vespertino (Día 1)", sub: "Atención a madres y padres de familia conforme a la programación de tutores.", cat: "parents", priority: "high", shift: "🌙 Turno Vespertino", tag: "Boletas TV" }
         ]

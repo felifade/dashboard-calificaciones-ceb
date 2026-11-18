@@ -1510,6 +1510,18 @@ STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:ceb54-2627-reunion-extraordinaria-biblioteca-20261119@ceb54.dgb.edu.mx
+DTSTAMP:20261118T145000Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+SUMMARY:🚨 CEB 5/4: Reunión Extraordinaria Docente en Biblioteca (1.er Receso)
+DESCRIPTION:Reunión extraordinaria con el personal docente de ambos turnos en biblioteca durante el primer receso correspondiente a cada turno. (Aviso oficial urgente con errata en texto original 'jueves 18'\, aplica para el jueves 19 de noviembre).
+LOCATION:Biblioteca Escolar · CEB 5/4
+CATEGORIES:🚨 URGENTE,REUNIÓN DE ACADEMIA,COLEGIADO DOCENTE
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
 UID:ceb54-2627-viaje-5os-museo-cera-ripley@ceb54.dgb.edu.mx
 DTSTAMP:20261118T125000Z
 DTSTART;VALUE=DATE:20261124

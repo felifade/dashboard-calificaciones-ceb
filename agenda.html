@@ -2420,6 +2420,7 @@
       </div>
 
       <div class="header-tools">
+        <button class="tool-btn" id="refreshBtn" onclick="forceRefreshApp()" title="Actualizar Agenda desde la nube">🔄</button>
         <button class="tool-btn theme-btn" id="themeBtn" onclick="toggleTheme()" title="Cambiar Tema Claro / Oscuro">☀️</button>
         <button class="tool-btn" onclick="openModal()" title="Calendario Oficial SEMS">📷 SEMS</button>
         <button class="tool-btn highlight" onclick="switchMainTab('sync')" title="Suscribir Calendario iCal">📲 iCal</button>
@@ -4842,5 +4843,19 @@ ${desc}`);
     </div>
   </div>
 
+  <script>
+    function forceRefreshApp() {
+      const btn = document.getElementById('refreshBtn');
+      if (btn) btn.textContent = '⏳';
+      if ('caches' in window) {
+        caches.keys().then(function(names) {
+          for (let name of names) caches.delete(name);
+        });
+      }
+      const url = new URL(window.location.href);
+      url.searchParams.set('v', Date.now());
+      window.location.replace(url.toString());
+    }
+  </script>
 </body>
 </html>

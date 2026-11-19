@@ -103,6 +103,85 @@
       --shadow-lg: 0 12px 24px rgba(0,0,0,0.6);
     }
 
+    :root[data-theme="navidad"] {
+      --bg-body: #fdfaf5;
+      --bg-surface: #ffffff;
+      --bg-card: #ffffff;
+      --bg-subtle: #f3f7f4;
+      --bg-muted: #e5ece7;
+      --border: #e4dfd5;
+      --border-strong: #cfc6b6;
+      --text-main: #1c1917;
+      --text-muted: #57534e;
+      --text-subtle: #78716c;
+
+      --guinda: #881337;
+      --guinda-soft: #fff1f2;
+      --guinda-border: #fecdd3;
+
+      --oro: #b45309;
+      --oro-soft: #fef9c3;
+      --oro-border: #fde68a;
+
+      --blue: #0369a1;
+      --blue-soft: #f0f9ff;
+      --blue-border: #bae6fd;
+
+      --green: #14532d;
+      --green-soft: #ecfdf5;
+      --green-border: #a7f3d0;
+
+      --amber: #b45309;
+      --amber-soft: #fffbeb;
+      --amber-border: #fde68a;
+
+      --purple: #7c3aed;
+      --purple-soft: #f5f3ff;
+      --purple-border: #ddd6fe;
+
+      --red: #b91c1c;
+      --red-soft: #fef2f2;
+      --red-border: #fecaca;
+
+      --shadow-sm: 0 1px 2px 0 rgba(136, 19, 55, 0.06);
+      --shadow-md: 0 4px 8px -1px rgba(20, 83, 45, 0.07), 0 2px 4px -2px rgba(136, 19, 55, 0.05);
+      --shadow-lg: 0 10px 20px -3px rgba(20, 83, 45, 0.08), 0 4px 6px -4px rgba(136, 19, 55, 0.04);
+    }
+
+    /* Cinta superior y nieve sutil de fondo en Tema Navideño (cero encimamiento) */
+    :root[data-theme="navidad"] .app-header {
+      border-top: 3px solid transparent;
+      border-image: linear-gradient(90deg, #991b1b, #d97706, #14532d, #d97706, #991b1b) 1;
+    }
+    :root[data-theme="navidad"] .app-header,
+    :root[data-theme="navidad"] .app-nav-bar,
+    :root[data-theme="navidad"] .main-content-wrap {
+      position: relative;
+      z-index: 1;
+    }
+    #navidadSnow {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(2px 2px at 15% 20%, rgba(180, 83, 9, 0.22) 50%, transparent 100%),
+        radial-gradient(2.5px 2.5px at 45% 65%, rgba(20, 83, 45, 0.16) 50%, transparent 100%),
+        radial-gradient(2px 2px at 75% 30%, rgba(153, 27, 27, 0.16) 50%, transparent 100%),
+        radial-gradient(3px 3px at 88% 80%, rgba(180, 83, 9, 0.18) 50%, transparent 100%),
+        radial-gradient(2px 2px at 28% 85%, rgba(20, 83, 45, 0.14) 50%, transparent 100%);
+      background-size: 260px 260px;
+      animation: navidadDrift 18s linear infinite;
+    }
+    :root[data-theme="navidad"] #navidadSnow {
+      display: block;
+    }
+    @keyframes navidadDrift {
+      from { background-position: 0 0; }
+      to { background-position: 0 260px; }
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -2408,6 +2487,7 @@
 
 </head>
 <body>
+  <div id="navidadSnow" aria-hidden="true"></div>
   <!-- Minimalist Executive Header (Ultra-Compacto & Cero Duplicidad) -->
   <header class="app-header">
     <div class="container app-header-inner">
@@ -3844,16 +3924,25 @@ const CULTURAL_EVENTS = [
 
       renderAuditEmails();
       renderTable23();
+
+      // Restaurar tema guardado (Claro / Oscuro / Navideño)
+      const savedTheme = localStorage.getItem('ceb_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const tBtn = document.getElementById('themeBtn');
+      if (tBtn) {
+        tBtn.textContent = savedTheme === 'light' ? '☀️' : (savedTheme === 'dark' ? '🌙' : '🎄');
+      }
     });
 
-    // Cambio de Tema Claro / Oscuro
+    // Cambio de Tema Claro / Oscuro / Navideño
     function toggleTheme() {
       const html = document.documentElement;
       const cur = html.getAttribute('data-theme') || 'light';
-      const nxt = cur === 'light' ? 'dark' : 'light';
+      const order = ['light', 'dark', 'navidad'];
+      const nxt = order[(order.indexOf(cur) + 1) % order.length];
       html.setAttribute('data-theme', nxt);
       localStorage.setItem('ceb_theme', nxt);
-      document.getElementById('themeBtn').textContent = nxt === 'light' ? '☀️ Claro' : '🌙 Oscuro';
+      document.getElementById('themeBtn').textContent = nxt === 'light' ? '☀️' : (nxt === 'dark' ? '🌙' : '🎄');
     }
 
     // Navegación de Tabs Principales

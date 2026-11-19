@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es" data-theme="navidad">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -2501,7 +2501,7 @@
 
       <div class="header-tools">
         <button class="tool-btn" id="refreshBtn" onclick="forceRefreshApp()" title="Actualizar Agenda desde la nube">🔄</button>
-        <button class="tool-btn theme-btn" id="themeBtn" onclick="toggleTheme()" title="Cambiar Tema Claro / Oscuro">☀️</button>
+        <button class="tool-btn theme-btn" id="themeBtn" onclick="toggleTheme()" title="Cambiar Tema (Navideño / Oscuro / Claro)">🎄</button>
         <button class="tool-btn" onclick="openModal()" title="Calendario Oficial SEMS">📷 SEMS</button>
         <button class="tool-btn highlight" onclick="switchMainTab('sync')" title="Suscribir Calendario iCal">📲 iCal</button>
       </div>
@@ -3925,24 +3925,34 @@ const CULTURAL_EVENTS = [
       renderAuditEmails();
       renderTable23();
 
-      // Restaurar tema guardado (Claro / Oscuro / Navideño)
-      const savedTheme = localStorage.getItem('ceb_theme') || 'light';
+      // Tema automático por temporada (15 Nov - 06 Ene: Navideño por default)
+      function getSeasonalDefaultTheme() {
+        const now = new Date();
+        const m = now.getMonth() + 1;
+        const d = now.getDate();
+        if ((m === 11 && d >= 15) || m === 12 || (m === 1 && d <= 6)) {
+          return 'navidad';
+        }
+        return 'light';
+      }
+
+      const savedTheme = localStorage.getItem('ceb_theme_v2') || getSeasonalDefaultTheme();
       document.documentElement.setAttribute('data-theme', savedTheme);
       const tBtn = document.getElementById('themeBtn');
       if (tBtn) {
-        tBtn.textContent = savedTheme === 'light' ? '☀️' : (savedTheme === 'dark' ? '🌙' : '🎄');
+        tBtn.textContent = savedTheme === 'navidad' ? '🎄' : (savedTheme === 'dark' ? '🌙' : '☀️');
       }
     });
 
-    // Cambio de Tema Claro / Oscuro / Navideño
+    // Cambio de Tema Navideño / Oscuro / Claro
     function toggleTheme() {
       const html = document.documentElement;
-      const cur = html.getAttribute('data-theme') || 'light';
-      const order = ['light', 'dark', 'navidad'];
+      const cur = html.getAttribute('data-theme') || 'navidad';
+      const order = ['navidad', 'dark', 'light'];
       const nxt = order[(order.indexOf(cur) + 1) % order.length];
       html.setAttribute('data-theme', nxt);
-      localStorage.setItem('ceb_theme', nxt);
-      document.getElementById('themeBtn').textContent = nxt === 'light' ? '☀️' : (nxt === 'dark' ? '🌙' : '🎄');
+      localStorage.setItem('ceb_theme_v2', nxt);
+      document.getElementById('themeBtn').textContent = nxt === 'navidad' ? '🎄' : (nxt === 'dark' ? '🌙' : '☀️');
     }
 
     // Navegación de Tabs Principales

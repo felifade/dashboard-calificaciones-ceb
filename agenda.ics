@@ -1533,4 +1533,16 @@ CATEGORIES:🚌 VIAJE ESCOLAR,EXTENSIÓN CULTURAL,5° SEMESTRE
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-capacitacion-sagyc-20261127@ceb54.dgb.edu.mx
+DTSTAMP:20261119T053500Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:💻 CEB 5/4: Capacitación Plataforma ceb54.sistemas-sagyc.com (Dr. Felipe López Salazar)
+DESCRIPTION:Capacitación sobre el uso y funcionamiento de la plataforma institucional ceb54.sistemas-sagyc.com impartida por el Dr. Felipe López Salazar.\n- Turno Matutino: 7:00 horas.\n- Turno Vespertino: 13:00 horas.\nLas actividades académicas con estudiantes iniciarán a partir del segundo módulo de cada turno.
+LOCATION:Plantel CEB 5/4 · Ambos Turnos
+CATEGORIES:💻 CAPACITACIÓN DOCENTE,SUBDIRECCIÓN ACADÉMICA,SAGYC
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
 END:VCALENDAR

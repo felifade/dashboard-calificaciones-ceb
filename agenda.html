@@ -2567,7 +2567,7 @@
       </div>
     </section>
 
-    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (19) -->
+    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (20) -->
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
         <!-- Inyectado por JS -->
@@ -2655,6 +2655,16 @@
   <script>
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
+      {
+        id: 20,
+        date: "19 de Noviembre de 2026",
+        sender: "Subdirección Académica (Aurora Juárez Flores)",
+        title: "💻 Capacitación Plataforma Institucional ceb54.sistemas-sagyc.com (27 de Noviembre)",
+        req: "Capacitación sobre el uso y funcionamiento de la plataforma institucional ceb54.sistemas-sagyc.com, impartida por el Dr. Felipe López Salazar el viernes 27 de noviembre (TM: 07:00 h / TV: 13:00 h). Las actividades académicas con estudiantes iniciarán a partir del segundo módulo de cada turno.",
+        delivery: "Plantel CEB 5/4 · TM 07:00 h / TV 13:00 h",
+        status: "Programado (Vie 27 Nov)",
+        ref: "Oficio Subdirección Académica"
+      },
       {
         id: 19,
         date: "18 de Noviembre de 2026",
@@ -2997,6 +3007,7 @@
           { date: "23–27 Nov", text: "Sesiones regulares del Tercer Parcial y avance de proyectos transversales", cat: "normal", shift: "ALL", ref: "S13 Oficial" },
           { date: "Mar 24 Nov", text: "🚌 Viaje escolar de 5° Semestre: Museo de Cera y Ripley (CDMX)", cat: "normal", shift: "5° Semestre", ref: "Extensión Cultural" },
           { date: "Mié 25 Nov", text: "📁 Límite para integrar evidencias de los 16 Días de Activismo en Drive (Tutores)", cat: "normal", shift: "Tutores", ref: "Orientación" },
+          { date: "Vie 27 Nov (07:00 / 13:00 h)", text: "💻 Capacitación Plataforma ceb54.sistemas-sagyc.com (Imparte: Dr. Felipe López Salazar · Clases inician 2° módulo)", cat: "union", shift: "Docentes", ref: "Subdirección" },
           { date: "Vie 27 Nov", text: "🏥 Feria de la Salud Institucional · TURNO MATUTINO", cat: "normal", shift: "TM", ref: "Subdirección" }
         ]
       },
@@ -3148,7 +3159,10 @@
   ],
   "2026-11-24": [{ label: "🚌 Viaje 5° Sem: Cera y Ripley", cat: "normal", desc: "Viaje escolar y formativo de estudiantes de 5° semestre al Museo de Cera y Museo de Ripley en la Ciudad de México." }],
   "2026-11-25": [{ label: "📁 Evidencias 16 Días Activismo", cat: "normal", desc: "Fecha límite para que los tutores suban a Google Drive las evidencias correspondientes a las actividades de los 16 Días de Activismo contra la Violencia de Género organizadas por grupo (https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi)." }],
-  "2026-11-27": [{ label: "🏥 Feria Salud (TM)", cat: "normal", desc: "Feria Institucional de la Salud para estudiantes del Turno Matutino." }],
+  "2026-11-27": [
+    { label: "💻 Capacitación SAGYC (07:00 / 13:00 h)", cat: "union", desc: "Capacitación sobre el uso de la plataforma institucional ceb54.sistemas-sagyc.com impartida por el Dr. Felipe López Salazar (TM: 07:00 h / TV: 13:00 h). Actividades con estudiantes inician a partir del 2° módulo." },
+    { label: "🏥 Feria Salud (TM)", cat: "normal", desc: "Feria Institucional de la Salud para estudiantes del Turno Matutino." }
+  ],
   "2026-12-04": [{ label: "💚 Cierre ABC Emociones", cat: "normal", desc: "Fecha límite de carga y concentración de evidencias de El ABC de las Emociones en Google Drive institucional." }],
   "2026-12-10": [{ label: "📝 Inicia Examen P3", cat: "exam", desc: "Actividad Oficial SEMS #07: Inicia Tercera Evaluación Parcial (10 al 16 de Diciembre)." }],
   "2026-12-16": [
@@ -3390,7 +3404,10 @@ const WEEK_VIEWS = {
         { title: "Acompañamiento Socioemocional", sub: "Tutorías y orientación formativa", cat: "normal", priority: "normal", shift: "Ambos turnos" }
       ] },
       { name: "Jueves", date: "26 Nov", isToday: false, isHoliday: false, events: [{ title: "Trabajo en Laboratorios y Aulas", sub: "Desarrollo de proyectos formativos", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Viernes", date: "27 Nov", isToday: false, isHoliday: false, events: [{ title: "🏥 Feria de la Salud · Turno Matutino", sub: "Jornada institucional de bienestar estudiantil y prevención", cat: "normal", priority: "high", shift: "☀️ Turno Matutino", tag: "Salud TM" }] }
+      { name: "Viernes", date: "27 Nov", isToday: false, isHoliday: false, events: [
+        { title: "💻 Capacitación Plataforma ceb54.sistemas-sagyc.com", sub: "Imparte: Dr. Felipe López Salazar · TM 07:00 h / TV 13:00 h. Actividades con estudiantes inician en el 2° módulo.", cat: "union", priority: "high", shift: "Docentes (TM 07:00 / TV 13:00)", tag: "Capacitación" },
+        { title: "🏥 Feria de la Salud · Turno Matutino", sub: "Jornada institucional de bienestar estudiantil y prevención", cat: "normal", priority: "high", shift: "☀️ Turno Matutino", tag: "Salud TM" }
+      ] }
     ]
   },
   "S14": {

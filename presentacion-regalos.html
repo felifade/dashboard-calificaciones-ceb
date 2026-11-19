@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tres Regalos de Navidad · Capacitación Docente CEB 5/4</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #991b1b;      /* Carmesí navideño / institucional */
+      --primary-soft: #fef2f2;
+      --accent: #166534;       /* Verde pino */
+      --accent-soft: #f0fdf4;
+      --gold: #b45309;         /* Dorado cálido */
+      --gold-soft: #fffbeb;
+      --border: #e2e8f0;
+      --shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Barra superior discreta */
+    .topbar {
+      height: 52px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+      z-index: 10;
+    }
+
+    .topbar .brand {
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .topbar .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      background: #e2e8f0;
+    }
+
+    /* Contenedor de diapositivas */
+    .deck {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 40px;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1120px;
+      min-height: 560px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 52px 60px;
+      flex-direction: column;
+      justify-content: center;
+      animation: fadeIn 0.28s ease-out;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      width: fit-content;
+      margin-bottom: 18px;
+    }
+
+    .tag.red { background: var(--primary-soft); color: var(--primary); }
+    .tag.green { background: var(--accent-soft); color: var(--accent); }
+    .tag.gold { background: var(--gold-soft); color: var(--gold); }
+
+    h1 {
+      font-size: 3rem;
+      line-height: 1.12;
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: var(--text);
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      line-height: 1.2;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    p.lead {
+      font-size: 1.35rem;
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: 860px;
+    }
+
+    .quote-box {
+      margin-top: 28px;
+      padding: 24px 28px;
+      border-left: 6px solid var(--primary);
+      background: var(--primary-soft);
+      border-radius: 0 16px 16px 0;
+      font-size: 1.35rem;
+      line-height: 1.5;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card.highlight-red { border-top: 5px solid var(--primary); }
+    .card.highlight-green { border-top: 5px solid var(--accent); }
+    .card.highlight-gold { border-top: 5px solid var(--gold); }
+
+    .card .icon {
+      font-size: 2.2rem;
+      margin-bottom: 4px;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .card p, .card li {
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    ul.clean {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    ul.clean li {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      padding-left: 32px;
+      position: relative;
+      color: var(--text);
+    }
+
+    ul.clean li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .url-pill {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 10px 16px;
+      background: #0f172a;
+      color: #f8fafc;
+      border-radius: 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    /* Barra de progreso inferior */
+    .progress-wrap {
+      height: 6px;
+      background: var(--border);
+      width: 100%;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      width: 10%;
+      transition: width 0.25s ease;
+    }
+
+    @media (max-width: 900px) {
+      .slide { padding: 32px 26px; min-height: auto; }
+      h1 { font-size: 2.1rem; }
+      h2 { font-size: 1.65rem; }
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">🎄 CEB 5/4 «Profr. Rafael Ramírez» · Capacitación Docente</div>
+    <div class="controls">
+      <span id="counter">1 / 10</span>
+      <button class="btn" onclick="prevSlide()">← Anterior</button>
+      <button class="btn" onclick="nextSlide()">Siguiente →</button>
+      <button class="btn" onclick="toggleFullscreen()">⛶ Pantalla completa</button>
+    </div>
+  </header>
+
+  <main class="deck">
+
+    <!-- SLIDE 1: PORTADA -->
+    <section class="slide active">
+      <span class="tag red">🎁 Viernes 27 de noviembre de 2026</span>
+      <h1>Tres Regalos de Navidad para nuestro trabajo docente</h1>
+      <p class="lead">
+        Una sesión práctica —como una clase entre colegas— para apropiarnos de las herramientas digitales del sistema CEB 5/4 y quitarnos peso de encima.
+      </p>
+      <div class="quote-box">
+        “La información es poder. Estar organizados y saber exactamente qué tenemos que entregar nos da tranquilidad y control.”
+      </div>
+      <p style="margin-top: 24px; color: var(--muted); font-weight: 600;">
+        Imparte: Dr. Felipe López Salazar · CEB 5/4 (CCT 13DBP0001Z)
+      </p>
+    </section>
+
+    <!-- SLIDE 2: EL PUNTO DE PARTIDA -->
+    <section class="slide">
+      <span class="tag gold">💡 Antes de empezar</span>
+      <h2>Seamos honestos: a veces parece “más trabajo”</h2>
+      <p class="lead">
+        Cuando nos presentan un sistema nuevo, es normal pensar que es una carga extra. Pero hay una realidad que todos compartimos:
+      </p>
+      <ul class="clean">
+        <li><strong>El trabajo no se va a acabar</strong> y lo que nos pidan institucionalmente es lo que tenemos que entregar.</li>
+        <li>La diferencia no está en la cantidad de trabajo, sino en <strong>cómo lo enfrentamos</strong>: ¿a ciegas y de último minuto, o con claridad y anticipación?</li>
+        <li>Tener un sistema propio nos abre una <strong>gran área de oportunidad</strong> para tener mejor control de nuestros grupos y tiempos.</li>
+      </ul>
+    </section>
+
+    <!-- SLIDE 3: LA INFORMACIÓN ES PODER -->
+    <section class="slide">
+      <span class="tag green">🧠 Nuestra filosofía de trabajo</span>
+      <h2>La información es poder (y tranquilidad)</h2>
+      <div class="grid-2">
+        <div class="card highlight-red">
+          <div class="icon">😰</div>
+          <h3>Sin organización</h3>
+          <p>Incertidumbre sobre fechas límite, datos regados en distintos archivos y desgaste buscando qué alumno debe qué materia.</p>
+        </div>
+        <div class="card highlight-green">
+          <div class="icon">😌</div>
+          <h3>Con el sistema CEB 5/4</h3>
+          <p>Sabemos exactamente qué hay que entregar, cuándo toca y qué necesita cada estudiante. Eso nos quita un peso enorme de la espalda.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: LOS 3 REGALOS -->
+    <section class="slide">
+      <span class="tag red">🎄 El propósito de hoy</span>
+      <h2>Tres Regalos de Navidad para ustedes</h2>
+      <p class="lead">Hoy nos llevamos tres herramientas listas para usarse desde el celular, la tablet o la computadora:</p>
+      <div class="grid-3">
+        <div class="card highlight-red">
+          <div class="icon">🤝</div>
+          <h3>1. Apartado de Tutorías</h3>
+          <p>Cómo funciona el seguimiento de tutorados de forma ordenada y centralizada.</p>
+        </div>
+        <div class="card highlight-green">
+          <div class="icon">📅</div>
+          <h3>2. Agenda Semestral</h3>
+          <p>El calendario oficial compartido para saber siempre qué viene y qué se entrega.</p>
+        </div>
+        <div class="card highlight-gold">
+          <div class="icon">📊</div>
+          <h3>3. Estadísticos por Grado</h3>
+          <p>Acceso directo para saber qué materia reprobó cada alumno, cuántas debe y dar seguimiento puntual.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: REGALO 1 - TUTORÍAS -->
+    <section class="slide">
+      <span class="tag red">🎁 Regalo 1</span>
+      <h2>Apartado de Tutorías</h2>
+      <p class="lead">Diseñado para que el acompañamiento a nuestros estudiantes sea ágil y no burocrático.</p>
+      <ul class="clean">
+        <li><strong>Todo en un mismo lugar:</strong> Información clave del grupo y de cada tutorado sin buscar en múltiples carpetas.</li>
+        <li><strong>Seguimiento claro:</strong> Registro práctico de acuerdos, canalizaciones y observaciones relevantes.</li>
+        <li><strong>Habilidad docente:</strong> Nos permite detectar a tiempo quién necesita apoyo antes de que termine el parcial.</li>
+      </ul>
+    </section>
+
+    <!-- SLIDE 6: REGALO 2 - AGENDA -->
+    <section class="slide">
+      <span class="tag green">🎁 Regalo 2</span>
+      <h2>La Agenda Semestral Digital</h2>
+      <p class="lead">Nuestra brújula de Lunes a Viernes para no perder de vista ninguna fecha importante.</p>
+      <ul class="clean">
+        <li><strong>Vista Mensual y Semanal:</strong> Diseñada para verse limpia en celular y computadora.</li>
+        <li><strong>Inspector de Día:</strong> Tocas cualquier fecha y ves el detalle oficial de la actividad o entrega.</li>
+        <li><strong>Sincronización automática:</strong> Se puede suscribir directo a Google Calendar o Apple Calendar.</li>
+      </ul>
+      <a class="url-pill" href="https://felifade.github.io/dashboard-calificaciones-ceb/agenda.html" target="_blank">
+        🔗 https://felifade.github.io/dashboard-calificaciones-ceb/agenda.html
+      </a>
+    </section>
+
+    <!-- SLIDE 7: REGALO 3 - ESTADÍSTICOS -->
+    <section class="slide">
+      <span class="tag gold">🎁 Regalo 3</span>
+      <h2>Estadísticos en Tiempo Real</h2>
+      <p class="lead">Datos reales al alcance de cada tutor para tomar decisiones precisas.</p>
+      <div class="grid-2">
+        <div class="card highlight-gold">
+          <h3>¿Qué puede ver el tutor?</h3>
+          <ul class="clean" style="margin-top: 6px;">
+            <li>Acceso directo por <strong>grado y grupo</strong>.</li>
+            <li><strong>Qué materia específica</strong> reprobó el estudiante.</li>
+            <li><strong>Cuántas materias</strong> acumula en riesgo.</li>
+          </ul>
+        </div>
+        <div class="card highlight-green">
+          <h3>¿Para qué nos sirve?</h3>
+          <p>Pasamos de las suposiciones a un <strong>seguimiento más puntual</strong> con el alumno y con sus padres o tutores legales.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: CLASE PRÁCTICA -->
+    <section class="slide">
+      <span class="tag green">🛠️ Manos a la obra</span>
+      <h2>Nuestra práctica guiada de hoy</h2>
+      <p class="lead">Hagámoslo juntos paso a paso para que nadie se vaya con dudas:</p>
+      <ul class="clean">
+        <li><strong>Paso 1:</strong> Abrimos el sistema desde nuestro teléfono o computadora.</li>
+        <li><strong>Paso 2:</strong> Revisamos la <strong>Agenda</strong> y ubicamos las próximas fechas clave de cierre.</li>
+        <li><strong>Paso 3:</strong> Entramos a <strong>Tutorías y Estadísticos</strong>, elegimos nuestro grado y consultamos un caso real.</li>
+      </ul>
+    </section>
+
+    <!-- SLIDE 9: ACUERDO DE EQUIPO -->
+    <section class="slide">
+      <span class="tag red">🤝 Nuestro compromiso</span>
+      <h2>Estar conscientes y apoyarnos entre todos</h2>
+      <div class="quote-box">
+        “Es mejor estar conscientes de lo que tenemos que hacer, apoyarnos entre todos, recordarnos las fechas, e incluso si algo no se puede, hacerlo juntos.”
+      </div>
+      <ul class="clean">
+        <li>Si alguien se atora con el sistema, nos ayudamos en el momento.</li>
+        <li>Si una fecha se acerca, nos la recordamos como equipo.</li>
+        <li>La herramienta está al servicio de nosotros, no al revés.</li>
+      </ul>
+    </section>
+
+    <!-- SLIDE 10: CIERRE -->
+    <section class="slide">
+      <span class="tag gold">🎄 ¡Gracias, maestras y maestros!</span>
+      <h2>¡A aprovechar nuestros 3 Regalos!</h2>
+      <p class="lead">
+        Que este cierre de semestre sea más ligero, organizado y tranquilo para todos.
+      </p>
+      <p style="margin-top: 28px; font-size: 1.2rem; font-weight: 700; color: var(--primary);">
+        Abrimos espacio para dudas, pruebas en vivo y acompañamiento.
+      </p>
+    </section>
+
+  </main>
+
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('counter');
+    const progressBar = document.getElementById('progressBar');
+    let current = 0;
+
+    function showSlide(index) {
+      if (index < 0) index = 0;
+      if (index >= slides.length) index = slides.length - 1;
+      slides[current].classList.remove('active');
+      current = index;
+      slides[current].classList.add('active');
+      counter.textContent = `${current + 1} / ${slides.length}`;
+      progressBar.style.width = `${((current + 1) / slides.length) * 100}%`;
+    }
+
+    function nextSlide() { showSlide(current + 1); }
+    function prevSlide() { showSlide(current - 1); }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key.toLowerCase() === 'f') {
+        toggleFullscreen();
+      }
+    });
+  </script>
+</body>
+</html>

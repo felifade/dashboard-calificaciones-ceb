@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menos Saturación, Más Aprendizaje · Portafolio Digital Único (CEB 5/4)</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;        /* Azul DGB Federal */
+      --primary-light: #2563eb;
+      --primary-soft: #eff6ff;
+      --accent: #059669;         /* Verde institucional */
+      --accent-soft: #ecfdf5;
+      --danger: #dc2626;         /* Alertas y sobrecarga */
+      --danger-soft: #fef2f2;
+      --warning: #d97706;
+      --warning-soft: #fffbeb;
+      --bg: #f8fafc;             /* Fondo gris institucional impoluto */
+      --card-bg: #ffffff;        /* Tarjeta blanca */
+      --text-main: #0f172a;      /* Texto de alto contraste */
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide-container {
+      width: 94vw;
+      max-width: 1220px;
+      height: 90vh;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header Institucional de Alto Nivel */
+    .slide-header {
+      padding: 14px 40px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-branding {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .dgb-badge {
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+      font-size: 0.76rem;
+      padding: 4px 12px;
+      border-radius: 6px;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .school-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #334155;
+      letter-spacing: -0.01em;
+    }
+
+    .header-metadata {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .author-pill {
+      font-size: 0.82rem;
+      color: var(--primary);
+      font-weight: 700;
+      background: var(--primary-soft);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      border: 1px solid #bfdbfe;
+    }
+
+    .slide-counter {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: #f1f5f9;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+    }
+
+    /* Área de Contenido */
+    .slide-content {
+      flex: 1;
+      padding: 28px 48px;
+      overflow-y: auto;
+      display: none;
+      animation: fadeIn 0.28s ease-out forwards;
+    }
+
+    .slide-content.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Tipografía */
+    h1 {
+      font-size: 2.85rem;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--primary);
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 1.95rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    p.lead {
+      font-size: 1.1rem;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    /* Badges & Pills */
+    .step-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 12px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    /* Grids & Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-danger {
+      background: var(--danger-soft);
+      border-color: #fecaca;
+    }
+
+    .card-success {
+      background: var(--accent-soft);
+      border-color: #a7f3d0;
+    }
+
+    .card-primary {
+      background: var(--primary-soft);
+      border-color: #bfdbfe;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    /* Mockup Hiperrealista de Gmail */
+    .gmail-mockup {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      max-height: 46vh;
+    }
+
+    .gmail-header {
+      background: #ffffff;
+      padding: 10px 14px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .gmail-search-bar {
+      flex: 1;
+      background: #f1f3f4;
+      border-radius: 24px;
+      padding: 7px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #5f6368;
+    }
+
+    .gmail-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #ea4335;
+      color: white;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+    }
+
+    .gmail-body {
+      overflow-y: auto;
+      background: #ffffff;
+    }
+
+    .gmail-item {
+      display: flex;
+      padding: 10px 14px;
+      border-bottom: 1px solid #f1f3f4;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .gmail-item.unread {
+      background: #f4f8fd;
+    }
+
+    .gmail-icon-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #e8f0fe;
+      color: #1a73e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .gmail-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .gmail-top-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .gmail-sender {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #202124;
+    }
+
+    .gmail-time {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #d93025;
+    }
+
+    .gmail-subject {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #1f1f1f;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+
+    .gmail-snippet {
+      font-size: 0.74rem;
+      color: #5f6368;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Diagrama de Arquitectura Cloud */
+    .flow-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      margin-top: 10px;
+      padding: 10px 0;
+    }
+
+    .flow-node {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 16px;
+      text-align: center;
+      flex: 1;
+      max-width: 23%;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .flow-node:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary-light);
+    }
+
+    .flow-arrow {
+      font-size: 1.6rem;
+      color: var(--primary-light);
+      font-weight: bold;
+      padding: 0 8px;
+    }
+
+    /* Tablas Estructuradas */
+    table.demo-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      background: white;
+    }
+
+    table.demo-table th {
+      background: #f8fafc;
+      color: #334155;
+      font-weight: 700;
+      text-align: left;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+    }
+
+    table.demo-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: #334155;
+      vertical-align: top;
+    }
+
+    /* Footer y Botones de Navegación */
+    .slide-footer {
+      padding: 12px 40px;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 9px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.15s;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-light);
+    }
+
+    .nav-btn:disabled {
+      background: #cbd5e1;
+      cursor: not-allowed;
+    }
+
+    .progress-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .dot.active {
+      background: var(--primary);
+      width: 24px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slide-container">
+  <!-- Header Institucional -->
+  <div class="slide-header">
+    <div class="header-branding">
+      <span class="dgb-badge">🏛️ DGB · FEDERAL</span>
+      <span class="school-title">CEB 5/4 «Profr. Rafael Ramírez» · CCT 13DBP0001Z</span>
+    </div>
+    <div class="header-metadata">
+      <span class="author-pill">🎓 Dr. Felipe López Salazar · Dr. en Tecnología Educativa</span>
+      <span class="slide-counter" id="slideCounter">1 de 9</span>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 1: PORTADA INSTITUCIONAL EJECUTIVA   -->
+  <!-- ========================================== -->
+  <div class="slide-content active" id="slide1">
+    <div style="max-width: 920px; margin: 0 auto; text-align: center;">
+      <span class="step-pill" style="background: #e0f2fe; color: #0369a1;">
+        Innovación en Tecnología Educativa & Acompañamiento Escolar (MCCEMS 2025)
+      </span>
+      <h1>Menos Saturación, Más Aprendizaje</h1>
+      <p class="lead" style="font-size: 1.25rem; color: #475569; max-width: 780px; margin: 0 auto 28px auto;">
+        Modelo de <b>Portafolio Digital Único Fuera de Línea</b>: Reducción de la sobrecarga cognitiva en el estudiante y optimización radical del tiempo de evaluación docente.
+      </p>
+
+      <div style="display: inline-flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid var(--border); padding: 16px 32px; border-radius: 14px; box-shadow: var(--shadow-md);">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 10px rgba(37,99,235,0.3);">
+          🎓
+        </div>
+        <div style="text-align: left;">
+          <p style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">Dr. Felipe López Salazar</p>
+          <p style="font-size: 0.85rem; color: #64748b; font-weight: 600;">Doctor en Tecnología Educativa · Catedrático de Cultura Digital I · CEB 5/4</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 2: PROBLEMÁTICA I (AVALANCHA GMAIL)   -->
+  <!-- ========================================== -->
+  <div class="slide-content" id="slide2">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+      <div>
+        <span class="step-pill" style="background: var(--danger-soft); color: var(--danger);">🚨 Diagnóstico Crítico: Sobrecarga Cognitiva</span>
+        <h2>La Avalancha Digital en el Teléfono del Estudiante</h2>
+        <p class="lead" style="margin-bottom: 12px;">¿Nuestros estudiantes de 1.er semestre están aprendiendo o están sobreviviendo a las notificaciones rojas?</p>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button class="nav-btn" style="padding: 5px 12px; font-size: 0.8rem; background: var(--primary);" id="btnViewMock" onclick="toggleGmailView('mock')">📱 Interfaz Gmail</button>
+        <button class="nav-btn" style="padding: 5px 12px; font-size: 0.8rem; background: #64748b;" id="btnViewImg" onclick="toggleGmailView('img')">🖼️ Captura Celular (IA)</button>
+      </div>
+    </div>
+
+    <div class="grid-2" style="align-items: start;">
+      <!-- Mockup Real de Gmail Mobile -->
+      <div id="gmailViewMock" class="gmail-mockup">
+        <div class="gmail-header">
+          <span style="font-size: 1.1rem; color: #5f6368;">☰</span>
+          <div class="gmail-search-bar">
+            <span>Buscar en el correo</span>
+            <span style="background: #ea4335; color: white; font-size: 0.7rem; font-weight: 800; padding: 2px 7px; border-radius: 10px;">99+</span>
+          </div>
+          <div class="gmail-avatar">A</div>
+        </div>
+        <div class="gmail-body">
+          <div class="gmail-item unread">
+            <div class="gmail-icon-circle" style="background: #fce8e6; color: #d93025;">⚠️</div>
+            <div class="gmail-content">
+              <div class="gmail-top-row">
+                <span class="gmail-sender">Google Classroom</span>
+                <span class="gmail-time">Ayer 23:59</span>
+              </div>
+              <div class="gmail-subject">🔴 Tarea atrasada: Resumen Reglas Ortográficas</div>
+              <div class="gmail-snippet">Lengua y Comunicación I · Fecha de entrega vencida...</div>
+            </div>
+          </div>
+
+          <div class="gmail-item unread">
+            <div class="gmail-icon-circle" style="background: #fef7e0; color: #b06000;">📝</div>
+            <div class="gmail-content">
+              <div class="gmail-top-row">
+                <span class="gmail-sender">Google Classroom</span>
+                <span class="gmail-time">08:15 AM</span>
+              </div>
+              <div class="gmail-subject">Nueva tarea: Ecuaciones pág. 45</div>
+              <div class="gmail-snippet">Pensamiento Matemático I · Fecha de entrega: Hoy 23:59 h...</div>
+            </div>
+          </div>
+
+          <div class="gmail-item unread">
+            <div class="gmail-icon-circle" style="background: #e6f4ea; color: #137333;">🧪</div>
+            <div class="gmail-content">
+              <div class="gmail-top-row">
+                <span class="gmail-sender">Google Classroom</span>
+                <span class="gmail-time">10:30 AM</span>
+              </div>
+              <div class="gmail-subject">Nueva tarea: Cuestionario Enlaces Químicos</div>
+              <div class="gmail-snippet">La Materia y sus Interacciones · Adjuntar fotos de libreta...</div>
+            </div>
+          </div>
+
+          <div class="gmail-item unread">
+            <div class="gmail-icon-circle" style="background: #e8f0fe; color: #1a73e8;">🇬🇧</div>
+            <div class="gmail-content">
+              <div class="gmail-top-row">
+                <span class="gmail-sender">Google Classroom</span>
+                <span class="gmail-time">12:10 PM</span>
+              </div>
+              <div class="gmail-subject">Nueva tarea: Unit 3 Vocabulary & Reading</div>
+              <div class="gmail-snippet">Inglés I · Entregar antes del jueves...</div>
+            </div>
+          </div>
+
+          <div class="gmail-item unread">
+            <div class="gmail-icon-circle" style="background: #fce8e6; color: #d93025;">⏰</div>
+            <div class="gmail-content">
+              <div class="gmail-top-row">
+                <span class="gmail-sender">Google Classroom</span>
+                <span class="gmail-time">02:40 PM</span>
+              </div>
+              <div class="gmail-subject">Recordatorio: Tienes 3 tareas sin entregar</div>
+              <div class="gmail-snippet">Tus profesores han asignado nuevas actividades para calificar...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen IA -->
+      <div id="gmailViewImg" style="display: none; text-align: center; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 16px; padding: 10px; box-shadow: 0 8px 18px rgba(0,0,0,0.06);">
+        <img src="gmail_classroom_inbox_mockup.jpg" alt="Captura Realista de Gmail Saturado" style="max-height: 44vh; width: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: inline-block;">
+        <p style="font-size: 0.75rem; color: #64748b; margin-top: 6px;">Visualización hiperrealista de la pantalla móvil de un estudiante del CEB 5/4</p>
+      </div>
+
+      <!-- Métricas y Consecuencias -->
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="grid-2" style="gap: 12px;">
+          <div class="stat-box">
+            <div class="stat-number" style="color: var(--danger);">24 a 28</div>
+            <p style="font-size: 0.82rem; color: #64748b; font-weight: 600;">Entregas exigidas por semana (3 a 4 por cada una de sus 7 materias)</p>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number" style="color: var(--warning);">+100</div>
+            <p style="font-size: 0.82rem; color: #64748b; font-weight: 600;">Notificaciones y alertas de Classroom saturando el teléfono al mes</p>
+          </div>
+        </div>
+
+        <div class="card card-danger">
+          <div class="card-title" style="color: var(--danger); font-size: 1rem;">
+            ⚠️ El Efecto Inverso: Fatiga Mental y Deserción
+          </div>
+          <p style="font-size: 0.88rem; color: #475569; line-height: 1.45;">
+            La psicología del aprendizaje (Teoría de la Carga Cognitiva de Sweller) demuestra que ante la saturación, el alumno <b>entra en modo pánico</b>: deja de leer instrucciones y se enfoca en subir "lo que sea" para apagar la alerta roja. Esto detona copias masivas y abandono escolar en 1.er semestre.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 3: PROBLEMÁTICA II (BRECHA DE DATOS) -->
+  <!-- ========================================== -->
+  <div class="slide-content" id="slide3">
+    <div>
+      <span class="step-pill" style="background: var(--warning-soft); color: var(--warning);">📶 Justicia Educativa & Brecha Digital</span>
+      <h2>La Brecha Silenciosa de Conectividad en el CEB 5/4</h2>
+      <p class="lead">Exigir entregas diarias en la nube desconoce la realidad económica de nuestras familias.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div style="font-size: 2rem; margin-bottom: 6px;">💳</div>
+        <div class="card-title" style="font-size: 1.05rem; color: #0f172a;">Recargas Prepago</div>
+        <p style="font-size: 0.86rem; color: #475569; line-height: 1.45;">
+          El 60% de nuestros jóvenes dependen de paquetes de <b>$20 o $50 pesos</b> semanales. Subir 5 fotografías pesadas a diario a Classroom agota sus datos en menos de 48 horas.
+        </p>
+      </div>
+
+      <div class="card">
+        <div style="font-size: 2rem; margin-bottom: 6px;">👨‍👩‍👧‍👦</div>
+        <div class="card-title" style="font-size: 1.05rem; color: #0f172a;">Un Celular por Familia</div>
+        <p style="font-size: 0.86rem; color: #475569; line-height: 1.45;">
+          En hogares con varios hermanos en secundaria y bachillerato, el teléfono se comparte. No pueden entregar tareas a la medianoche ni permanecer conectados todo el día.
+        </p>
+      </div>
+
+      <div class="card">
+        <div style="font-size: 2rem; margin-bottom: 6px;">❌</div>
+        <div class="card-title" style="font-size: 1.05rem; color: #0f172a;">Fallas de Conexión</div>
+        <p style="font-size: 0.86rem; color: #475569; line-height: 1.45;">
+          Avisos constantes de <i>"Error al adjuntar archivo por falla de red"</i> generan frustración y una sensación de exclusión injusta.
+        </p>
+      </div>
+    </div>
+
+    <div class="card card-primary" style="margin-top: 20px;">
+      <p style="font-size: 0.95rem; color: var(--primary); font-weight: 700;">
+        💡 Principio Pedagógico: El modelo tradicional de tareas diarias fragmentadas castiga a quien no tiene dinero para datos móviles, no a quien no quiere estudiar.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 4: LA SOLUCIÓN Y LA REGLA DE 3 ARCHIVOS -->
+  <!-- ========================================== -->
+  <div class="slide-content" id="slide4">
+    <div>
+      <span class="step-pill" style="background: var(--accent-soft); color: var(--accent);">✅ La Solución Estructural</span>
+      <h2>El Modelo de Portafolio Único: La Regla de los 3 Archivos</h2>
+      <p class="lead">El alumno trabaja en <b>un solo lugar</b> durante el parcial. En todo el semestre acumula <b>exactamente 3 archivos</b>.</p>
+    </div>
+
+    <!-- Banner Destacado: La Regla de los 3 Archivos Semestrales -->
+    <div style="background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 100%); color: white; border-radius: 12px; padding: 14px 24px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-md);">
+      <div>
+        <span style="background: rgba(255,255,255,0.2); font-size: 0.72rem; font-weight: 800; padding: 3px 10px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em;">Principio Institucional CEB 5/4</span>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-top: 4px;">1 Semestre = 3 Parciales = Exactamente 3 Archivos por Materia</h3>
+      </div>
+      <div style="display: flex; gap: 10px; text-align: center;">
+        <div style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; padding: 6px 12px;">
+          <p style="font-size: 0.7rem; opacity: 0.9;">PARCIAL 1</p>
+          <p style="font-size: 0.95rem; font-weight: 800;">📄 Archivo 1</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; padding: 6px 12px;">
+          <p style="font-size: 0.7rem; opacity: 0.9;">PARCIAL 2</p>
+          <p style="font-size: 0.95rem; font-weight: 800;">📄 Archivo 2</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; padding: 6px 12px;">
+          <p style="font-size: 0.7rem; opacity: 0.9;">PARCIAL 3</p>
+          <p style="font-size: 0.95rem; font-weight: 800;">📄 Archivo 3</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card card-danger">
+        <div class="card-title" style="color: var(--danger);">
+          ❌ El Modelo Fragmentado (Caos y Desorden)
+        </div>
+        <ul style="list-style: none; font-size: 0.85rem; color: #475569; display: flex; flex-direction: column; gap: 6px; margin-top: 6px;">
+          <li>• De 12 a 15 publicaciones sueltas por materia en Classroom al parcial.</li>
+          <li>• Decenas de archivos PDF rotados, capturas sueltas y enlaces rotos.</li>
+          <li>• En 7 materias: el estudiante gestiona <b>¡más de 250 publicaciones al semestre!</b></li>
+          <li style="margin-top: 4px; font-weight: bold; color: var(--danger);">
+            👉 El docente con 400 alumnos debe abrir y descargar ¡más de 6,000 archivos sueltos!
+          </li>
+        </ul>
+      </div>
+
+      <div class="card card-success">
+        <div class="card-title" style="color: var(--accent);">
+          🌟 El Portafolio Único (Estructura y Paz Mental)
+        </div>
+        <ul style="list-style: none; font-size: 0.85rem; color: #475569; display: flex; flex-direction: column; gap: 6px; margin-top: 6px;">
+          <li>• <b>1 Sola Publicación Maestra por Parcial</b> con copia para cada alumno.</li>
+          <li>• El estudiante trabaja durante 4 a 5 semanas en <b>ese mismo documento vivo</b>.</li>
+          <li>• Al concluir el semestre, el alumno tiene solo <b>3 documentos limpios y ordenados</b>.</li>
+          <li style="margin-top: 4px; font-weight: bold; color: var(--accent);">
+            👉 El profesor abre 1 solo enlace por alumno y recorre todo el bloque en 2 minutos.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- SLIDE 5: LA MAGIA TÉCNICA (DISTRIBUCIÓN Y SINCRONIZACIÓN CLOUD) -->
+  <!-- ============================================================== -->
+  <div class="slide-content" id="slide5">
+    <div>
+      <span class="step-pill" style="background: var(--primary-soft); color: var(--primary);">⚙️ Arquitectura Tecnológica en la Nube</span>
+      <h2>La Magia de la Sincronización Automática: Del Clic al Celular</h2>
+      <p class="lead">¿Qué ocurre técnicamente cuando se asigna la tarea en Classroom con «Hacer una copia para cada alumno»?</p>
+    </div>
+
+    <!-- Diagrama de Flujo Cloud -->
+    <div class="flow-container">
+      <div class="flow-node">
+        <div style="font-size: 2rem; margin-bottom: 6px;">🖱️</div>
+        <b style="color: var(--primary); font-size: 0.95rem;">1. Clic en Classroom</b>
+        <p style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">
+          Subdirección o el docente presiona <b>«Asignar»</b> eligiendo: <i>«Hacer una copia para cada alumno»</i>.
+        </p>
+      </div>
+
+      <div class="flow-arrow">➔</div>
+
+      <div class="flow-node">
+        <div style="font-size: 2rem; margin-bottom: 6px;">📂</div>
+        <b style="color: #0284c7; font-size: 0.95rem;">2. Auto-Gestión en Drive</b>
+        <p style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">
+          Google Drive crea en automático la carpeta y genera el documento bautizado con el nombre de cada persona.
+        </p>
+      </div>
+
+      <div class="flow-arrow">➔</div>
+
+      <div class="flow-node" style="border-color: var(--accent); background: var(--accent-soft);">
+        <div style="font-size: 2rem; margin-bottom: 6px;">📱</div>
+        <b style="color: var(--accent); font-size: 0.95rem;">3. ¡Aparece en el Celular!</b>
+        <p style="font-size: 0.78rem; color: #065f46; margin-top: 4px;">
+          Al abrir la app <b>Documentos de Google</b> en el teléfono, el archivo está <b>en el 1.er lugar de "Recientes"</b>.
+        </p>
+      </div>
+
+      <div class="flow-arrow">➔</div>
+
+      <div class="flow-node">
+        <div style="font-size: 2rem; margin-bottom: 6px;">⚡</div>
+        <b style="color: #7c3aed; font-size: 0.95rem;">4. Cero Búsquedas</b>
+        <p style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">
+          El estudiante (o docente) no tiene que crear carpetas, ni descargar nada, ni cambiar nombres a mano.
+        </p>
+      </div>
+    </div>
+
+    <div class="card card-primary" style="margin-top: 20px;">
+      <p style="font-size: 0.92rem; color: var(--primary); line-height: 1.45;">
+        <b>🔒 Certeza Institucional:</b> La cuenta oficial <code>@dgb.edu.mx</code> enlaza la suite completa. El alumno no puede "perder el archivo" ni enviar tareas equivocadas porque el documento ya vive vinculado a su cuenta y a su aula virtual.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 6: EL SUPERPODER DEL MODO OFFLINE    -->
+  <!-- ========================================== -->
+  <div class="slide-content" id="slide6">
+    <div>
+      <span class="step-pill" style="background: var(--accent-soft); color: var(--accent);">📶 Cero Consumo de Datos</span>
+      <h2>El Superpoder del Modo Fuera de Línea (Offline)</h2>
+      <p class="lead">Computación ubicua y sincronización diferida: el alumno trabaja sin saldo móvil.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card" style="border-top: 4px solid var(--primary);">
+        <span class="step-pill" style="background: #e2e8f0; color: #334155;">Paso 1</span>
+        <div class="card-title" style="font-size: 1.05rem;">Activar Modo Offline</div>
+        <p style="font-size: 0.86rem; color: #475569; line-height: 1.45; margin-bottom: 10px;">
+          En la app <b>Documentos de Google</b> en su celular, el alumno toca los 3 puntos (⋮) y enciende:
+        </p>
+        <span style="background: #e0f2fe; color: #0284c7; padding: 4px 10px; border-radius: 6px; font-weight: bold; font-size: 0.82rem;">
+          Disponible sin conexión
+        </span>
+      </div>
+
+      <div class="card" style="border-top: 4px solid var(--accent);">
+        <span class="step-pill" style="background: #e2e8f0; color: #334155;">Paso 2</span>
+        <div class="card-title" style="font-size: 1.05rem;">Trabajar Sin Datos</div>
+        <p style="font-size: 0.86rem; color: #475569; line-height: 1.45;">
+          En el salón, en el transporte o en su casa, el estudiante abre el documento, escribe y pega fotos de su libreta. <b>No requiere internet ni datos encendidos</b>.
+        </p>
+      </div>
+
+      <div class="card" style="border-top: 4px solid var(--warning);">
+        <span class="step-pill" style="background: #e2e8f0; color: #334155;">Paso 3</span>
+        <div class="card-title" style="font-size: 1.05rem;">Auto-Sincronización</div>
+        <p style="font-size: 0.86rem; color: #475569; line-height: 1.45;">
+          Al llegar al plantel o conectarse a una red WiFi gratuita, el archivo se actualiza en Google Drive en <b>3 segundos sin que el alumno haga nada</b>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 7: HIGIENE VISUAL Y TABLAS           -->
+  <!-- ========================================== -->
+  <div class="slide-content" id="slide7">
+    <div>
+      <span class="step-pill" style="background: var(--accent-soft); color: var(--accent);">📐 Ergonomía y Calidad Didáctica</span>
+      <h2>Higiene Visual: Evidencias en Tablas de 2 Columnas</h2>
+      <p class="lead">Eliminamos las fotos gigantes, rotadas o borrosas mediante una estructura uniforme.</p>
+    </div>
+
+    <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 18px;">
+      <h3 style="color: var(--primary); font-size: 1.05rem; margin-bottom: 10px;">📋 Estándar Institucional del Documento</h3>
+      <table class="demo-table">
+        <thead>
+          <tr>
+            <th style="width: 38%;">Detalle de la Actividad</th>
+            <th style="width: 62%;">Evidencia Fotográfica / Práctica en Libreta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <b style="color: #0f172a;">Semana 02: Ciudadanía Digital</b><br>
+              <span style="font-size: 0.8rem; color: #64748b;">Fecha: 10 de Septiembre 2026</span><br>
+              <p style="margin-top: 4px; font-size: 0.82rem;">• Resumen de riesgos en redes y privacidad.<br>• Firma o sello de clase revisado.</p>
+            </td>
+            <td>
+              <div style="background: #ffffff; border: 1px dashed #94a3b8; border-radius: 8px; padding: 12px; text-align: center; color: #64748b; font-size: 0.82rem;">
+                📷 <b>[Fotografía encuadrada del apunte en libreta con firma visible]</b>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b style="color: #0f172a;">Semana 03: Hoja de Cálculo</b><br>
+              <span style="font-size: 0.8rem; color: #64748b;">Fecha: 17 de Septiembre 2026</span><br>
+              <p style="margin-top: 4px; font-size: 0.82rem;">• Práctica de fórmulas matemáticas y promedios.</p>
+            </td>
+            <td>
+              <div style="background: #ffffff; border: 1px dashed #94a3b8; border-radius: 8px; padding: 12px; text-align: center; color: #64748b; font-size: 0.82rem;">
+                📷 <b>[Captura nítida de la gráfica generada en sala de cómputo]</b>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 8: LA GANANCIA DOCENTE               -->
+  <!-- ========================================== -->
+  <div class="slide-content" id="slide8">
+    <div>
+      <span class="step-pill" style="background: var(--primary-soft); color: var(--primary);">⏱️ Eficiencia y Acompañamiento</span>
+      <h2>La Ganancia para el Maestro: Evaluación Ágil y sin Desgaste</h2>
+      <p class="lead">¿Por qué este método cambia por completo la carga laboral del docente?</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card" style="display: flex; flex-direction: column; justify-content: center;">
+        <div style="font-size: 3rem; color: var(--accent); margin-bottom: 8px;">⚡ 2 Minutos</div>
+        <div class="card-title" style="font-size: 1.15rem;">Por Alumno en Lugar de 20 Minutos</div>
+        <p style="font-size: 0.9rem; color: #475569; line-height: 1.45;">
+          Al abrir el visor de tareas de Classroom, solo recorres el documento hacia abajo. Con una sola mirada validas las 4 semanas, capturas tu calificación y retroalimentas en privado.
+        </p>
+      </div>
+
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-around; gap: 12px;">
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+          <span style="font-size: 1.4rem;">📁</span>
+          <div>
+            <b style="color: #0f172a; font-size: 0.95rem;">Portafolio Histórico Evidenciable:</b>
+            <p style="font-size: 0.82rem; color: #64748b;">Si un padre o directivo solicita aclaración, tienes el expediente completo en 1 solo archivo con fecha y hora.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+          <span style="font-size: 1.4rem;">📥</span>
+          <div>
+            <b style="color: #0f172a; font-size: 0.95rem;">Cero Descargas al Disco Duro:</b>
+            <p style="font-size: 0.82rem; color: #64748b;">No saturas la memoria de tu computadora personal con gigabytes de fotos sueltas.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+          <span style="font-size: 1.4rem;">🛡️</span>
+          <div>
+            <b style="color: #0f172a; font-size: 0.95rem;">Blindaje contra Copias:</b>
+            <p style="font-size: 0.82rem; color: #64748b;">El historial de versiones de Google Docs muestra minuto a minuto quién escribió el texto y cuándo se insertó cada foto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- SLIDE 9: TALLER PRÁCTICO EN VIVO (LOS DOCENTES EN CELULAR)-->
+  <!-- ========================================================= -->
+  <div class="slide-content" id="slide9">
+    <div>
+      <span class="step-pill" style="background: var(--accent-soft); color: var(--accent);">🧪 Taller en Vivo en la Sala de Maestros</span>
+      <h2>Nuestra Ficha Colegiada para Subdirección (15 Minutos)</h2>
+      <p class="lead" style="margin-bottom: 14px;">
+        Vivámoslo primero nosotros en nuestro celular: redactemos nuestro acuerdo para el 2.º Parcial, tomémonos la foto de equipo y veámoslo proyectado en tiempo real.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <!-- Paso 1 -->
+      <div class="card" style="border-top: 4px solid var(--primary);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span class="step-pill" style="background: #e0f2fe; color: #0369a1;">Paso 1 · Min 0 a 3</span>
+          <span style="font-size: 1.3rem;">📱</span>
+        </div>
+        <div class="card-title" style="font-size: 1rem;">Abrir en el Celular</div>
+        <p style="font-size: 0.85rem; color: #475569; line-height: 1.45;">
+          Sacamos nuestro celular, abrimos la app <b>Documentos de Google</b> con la cuenta <code>@dgb.edu.mx</code> y abrimos la plantilla oficial en "Recientes" con nuestro nombre ya asignado.
+        </p>
+      </div>
+
+      <!-- Paso 2 -->
+      <div class="card" style="border-top: 4px solid var(--accent);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span class="step-pill" style="background: var(--accent-soft); color: var(--accent);">Paso 2 · Min 3 a 8</span>
+          <span style="font-size: 1.3rem;">📸</span>
+        </div>
+        <div class="card-title" style="font-size: 1rem;">Acuerdo P2 y Foto de Equipo</div>
+        <p style="font-size: 0.85rem; color: #475569; line-height: 1.45;">
+          En la tabla redactamos 2 renglones con nuestro <b>acuerdo de materia para el 2.º Parcial</b>. En la celda derecha tocamos <code>+</code> &gt; <code>Imagen</code> y nos tomamos una selfie de trabajo con los compañeros de mesa.
+        </p>
+      </div>
+
+      <!-- Paso 3 -->
+      <div class="card" style="border-top: 4px solid var(--warning);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span class="step-pill" style="background: var(--warning-soft); color: var(--warning);">Paso 3 · Min 8 a 12</span>
+          <span style="font-size: 1.3rem;">📽️</span>
+        </div>
+        <div class="card-title" style="font-size: 1rem;">Proyección en Tiempo Real</div>
+        <p style="font-size: 0.85rem; color: #475569; line-height: 1.45;">
+          En el proyector de la sala veremos aparecer en vivo los documentos de cada maestro con su foto y acuerdos. <b>Subdirección se queda con la evidencia colegiada oficial ya lista</b>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Banner Conclusión -->
+    <div style="margin-top: 18px; background: #f8fafc; border: 1px solid var(--border); border-left: 5px solid var(--accent); border-radius: 10px; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <p style="font-size: 0.92rem; font-weight: 700; color: #0f172a;">
+          💡 La Conclusión para Llevar al Aula con Nuestros Estudiantes:
+        </p>
+        <p style="font-size: 0.85rem; color: #475569; margin-top: 2px;">
+          Si a nosotros nos tomó 5 minutos en el celular entregar un informe oficial completo con foto... imaginemos la paz mental de los jóvenes al tener <b>un solo lugar de trabajo por parcial y solo 3 archivos en todo el semestre</b>.
+        </p>
+      </div>
+      <span style="background: var(--accent); color: white; font-weight: 800; font-size: 0.8rem; padding: 6px 14px; border-radius: 9999px; white-space: nowrap;">
+        3 ARCHIVOS AL SEMESTRE
+      </span>
+    </div>
+  </div>
+
+  <!-- Navegación Footer -->
+  <div class="slide-footer">
+    <button class="nav-btn" id="prevBtn" onclick="prevSlide()" disabled>← Anterior</button>
+    <div class="progress-dots" id="dotsContainer"></div>
+    <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Siguiente →</button>
+  </div>
+</div>
+
+<script>
+  let currentSlide = 1;
+  const totalSlides = 9;
+
+  function toggleGmailView(view) {
+    const mock = document.getElementById('gmailViewMock');
+    const img = document.getElementById('gmailViewImg');
+    const btnMock = document.getElementById('btnViewMock');
+    const btnImg = document.getElementById('btnViewImg');
+
+    if (view === 'mock') {
+      mock.style.display = 'flex';
+      img.style.display = 'none';
+      btnMock.style.background = 'var(--primary)';
+      btnImg.style.background = '#64748b';
+    } else {
+      mock.style.display = 'none';
+      img.style.display = 'block';
+      btnMock.style.background = '#64748b';
+      btnImg.style.background = 'var(--primary)';
+    }
+  }
+
+  function updateSlide() {
+    for (let i = 1; i <= totalSlides; i++) {
+      const slide = document.getElementById(`slide${i}`);
+      if (slide) {
+        slide.classList.remove('active');
+      }
+    }
+    const activeSlide = document.getElementById(`slide${currentSlide}`);
+    if (activeSlide) {
+      activeSlide.classList.add('active');
+    }
+
+    document.getElementById('slideCounter').textContent = `${currentSlide} de ${totalSlides}`;
+    document.getElementById('prevBtn').disabled = (currentSlide === 1);
+    document.getElementById('nextBtn').disabled = (currentSlide === totalSlides);
+
+    // Actualizar puntos de progreso
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, idx) => {
+      if (idx + 1 === currentSlide) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  function nextSlide() {
+    if (currentSlide < totalSlides) {
+      currentSlide++;
+      updateSlide();
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide > 1) {
+      currentSlide--;
+      updateSlide();
+    }
+  }
+
+  // Crear dots dinámicos
+  const dotsContainer = document.getElementById('dotsContainer');
+  for (let i = 1; i <= totalSlides; i++) {
+    const dot = document.createElement('div');
+    dot.className = `dot ${i === 1 ? 'active' : ''}`;
+    dot.onclick = () => {
+      currentSlide = i;
+      updateSlide();
+    };
+    dotsContainer.appendChild(dot);
+  }
+
+  // Navegación con teclado
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'Space') {
+      nextSlide();
+    } else if (e.key === 'ArrowLeft') {
+      prevSlide();
+    }
+  });
+</script>
+
+</body>
+</html>

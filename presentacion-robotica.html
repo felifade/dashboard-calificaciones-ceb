@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Club de Robótica VEX - CEB 5/4</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-body: #f1f5f9;
+      --card-bg: #ffffff;
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent-orange: #ea580c;
+      --accent-green: #16a34a;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .presentation-container {
+      width: 95vw;
+      max-width: 1050px;
+      min-height: 600px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 40px 50px;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07), 0 0 1px rgba(0,0,0,0.1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .slide {
+      display: none;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: var(--primary);
+      border: 1px solid #bae6fd;
+      margin-bottom: 12px;
+    }
+
+    .badge-orange {
+      background: #ffedd5;
+      color: var(--accent-orange);
+      border-color: #fed7aa;
+    }
+
+    .badge-green {
+      background: #dcfce7;
+      color: var(--accent-green);
+      border-color: #bbf7d0;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    p.subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .card {
+      background: #f8fafc;
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      padding: 22px;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .card h3.orange { color: var(--accent-orange); }
+    .card h3.green { color: var(--accent-green); }
+
+    .card p, .card ul {
+      font-size: 0.95rem;
+      color: #334155;
+      line-height: 1.55;
+    }
+
+    .card ul {
+      padding-left: 20px;
+    }
+
+    .card ul li {
+      margin-bottom: 6px;
+    }
+
+    .highlight-box {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 20px;
+      color: #1e40af;
+      font-size: 1.05rem;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      margin-top: 14px;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-link:hover {
+      background: var(--primary-dark);
+      transform: scale(1.02);
+    }
+
+    .code-pill {
+      font-family: 'JetBrains Mono', monospace;
+      background: #e2e8f0;
+      color: #0369a1;
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .slide-indicator {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .btn-nav {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid var(--border-color);
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      transition: all 0.2s ease;
+    }
+
+    .btn-nav:hover:not(:disabled) {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .btn-nav:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="presentation-container">
+
+    <!-- SLIDE 1: Portada -->
+    <div class="slide active" id="slide-1">
+      <span class="badge">CEB 5/4 • Rafael Ramírez</span>
+      <h1>Club de Robótica VEX: ¡Aprende Creando!</h1>
+      <p class="subtitle">Bienvenida a la comunidad de innovación, retos de ingeniería, programación y simulación.</p>
+      
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">🚀</div>
+          <h3>1. Misión del Club</h3>
+          <p>Espacio para experimentar con mecánica, electrónica y programación aplicada a desafíos reales.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤖</div>
+          <h3>2. Nuestro Robot VEX</h3>
+          <p>Plataforma modular con chasis funcional, microcontrolador y kit de refacciones para modificar.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <h3>3. ¿Qué Haremos Hoy?</h3>
+          <p>Dinámicas de juego (Robo-Bolos y Precisión), simulador táctil 3D y organización por roles.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Información del Club -->
+    <div class="slide" id="slide-2">
+      <span class="badge badge-orange">Comunidad y Proyectos</span>
+      <h2>Información del Club de Robótica</h2>
+      <p class="subtitle">¿Por qué formar parte y qué lograremos durante el semestre?</p>
+      
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">🌟</div>
+          <h3 class="orange">Beneficios Clave</h3>
+          <ul>
+            <li>Pensamiento lógico y diseño ingenieril.</li>
+            <li>Reconocimiento y proyectos de Cultura Digital.</li>
+            <li>Bases para carreras de tecnología e ingeniería.</li>
+            <li>Constancia curricular de participación.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤝</div>
+          <h3>Dinámica de Trabajo</h3>
+          <ul>
+            <li>Sesiones 100% prácticas y colaborativas.</li>
+            <li>Enfoque mixto: Ensamble físico + Simulador web.</li>
+            <li>Desafíos en equipos de 4 alumnos.</li>
+            <li>Espacio inclusivo y creativo.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏆</div>
+          <h3 class="green">Proyectos del Ciclo</h3>
+          <ul>
+            <li>Mecanismos de agarre, palas y pinzas.</li>
+            <li>Automatización con sensores ultrasónicos.</li>
+            <li>Torneo interno de circuito y laberinto.</li>
+            <li>Exhibición en muestra de ciencias escolar.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Hardware y Anatomía -->
+    <div class="slide" id="slide-3">
+      <span class="badge">Hardware y Principios</span>
+      <h2>Anatomía de nuestro Robot VEX</h2>
+      <p class="subtitle">Tres sistemas fundamentales que trabajan coordinados:</p>
+      
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">🧠</div>
+          <h3>El Cerebro (Microcontrolador)</h3>
+          <ul>
+            <li>Computadora a bordo del robot.</li>
+            <li>Almacena y ejecuta las rutinas de código.</li>
+            <li>Distribuye energía y señales a cada motor.</li>
+            <li>Alimentado por batería recargable.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Actuadores (Motores)</h3>
+          <ul>
+            <li>Transforman electricidad en giro continuo.</li>
+            <li>Accionan ruedas, brazos y poleas.</li>
+            <li>Controlan velocidad, torque y frenado.</li>
+            <li>Tracción balanceada para maniobras.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon">📡</div>
+          <h3>Switches y Sensores</h3>
+          <ul>
+            <li>Switches de choque (bumper frontal).</li>
+            <li>Sensor ultrasónico (mide distancias en cm).</li>
+            <li>Giroscopio (ángulos de giro precisos).</li>
+            <li>Protegen al robot y evitan colisiones.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Actividad 1 - Robo-Bolos -->
+    <div class="slide" id="slide-4">
+      <span class="badge badge-orange">Actividad Divertida 1</span>
+      <h2>🎮 Reto: "Robo-Bolos" y Pala de Empuje</h2>
+      <p class="subtitle">Construye una defensa frontal sólida y derriba la mayor cantidad de pines en pista.</p>
+      
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-icon">🛠️</div>
+          <h3 class="orange">Misión de Mecánica</h3>
+          <ul>
+            <li>Con las piezas del kit, monta una pala frontal (Plow) o parachoques reforzado.</li>
+            <li>Aprieta los pernos para absorber el impacto sin desarmarse.</li>
+            <li>Asegúrate de que la pala no roce contra las ruedas ni el suelo.</li>
+            <li>¡Valida el centro de gravedad antes de iniciar!</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎳</div>
+          <h3 class="green">Reglas del Juego</h3>
+          <ul>
+            <li>Se colocan 5 pines (vasos o bloques) al final del carril.</li>
+            <li>El robot parte desde la línea de tiro.</li>
+            <li><strong>Puntaje:</strong> 10 pts por cada pin derribado.</li>
+            <li><strong>Bonus:</strong> +20 pts si el robot frena antes de cruzar la línea límite.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Actividad 2 - Reloj Suizo -->
+    <div class="slide" id="slide-5">
+      <span class="badge badge-green">Actividad Divertida 2</span>
+      <h2>⏱️ Reto: "El Reloj Suizo" (Frenado Milimétrico)</h2>
+      <p class="subtitle">Acelera a máxima potencia y frena en seco lo más cerca posible de la meta sin tocar el muro.</p>
+      
+      <div class="highlight-box">
+        <strong>🎯 Objetivo de Calibración:</strong> Dominar la inercia del robot y entender cómo el peso de las piezas altera la distancia de frenado.
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Reglas de Precisión</h3>
+          <ul>
+            <li>Pista recta de 2 metros delimitada con cinta.</li>
+            <li>Zona de puntuación: a menos de 5 cm del muro = 50 pts; a menos de 10 cm = 30 pts.</li>
+            <li><strong>Falta:</strong> Si choca contra el muro o tira la barrera, el intento vale 0 pts.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Medición y Trabajo en Equipo</h3>
+          <ul>
+            <li>Copiloto mide la distancia con regla milimétrica.</li>
+            <li>Estratega anota tiempos e intentos en la bitácora técnica.</li>
+            <li>El equipo ajusta la potencia del motor tras cada intento.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Simulador Web -->
+    <div class="slide" id="slide-6">
+      <span class="badge">Simulación Gratuita en iPad</span>
+      <h2>VEXcode VR: Simulador Web Táctil</h2>
+      <p class="subtitle">Entra directo desde Safari en tu iPad o Chrome en PC a: <strong>https://vr.vex.com</strong></p>
+      
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <h3>Ventajas del Simulador</h3>
+          <ul>
+            <li><strong>100% Gratuito y en español:</strong> Sin registro ni instalación.</li>
+            <li><strong>Táctil en iPad:</strong> Arrastra y suelta bloques con los dedos.</li>
+            <li><strong>Multilenguaje:</strong> Bloques estilo Scratch o código Python.</li>
+            <li>Robot virtual equipado con radar y sensores.</li>
+          </ul>
+          <a href="https://vr.vex.com" target="_blank" class="btn-link">
+            🚀 Abrir VEXcode VR (vr.vex.com) ↗
+          </a>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧩</div>
+          <h3 class="green">Reto Virtual: Laberinto de Paredes</h3>
+          <ul>
+            <li>Abre el mapa 3D <strong>"Wall Maze"</strong>.</li>
+            <li>Programa: <span class="code-pill">conducir [250] mm</span> y <span class="code-pill">girar [90]°</span>.</li>
+            <li>Añade condición: <span class="code-pill">si distancia sensor &lt; 50 mm</span>.</li>
+            <li>¡Gana quien escape del laberinto en menor tiempo!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Roles -->
+    <div class="slide" id="slide-7">
+      <span class="badge">Organización del Taller</span>
+      <h2>Los 4 Roles del Equipo de Robótica</h2>
+      <p class="subtitle">Metodología de escudería: todos participan activamente en cada desafío.</p>
+      
+      <div class="grid-4">
+        <div class="card">
+          <div class="card-icon">🛠️</div>
+          <h3>1. Mecánica</h3>
+          <p>Estructura física, montaje de pala, pernos y ajuste de engranes.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎮</div>
+          <h3 class="orange">2. Piloto</h3>
+          <p>Operador de control, pruebas de pista, aceleración y frenado.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💻</div>
+          <h3>3. Software</h3>
+          <p>Lógica de algoritmos, simulador VR en iPad y sensores.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📋</div>
+          <h3 class="green">4. Estratega</h3>
+          <p>Bitácora técnica, cronómetro oficial y cálculo de puntos.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="btn-nav" id="prevBtn" onclick="prevSlide()" disabled>← Anterior</button>
+      <span class="slide-indicator" id="slideIndicator">1 / 7</span>
+      <button class="btn-nav" id="nextBtn" onclick="nextSlide()">Siguiente →</button>
+    </div>
+
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 7;
+
+    function updateSlide() {
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById(`slide-${i}`);
+        if (slide) slide.classList.remove('active');
+      }
+      const activeSlide = document.getElementById(`slide-${currentSlide}`);
+      if (activeSlide) activeSlide.classList.add('active');
+
+      document.getElementById('slideIndicator').textContent = `${currentSlide} / ${totalSlides}`;
+      document.getElementById('prevBtn').disabled = (currentSlide === 1);
+      document.getElementById('nextBtn').disabled = (currentSlide === totalSlides);
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+      else if (e.key === 'ArrowLeft') prevSlide();
+    });
+  </script>
+</body>
+</html>

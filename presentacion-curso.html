@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CEB 5/4 · Cultura Digital I · Semana 01</title>
+  <style>
+    :root {
+      --ink: #17231f;
+      --muted: #647067;
+      --bg: #f4f7f5;
+      --paper: #ffffff;
+      --green: #16a34a;
+      --blue: #2563eb;
+      --yellow: #ca8a04;
+      --red: #dc2626;
+      --border: #d9e3df;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.55;
+      padding-top: 84px;
+    }
+    .timerbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      min-height: 72px;
+      padding: 10px 18px;
+      background: #fffffff2;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(23, 35, 31, .12);
+      backdrop-filter: blur(10px);
+    }
+    .timerbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 14px;
+      align-items: center;
+    }
+    .timer-label {
+      color: #006b54;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .timer-display {
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 900;
+      text-align: center;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+    .timer-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    .timer-actions button {
+      min-height: 40px;
+      border: 0;
+      border-radius: 6px;
+      padding: 8px 10px;
+      background: #006b54;
+      color: white;
+      font-size: 14px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+    .timer-actions button.secondary {
+      background: #eef7f4;
+      color: #0f3c33;
+      border: 1px solid var(--border);
+    }
+    body.timer-large {
+      padding-top: 164px;
+    }
+    body.timer-large .timerbar {
+      min-height: 148px;
+      padding: 16px 18px;
+    }
+    body.timer-large .timerbar-inner {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    body.timer-large .timer-label {
+      text-align: center;
+      font-size: 14px;
+    }
+    body.timer-large .timer-display {
+      font-size: 88px;
+    }
+    body.timer-large .timer-actions {
+      justify-content: center;
+    }
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 36px 20px 56px;
+    }
+    header {
+      padding: 28px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-left: 8px solid #006b54;
+      border-radius: 8px;
+      box-shadow: 0 14px 34px rgba(23, 35, 31, .08);
+    }
+    .kicker {
+      margin: 0 0 8px;
+      color: #006b54;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.05;
+    }
+    h2 { margin: 34px 0 12px; color: #0f3c33; }
+    h3 { margin: 22px 0 8px; }
+    p, li { font-size: 18px; }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .meta p, .card {
+      margin: 0;
+      padding: 14px 16px;
+      background: #f8fbfa;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    section {
+      margin-top: 24px;
+      padding: 26px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(23, 35, 31, .06);
+    }
+    .momento {
+      margin: 18px 0;
+      padding: 16px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      border-left-width: 8px;
+    }
+    .momento h3 { margin-top: 0; }
+    .inicio { background: #ecfdf5; border-left-color: var(--green); }
+    .desarrollo { background: #eff6ff; border-left-color: var(--blue); }
+    .trabajo { background: #fffbeb; border-left-color: var(--yellow); }
+    .cierre { background: #fef2f2; border-left-color: var(--red); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      background: white;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #eef7f4; }
+    .note {
+      padding: 14px 16px;
+      background: #eef7f4;
+      border-left: 6px solid #006b54;
+      border-radius: 8px;
+      color: #18443a;
+      font-weight: 650;
+    }
+    footer {
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .image-grid figure {
+      margin: 0;
+      padding: 10px;
+      background: #f8fbfa;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .image-grid img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: contain;
+      display: block;
+      border-radius: 6px;
+    }
+    .image-grid figcaption {
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+    }
+    @media (max-width: 720px) {
+      body { padding-top: 150px; }
+      .timerbar-inner {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .timer-label { text-align: center; }
+      .timer-display { font-size: 48px; }
+      .timer-actions { justify-content: center; }
+      body.timer-large { padding-top: 210px; }
+      body.timer-large .timer-display { font-size: 68px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="timerbar" role="region" aria-label="Cronometro de clase">
+    <div class="timerbar-inner">
+      <div class="timer-label">Cronometro de clase</div>
+      <div class="timer-display" id="timerDisplay">00:00</div>
+      <div class="timer-actions">
+        <button type="button" id="timerStart">Iniciar</button>
+        <button type="button" class="secondary" id="timerReset">Reiniciar</button>
+        <button type="button" class="secondary" data-minutes="5">5 min</button>
+        <button type="button" class="secondary" data-minutes="10">10 min</button>
+        <button type="button" class="secondary" data-minutes="15">15 min</button>
+        <button type="button" class="secondary" id="timerSize">Grande</button>
+      </div>
+    </div>
+  </div>
+  <main>
+    <header>
+      <p class="kicker">CEB 5/4 · Cultura Digital I</p>
+      <h1>Semana 01: Bienvenida, Cultura Digital y Portada de Curso</h1>
+      <p>Material maestro para los 10 grupos de primer semestre.</p>
+      <div class="meta">
+        <p><strong>Periodo</strong><br>31 de agosto al 4 de septiembre de 2026</p>
+        <p><strong>Duracion</strong><br>3 horas por grupo</p>
+        <p><strong>Docente</strong><br>Mtro. Felipe Lopez Salazar</p>
+        <p><strong>Plantel</strong><br>CEB 5/4 Profr. Rafael Ramirez</p>
+      </div>
+    </header>
+
+    <section>
+      <h2>Proposito de la semana</h2>
+      <p>Presentar la materia, explicar por que es importante estudiar Cultura Digital, ubicar la identidad del CEB 5/4 como plantel federal y preparar el trabajo inicial de la libreta sin saturar al grupo.</p>
+      <p>La libreta completa se solicitara para la siguiente sesion; en esta primera hora el alumno elaborara el borrador de su portada.</p>
+    </section>
+
+    <section>
+      <h2>Producto de la semana</h2>
+      <table>
+        <thead>
+          <tr><th>Hora</th><th>Evidencia</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Borrador de portada y lista de materiales para la siguiente sesion.</td></tr>
+          <tr><td>2</td><td>Apunte de acuerdos de clase con justificaciones y firma.</td></tr>
+          <tr><td>3</td><td>Registro de escucha activa con conceptos, frase y compromiso.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Hora 1: Cultura Digital, CEB 5/4 y borrador de portada</h2>
+
+      <div class="momento inicio">
+        <h3>Inicio: por que estudiar Cultura Digital</h3>
+        <p><strong>Tiempo sugerido:</strong> 10 minutos.</p>
+        <p>Estudiar Cultura Digital ayuda a tomar mejores decisiones al usar tecnologia, internet, informacion y medios digitales.</p>
+      </div>
+
+      <p>No se trata solo de saber usar un celular o una computadora; se trata de pensar mejor antes de publicar, compartir, descargar, aceptar permisos, crear contenido o confiar en una fuente de informacion.</p>
+
+      <div class="momento desarrollo">
+        <h3>Desarrollo docente: identidad del CEB</h3>
+        <p><strong>Tiempo sugerido:</strong> 10 minutos.</p>
+        <p>El CEB 5/4 "Profr. Rafael Ramirez" es un Centro de Estudios de Bachillerato ubicado en Pachuca, Hidalgo. Es federal porque pertenece al sistema coordinado por la Direccion General del Bachillerato de la SEP.</p>
+      </div>
+
+      <div class="momento trabajo">
+        <h3>Trabajo del estudiante: materiales para la siguiente sesion</h3>
+        <p><strong>Tiempo sugerido:</strong> 10 minutos.</p>
+        <ul>
+          <li>Libreta profesional forrada de azul.</li>
+          <li>Datos de identificacion correspondientes: nombre completo, grupo, materia, docente, plantel y ciclo escolar.</li>
+          <li>Imagen, dibujo o composicion alusiva a Cultura Digital I.</li>
+          <li>Lapices o plumas de al menos tres colores: rojo, negro y azul.</li>
+          <li>Colores, regla, goma y sacapuntas si los necesita.</li>
+          <li>Solo materiales permitidos para trabajar en clase.</li>
+        </ul>
+        <p class="note">Punto extra: quien traiga la libreta forrada, identificada y lista para trabajar en la siguiente sesion obtiene 1 punto extra en la revision inicial del portafolio.</p>
+      </div>
+
+      <div class="momento trabajo">
+        <h3>Trabajo del estudiante: borrador de portada</h3>
+        <p><strong>Tiempo sugerido:</strong> 20 minutos.</p>
+        <p>El alumno no hace todavia la portada final. Elabora un borrador para decidir composicion, datos y elementos visuales.</p>
+        <ol>
+          <li>Titulo: Cultura Digital I.</li>
+          <li>Idea visual relacionada con tecnologia, internet, comunicacion, seguridad, pensamiento digital o ciudadania digital.</li>
+          <li>Espacio para datos de identificacion.</li>
+          <li>Tres elementos personales para integrar despues en la contraportada o parte posterior.</li>
+        </ol>
+      </div>
+
+      <div class="momento cierre">
+        <h3>Cierre: confirmar sentido y materiales</h3>
+        <p><strong>Tiempo sugerido:</strong> 10 minutos.</p>
+        <p>Responder: <strong>¿Para que puede servirme estudiar Cultura Digital durante el bachillerato?</strong></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Hora 2: Acuerdos de clase</h2>
+      <div class="momento inicio">
+        <h3>Inicio: las reglas tienen sentido</h3>
+        <p><strong>Tiempo sugerido:</strong> 10 minutos.</p>
+        <p>Una regla no sirve solo para obedecer. Sirve para proteger el tiempo, la convivencia, el aprendizaje y la calidad del trabajo.</p>
+      </div>
+
+      <div class="momento desarrollo">
+        <h3>Desarrollo docente: acuerdos de clase</h3>
+        <p><strong>Tiempo sugerido:</strong> 15 minutos.</p>
+        <p>Presentar los acuerdos de trabajo y pedir que cada alumno escriba una justificacion breve con sus propias palabras.</p>
+      </div>
+
+      <ol>
+        <li>Llegar a tiempo y entrar con disposicion de trabajo.</li>
+        <li>Traer libreta y material basico.</li>
+        <li>Escuchar sin interrumpir cuando alguien participa.</li>
+        <li>Respetar a companeros, docente, aula y materiales.</li>
+        <li>Evitar burlas, groserias, apodos o comentarios que danen la convivencia.</li>
+        <li>Cuidar el uso del celular y otros distractores.</li>
+        <li>Registrar evidencias en cada clase.</li>
+        <li>Trabajar con limpieza, orden y letra legible.</li>
+        <li>Preguntar cuando haya dudas, sin pena y con respeto.</li>
+        <li>Entregar productos propios, completos y a tiempo.</li>
+      </ol>
+
+      <div class="momento trabajo">
+        <h3>Trabajo del estudiante: apunte de acuerdos</h3>
+        <p><strong>Tiempo sugerido:</strong> 20 minutos.</p>
+        <p>Organizar el producto como tabla, lista ilustrada o mapa de acuerdos. Debe incluir fecha, titulo, 10 acuerdos, justificaciones, regla resaltada, frase "Leido y enterado" y firma.</p>
+      </div>
+
+      <div class="meta">
+        <p><strong>Propuesta 1</strong><br>Tabla de acuerdos con justificaciones.</p>
+        <p><strong>Propuesta 2</strong><br>Mapa de convivencia y acuerdos.</p>
+        <p><strong>Propuesta 3</strong><br>Compromiso firmado con regla importante.</p>
+      </div>
+
+      <div class="image-grid">
+        <figure>
+          <img src="assets/hora2_reglas_propuesta_01.png" alt="Propuesta visual de tabla de acuerdos">
+          <figcaption>Propuesta 1: tabla de acuerdos</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/hora2_reglas_propuesta_02.png" alt="Propuesta visual de mapa de convivencia">
+          <figcaption>Propuesta 2: mapa de convivencia</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/hora2_reglas_propuesta_03.png" alt="Propuesta visual de compromiso firmado">
+          <figcaption>Propuesta 3: compromiso firmado</figcaption>
+        </figure>
+      </div>
+
+      <div class="momento cierre">
+        <h3>Cierre</h3>
+        <p>Responder: <strong>¿Que regla sera mas facil de cumplir y cual debo cuidar mas durante el semestre?</strong></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Hora 3: Escucha activa</h2>
+      <div class="momento inicio">
+        <h3>Inicio: preparar la atencion</h3>
+        <p>Guardar distractores, preparar postura de escucha y copiar la idea clave: antes de escribir o reaccionar, primero hay que entender.</p>
+      </div>
+      <div class="momento desarrollo">
+        <h3>Lectura para escuchar</h3>
+        <p>Durante la lectura no se escribe. Primero se escucha, despues se recuperan ideas importantes.</p>
+      </div>
+      <p><strong>Lectura:</strong> Cuando una palabra se vuelve pensamiento. La actividad busca que el alumno distinga entre oir, comprender y responder con calma.</p>
+      <div class="momento trabajo">
+        <h3>Trabajo del estudiante</h3>
+        <p>Registrar tres conceptos importantes, explicar uno con palabras propias, anotar una frase significativa y escribir un compromiso personal para escuchar mejor.</p>
+      </div>
+      <div class="image-grid">
+        <figure>
+          <img src="assets/hora3_escucha_propuesta_01.png" alt="Propuesta visual de tres ideas clave">
+          <figcaption>Propuesta 1: tres ideas clave</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/hora3_escucha_propuesta_02.png" alt="Propuesta visual de semaforo de escucha">
+          <figcaption>Propuesta 2: semaforo de escucha</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/hora3_escucha_propuesta_03.png" alt="Propuesta visual de escucha, idea y compromiso">
+          <figcaption>Propuesta 3: escucho, entiendo y me comprometo</figcaption>
+        </figure>
+      </div>
+      <div class="momento cierre">
+        <h3>Cierre</h3>
+        <p>Responder: <strong>¿Que necesito mejorar para escuchar con mas atencion en clase?</strong></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Criterios de revision de la Semana 01</h2>
+      <table>
+        <thead>
+          <tr><th>Criterio semanal</th><th>Evidencia</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Borrador de portada</td><td>Titulo, idea visual, espacio para datos y propuesta personal.</td></tr>
+          <tr><td>Acuerdos de clase</td><td>10 reglas, justificaciones propias, frase y firma.</td></tr>
+          <tr><td>Escucha activa</td><td>Tres conceptos, explicacion propia, frase y compromiso.</td></tr>
+          <tr><td>Actitud de inicio</td><td>Participacion, respeto y disposicion.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>CEB 5/4 · Cultura Digital I · Mtro. Felipe Lopez Salazar</footer>
+  </main>
+  <script>
+    const timerDisplay = document.getElementById("timerDisplay");
+    const timerStart = document.getElementById("timerStart");
+    const timerReset = document.getElementById("timerReset");
+    const timerSize = document.getElementById("timerSize");
+    let timerSeconds = 0;
+    let timerMode = "stopwatch";
+    let timerRunning = false;
+    let timerTick = null;
+
+    function renderTimer() {
+      const minutes = String(Math.floor(timerSeconds / 60)).padStart(2, "0");
+      const seconds = String(timerSeconds % 60).padStart(2, "0");
+      timerDisplay.textContent = minutes + ":" + seconds;
+      timerStart.textContent = timerRunning ? "Pausar" : "Iniciar";
+      timerSize.textContent = document.body.classList.contains("timer-large") ? "Normal" : "Grande";
+    }
+
+    function stopTimer() {
+      timerRunning = false;
+      clearInterval(timerTick);
+      timerTick = null;
+      renderTimer();
+    }
+
+    timerStart.addEventListener("click", () => {
+      if (timerRunning) return stopTimer();
+      timerRunning = true;
+      timerTick = setInterval(() => {
+        if (timerMode === "timer") {
+          timerSeconds = Math.max(0, timerSeconds - 1);
+          if (timerSeconds === 0) stopTimer();
+        } else {
+          timerSeconds += 1;
+        }
+        renderTimer();
+      }, 1000);
+      renderTimer();
+    });
+
+    timerReset.addEventListener("click", () => {
+      stopTimer();
+      timerMode = "stopwatch";
+      timerSeconds = 0;
+      renderTimer();
+    });
+
+    document.querySelectorAll("[data-minutes]").forEach((button) => {
+      button.addEventListener("click", () => {
+        stopTimer();
+        timerMode = "timer";
+        timerSeconds = Number(button.dataset.minutes) * 60;
+        renderTimer();
+      });
+    });
+
+    timerSize.addEventListener("click", () => {
+      document.body.classList.toggle("timer-large");
+      renderTimer();
+    });
+
+    renderTimer();
+  </script>
+</body>
+</html>

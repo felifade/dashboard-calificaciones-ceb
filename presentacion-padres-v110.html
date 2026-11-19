@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reunión de Padres y Tutores · Grupo V110 · CEB 5/4</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #17324d;
+      --navy-dark: #0f1e2e;
+      --gold: #d97706;
+      --gold-light: #fef3c7;
+      --blue: #2563eb;
+      --blue-bg: #eff6ff;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #cbd5e1;
+      --text: #0f172a;
+      --muted: #475569;
+      --red: #dc2626;
+      --orange-bg: #fff7ed;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f172a;
+      color: var(--text);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .deck-container {
+      width: 100vw;
+      height: 100vh;
+      max-width: 177.78vh; /* 16:9 ratio */
+      max-height: 56.25vw;
+      position: relative;
+      background: var(--bg);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      background: var(--bg);
+      animation: fadeSlide 0.25s ease-out;
+    }
+    .slide.active { display: flex; }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(15px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* PORTADA Y CIERRE */
+    .slide.dark-theme {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+      color: white;
+      border-left: 16px solid var(--gold);
+      padding: 3.5rem 5rem;
+      justify-content: center;
+    }
+
+    .inst-tag {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fdba74;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 1.65rem;
+      color: #bfdbfe;
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+    }
+
+    .meta-box {
+      background: rgba(15, 30, 46, 0.7);
+      border: 1.5px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.4rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 1.25rem;
+      max-width: 90%;
+    }
+
+    /* HEADER ESTÁNDAR */
+    .slide-header {
+      background: var(--navy);
+      color: white;
+      padding: 1.1rem 2.5rem;
+      border-bottom: 5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .num-badge {
+      background: var(--gold);
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .header-text h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .header-text p {
+      font-size: 0.95rem;
+      color: #bfdbfe;
+      margin-top: 2px;
+    }
+
+    /* CONTENIDO */
+    .slide-body {
+      flex: 1;
+      padding: 1.8rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.2rem;
+      overflow-y: auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem 2.2rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .grid-split { display: grid; grid-template-columns: 1.25fr 1fr; gap: 1.5rem; }
+
+    ul.clean-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    ul.clean-list li {
+      font-size: 1.35rem;
+      line-height: 1.45;
+      padding-left: 1.6rem;
+      position: relative;
+    }
+
+    ul.clean-list li::before {
+      content: "•";
+      color: var(--gold);
+      font-size: 1.8rem;
+      font-weight: 800;
+      position: absolute;
+      left: 0;
+      top: -4px;
+    }
+
+    ul.clean-list li strong {
+      color: var(--navy);
+    }
+
+    /* AGENDA ITEMS */
+    .agenda-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 1.5rem;
+    }
+
+    .agenda-item {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 0.85rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .agenda-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue);
+    }
+
+    .agenda-num {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .agenda-item.col2 .agenda-num { background: var(--blue); }
+
+    /* TIMELINE HORARIOS */
+    .timeline-box {
+      background: var(--blue-bg);
+      border: 1.5px solid #93c5fd;
+      border-radius: 14px;
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .time-card {
+      background: white;
+      border-left: 6px solid var(--navy);
+      border-radius: 8px;
+      padding: 0.9rem 1.2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .time-card.warn { border-left-color: var(--gold); }
+    .time-card.danger { border-left-color: var(--red); }
+    .time-card .hr { font-size: 1.5rem; font-weight: 800; color: var(--navy); }
+    .time-card.warn .hr { color: var(--gold); }
+    .time-card.danger .hr { color: var(--red); }
+    .time-card .desc { font-size: 0.98rem; color: var(--muted); margin-top: 2px; }
+
+    /* DATE CARDS */
+    .date-card {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .date-head {
+      padding: 1.4rem 1rem;
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .date-body {
+      padding: 1.5rem 1.2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .date-body h3 { font-size: 1.35rem; color: var(--navy); }
+    .date-body p { font-size: 1.05rem; color: var(--muted); line-height: 1.4; }
+
+    /* CALLOUT */
+    .callout {
+      background: var(--orange-bg);
+      border: 1.5px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.1rem 1.6rem;
+      font-size: 1.15rem;
+      color: #9a3412;
+      font-weight: 600;
+      text-align: center;
+    }
+    .callout.blue {
+      background: var(--blue-bg);
+      border-color: var(--blue);
+      color: var(--navy);
+    }
+    .callout.quote {
+      text-align: left;
+      font-size: 1.18rem;
+      line-height: 1.45;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* FOOTER & CONTROLS */
+    .slide-footer {
+      padding: 0.6rem 2.5rem;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: white;
+    }
+
+    .controls-bar {
+      position: fixed;
+      bottom: 18px;
+      right: 22px;
+      display: flex;
+      gap: 8px;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.85);
+      padding: 6px 10px;
+      border-radius: 30px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .ctrl-btn {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .ctrl-btn:hover { background: var(--blue); }
+
+    @media print {
+      body { background: white; height: auto; display: block; overflow: visible; }
+      .deck-container { max-width: none; max-height: none; width: 100%; height: auto; box-shadow: none; }
+      .slide { display: flex !important; position: relative; page-break-after: always; width: 100%; height: 100vh; }
+      .controls-bar { display: none; }
+      @page { size: landscape; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deck-container" id="deck">
+
+    <!-- SLIDE 1: PORTADA -->
+    <section class="slide dark-theme active">
+      <div class="inst-tag">Centro de Estudios de Bachillerato 5/4 "Profr. Rafael Ramírez" · CCT 13DBP0001Z</div>
+      <h1 class="hero-title">Reunión con Madres, Padres<br>de Familia y Tutores</h1>
+      <p class="hero-sub">Entrega de Boletas · 2.° Parcial y Acuerdos del 3.er Parcial</p>
+      <div class="meta-box">
+        <div><strong>👥 Grupo:</strong> V110 (Primer Semestre · Turno Vespertino)</div>
+        <div><strong>📅 Fecha y Hora:</strong> Viernes 20 de Noviembre de 2026 · 14:00 hrs (2:00 p.m.)</div>
+        <div><strong>👨‍🏫 Tutor de Grupo:</strong> Dr. Felipe López Salazar</div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: ORDEN DEL DÍA -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="header-text">
+          <h2>📋 Orden del Día</h2>
+          <p>Agenda Oficial de Trabajo · Bloque de 1 Hora (14:00 a 15:00 hrs)</p>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="agenda-grid">
+          <div class="agenda-item" onclick="goToSlide(2)"><span class="agenda-num">1</span> Asistencia y puntualidad</div>
+          <div class="agenda-item col2" onclick="goToSlide(7)"><span class="agenda-num">6</span> Proyecto Escolar Comunitario (PEC)</div>
+          <div class="agenda-item" onclick="goToSlide(3)"><span class="agenda-num">2</span> Uso del uniforme y credencial institucional</div>
+          <div class="agenda-item col2" onclick="goToSlide(8)"><span class="agenda-num">7</span> Invitación a conferencias y actividades</div>
+          <div class="agenda-item" onclick="goToSlide(4)"><span class="agenda-num">3</span> Registro y uso de la plataforma Grovix</div>
+          <div class="agenda-item col2" onclick="goToSlide(9)"><span class="agenda-num">8</span> Revisión y supervisión de mochilas</div>
+          <div class="agenda-item" onclick="goToSlide(5)"><span class="agenda-num">4</span> Seguimiento académico y tutorías</div>
+          <div class="agenda-item col2" onclick="goToSlide(10)"><span class="agenda-num">9</span> Asuntos generales, acuerdos y boletas</div>
+          <div class="agenda-item" onclick="goToSlide(6)"><span class="agenda-num">5</span> Calendario de evaluaciones (3er Parcial y Globales)</div>
+          <div class="agenda-item col2" onclick="goToSlide(11)"><span class="agenda-num">★</span> Mensaje de cierre institucional</div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>CEB 5/4 "Profr. Rafael Ramírez" · Tutoría Grupo V110</span>
+        <span>2 / 12</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: 1. ASISTENCIA Y PUNTUALIDAD -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="num-badge">1</div>
+        <div class="header-text">
+          <h2>Asistencia y Puntualidad</h2>
+          <p>Hábitos fundamentales para el aprendizaje y control de acceso</p>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="grid-split">
+          <div class="card">
+            <ul class="clean-list">
+              <li><strong>Hábitos fundamentales:</strong> Recordar la importancia de la asistencia regular y la puntualidad para el aprendizaje y el derecho a evaluación.</li>
+              <li><strong>Tolerancia de 15 minutos:</strong> El acceso ordinario al plantel se realiza durante los primeros 15 minutos posteriores a la entrada oficial.</li>
+              <li><strong>Apoyo familiar:</strong> Solicitamos el respaldo de las familias para evitar retardos y procurar que los jóvenes ingresen oportunamente a sus clases.</li>
+            </ul>
+          </div>
+          <div class="timeline-box">
+            <div style="font-weight:800; color:var(--blue); font-size:1.1rem;">⏰ HORARIOS DE ACCESO AL PLANTEL</div>
+            <div class="time-card">
+              <div class="hr">13:00 hrs <span style="font-size:0.95rem; font-weight:500;">(TM: 7:00)</span></div>
+              <div class="desc">Inicio de jornada y apertura de acceso regular</div>
+            </div>
+            <div class="time-card warn">
+              <div class="hr">13:15 hrs <span style="font-size:0.95rem; font-weight:500;">(TM: 7:15)</span></div>
+              <div class="desc">Cierre de acceso ordinario (15 min de tolerancia)</div>
+            </div>
+            <div class="time-card danger">
+              <div class="hr">13:40 hrs <span style="font-size:0.95rem; font-weight:500;">(TM: 7:40)</span></div>
+              <div class="desc">Única oportunidad adicional de acceso al plantel</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>CEB 5/4 "Profr. Rafael Ramírez" · Tutoría Grupo V110</span>
+        <span>3 / 12</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: 2. UNIFORME Y CREDENCIAL -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="num-badge">2</div>
+        <div class="header-text">
+          <h2>Uso Adecuado del Uniforme y Credencial Institucional</h2>
+          <p>Identidad, seguridad interna y lineamientos escolares</p>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="card" style="padding:0; overflow:hidden;">
+            <div style="background:var(--navy); color:white; padding:1rem; text-align:center; font-size:1.4rem; font-weight:700;">👔 Uniforme Escolar</div>
+            <div style="padding:1.6rem;">
+              <ul class="clean-list">
+                <li><strong>Cumplimiento normativo:</strong> Reforzar el uso correcto y completo del uniforme conforme a los lineamientos del plantel.</li>
+                <li><strong>Presentación personal:</strong> Fomentar el orden y pulcritud diaria al asistir a clases.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card" style="padding:0; overflow:hidden;">
+            <div style="background:var(--blue); color:white; padding:1rem; text-align:center; font-size:1.4rem; font-weight:700;">🪪 Credencial Institucional</div>
+            <div style="padding:1.6rem;">
+              <ul class="clean-list">
+                <li><strong>Porte diario obligatorio:</strong> Llevarla todos los días como medio oficial de identificación.</li>
+                <li><strong>Control de acceso:</strong> Requisito indispensable para el ingreso ágil y seguro al plantel.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="callout">
+          🤝 Solicitamos el apoyo de las familias para promover la presentación personal y el sentido de pertenencia institucional.
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>CEB 5/4 "Profr. Rafael Ramírez" · Tutoría Grupo V110</span>
+        <span>4 / 12</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: 3. PLATAFORMA GROVIX -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="num-badge">3</div>
+        <div class="header-text">
+          <h2>Registro y Uso de la Plataforma Grovix</h2>
+          <p>Control de acceso digital estudiantil</p>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="card">
+          <ul class="clean-list">
+            <li><strong>Registro indispensable:</strong> Todas y todos los estudiantes deben estar debidamente registrados y activos en la plataforma de control de acceso <strong>Grovix</strong>.</li>
+            <li><strong>Orden y tranquilidad familiar:</strong> Permite llevar un seguimiento confiable y ordenado del ingreso al plantel.</li>
+            <li><strong>Atención a incidencias técnicas:</strong> En caso de presentar dificultades con el registro o funcionamiento de la aplicación, deberán acudir directamente con el personal de <strong>Prefectura</strong> para recibir orientación y apoyo.</li>
+          </ul>
+        </div>
+        <div class="callout blue">
+          📍 Área de soporte y orientación directa: Prefectura del Plantel (Turno Vespertino).
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>CEB 5/4 "Profr. Rafael Ramírez" · Tutoría Grupo V110</span>
+        <span>5 / 12</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: 4. SEGUIMIENTO ACADÉMICO -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="num-badge">4</div>
+        <div class="header-text">
+          <h2>Seguimiento Académico y Acompañamiento Tutorial</h2>
+          <p>Estrategias de apoyo rumbo al Tercer Parcial</p>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="card">
+          <ul class="clean-list">
+            <li><strong>Retroalimentación docente:</strong> Las y los estudiantes han recibido retroalimentación directa de sus docentes respecto a su desempeño académico.</li>
+            <li><strong>Identificación oportuna:</strong> Revisar en boleta las asignaturas que requieren mayor atención y dedicación inmediata.</li>
+            <li><strong>Tutorías Académicas:</strong> Invitar a las familias a promover la participación de sus hijos en los espacios de tutoría académica, realizando el registro correspondiente.</li>
+            <li><strong>Oportunidad de mejora:</strong> Estas acciones buscan fortalecer los aprendizajes y asegurar una recuperación sólida durante el Tercer Parcial.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>CEB 5/4 "Profr. Rafael Ramírez" · Tutoría Grupo V110</span>
+        <span>6 / 12</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: 5. CALENDARIO DE EVALUACIONES -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="num-badge">5</div>
+        <div class="header-text">
+          <h2>Calendario de Evaluaciones (3.er Parcial y Globales)</h2>
+          <p>Fechas clave para organización y preparación académica</p>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="date-card">
+            <div class="date-head" style="background:var(--blue);">06 al 08 de<br>Diciembre</div>
+            <div class="date-body">
+              <h3>Retroalimentación de Calificaciones</h3>
+              <p>Revisión de avances y resultados previos al cierre evaluativo.</p>
+            </div>
+          </div>
+          <div class="date-card">
+            <div class="date-head" style="background:var(--gold);">10 al 16 de<br>Diciembre</div>
+            <div class="date-body">
+              <h3>Exámenes del Tercer Parcial</h3>
+              <p>Periodo oficial de aplicación de evaluaciones del 3.er Parcial.</p>
+            </div>
+          </div>
+          <div class="date-card">
+            <div class="date-head" style="background:var(--red);">11 al 13 de<br>Enero 2027</div>
+            <div class="date-body">
+              <h3>Exámenes Globales</h3>
+              <p>Evaluación final para regularización de asignaturas.</p>
+            </div>
+          </div>
+        </div>
+        <div class="callout blue">
+          📚 Solicitamos acompañar a sus hijos en la organización de tiempos, hábitos de estudio en casa y seguimiento de resultados.
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>CEB 5/4 "Profr. Rafael Ramírez" · Tutoría Grupo V110</span>
+        <span>7 / 12</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: 6. PEC -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="num-badge">6</div>
+        <div class="header-text">
+          <h2>Proyecto Escolar Comunitario (PEC) · 3.er Parcial</h2>
+          <p>Formación integral y vinculación con la comunidad</p>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="card">
+          <ul class="clean-list">
+            <li><strong>Actividades del 3.er Parcial:</strong> Consolidación de proyectos transversales interdisciplinarios (en el Turno Vespertino: enfoque cultural, memoria comunitaria y producción audiovisual «Raíces que Permanecen»).</li>
+            <li><strong>Participación y cumplimiento:</strong> Es fundamental que cada estudiante cumpla activamente con las actividades y entregas asignadas en su equipo.</li>
+            <li><strong>Acompañamiento familiar:</strong> Promover el respaldo desde el hogar en acciones que contribuyen a su formación integral, trabajo colaborativo y vinculación comunitaria.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>CEB 5/4 "Profr. Rafael Ramírez" · Tutoría Grupo V110</span>
+        <span>8 / 12</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: 7. CONFERENCIAS Y ACTIVIDADES FORMATIVAS -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="num-badge">7</div>
+        <div class="header-text">
+          <h2>Invitación a Conferencias y Actividades Formativas</h2>
+          <p>Espacios de orientación para estudiantes y familias</p>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="card">
+          <ul class="clean-list">
+            <li><strong>Programación continua:</strong> Invitación abierta a las conferencias, pláticas preventivas y actividades de orientación programadas durante el periodo.</li>
+            <li><strong>Comunicación oportuna:</strong> Las fechas, horarios y modalidades se informarán puntualmente a través de los canales institucionales oficiales.</li>
+            <li><strong>Colaboración esencial:</strong> Invitamos a las familias a participar activamente, reconociendo que su asistencia fortalece la formación y bienestar de sus hijos.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>CEB 5/4 "Profr. Rafael Ramírez" · Tutoría Grupo V110</span>
+        <span>9 / 12</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: 8. REVISIÓN DE MOCHILAS -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="num-badge">8</div>
+        <div class="header-text">
+          <h2>Revisión y Supervisión de Mochilas desde el Hogar</h2>
+          <p>Cultura de prevención, autocuidado y seguridad escolar</p>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="card" style="padding:1.3rem 2rem;">
+          <ul class="clean-list" style="gap:0.8rem;">
+            <li style="font-size:1.18rem;"><strong>Revisión diaria:</strong> Revisar las mochilas de sus hijos antes de salir de casa para verificar que solo lleven materiales escolares necesarios.</li>
+            <li style="font-size:1.18rem;"><strong>Cero objetos de riesgo:</strong> Evitar el ingreso de artículos, objetos o sustancias que representen un riesgo para su integridad o la de otras personas.</li>
+            <li style="font-size:1.18rem;"><strong>Diálogo preventivo:</strong> Promover en familia la importancia de la prevención, el autocuidado y la responsabilidad en la escuela.</li>
+          </ul>
+        </div>
+        <div class="callout quote">
+          <strong style="color:#c2410c; display:block; margin-bottom:4px;">🛡️ MENSAJE PARA LAS FAMILIAS:</strong>
+          <em>“La seguridad escolar comienza en casa. La revisión de mochilas debe ser una práctica de acompañamiento, comunicación y prevención, no de desconfianza. Es importante que las familias conozcan qué llevan sus hijos al plantel y fomenten en ellos la responsabilidad de cuidar su integridad y la de los demás.”</em>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>CEB 5/4 "Profr. Rafael Ramírez" · Tutoría Grupo V110</span>
+        <span>10 / 12</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 11: 9. ASUNTOS GENERALES Y ACUERDOS -->
+    <section class="slide">
+      <div class="slide-header">
+        <div class="num-badge">9</div>
+        <div class="header-text">
+          <h2>Asuntos Generales, Acuerdos y Entrega de Boletas</h2>
+          <p>Diálogo directo y firma de documentos</p>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="card">
+          <ul class="clean-list">
+            <li><strong>Atención a dudas y comentarios:</strong> Espacio abierto para atender inquietudes generales y situaciones particulares de interés para las familias.</li>
+            <li><strong>Acuerdos de colaboración:</strong> Establecer compromisos concretos familia-escuela para fortalecer el desempeño académico, la asistencia, puntualidad y sana convivencia.</li>
+            <li><strong>Entrega de Boletas (2.° Parcial):</strong> A continuación realizaremos la entrega individual de boletas con firma de enterado y retroalimentación breve.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>CEB 5/4 "Profr. Rafael Ramírez" · Tutoría Grupo V110</span>
+        <span>11 / 12</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 12: MENSAJE DE CIERRE -->
+    <section class="slide dark-theme">
+      <div class="inst-tag">✨ MENSAJE DE CIERRE INSTITUCIONAL</div>
+      <div style="font-size:1.65rem; line-height:1.45; margin-bottom:1.5rem; font-weight:500;">
+        “La formación de nuestras y nuestros estudiantes es una tarea compartida. La comunicación permanente entre la familia y la escuela, así como el acompañamiento oportuno, son fundamentales para identificar necesidades, fortalecer aprendizajes y generar mejores oportunidades para su desarrollo personal y académico.”
+      </div>
+      <div style="font-size:1.35rem; line-height:1.45; color:#bfdbfe; margin-bottom:2.2rem;">
+        Recordemos que educar, acompañar y prevenir requiere del compromiso de todos. Trabajando en conjunto podemos ofrecer a nuestros jóvenes un entorno seguro, respetuoso y favorable para su formación integral.
+      </div>
+      <div class="meta-box" style="text-align:center; max-width:100%;">
+        <div style="font-size:1.45rem; font-weight:700; color:#fdba74;">¡Agradecemos su confianza, participación y colaboración!</div>
+        <div style="font-size:1.05rem;">Dr. Felipe López Salazar · Tutor del Grupo V110 · CEB 5/4</div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="controls-bar">
+    <button class="ctrl-btn" onclick="prevSlide()">◀ Anterior</button>
+    <button class="ctrl-btn" onclick="goToSlide(1)">📋 Agenda</button>
+    <button class="ctrl-btn" onclick="nextSlide()">Siguiente ▶</button>
+    <button class="ctrl-btn" onclick="toggleFullscreen()">⛶ Pantalla Completa</button>
+    <button class="ctrl-btn" onclick="window.print()">🖨️ PDF</button>
+  </div>
+
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+      if (index < 0) index = 0;
+      if (index >= slides.length) index = slides.length - 1;
+      slides.forEach(s => s.classList.remove('active'));
+      slides[index].classList.add('active');
+      current = index;
+    }
+
+    function nextSlide() { showSlide(current + 1); }
+    function prevSlide() { showSlide(current - 1); }
+    function goToSlide(idx) { showSlide(idx); }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') nextSlide();
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
+      if (e.key.toLowerCase() === 'f') toggleFullscreen();
+      if (e.key === 'Home') goToSlide(0);
+      if (e.key === 'End') goToSlide(slides.length - 1);
+    });
+
+    // Soporte táctil (Swipe horizontal para iPad / iPhone)
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const deck = document.getElementById('deck');
+    deck.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    deck.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextSlide();
+        else prevSlide();
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>

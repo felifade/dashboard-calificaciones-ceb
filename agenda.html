@@ -2483,6 +2483,100 @@
       color: #FFFFFF;
     }
 
+    /* TAB: ENLACES ÚTILES (CURADOS, CERO SATURACIÓN) */
+    .links-hub {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .links-intro {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .links-intro h2 {
+      font-size: 1.22rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+    .links-intro p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    .links-group-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      padding-left: 4px;
+    }
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .link-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 15px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .link-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+    }
+    .link-card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .link-card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+    .link-card-title {
+      font-size: 0.94rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.25;
+      margin-bottom: 3px;
+    }
+    .link-card-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.38;
+    }
+    .link-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .link-card-actions .btn {
+      padding: 6px 12px;
+      font-size: 0.78rem;
+    }
+
   </style>
 
 </head>
@@ -2517,6 +2611,7 @@
         <button class="nav-tab-btn" id="btn-tab-cultural" onclick="switchMainTab('cultural')">🎭 Eventos</button>
         <button class="nav-tab-btn" id="btn-tab-table" onclick="switchMainTab('table')">📋 Tabla SEMS</button>
         <button class="nav-tab-btn" id="btn-tab-audit" onclick="switchMainTab('audit')">📬 Correos</button>
+        <button class="nav-tab-btn" id="btn-tab-links" onclick="switchMainTab('links')">🔗 Enlaces</button>
         <button class="nav-tab-btn" id="btn-tab-sync" onclick="switchMainTab('sync')">📲 Suscribir</button>
       </div>
     </div>
@@ -2652,6 +2747,145 @@
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
         <!-- Inyectado por JS -->
+      </div>
+    </section>
+
+    <!-- TAB PANE 6: ENLACES OFICIALES Y CARPETAS COMPARTIDAS (SIN SATURAR) -->
+    <section class="tab-pane" id="pane-links">
+      <div class="links-hub">
+        <div class="links-intro">
+          <h2>🔗 Enlaces Directos del Plantel CEB 5/4</h2>
+          <p>Accesos esenciales reunidos en un solo lugar para abrir rápido o copiar y compartir con tus colegas.</p>
+        </div>
+
+        <div>
+          <div class="links-group-title">💻 Sistemas, Capacitación y Tableros</div>
+          <div class="links-grid">
+            <article class="link-card">
+              <div class="link-card-head">
+                <div class="link-card-icon">🏫</div>
+                <div>
+                  <div class="link-card-title">Plataforma Institucional SAGYC</div>
+                  <div class="link-card-desc">Portal CEB 5/4 con los módulos de <strong>Tutorías</strong> y <strong>Estadísticos por grado</strong>.</div>
+                </div>
+              </div>
+              <div class="link-card-actions">
+                <a class="btn btn-primary" href="https://ceb54.sistemas-sagyc.com/" target="_blank" rel="noopener">Abrir Portal ↗</a>
+                <a class="btn" href="https://ceb54.sistemas-sagyc.com/plataforma/" target="_blank" rel="noopener">Login Mi Escuela ↗</a>
+                <button class="btn" onclick="copyQuickLink('https://ceb54.sistemas-sagyc.com/', this)">📋 Copiar</button>
+              </div>
+            </article>
+
+            <article class="link-card">
+              <div class="link-card-head">
+                <div class="link-card-icon">🎁</div>
+                <div>
+                  <div class="link-card-title">Presentación Capacitación (Vie 27 Nov)</div>
+                  <div class="link-card-desc">Guía visual de los <em>Tres Regalos de Navidad</em>: Agenda, Tutorías y Estadísticos.</div>
+                </div>
+              </div>
+              <div class="link-card-actions">
+                <a class="btn btn-primary" href="https://felifade.github.io/dashboard-calificaciones-ceb/presentacion-regalos.html" target="_blank" rel="noopener">Abrir Presentación ↗</a>
+                <button class="btn" onclick="copyQuickLink('https://felifade.github.io/dashboard-calificaciones-ceb/presentacion-regalos.html', this)">📋 Copiar</button>
+              </div>
+            </article>
+
+            <article class="link-card">
+              <div class="link-card-head">
+                <div class="link-card-icon">📊</div>
+                <div>
+                  <div class="link-card-title">Tablero Analítico de Calificaciones</div>
+                  <div class="link-card-desc">Indicadores por grupo, aprobación y detección temprana de riesgo académico.</div>
+                </div>
+              </div>
+              <div class="link-card-actions">
+                <a class="btn" href="https://felifade.github.io/dashboard-calificaciones-ceb/index.html" target="_blank" rel="noopener">Abrir Tablero ↗</a>
+                <button class="btn" onclick="copyQuickLink('https://felifade.github.io/dashboard-calificaciones-ceb/index.html', this)">📋 Copiar</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div>
+          <div class="links-group-title">📁 Carpetas de Drive y Formularios Activos (Tutores / Docentes)</div>
+          <div class="links-grid">
+            <article class="link-card">
+              <div class="link-card-head">
+                <div class="link-card-icon">🧡</div>
+                <div>
+                  <div class="link-card-title">Drive · 16 Días de Activismo (25N)</div>
+                  <div class="link-card-desc">Carpeta compartida para subir evidencias por grupo · <strong>Límite: Mié 25 Nov</strong>.</div>
+                </div>
+              </div>
+              <div class="link-card-actions">
+                <a class="btn btn-primary" href="https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi" target="_blank" rel="noopener">Abrir Drive ↗</a>
+                <button class="btn" onclick="copyQuickLink('https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi', this)">📋 Copiar</button>
+              </div>
+            </article>
+
+            <article class="link-card">
+              <div class="link-card-head">
+                <div class="link-card-icon">💚</div>
+                <div>
+                  <div class="link-card-title">Drive · «El ABC de las Emociones»</div>
+                  <div class="link-card-desc">Carpeta de cronogramas y evidencias de tutorías · <strong>Cierre: Vie 04 Dic</strong>.</div>
+                </div>
+              </div>
+              <div class="link-card-actions">
+                <a class="btn btn-primary" href="https://drive.google.com/drive/folders/1Fgcj0rEB-tcb6Ck94CLiBTtCNe-ZbpE5?usp=sharing" target="_blank" rel="noopener">Abrir Drive ↗</a>
+                <a class="btn" href="https://semsgob-my.sharepoint.com/:f:/g/personal/patsy_ordonez_sems_gob_mx/IgAMQ04ce5niRajfANkQp8ISAbtCGgTGEe7wrixJaX07_Ao?e=x8sr15" target="_blank" rel="noopener">Materiales SEMS ↗</a>
+                <button class="btn" onclick="copyQuickLink('https://drive.google.com/drive/folders/1Fgcj0rEB-tcb6Ck94CLiBTtCNe-ZbpE5?usp=sharing', this)">📋 Copiar</button>
+              </div>
+            </article>
+
+            <article class="link-card">
+              <div class="link-card-head">
+                <div class="link-card-icon">📋</div>
+                <div>
+                  <div class="link-card-title">Formulario de Acción Tutorial</div>
+                  <div class="link-card-desc">Registro en línea de evidencias y sesiones de tutoría solicitado por Orientación.</div>
+                </div>
+              </div>
+              <div class="link-card-actions">
+                <a class="btn" href="https://forms.gle/Eb2AFMfFYr6ycFWW9" target="_blank" rel="noopener">Abrir Formulario ↗</a>
+                <button class="btn" onclick="copyQuickLink('https://forms.gle/Eb2AFMfFYr6ycFWW9', this)">📋 Copiar</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div>
+          <div class="links-group-title">📚 Normatividad y Apoyo DGB / SEP</div>
+          <div class="links-grid">
+            <article class="link-card">
+              <div class="link-card-head">
+                <div class="link-card-icon">📖</div>
+                <div>
+                  <div class="link-card-title">Guías de Estudio Independiente DGB</div>
+                  <div class="link-card-desc">Repositorio federal oficial de autoestudio para compartir con estudiantes.</div>
+                </div>
+              </div>
+              <div class="link-card-actions">
+                <a class="btn" href="https://sites.google.com/dgb.edu.mx/recursos-didacticos-profesores/gu%C3%ADas-de-autoestudio" target="_blank" rel="noopener">Abrir Sitio DGB ↗</a>
+                <button class="btn" onclick="copyQuickLink('https://sites.google.com/dgb.edu.mx/recursos-didacticos-profesores/gu%C3%ADas-de-autoestudio', this)">📋 Copiar</button>
+              </div>
+            </article>
+
+            <article class="link-card">
+              <div class="link-card-head">
+                <div class="link-card-icon">⚖️</div>
+                <div>
+                  <div class="link-card-title">Plataforma CODECOSEP (SEP)</div>
+                  <div class="link-card-desc">Consulta y descarga oficial del acuse del Código de Conducta para RH.</div>
+                </div>
+              </div>
+              <div class="link-card-actions">
+                <a class="btn" href="https://codecosep.sep.gob.mx/#/" target="_blank" rel="noopener">Abrir CODECOSEP ↗</a>
+                <button class="btn" onclick="copyQuickLink('https://codecosep.sep.gob.mx/#/', this)">📋 Copiar</button>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -4849,6 +5083,17 @@ const CULTURAL_EVENTS = [
       alert('✅ Enlace copiado al portapapeles. Pégalo en tu calendario preferido.');
     }
 
+    // Copiar enlace rápido desde pestaña Enlaces
+    function copyQuickLink(url, btn) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          const orig = btn.textContent;
+          btn.textContent = '✅ Copiado';
+          setTimeout(() => { btn.textContent = orig; }, 1600);
+        });
+      }
+    }
+
     // Modal SEMS
     function openModal() {
       document.getElementById('semsModal').style.display = 'flex';
@@ -4912,9 +5157,9 @@ ${desc}`);
       <span class="mob-tab-icon">🎭</span>
       <span class="mob-tab-label">Eventos</span>
     </button>
-    <button class="mob-tab-btn" id="mob-btn-table" onclick="switchMainTab('table')">
-      <span class="mob-tab-icon">📋</span>
-      <span class="mob-tab-label">SEMS</span>
+    <button class="mob-tab-btn" id="mob-btn-links" onclick="switchMainTab('links')">
+      <span class="mob-tab-icon">🔗</span>
+      <span class="mob-tab-label">Enlaces</span>
     </button>
     <button class="mob-tab-btn" id="mob-btn-audit" onclick="switchMainTab('audit')">
       <span class="mob-tab-icon">📬</span>
@@ -4955,6 +5200,15 @@ ${desc}`);
       url.searchParams.set('v', Date.now());
       window.location.replace(url.toString());
     }
+
+    (function checkInitialTabHash() {
+      const h = (window.location.hash || '').toLowerCase();
+      if (h === '#links' || h === '#enlaces') {
+        switchMainTab('links');
+      } else if (h === '#sync' || h === '#suscribir') {
+        switchMainTab('sync');
+      }
+    })();
   </script>
 </body>
 </html>

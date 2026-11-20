@@ -2743,7 +2743,7 @@
       </div>
     </section>
 
-    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (23) -->
+    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (24) -->
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
         <!-- Inyectado por JS -->
@@ -3017,6 +3017,16 @@
   <script>
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
+      {
+        id: 24,
+        date: "20 de Noviembre de 2026",
+        sender: "Subdirección Académica (CEB 5/4)",
+        title: "💳 Entrega de Tarjetas de Becas (Lunes 23 Nov: TM 1.er Semestre Sin Clases / TV Normal)",
+        req: "El lunes 23 de noviembre se llevará a cabo la entrega de tarjetas del programa de becas. Organización: Turno Matutino se suspenden clases únicamente para grupos de primer semestre; Turno Vespertino actividades académicas normales conforme a horario.",
+        delivery: "Plantel CEB 5/4 · Lunes 23 de Noviembre",
+        status: "Programado (Lun 23 Nov)",
+        ref: "Aviso Subdirección Académica"
+      },
       {
         id: 23,
         date: "19 de Noviembre de 2026",
@@ -3397,6 +3407,7 @@
       {
         num: "Semana 13", dates: "23 al 27 de Noviembre 2026", title: "Desarrollo Académico Bloque III, Viaje 5° Semestre y Feria de Salud", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false,
         events: [
+          { date: "Lun 23 Nov", text: "💳 Entrega de Tarjetas de Becas (TM: Suspensión clases únicamente 1.er semestre / TV: Normal)", cat: "normal", shift: "1er Semestre TM", ref: "Subdirección" },
           { date: "23–27 Nov", text: "Sesiones regulares del Tercer Parcial y avance de proyectos transversales", cat: "normal", shift: "ALL", ref: "S13 Oficial" },
           { date: "Mar 24 Nov", text: "🚌 Viaje escolar de 5° Semestre: Museo de Cera y Ripley (CDMX)", cat: "normal", shift: "5° Semestre", ref: "Extensión Cultural" },
           { date: "Mié 25 Nov", text: "📁 Límite para integrar evidencias de los 16 Días de Activismo en Drive (Tutores)", cat: "normal", shift: "Tutores", ref: "Orientación" },
@@ -3551,6 +3562,7 @@
     { label: "🛡️ Prevención del Delito", cat: "normal", desc: "Conferencia de Prevención del Delito programada por Orientación Educativa." },
     { label: "📋 Encuesta Conecta con Sentido", cat: "normal", desc: "Envío de encuesta anónima diagnóstica para la estrategia participativa 'Conecta con Sentido' (Acuerdo 09/09/26)." }
   ],
+  "2026-11-23": [{ label: "💳 Becas (TM 1° sin clases / TV normal)", cat: "normal", desc: "Entrega de tarjetas del programa de becas. Turno Matutino: se suspenden clases únicamente para grupos de 1.er semestre. Turno Vespertino: actividades académicas normales." }],
   "2026-11-24": [{ label: "🚌 Viaje 5° Sem: Cera y Ripley", cat: "normal", desc: "Viaje escolar y formativo de estudiantes de 5° semestre al Museo de Cera y Museo de Ripley en la Ciudad de México." }],
   "2026-11-25": [{ label: "📁 Evidencias 16 Días Activismo", cat: "normal", desc: "Fecha límite para que los tutores suban a Google Drive las evidencias correspondientes a las actividades de los 16 Días de Activismo contra la Violencia de Género organizadas por grupo (https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi)." }],
   "2026-11-27": [
@@ -3789,7 +3801,10 @@ const WEEK_VIEWS = {
     title: "Avance Temático P3 y Feria de la Salud Matutina",
     highlight: "Desarrollo de proyectos formativos Bloque III",
     days: [
-      { name: "Lunes", date: "23 Nov", isToday: false, isHoliday: false, events: [{ title: "Retroalimentación Boletas P2", sub: "Análisis de desempeño pedagógico", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
+      { name: "Lunes", date: "23 Nov", isToday: false, isHoliday: false, events: [
+        { title: "💳 Entrega de Tarjetas de Becas", sub: "Turno Matutino: se suspenden clases únicamente para 1.er semestre. Turno Vespertino: actividades normales.", cat: "normal", priority: "high", shift: "TM 1° Sin Clases / TV Normal", tag: "Becas" },
+        { title: "Retroalimentación Boletas P2", sub: "Análisis de desempeño pedagógico", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+      ] },
       { name: "Martes", date: "24 Nov", isToday: false, isHoliday: false, events: [
         { title: "🚌 Viaje de 5° Semestre: Museo de Cera y Ripley", sub: "Viaje escolar y formativo a la Ciudad de México para estudiantes de quinto semestre.", cat: "normal", priority: "high", shift: "5° Semestre", tag: "Viaje Cera/Ripley" },
         { title: "Clases y Talleres Curriculares", sub: "Avance de progresiones pedagógicas (1° y 3° Semestre)", cat: "normal", priority: "normal", shift: "Ambos turnos" }

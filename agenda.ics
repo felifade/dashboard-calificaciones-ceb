@@ -1557,4 +1557,16 @@ CATEGORIES:🇲🇽 ACTO CÍVICO,SÍMBOLOS PATRIOS,EVENTO INSTITUCIONAL
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-entrega-tarjetas-becas-20261123@ceb54.dgb.edu.mx
+DTSTAMP:20261120T092900Z
+DTSTART;VALUE=DATE:20261123
+DTEND;VALUE=DATE:20261124
+SUMMARY:💳 CEB 5/4: Entrega de Tarjetas de Becas (TM 1.er Semestre SIN CLASES / TV Normal)
+DESCRIPTION:Entrega de tarjetas correspondientes al programa de becas.\n- Turno Matutino: Se suspenden clases únicamente para grupos de primer semestre.\n- Turno Vespertino: Actividades académicas normales conforme a horario.
+LOCATION:Plantel CEB 5/4 · Ambos Turnos
+CATEGORIES:💳 BECAS,SUBDIRECCIÓN ACADÉMICA,ORGANIZACIÓN ESCOLAR
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
 END:VCALENDAR

@@ -1545,4 +1545,16 @@ CATEGORIES:💻 CAPACITACIÓN DOCENTE,SUBDIRECCIÓN ACADÉMICA,SAGYC
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-acto-civico-20nov-20261120@ceb54.dgb.edu.mx
+DTSTAMP:20261119T185700Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:🇲🇽 CEB 5/4: Conmemoración 20 de Noviembre (Izamiento 08:20 h / Arreo 17:20 h)
+DESCRIPTION:Acto protocolario con motivo de la conmemoración del 20 de noviembre:\n- Izamiento de la Bandera Nacional: 08:20 h (a cargo del Prof. Yair Naranjos)\n- Arreo de la Bandera Nacional: 17:20 h (coordinado por el docente José Alejandro Ortiz)\nInvitación abierta al personal escolar según disponibilidad de horario.
+LOCATION:Plaza Cívica · CEB 5/4
+CATEGORIES:🇲🇽 ACTO CÍVICO,SÍMBOLOS PATRIOS,EVENTO INSTITUCIONAL
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

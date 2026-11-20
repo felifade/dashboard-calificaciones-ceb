@@ -2743,7 +2743,7 @@
       </div>
     </section>
 
-    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (22) -->
+    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (23) -->
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
         <!-- Inyectado por JS -->
@@ -3017,6 +3017,16 @@
   <script>
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
+      {
+        id: 23,
+        date: "19 de Noviembre de 2026",
+        sender: "Dirección / Subdirección / Área Cívica (CEB 5/4)",
+        title: "🇲🇽 Conmemoración 20 de Noviembre: Izamiento (08:20 h) y Arreo de Bandera (17:20 h)",
+        req: "Invitación al personal escolar (según disponibilidad de horario laboral y de clases) al acto protocolario de Izamiento de la Bandera Nacional a las 08:20 h (a cargo del Prof. Yair Naranjos) y al Arreo de la Bandera Nacional a las 17:20 h (coordinado por el docente José Alejandro Ortiz).",
+        delivery: "Plaza Cívica CEB 5/4 · Viernes 20 de Noviembre (08:20 h TM / 17:20 h TV)",
+        status: "Programado (Vie 20 Nov)",
+        ref: "Invitación Acto Protocolario 20 Nov"
+      },
       {
         id: 22,
         date: "17 de Noviembre de 2026",
@@ -3378,6 +3388,7 @@
           { date: "Jue 19 Nov (08:30–12:30 h)", text: "🎓 FERIA VOCACIONAL 2026 · 5° Semestre Ambos Turnos (Orientación)", cat: "normal", shift: "ALL", ref: "Nota Subdirección" },
           { date: "Jue 19 y Vie 20 Nov", text: "👨‍👩‍👧‍👦 Entrega de Boletas del 2° Parcial a Padres · TURNO VESPERTINO (según rol de tutores)", cat: "parents", shift: "TV", ref: "Act. Oficial #05" },
           { date: "Vie 20 Nov (07:00 h)", text: "👨‍👩‍👧‍👦 Entrega de Boletas del 2° Parcial a Padres · TURNO MATUTINO (07:00 hrs)", cat: "parents", shift: "TM", ref: "Nota Subdirección" },
+          { date: "Vie 20 Nov (08:20 / 17:20 h)", text: "🇲🇽 Conmemoración 20 de Noviembre: Izamiento (08:20 h, Prof. Yair Naranjos) y Arreo (17:20 h, Prof. José Alejandro Ortiz)", cat: "normal", shift: "ALL", ref: "Acto Cívico" },
           { date: "Vie 20 Nov", text: "🛡️ Conferencia: Prevención del Delito (Orientación Educativa)", cat: "normal", shift: "ALL", ref: "Nota Subdirección" },
           { date: "Vie 20 Nov", text: "📋 Envío de Encuesta Anónima: «Conecta con Sentido» (Diagnóstico Acuerdo 09/09/26)", cat: "normal", shift: "ALL", ref: "Nota Subdirección" },
           { date: "Permanente", text: "📊 Encuesta Trayectorias en Transición (En espera de indicaciones oficiales de la DGB)", cat: "normal", shift: "1er Semestre", ref: "DGB Federal" }
@@ -3535,6 +3546,7 @@
   ],
   "2026-11-20": [
     { label: "👨‍👩‍👧 Boletas P2 (TM 07:00 h)", cat: "parents", desc: "Entrega de boletas del 2° Parcial a padres de familia del Turno Matutino a las 07:00 hrs." },
+    { label: "🇲🇽 Izamiento / Arreo Bandera", cat: "normal", desc: "Conmemoración del 20 de noviembre: Izamiento de la Bandera Nacional a las 08:20 h (Prof. Yair Naranjos) y Arreo a las 17:20 h (Prof. José Alejandro Ortiz)." },
     { label: "👨‍👩‍👧 Boletas P2 (TV Día 2)", cat: "parents", desc: "Segundo día de entrega de boletas del 2° Parcial en Turno Vespertino según rol de tutores." },
     { label: "🛡️ Prevención del Delito", cat: "normal", desc: "Conferencia de Prevención del Delito programada por Orientación Educativa." },
     { label: "📋 Encuesta Conecta con Sentido", cat: "normal", desc: "Envío de encuesta anónima diagnóstica para la estrategia participativa 'Conecta con Sentido' (Acuerdo 09/09/26)." }
@@ -3763,6 +3775,7 @@ const WEEK_VIEWS = {
         name: "Viernes", date: "20 Nov", isToday: false, isHoliday: false,
         events: [
           { title: "👨‍👩‍👧‍👦 Entrega de Boletas P2 · Turno Matutino (07:00 h)", sub: "Reunión oficial con padres de familia del Turno Matutino a las 07:00 hrs.", cat: "parents", priority: "high", shift: "☀️ Turno Matutino", tag: "Boletas TM 07:00" },
+          { title: "🇲🇽 Acto Cívico: Conmemoración 20 de Noviembre", sub: "Izamiento de Bandera: 08:20 h (Prof. Yair Naranjos) · Arreo de Bandera: 17:20 h (Prof. José Alejandro Ortiz).", cat: "normal", priority: "normal", shift: "Ambos Turnos", tag: "Acto Cívico" },
           { title: "👨‍👩‍👧‍👦 Entrega de Boletas P2 · Turno Vespertino (Día 2)", sub: "Segundo día de atención a tutores en Turno Vespertino conforme a rol.", cat: "parents", priority: "high", shift: "🌙 Turno Vespertino", tag: "Boletas TV" },
           { title: "🛡️ Conferencia: Prevención del Delito", sub: "Conforme a la programación del Departamento de Orientación Educativa.", cat: "normal", priority: "normal", shift: "Orientación", tag: "Prevención" },
           { title: "📋 Encuesta Anónima: «Conecta con Sentido»", sub: "Envío para diagnóstico de la estrategia participativa (Acuerdo 09/09/26). Difusión y seguimiento.", cat: "normal", priority: "normal", shift: "Personal Escolar", tag: "Conecta Sentido" }

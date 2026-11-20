@@ -508,6 +508,7 @@
       <button class="btn" onclick="prevSlide()" title="Diapositiva anterior">◀ <span class="btn-label">Anterior</span></button>
       <button class="counter-pill" id="counterPill" onclick="toggleIndex()" title="Ver todas las diapositivas (Tecla G)">1 / 12 ☰</button>
       <button class="btn primary" onclick="nextSlide()" title="Siguiente diapositiva"><span class="btn-label">Siguiente</span> ▶</button>
+      <button class="btn" onclick="toggleSpeech()" title="Guion Rápido Docente (Tecla M)" style="background:#fff7ed; border-color:#fdba74; color:#c2410c;">🎤 <span class="btn-label">Guion</span></button>
       <button class="btn" onclick="toggleFullscreen()" title="Pantalla Completa (Tecla F)">⛶</button>
       <button class="btn" onclick="window.print()" title="Guardar / Imprimir PDF">🖨️</button>
     </div>
@@ -827,12 +828,43 @@
     </div>
   </div>
 
+  <!-- MODAL GUION RÁPIDO DOCENTE (NOTAS DEL ORADOR PARA IPAD - NO SE PROYECTA COMO DIAPOSITIVA) -->
+  <div class="index-modal" id="speechModal" onclick="if(event.target === this) toggleSpeech()">
+    <div class="index-panel" style="max-width:780px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--gold); padding-bottom:10px; margin-bottom:14px;">
+        <div>
+          <h3 style="font-family:'Outfit',sans-serif; color:var(--navy); font-size:1.25rem;">🎤 Guion Rápido Docente (Grupos 101–106 · Lab. Cómputo)</h3>
+          <p style="font-size:0.8rem; color:var(--muted);">Notas de lectura rápida en iPad · ~90 segundos</p>
+        </div>
+        <button class="btn" onclick="toggleSpeech()">✕ Cerrar</button>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:12px; font-size:0.98rem; line-height:1.48; color:var(--text);">
+        <div style="background:#eff6ff; border-left:5px solid var(--navy); padding:12px 14px; border-radius:8px;">
+          <div style="font-weight:800; color:var(--navy); font-size:0.85rem; text-transform:uppercase; margin-bottom:4px;">1. Dinámica de Trabajo en el Laboratorio (Blindaje)</div>
+          “Buenos días, padres de familia. Soy el Dr. Felipe López Salazar, maestro de Cultura Digital I. Paso rápido para contarles cómo trabajamos en el laboratorio: mientras yo doy la explicación, <strong>un estudiante guía pasa a la computadora principal que proyecta hacia el pizarrón</strong>, y yo <strong>camino de pie por detrás de las filas</strong> supervisando pantallas y revisando el trabajo de todo el grupo. Así trabajamos de manera abierta, a la vista de todos, con orden y respeto.”
+        </div>
+
+        <div style="background:#fff7ed; border-left:5px solid var(--gold); padding:12px 14px; border-radius:8px;">
+          <div style="font-weight:800; color:#c2410c; font-size:0.85rem; text-transform:uppercase; margin-bottom:4px;">2. Regla de Celulares (Diálogo y Respeto)</div>
+          “Sobre el uso del celular: el acuerdo es que <strong>se coloca arriba del gabinete del CPU</strong> para evitar distracciones. Si se le llama la atención a algún joven por usarlo y reincide, se le resguarda <strong>únicamente hasta que termine esa hora de clase</strong> y se entrega al salir, siempre privilegiando el diálogo y sin generar problemáticas.”
+        </div>
+
+        <div style="background:#f0fdf4; border-left:5px solid #16a34a; padding:12px 14px; border-radius:8px;">
+          <div style="font-weight:800; color:#15803d; font-size:0.85rem; text-transform:uppercase; margin-bottom:4px;">3. Puntualidad, Criterio Justo y Apoyo Familiar</div>
+          “Les pido su apoyo para permitirnos aplicar medidas disciplinarias formativas cuando un estudiante no cumpla reiteradamente con llegar a buena hora. Mi criterio es muy claro: <strong>si el estudiante cumple con lo que le corresponde, nunca va a tener ningún problema</strong>. Tampoco voy a sancionar a un alumno que solamente llegó una vez tarde sabiendo que tiene un desempeño adecuado; aquí valoramos la constancia y el respeto. ¡Gracias!”
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     let current = 0;
     const slides = document.querySelectorAll('.slide');
     const counterPill = document.getElementById('counterPill');
     const progressFill = document.getElementById('progressFill');
     const indexModal = document.getElementById('indexModal');
+    const speechModal = document.getElementById('speechModal');
     const indexGrid = document.getElementById('indexGrid');
 
     // Construir índice dinámico
@@ -863,6 +895,7 @@
     function prevSlide() { showSlide(current - 1); }
     function goToSlide(idx) { showSlide(idx); }
     function toggleIndex() { indexModal.classList.toggle('open'); }
+    function toggleSpeech() { speechModal.classList.toggle('open'); }
 
     function toggleFullscreen() {
       if (!document.fullscreenElement) {
@@ -877,7 +910,11 @@
       if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
       if (e.key.toLowerCase() === 'f') toggleFullscreen();
       if (e.key.toLowerCase() === 'g') toggleIndex();
-      if (e.key === 'Escape' && indexModal.classList.contains('open')) toggleIndex();
+      if (e.key.toLowerCase() === 'm') toggleSpeech();
+      if (e.key === 'Escape') {
+        if (indexModal.classList.contains('open')) toggleIndex();
+        if (speechModal.classList.contains('open')) toggleSpeech();
+      }
       if (e.key === 'Home') goToSlide(0);
       if (e.key === 'End') goToSlide(slides.length - 1);
     });

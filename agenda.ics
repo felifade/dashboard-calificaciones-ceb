@@ -1629,4 +1629,16 @@ CATEGORIES:🩺 FERIA DE LA SALUD,EVENTO INSTITUCIONAL
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-s13-conasama-25n-20261125@ceb54.dgb.edu.mx
+DTSTAMP:20261123T173400Z
+DTSTART:20261125T210000Z
+DTEND:20261125T220000Z
+SUMMARY:🧠 CEB 5/4: Seminario Web CONASAMA «¿Es o no es?» (15:00 h · Registro Asistencia)
+DESCRIPTION:Por indicaciones de Dirección: Seminario web '¿Es o no es? Pistas para detectar la violencia contra las mujeres' (CONASAMA).\n- Transmisión en vivo (15:00 h): https://www.facebook.com/conasamamx\n- Importante: Llenar formulario Google Forms de registro de asistencia publicado en los comentarios durante la transmisión.
+LOCATION:Facebook Live CONASAMA
+CATEGORIES:🧡 25N DÍA NARANJA,DIRECCIÓN DEL PLANTEL,CONASAMA
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
 END:VCALENDAR

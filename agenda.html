@@ -2671,11 +2671,11 @@
         <div class="week-header-info">
           <div>
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-              <span class="badge badge-wine" id="activeWeekTag">SEMANA 12 (ACTIVA)</span>
-              <span class="badge badge-gold" id="activeWeekDates">18 AL 20 DE NOVIEMBRE DE 2026</span>
+              <span class="badge badge-wine" id="activeWeekTag">SEMANA 13 (ACTIVA)</span>
+              <span class="badge badge-gold" id="activeWeekDates">23 AL 27 DE NOVIEMBRE DE 2026</span>
             </div>
-            <h2 id="activeWeekTitle">📍 Semana 12: Entrega de Boletas P2, Feria Vocacional, SIPINNA y Conecta con Sentido</h2>
-            <p id="activeWeekSub">Mié 18 SIPINNA TV · Jue 19 Feria Vocacional (08:30–12:30 h) y Boletas TV · Vie 20 Boletas TM (07:00 h), Prevención y Diagnóstico Conecta con Sentido</p>
+            <h2 id="activeWeekTitle">📍 Semana 13: Comité de Paz, Viaje PEC 5°, 25N, Capacitación SAGYC y Feria de Salud</h2>
+            <p id="activeWeekSub">Lun 23 Becas / CIJ / Comité de Paz · Mar 24 Viaje PEC 5° y CIJ TV · Mié 25 Naranja (25N) y Webinarios · Jue 26 Conf. TV · Vie 27 SAGYC y Feria Salud</p>
           </div>
         </div>
 
@@ -2743,7 +2743,7 @@
       </div>
     </section>
 
-    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (24) -->
+    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (25) -->
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
         <!-- Inyectado por JS -->
@@ -3017,6 +3017,16 @@
   <script>
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
+      {
+        id: 25,
+        date: "23 de Noviembre de 2026",
+        sender: "Subdirección Académica (CEB 5/4)",
+        title: "📌 Nota Informativa | Semana 13 (23 al 27 de Noviembre de 2026)",
+        req: "LUN 23: Conf. CIJ padres (10:00-11:00 h Audiovisual); Reunión Consejo Estudiantil y líderes colegiado (TM 08:30 / TV 13:30 h, dar facilidades a jefes de grupo); Comité de Paz y Red de Seguridad (Acuerdo 09/09/26: Encuesta, Semáforo, Señalización, Decálogo). MAR 24: Viaje PEC 5° sem; Conf. CIJ estudiantes (TV 14:00 h, guardar evidencia presencial/transmisión). MIÉ 25: 25N prenda naranja; Transmisión DGB 'Hablemos de Feminicidio Emocional' (13:45 h Audiorama); Webinario SEMS 'Conozco mi cuerpo y deseos' (12:00 h); Cierre 16 Días de Activismo. JUE 26: Ciclo 'Hablemos para entendernos' (TV 17:30 h, V107 y V109). VIE 27: Feria de la Salud (Ambos turnos, Mtro. Gabriel).",
+        delivery: "Personal Escolar, Tutores, Padres y Estudiantes · Plantel CEB 5/4",
+        status: "En curso (Semana Activa)",
+        ref: "Circular Oficial Semana 13"
+      },
       {
         id: 24,
         date: "20 de Noviembre de 2026",
@@ -3388,7 +3398,7 @@
         ]
       },
       {
-        num: "Semana 12", dates: "16 al 20 de Noviembre 2026", title: "📍 SEMANA ACTIVA: Boletas P2, Feria Vocacional, SIPINNA y Conecta con Sentido (Nota Subdirección: 18 al 20 Nov)", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false, isCurrent: true,
+        num: "Semana 12", dates: "16 al 20 de Noviembre 2026", title: "Boletas P2, Feria Vocacional, SIPINNA y Conecta con Sentido (Nota Subdirección: 18 al 20 Nov)", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: true, isCurrent: false,
         events: [
           { date: "Lun 16 Nov", text: "🐎 SUSPENSIÓN OFICIAL: Aniversario de la Revolución Mexicana · Inicia Periodo P3", cat: "holiday", shift: "ALL", ref: "Asueto SEP / Act. #06" },
           { date: "Mar 17 Nov (09:30 h)", text: "🏛️ Asamblea Sindical D-II-79 (XXIV Congreso SNTE 15) · 🛑 NO HAY CLASES", cat: "union", shift: "ALL", ref: "Sindicato D-II-79" },
@@ -3405,14 +3415,19 @@
         ]
       },
       {
-        num: "Semana 13", dates: "23 al 27 de Noviembre 2026", title: "Desarrollo Académico Bloque III, Viaje 5° Semestre y Feria de Salud", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false,
+        num: "Semana 13", dates: "23 al 27 de Noviembre 2026", title: "📍 SEMANA ACTIVA: Comité de Paz, Viaje PEC 5°, 25N, Capacitación SAGYC y Feria de Salud", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false, isCurrent: true,
         events: [
           { date: "Lun 23 Nov", text: "💳 Entrega de Tarjetas de Becas (TM: Suspensión clases únicamente 1.er semestre / TV: Normal)", cat: "normal", shift: "1er Semestre TM", ref: "Subdirección" },
-          { date: "23–27 Nov", text: "Sesiones regulares del Tercer Parcial y avance de proyectos transversales", cat: "normal", shift: "ALL", ref: "S13 Oficial" },
-          { date: "Mar 24 Nov", text: "🚌 Viaje escolar de 5° Semestre: Museo de Cera y Ripley (CDMX)", cat: "normal", shift: "5° Semestre", ref: "Extensión Cultural" },
-          { date: "Mié 25 Nov", text: "📁 Límite para integrar evidencias de los 16 Días de Activismo en Drive (Tutores)", cat: "normal", shift: "Tutores", ref: "Orientación" },
-          { date: "Vie 27 Nov (07:00 / 13:00 h)", text: "💻 Capacitación Plataforma ceb54.sistemas-sagyc.com (Imparte: Dr. Felipe López Salazar · Clases inician 2° módulo)", cat: "union", shift: "Docentes", ref: "Subdirección" },
-          { date: "Vie 27 Nov", text: "🏥 Feria de la Salud Institucional · TURNO MATUTINO", cat: "normal", shift: "TM", ref: "Subdirección" }
+          { date: "Lun 23 Nov (08:30 / 13:30 h)", text: "🤝 Reunión Consejo Estudiantil y Líderes Colegiado (Dar facilidades a jefes de grupo)", cat: "union", shift: "ALL", ref: "Nota S13" },
+          { date: "Lun 23 Nov (10:00–11:00 h)", text: "👨‍👩‍👧‍👦 Conferencia CIJ para Padres/Tutores (Audiovisual)", cat: "parents", shift: "Padres", ref: "Nota S13" },
+          { date: "Lun 23 Nov", text: "🛡️ Comité de Paz y Red de Seguridad (Acuerdo 09/09/26: Encuesta, Semáforo, Señalización, Decálogo)", cat: "normal", shift: "ALL", ref: "Acuerdo 09/09/26" },
+          { date: "Mar 24 Nov", text: "🚌 Viaje PEC de 5° Semestre: Museo de Cera y Ripley (CDMX)", cat: "normal", shift: "5° Semestre", ref: "Extensión Cultural" },
+          { date: "Mar 24 Nov (14:00 h)", text: "🧠 Conferencias CIJ para Estudiantes · TURNO VESPERTINO (Guardar evidencia asistencia/transmisión)", cat: "normal", shift: "TV", ref: "Nota S13" },
+          { date: "Mié 25 Nov", text: "🧡 25N Día Elim. Violencia vs Mujeres (Prenda naranja) · Cierre 16 Días Activismo · Límite Evidencias Drive", cat: "normal", shift: "ALL", ref: "Orientación" },
+          { date: "Mié 25 Nov (12:00 / 13:45 h)", text: "🔸 Webinario SEMS Salud Sexual (12:00 h) y Transmisión DGB Feminicidio Emocional (13:45 h Audiorama)", cat: "normal", shift: "ALL", ref: "DGB / SEMS" },
+          { date: "Jue 26 Nov (17:30 h)", text: "💬 Ciclo de Conferencias «Hablemos para entendernos» · TV (Grupos V107 y V109)", cat: "parents", shift: "TV", ref: "Nota S13" },
+          { date: "Vie 27 Nov (07:00 / 13:00 h)", text: "💻 Capacitación Plataforma ceb54.sistemas-sagyc.com (Dr. Felipe López Salazar · Clases inician 2° módulo)", cat: "union", shift: "Docentes", ref: "Subdirección" },
+          { date: "Vie 27 Nov", text: "🩺 FERIA DE LA SALUD · AMBOS TURNOS (Responsable: Mtro. Gabriel)", cat: "normal", shift: "ALL", ref: "Nota S13" }
         ]
       },
       {
@@ -3562,12 +3577,27 @@
     { label: "🛡️ Prevención del Delito", cat: "normal", desc: "Conferencia de Prevención del Delito programada por Orientación Educativa." },
     { label: "📋 Encuesta Conecta con Sentido", cat: "normal", desc: "Envío de encuesta anónima diagnóstica para la estrategia participativa 'Conecta con Sentido' (Acuerdo 09/09/26)." }
   ],
-  "2026-11-23": [{ label: "💳 Becas (TM 1° sin clases / TV normal)", cat: "normal", desc: "Entrega de tarjetas del programa de becas. Turno Matutino: se suspenden clases únicamente para grupos de 1.er semestre. Turno Vespertino: actividades académicas normales." }],
-  "2026-11-24": [{ label: "🚌 Viaje 5° Sem: Cera y Ripley", cat: "normal", desc: "Viaje escolar y formativo de estudiantes de 5° semestre al Museo de Cera y Museo de Ripley en la Ciudad de México." }],
-  "2026-11-25": [{ label: "📁 Evidencias 16 Días Activismo", cat: "normal", desc: "Fecha límite para que los tutores suban a Google Drive las evidencias correspondientes a las actividades de los 16 Días de Activismo contra la Violencia de Género organizadas por grupo (https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi)." }],
+  "2026-11-23": [
+    { label: "💳 Becas (TM 1° sin clases / TV normal)", cat: "normal", desc: "Entrega de tarjetas del programa de becas. Turno Matutino: se suspenden clases únicamente para grupos de 1.er semestre. Turno Vespertino: actividades académicas normales." },
+    { label: "🤝 Consejo Estudiantil (08:30 / 13:30 h)", cat: "union", desc: "Reunión con el Consejo Estudiantil y líderes del Colegiado Docente (TM 08:30 h / TV 13:30 h). Brindar facilidades a jefes de grupo convocados." },
+    { label: "👨‍👩‍👧‍👦 Conf. CIJ Padres (10:00 h)", cat: "parents", desc: "Conferencia para madres, padres de familia y tutores familiares por el Centro de Integración Juvenil (10:00 a 11:00 h en Audiovisual)." },
+    { label: "🛡️ Comité de Paz (Acuerdo 09/09/26)", cat: "normal", desc: "Comité de Paz y Red de Seguridad: inicio de acciones del Acuerdo 09/09/26 (1. Encuesta anónima diagnóstica, 2. Semáforo, 3. Señalización, 4. Decálogo)." }
+  ],
+  "2026-11-24": [
+    { label: "🚌 Viaje PEC 5° Sem (Cera y Ripley)", cat: "normal", desc: "Viaje PEC / escolar y formativo de estudiantes de 5° semestre al Museo de Cera y Museo de Ripley en la Ciudad de México." },
+    { label: "🧠 Conf. CIJ Estudiantes (TV 14:00 h)", cat: "normal", desc: "Conferencias del Centro de Integración Juvenil para estudiantes en Turno Vespertino (14:00 h). Personal escolar: asistencia presencial o transmisión con evidencia." }
+  ],
+  "2026-11-25": [
+    { label: "🧡 25N: Prenda Naranja y Cierre 16 Días", cat: "normal", desc: "Día Internacional de la Eliminación de la Violencia contra las Mujeres: portar prenda naranja. Cierre de los 16 Días de Activismo en ambos turnos." },
+    { label: "🔸 Webinario SEMS (12:00) / DGB (13:45)", cat: "normal", desc: "12:00 h Webinario SEMS 'Conozco mi cuerpo y deseos' (https://www.youtube.com/live/3pLkPQEas1k | Registro: https://forms.cloud.microsoft/r/gf6x8AHVdB?origin=lprLink). 13:45 h DGB Libre de Violencia 'Hablemos de Feminicidio Emocional' en Audiorama (https://www.youtube.com/@direcciongeneraldelbachill3536)." },
+    { label: "📁 Evidencias 16 Días Activismo", cat: "normal", desc: "Fecha límite para que los tutores suban a Google Drive las evidencias correspondientes a las actividades de los 16 Días de Activismo contra la Violencia de Género organizadas por grupo (https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi)." }
+  ],
+  "2026-11-26": [
+    { label: "💬 Conf. Hablemos para entendernos (17:30 h)", cat: "parents", desc: "Ciclo de conferencias 'Hablemos para entendernos' (comunicación asertiva madres, padres e hijos). Turno Vespertino 17:30 h · Grupos convocados: V107 y V109." }
+  ],
   "2026-11-27": [
     { label: "💻 Capacitación SAGYC (07:00 / 13:00 h)", cat: "union", desc: "Capacitación sobre el uso de la plataforma institucional ceb54.sistemas-sagyc.com impartida por el Dr. Felipe López Salazar (TM: 07:00 h / TV: 13:00 h). Actividades con estudiantes inician a partir del 2° módulo." },
-    { label: "🏥 Feria Salud (TM)", cat: "normal", desc: "Feria Institucional de la Salud para estudiantes del Turno Matutino." }
+    { label: "🩺 Feria de la Salud (Ambos Turnos)", cat: "normal", desc: "Feria Institucional de la Salud con participación de ambos turnos. Responsable: Mtro. Gabriel." }
   ],
   "2026-12-04": [{ label: "💚 Cierre ABC Emociones", cat: "normal", desc: "Fecha límite de carga y concentración de evidencias de El ABC de las Emociones en Google Drive institucional." }],
   "2026-12-10": [{ label: "📝 Inicia Examen P3", cat: "exam", desc: "Actividad Oficial SEMS #07: Inicia Tercera Evaluación Parcial (10 al 16 de Diciembre)." }],
@@ -3798,25 +3828,31 @@ const WEEK_VIEWS = {
   "S13": {
     weekNum: "Semana 13",
     range: "23 al 27 de Noviembre de 2026",
-    title: "Avance Temático P3 y Feria de la Salud Matutina",
-    highlight: "Desarrollo de proyectos formativos Bloque III",
+    title: "Comité de Paz, Viaje PEC 5°, 25N, Capacitación SAGYC y Feria de Salud",
+    highlight: "Semana activa: Becas, CIJ, Acuerdo 09/09/26, Día Naranja 25N y Feria de la Salud",
     days: [
       { name: "Lunes", date: "23 Nov", isToday: false, isHoliday: false, events: [
-        { title: "💳 Entrega de Tarjetas de Becas", sub: "Turno Matutino: se suspenden clases únicamente para 1.er semestre. Turno Vespertino: actividades normales.", cat: "normal", priority: "high", shift: "TM 1° Sin Clases / TV Normal", tag: "Becas" },
-        { title: "Retroalimentación Boletas P2", sub: "Análisis de desempeño pedagógico", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+        { title: "💳 Entrega de Tarjetas de Becas", sub: "TM: suspensión de clases únicamente 1.er semestre. TV: actividades normales.", cat: "normal", priority: "high", shift: "TM 1° Sin Clases / TV Normal", tag: "Becas" },
+        { title: "🤝 Consejo Estudiantil y Colegiado", sub: "TM 08:30 h / TV 13:30 h. Dar facilidades a jefes de grupo convocados.", cat: "union", priority: "high", shift: "Ambos turnos", tag: "08:30 / 13:30" },
+        { title: "👨‍👩‍👧‍👦 Conferencia CIJ Padres (10:00–11:00 h)", sub: "En Audiovisual del plantel por el Centro de Integración Juvenil.", cat: "parents", priority: "normal", shift: "Padres/Tutores", tag: "CIJ" },
+        { title: "🛡️ Comité de Paz y Red de Seguridad", sub: "Inicio Acuerdo 09/09/26: Encuesta diagnóstica, Semáforo, Señalización y Decálogo.", cat: "normal", priority: "normal", shift: "Comunidad", tag: "Acuerdo 09/09/26" }
       ] },
       { name: "Martes", date: "24 Nov", isToday: false, isHoliday: false, events: [
-        { title: "🚌 Viaje de 5° Semestre: Museo de Cera y Ripley", sub: "Viaje escolar y formativo a la Ciudad de México para estudiantes de quinto semestre.", cat: "normal", priority: "high", shift: "5° Semestre", tag: "Viaje Cera/Ripley" },
-        { title: "Clases y Talleres Curriculares", sub: "Avance de progresiones pedagógicas (1° y 3° Semestre)", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+        { title: "🚌 Viaje PEC 5° Semestre: Museo de Cera y Ripley", sub: "Viaje escolar y formativo a la Ciudad de México para estudiantes de quinto semestre.", cat: "normal", priority: "high", shift: "5° Semestre", tag: "Viaje PEC" },
+        { title: "🧠 Conferencias CIJ Estudiantes (14:00 h)", sub: "Turno Vespertino 14:00 h. Personal escolar: asistencia presencial o transmisión con evidencia.", cat: "normal", priority: "high", shift: "🌙 Turno Vespertino", tag: "CIJ 14:00" }
       ] },
       { name: "Miércoles", date: "25 Nov", isToday: false, isHoliday: false, events: [
-        { title: "📁 Límite: Evidencias 16 Días de Activismo (Drive)", sub: "Fecha límite para tutores: cargar a Drive evidencias de actividades contra la violencia de género organizadas por grupo.", cat: "normal", priority: "high", shift: "Tutores", tag: "Drive Activismo" },
-        { title: "Acompañamiento Socioemocional", sub: "Tutorías y orientación formativa", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+        { title: "🧡 25N: Prenda Naranja y Cierre 16 Días", sub: "Día Internacional de la Eliminación de la Violencia contra las Mujeres. Cierre de 16 Días de Activismo.", cat: "normal", priority: "high", shift: "Todo el Plantel", tag: "25N Naranja" },
+        { title: "🔸 Webinario SEMS (12:00) / DGB (13:45 h)", sub: "12:00 h Salud Sexual (SEMS YouTube) · 13:45 h Feminicidio Emocional (Audiorama DGB).", cat: "normal", priority: "high", shift: "Ambos turnos", tag: "Webinarios" },
+        { title: "📁 Límite: Evidencias 16 Días de Activismo (Drive)", sub: "Fecha límite para tutores: cargar a Drive evidencias organizadas por grupo.", cat: "normal", priority: "high", shift: "Tutores", tag: "Drive Activismo" }
       ] },
-      { name: "Jueves", date: "26 Nov", isToday: false, isHoliday: false, events: [{ title: "Trabajo en Laboratorios y Aulas", sub: "Desarrollo de proyectos formativos", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
+      { name: "Jueves", date: "26 Nov", isToday: false, isHoliday: false, events: [
+        { title: "💬 Ciclo «Hablemos para entendernos» (17:30 h)", sub: "Estrategias de comunicación asertiva madres, padres e hijos · Grupos convocados: V107 y V109.", cat: "parents", priority: "high", shift: "🌙 Turno Vespertino", tag: "V107 / V109" },
+        { title: "Trabajo en Laboratorios y Aulas", sub: "Desarrollo de proyectos formativos Bloque III", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+      ] },
       { name: "Viernes", date: "27 Nov", isToday: false, isHoliday: false, events: [
         { title: "💻 Capacitación Plataforma ceb54.sistemas-sagyc.com", sub: "Imparte: Dr. Felipe López Salazar · TM 07:00 h / TV 13:00 h. Actividades con estudiantes inician en el 2° módulo.", cat: "union", priority: "high", shift: "Docentes (TM 07:00 / TV 13:00)", tag: "Capacitación" },
-        { title: "🏥 Feria de la Salud · Turno Matutino", sub: "Jornada institucional de bienestar estudiantil y prevención", cat: "normal", priority: "high", shift: "☀️ Turno Matutino", tag: "Salud TM" }
+        { title: "🩺 Feria de la Salud · Ambos Turnos", sub: "Jornada institucional de bienestar estudiantil. Responsable: Mtro. Gabriel.", cat: "normal", priority: "high", shift: "Ambos turnos", tag: "Mtro. Gabriel" }
       ] }
     ]
   },
@@ -4134,6 +4170,22 @@ const CULTURAL_EVENTS = [
     ],
     status: "Programado Oficial",
     tag: "Viaje Escolar"
+  },
+  {
+    id: "cult-17",
+    title: "🧡 25N: Día Internacional de la Eliminación de la Violencia contra las Mujeres",
+    date: "Miércoles 25 de Noviembre de 2026",
+    category: "Convivencia, Género y DGB",
+    venue: "Audiorama CEB 5/4 y Transmisiones YouTube (SEMS / DGB)",
+    participants: "Todo el Personal Escolar y Comunidad Estudiantil (Prenda Naranja)",
+    desc: "Portar prenda de color naranja y cierre de los 16 Días de Activismo. Webinario SEMS 'Conozco mi cuerpo y deseos' (12:00 h) y transmisión DGB 'Hablemos de Feminicidio Emocional' en Audiorama (13:45 h).",
+    files: [
+      { name: "Transmisión DGB (13:45 h)", type: "link", url: "https://www.youtube.com/@direcciongeneraldelbachill3536" },
+      { name: "Webinario SEMS (12:00 h)", type: "link", url: "https://www.youtube.com/live/3pLkPQEas1k" },
+      { name: "Registro Webinario SEMS", type: "link", url: "https://forms.cloud.microsoft/r/gf6x8AHVdB?origin=lprLink" }
+    ],
+    status: "Programado Oficial",
+    tag: "25N Día Naranja"
   }
 ];
 
@@ -4379,7 +4431,8 @@ const CULTURAL_EVENTS = [
         'cult-13': '2026-11-05',
         'cult-14': '2026-11-25',
         'cult-15': '2026-11-19',
-        'cult-16': '2026-11-24'
+        'cult-16': '2026-11-24',
+        'cult-17': '2026-11-25'
       };
 
       CULTURAL_EVENTS.forEach(ce => {

@@ -1569,4 +1569,64 @@ CATEGORIES:💳 BECAS,SUBDIRECCIÓN ACADÉMICA,ORGANIZACIÓN ESCOLAR
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-s13-consejo-estudiantil-20261123@ceb54.dgb.edu.mx
+DTSTAMP:20261123T071900Z
+DTSTART;VALUE=DATE:20261123
+DTEND;VALUE=DATE:20261124
+SUMMARY:🤝 CEB 5/4: Consejo Estudiantil (08:30 / 13:30 h) · Conf. CIJ Padres (10:00 h) · Comité de Paz
+DESCRIPTION:1. Reunión Consejo Estudiantil y líderes del Colegiado Docente (TM 08:30 h / TV 13:30 h; dar facilidades a jefes de grupo).\n2. Conferencia CIJ para padres y tutores (10:00 a 11:00 h en Audiovisual).\n3. Comité de Paz y Red de Seguridad (Acuerdo 09/09/26: Encuesta, Semáforo, Señalización, Decálogo).
+LOCATION:Audiovisual y Plantel CEB 5/4
+CATEGORIES:🤝 COLEGIADO,🛡️ COMITÉ DE PAZ,PADRES DE FAMILIA
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-s13-cij-tv-20261124@ceb54.dgb.edu.mx
+DTSTAMP:20261123T071900Z
+DTSTART:20261124T200000Z
+DTEND:20261124T210000Z
+SUMMARY:🧠 CEB 5/4: Conferencias CIJ para Estudiantes (TV 14:00 h · Evidencia Personal)
+DESCRIPTION:Conferencias del Centro de Integración Juvenil (CIJ) para estudiantes del Turno Vespertino a las 14:00 h. Personal escolar: asistencia presencial o seguimiento de transmisión con evidencia.
+LOCATION:Plantel CEB 5/4 · Turno Vespertino
+CATEGORIES:ORIENTACIÓN EDUCATIVA,CIJ,EVIDENCIAS
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-s13-25n-webinarios-20261125@ceb54.dgb.edu.mx
+DTSTAMP:20261123T071900Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+SUMMARY:🧡 CEB 5/4: 25N Prenda Naranja · Webinario SEMS (12:00) · Transmisión DGB (13:45)
+DESCRIPTION:Día Internacional de la Eliminación de la Violencia contra las Mujeres (portar prenda naranja) y Cierre de 16 Días de Activismo.\n- 12:00 h Webinario SEMS 'Conozco mi cuerpo y deseos': https://www.youtube.com/live/3pLkPQEas1k (Registro: https://forms.cloud.microsoft/r/gf6x8AHVdB?origin=lprLink)\n- 13:45 h DGB Libre de Violencia 'Hablemos de Feminicidio Emocional' (Audiorama): https://www.youtube.com/@direcciongeneraldelbachill3536
+LOCATION:Audiorama CEB 5/4 y YouTube
+CATEGORIES:🧡 25N DÍA NARANJA,ORIENTACIÓN EDUCATIVA,DGB / SEMS
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-s13-hablemos-entendernos-20261126@ceb54.dgb.edu.mx
+DTSTAMP:20261123T071900Z
+DTSTART:20261126T233000Z
+DTEND:20261127T003000Z
+SUMMARY:💬 CEB 5/4: Ciclo «Hablemos para entendernos» (TV 17:30 h · V107 y V109)
+DESCRIPTION:Ciclo de conferencias 'Hablemos para entendernos' enfocado en comunicación asertiva entre madres, padres e hijos. Turno Vespertino 17:30 h · Grupos convocados: V107 y V109.
+LOCATION:Plantel CEB 5/4 · Turno Vespertino
+CATEGORIES:ORIENTACIÓN EDUCATIVA,PADRES DE FAMILIA
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-s13-feria-salud-20261127@ceb54.dgb.edu.mx
+DTSTAMP:20261123T071900Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:🩺 CEB 5/4: Feria de la Salud (Ambos Turnos · Resp. Mtro. Gabriel)
+DESCRIPTION:Feria Institucional de la Salud con participación de ambos turnos. Responsable: Mtro. Gabriel.
+LOCATION:Plantel CEB 5/4 · Ambos Turnos
+CATEGORIES:🩺 FERIA DE LA SALUD,EVENTO INSTITUCIONAL
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
 END:VCALENDAR

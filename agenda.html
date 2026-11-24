@@ -2743,7 +2743,7 @@
       </div>
     </section>
 
-    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (28) -->
+    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (29) -->
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
         <!-- Inyectado por JS -->
@@ -3017,6 +3017,16 @@
   <script>
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
+      {
+        id: 29,
+        date: "24 de Noviembre de 2026",
+        sender: "Dirección del Plantel (Maribel Alba Monroy)",
+        title: "📜 Oficio CEB-5/4 DE/279/2026-2027/1: Ajuste Oficial de Calendario Académico Semestre A",
+        req: "1. Evaluación 3er parcial: 9, 10, 11, 12 y 15 dic. 2. Entrega, retroalimentación P3, promedio y firma de aceptación: 10 al 16 dic. 3. Evaluación global: 6 y 7 ene (entrega/retro/firma: 7 y 8 ene). 4. Solicitud reprobadas semestres anteriores: 8 ene (08:00-11:00 h). 5. Captura de actas y entrega a Control Escolar: 11 ene. 6. Historiales con padres/tutores: 13 ene (TM 07:00 am / TV 08:00 am). 7. Solicitud extraordinarios/intersemestrales Sem A: 13 ene (08:00-11:00 h). 8. Aplicación extra/intersemestrales: 14 al 21 ene. 9. Revisión, retroalimentación y firma + entrega a Control Escolar: 15 al 22 ene.",
+        delivery: "Personal Docente, Subdirección Académica y Control Escolar",
+        status: "Oficio Oficial Vigente",
+        ref: "CEB-5/4 DE/279/2026-2027/1"
+      },
       {
         id: 28,
         date: "24 de Noviembre de 2026",
@@ -3309,19 +3319,19 @@
       { no: "04", act: "Entrega de Calificaciones 2° Parcial a Control Escolar (Límite PACE)", resp: "Docentes / Control Escolar", shift: "Ambos Turnos", date: "17 de Noviembre de 2026", status: "next", sText: "Próximo" },
       { no: "05", act: "Entrega de Boletas a Padres de Familia (2° Parcial)", resp: "Tutor de Grupo", shift: "TM: 18 Nov / TV: 19 y 20 Nov", date: "18 Nov (TM) / 19 y 20 Nov (TV)", status: "next", sText: "Próximo" },
       { no: "06", act: "Periodo del Tercer Parcial (P3)", resp: "Docentes", shift: "Ambos Turnos", date: "16 de Noviembre al 17 de Diciembre", status: "next", sText: "Próximo" },
-      { no: "07", act: "Tercera Evaluación Parcial (P3)", resp: "Docentes", shift: "Ambos Turnos", date: "10 al 16 de Diciembre de 2026", status: "next", sText: "Diciembre" },
+      { no: "07", act: "Tercera Evaluación Parcial (P3) y Retroalimentación / Firma", resp: "Docentes", shift: "Ambos Turnos", date: "Eval: 9, 10, 11, 12 y 15 Dic · Retro/Firma: 10 al 16 Dic", status: "next", sText: "Ajuste DE/279" },
       { no: "08", act: "Fin de Clases para Listas de Asistencia", resp: "Docentes", shift: "Ambos Turnos", date: "16 de Diciembre de 2026", status: "next", sText: "Diciembre" },
       { no: "09", act: "Proyectos Transversales (PEC)", resp: "Docentes", shift: "Ambos Turnos", date: "17 de Diciembre de 2026", status: "next", sText: "Diciembre" },
-      { no: "10", act: "Retroalimentación de evaluaciones, entrega de calificaciones P3, global y/o asignación de global", resp: "Docentes", shift: "Ambos Turnos", date: "06 al 08 de Enero de 2027", status: "next", sText: "Enero 2027" },
-      { no: "11", act: "Periodo de Evaluación Final (Examen Global)", resp: "Docentes", shift: "Ambos Turnos", date: "11 al 14 de Enero de 2027", status: "next", sText: "Enero 2027" },
-      { no: "12", act: "Entrega de evaluaciones a Control Escolar con calificaciones semestrales (control.escolar54@dgb.edu.mx)", resp: "Docentes", shift: "Ambos Turnos", date: "12 al 15 de Enero de 2027", status: "next", sText: "Enero 2027" },
+      { no: "10", act: "Evaluación Global (6 y 7 Ene) y Retroalimentación / Firma (7 y 8 Ene)", resp: "Docentes", shift: "Ambos Turnos", date: "06 al 08 de Enero de 2027", status: "next", sText: "Ajuste DE/279" },
+      { no: "11", act: "Solicitud de Asignaturas Reprobadas Semestres Anteriores", resp: "Estudiantes / Control Escolar", shift: "08:00 a 11:00 h", date: "08 de Enero de 2027", status: "next", sText: "Ajuste DE/279" },
+      { no: "12", act: "Captura de Actas y Entrega a Control Escolar", resp: "Docentes / Control Escolar", shift: "Ambos Turnos", date: "11 de Enero de 2027", status: "next", sText: "Ajuste DE/279" },
       { no: "13", act: "Tercera Reunión General de Academia", resp: "Subdirección", shift: "Ambos Turnos", date: "15 de Enero de 2027", status: "next", sText: "Enero 2027" },
-      { no: "14", act: "Captura de Actas Finales", resp: "Docentes", shift: "Ambos Turnos", date: "15 de Enero de 2027", status: "next", sText: "Enero 2027" },
-      { no: "15", act: "Entrega de Historiales Académicos a Padres de Familia", resp: "Estudiantes / Tutores", shift: "TV: 18 Ene / TM: 20 Ene", date: "18 de Enero (TV) / 20 de Enero (TM)", status: "next", sText: "Enero 2027" },
-      { no: "16", act: "Solicitudes de Curso Intersemestral y Examen Extraordinario (Único día)", resp: "Estudiantes", shift: "Ambos Turnos", date: "20 de Enero de 2027 (Único día)", status: "next", sText: "Enero 2027" },
-      { no: "17", act: "Periodo de Curso Intersemestral", resp: "Docentes", shift: "Ambos Turnos", date: "21 al 27 de Enero de 2027", status: "next", sText: "Enero 2027" },
+      { no: "14", act: "Entrega de Historiales Académicos a Madres, Padres y/o Tutores", resp: "Estudiantes / Tutores", shift: "TM: 07:00 am / TV: 08:00 am", date: "13 de Enero de 2027", status: "next", sText: "Ajuste DE/279" },
+      { no: "15", act: "Solicitud Exámenes Extraordinarios / Intersemestrales (Semestre A)", resp: "Estudiantes", shift: "08:00 a 11:00 h", date: "13 de Enero de 2027", status: "next", sText: "Ajuste DE/279" },
+      { no: "16", act: "Aplicación de Exámenes Extraordinarios y/o Cursos Intersemestrales", resp: "Docentes / Subdirección", shift: "Ambos Turnos", date: "14 al 21 de Enero de 2027", status: "next", sText: "Ajuste DE/279" },
+      { no: "17", act: "Revisión, Retroalimentación, Firma de Conformidad y Entrega a Control Escolar", resp: "Docentes / Control Escolar", shift: "Ambos Turnos", date: "15 al 22 de Enero de 2027", status: "next", sText: "Ajuste DE/279" },
       { no: "18", act: "Labor Social", resp: "Subdirección", shift: "Ambos Turnos", date: "28 de Enero de 2027", status: "next", sText: "Enero 2027" },
-      { no: "19", act: "Entrega de calificaciones de Intersemestral y firma de estudiantes a Subdirección / Control Escolar", resp: "Docentes", shift: "Ambos Turnos", date: "Del 22 al 28 de Enero de 2027", status: "next", sText: "Enero 2027" },
+      { no: "19", act: "Cierre de Resultados Extraordinarios en Control Escolar", resp: "Docentes / Control Escolar", shift: "Ambos Turnos", date: "15 al 22 de Enero de 2027", status: "next", sText: "Ajuste DE/279" },
       { no: "20", act: "Inscripción de Estudiantes Regulares (Semestre B)", resp: "Control Escolar", shift: "Ambos Turnos", date: "02 y 03 de Febrero de 2027", status: "next", sText: "Febrero 2027" },
       { no: "21", act: "Inscripción de Estudiantes Irregulares, Reingresos y Cambios de Plantel", resp: "Control Escolar", shift: "Ambos Turnos", date: "04 de Febrero de 2027", status: "next", sText: "Febrero 2027" },
       { no: "22", act: "Curso Intersemestral de Capacitación Docente", resp: "Docentes", shift: "Ambos Turnos", date: "18 al 20 y 29 de Enero de 2027", status: "next", sText: "Enero 2027" },
@@ -3470,44 +3480,47 @@
         ]
       },
       {
-        num: "Semana 15", dates: "07 al 11 de Diciembre 2026", title: "Cierre de Contenidos y Arranque de la 3ª Evaluación Parcial", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false,
+        num: "Semana 15", dates: "07 al 12 de Diciembre 2026", title: "Cierre de Contenidos y Arranque de la 3ª Evaluación Parcial (Ajuste DE/279)", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false,
         events: [
-          { date: "Lun 07–Mié 09 Dic", text: "Cierre de progresiones académicas del Bloque III", cat: "normal", shift: "ALL", ref: "S15 Oficial" },
-          { date: "Jue 10 y Vie 11 Dic", text: "📝 INICIA TERCERA EVALUACIÓN PARCIAL (P3 · Periodo del 10 al 16 de Diciembre)", cat: "exam", shift: "ALL", ref: "Act. Oficial #07" }
+          { date: "Lun 07–Mar 08 Dic", text: "Cierre de progresiones académicas del Bloque III", cat: "normal", shift: "ALL", ref: "S15 Oficial" },
+          { date: "Mié 09–Sáb 12 Dic", text: "📝 EVALUACIÓN DE 3ER PARCIAL (9, 10, 11, 12 y 15 de Diciembre)", cat: "exam", shift: "ALL", ref: "Oficio DE/279" },
+          { date: "Jue 10–Mié 16 Dic", text: "✍️ Entrega/retroalimentación P3, promedio de parciales y firma de aceptación (sesión siguiente)", cat: "pace", shift: "ALL", ref: "Oficio DE/279" }
         ]
       },
       {
-        num: "Semana 16", dates: "14 al 17 de Diciembre 2026", title: "📝 Cierre de 3ª Evaluación, Fin de Listas y Muestra PEC", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false,
+        num: "Semana 16", dates: "14 al 18 de Diciembre 2026", title: "📝 Cierre 3ª Evaluación, Firmas P3, Fin de Listas, Muestra PEC y Festejo", block: "🔴 Bloque III: Tercer Parcial y Muestra PEC (16 Nov – 17 Dic 2026)", isPast: false,
         events: [
-          { date: "Lun 14–Mié 16 Dic", text: "📝 Conclusión de la Tercera Evaluación Parcial (P3 · 10 al 16 de Diciembre)", cat: "exam", shift: "ALL", ref: "Act. Oficial #07" },
+          { date: "Mar 15 Dic", text: "📝 Último día de Evaluación del 3er Parcial (P3)", cat: "exam", shift: "ALL", ref: "Oficio DE/279" },
+          { date: "Lun 14–Mié 16 Dic", text: "✍️ Entrega, retroalimentación P3, promedio de parciales y aceptación firmada por estudiantes", cat: "pace", shift: "ALL", ref: "Oficio DE/279" },
           { date: "Mié 16 Dic", text: "🛑 FIN DE CLASES PARA LISTAS DE ASISTENCIA (Cierre oficial docente)", cat: "pace", shift: "ALL", ref: "Act. Oficial #08" },
           { date: "Jue 17 Dic", text: "🌟 PRESENTACIÓN DE PROYECTOS TRANSVERSALES (PEC) y fin del 3er Parcial", cat: "normal", shift: "ALL", ref: "Act. Oficial #09" },
-          { date: "18 Dic 2026–05 Ene 2027", text: "🎄 RECESO VACACIONAL DE INVIERNO (Periodo vacacional oficial SEP / DGB)", cat: "holiday", shift: "ALL", ref: "Vacaciones SEP" }
+          { date: "Vie 18 Dic (09:00 AM)", text: "🎄 Festejo de Navidad CEB 5/4 (Restaurant Rincón del Alma Buffet) · Inicia Receso Invernal (18 Dic–05 Ene)", cat: "holiday", shift: "ALL", ref: "Convivencia / SEP" }
         ]
       },
       {
-        num: "Semana 17", dates: "06 al 08 de Enero 2027", title: "🔄 Retroalimentación P3, Calificación Global y Asignación de Examen Global", block: "🎓 Bloque IV: Cierre Semestral, Exámenes Globales y Actas Finales (Enero 2027)", isPast: false,
+        num: "Semana 17", dates: "06 al 08 de Enero 2027", title: "📝 Evaluación Global, Retroalimentación/Firma y Solicitud Reprobadas (Oficio DE/279)", block: "🎓 Bloque IV: Cierre Semestral, Exámenes Globales y Actas Finales (Enero 2027)", isPast: false,
         events: [
-          { date: "Mié 06–Vie 08 Ene 2027", text: "🔄 Retroalimentación de evaluaciones, entrega de calificaciones P3, promedio global y/o asignación de examen global", cat: "exam", shift: "ALL", ref: "Act. Oficial #10" }
+          { date: "Mié 06 y Jue 07 Ene", text: "📝 EVALUACIÓN GLOBAL (conforme al horario establecido por Subdirección Académica)", cat: "exam", shift: "ALL", ref: "Oficio DE/279" },
+          { date: "Jue 07 y Vie 08 Ene", text: "✍️ Entrega de calificaciones globales, retroalimentación y firma de conformidad (al día siguiente)", cat: "pace", shift: "ALL", ref: "Oficio DE/279" },
+          { date: "Vie 08 Ene (08:00–11:00 h)", text: "📋 Solicitud de asignaturas reprobadas de semestres anteriores", cat: "pace", shift: "ALL", ref: "Oficio DE/279" }
         ]
       },
       {
-        num: "Semana 18", dates: "11 al 15 de Enero 2027", title: "📝 Evaluación Final / Examen Global, Control Escolar, 3ª Academia y Actas", block: "🎓 Bloque IV: Cierre Semestral, Exámenes Globales y Actas Finales (Enero 2027)", isPast: false,
+        num: "Semana 18", dates: "11 al 15 de Enero 2027", title: "📜 Captura Actas (11 Ene), Historiales (13 Ene) y Arranque Extraordinarios (14–21 Ene)", block: "🎓 Bloque IV: Cierre Semestral, Exámenes Globales y Actas Finales (Enero 2027)", isPast: false,
         events: [
-          { date: "Lun 11–Jue 14 Ene 2027", text: "📝 PERIODO DE EVALUACIÓN FINAL / EXAMEN GLOBAL", cat: "exam", shift: "ALL", ref: "Act. Oficial #11" },
-          { date: "Mar 12–Vie 15 Ene 2027", text: "📥 Entrega de evaluaciones con calificaciones semestrales (control.escolar54@dgb.edu.mx)", cat: "pace", shift: "ALL", ref: "Act. Oficial #12" },
-          { date: "Vie 15 Ene 2027", text: "🏛️ TERCERA REUNIÓN GENERAL DE ACADEMIA (Convoca Subdirección)", cat: "union", shift: "ALL", ref: "Act. Oficial #13" },
-          { date: "Vie 15 Ene 2027", text: "📜 CAPTURA DE ACTAS FINALES SEMESTRALES", cat: "pace", shift: "ALL", ref: "Act. Oficial #14" }
+          { date: "Lun 11 Ene 2027", text: "📜 CAPTURA DE ACTAS Y ENTREGA A CONTROL ESCOLAR", cat: "pace", shift: "ALL", ref: "Oficio DE/279" },
+          { date: "Mié 13 Ene (TM 07:00 / TV 08:00)", text: "👨‍👩‍👧‍👦 Entrega de historiales con madres, padres y/o tutores (7:00 am TM / 8:00 am TV)", cat: "parents", shift: "ALL", ref: "Oficio DE/279" },
+          { date: "Mié 13 Ene (08:00–11:00 h)", text: "⚡ Solicitud de exámenes extraordinarios y/o cursos intersemestrales (reprobadas Semestre A)", cat: "pace", shift: "ALL", ref: "Oficio DE/279" },
+          { date: "Jue 14–Jue 21 Ene", text: "🛠️ Aplicación de exámenes extraordinarios y/o cursos intersemestrales (calendario Subdirección)", cat: "exam", shift: "ALL", ref: "Oficio DE/279" },
+          { date: "Vie 15–Vie 22 Ene", text: "✍️ Revisión, retroalimentación, firma de conformidad y entrega de resultados a Control Escolar", cat: "pace", shift: "ALL", ref: "Oficio DE/279" }
         ]
       },
       {
-        num: "Semana 19", dates: "18 al 22 de Enero 2027", title: "👨‍👩‍👧 Historiales a Padres, Solicitudes de Intersemestral/Extra y Capacitación", block: "🛠️ Bloque V: Cursos Intersemestrales, Capacitación y Apertura Semestre B (Ene – Feb 2027)", isPast: false,
+        num: "Semana 19", dates: "18 al 22 de Enero 2027", title: "🛠️ Extraordinarios/Intersemestrales (al 21 Ene), Resultados Control Escolar (al 22 Ene) y Capacitación", block: "🛠️ Bloque V: Cursos Intersemestrales, Capacitación y Apertura Semestre B (Ene – Feb 2027)", isPast: false,
         events: [
-          { date: "Lun 18 Ene 2027", text: "👨‍👩‍👧 Entrega de Historiales Académicos y Reunión con Padres · TURNO VESPERTINO", cat: "parents", shift: "TV", ref: "Act. Oficial #15" },
-          { date: "Lun 18–Mié 20 Ene 2027", text: "📚 Curso Intersemestral de Capacitación Docente (Primera Parte)", cat: "union", shift: "ALL", ref: "Act. Oficial #22" },
-          { date: "Mié 20 Ene 2027", text: "👨‍👩‍👧 Entrega de Historiales Académicos y Reunión con Padres · TURNO MATUTINO", cat: "parents", shift: "TM", ref: "Act. Oficial #15" },
-          { date: "Mié 20 Ene 2027 (Único día)", text: "⚡ SOLICITUDES DE CURSO INTERSEMESTRAL Y EXAMEN EXTRAORDINARIO (Único día)", cat: "pace", shift: "ALL", ref: "Act. Oficial #16" },
-          { date: "Jue 21 y Vie 22 Ene 2027", text: "🛠️ Inicia Periodo de Curso Intersemestral (21 al 27 de Enero de 2027)", cat: "normal", shift: "ALL", ref: "Act. Oficial #17" }
+          { date: "Lun 18–Jue 21 Ene", text: "🛠️ Continuación y cierre de exámenes extraordinarios y/o cursos intersemestrales (14 al 21 Ene)", cat: "exam", shift: "ALL", ref: "Oficio DE/279" },
+          { date: "Lun 18–Vie 22 Ene", text: "📥 Revisión, firma de conformidad y entrega de resultados de evaluación extraordinaria a Control Escolar", cat: "pace", shift: "ALL", ref: "Oficio DE/279" },
+          { date: "Lun 18–Mié 20 Ene", text: "📚 Curso Intersemestral de Capacitación Docente (Primera Parte)", cat: "union", shift: "ALL", ref: "Act. Oficial #22" }
         ]
       },
       {
@@ -3634,33 +3647,45 @@
     { label: "🩺 Feria de la Salud (Ambos Turnos)", cat: "normal", desc: "Feria Institucional de la Salud con participación de ambos turnos. Responsable: Mtro. Gabriel." }
   ],
   "2026-12-04": [{ label: "💚 Cierre ABC Emociones", cat: "normal", desc: "Fecha límite de carga y concentración de evidencias de El ABC de las Emociones en Google Drive institucional." }],
-  "2026-12-10": [{ label: "📝 Inicia Examen P3", cat: "exam", desc: "Actividad Oficial SEMS #07: Inicia Tercera Evaluación Parcial (10 al 16 de Diciembre)." }],
+  "2026-12-09": [{ label: "📝 Inicia Examen P3 (Día 1)", cat: "exam", desc: "Oficio CEB-5/4 DE/279/2026-2027/1: Evaluación del 3er parcial (9, 10, 11, 12 y 15 de diciembre)." }],
+  "2026-12-10": [
+    { label: "📝 Examen P3 (Día 2)", cat: "exam", desc: "Segunda jornada de evaluación del 3er parcial (9, 10, 11, 12 y 15 de diciembre)." },
+    { label: "✍️ Inicia Retro y Firma P3", cat: "pace", desc: "Oficio DE/279: Entrega, retroalimentación de calificación P3, promedio de parciales y aceptación firmada por estudiantes en su siguiente sesión (10 al 16 dic)." }
+  ],
+  "2026-12-11": [{ label: "📝 Examen P3 (Día 3)", cat: "exam", desc: "Tercera jornada de evaluación del 3er parcial y retroalimentación/firma de sesiones previas." }],
+  "2026-12-12": [{ label: "📝 Examen P3 (Día 4)", cat: "exam", desc: "Cuarta fecha oficial de evaluación del 3er parcial según Oficio CEB-5/4 DE/279/2026-2027/1." }],
+  "2026-12-15": [{ label: "📝 Fin Examen P3 (Día 5)", cat: "exam", desc: "Última fecha de aplicación de evaluación del 3er parcial (9, 10, 11, 12 y 15 de diciembre)." }],
   "2026-12-16": [
     { label: "🛑 FIN CLASES LISTAS", cat: "pace", desc: "Actividad Oficial SEMS #08: Fin formal de clases para listas de asistencia." },
-    { label: "📝 Cierre Examen P3", cat: "exam", desc: "Conclusión de exámenes del Tercer Parcial." }
+    { label: "✍️ Cierre Retro y Firma P3", cat: "exam", desc: "Último día para entrega, retroalimentación de P3, promedio de parciales y firma de aceptación estudiantil (10 al 16 dic)." }
   ],
   "2026-12-17": [{ label: "🌟 Muestra PEC", cat: "normal", desc: "Actividad Oficial SEMS #09: Presentación Comunitaria de Proyectos Transversales (PEC) y fin del 3er Parcial." }],
   "2026-12-18": [
     { label: "🎄 Festejo Navidad (09:00 h · Rincón del Alma)", cat: "normal", desc: "Festejo de Navidad del personal CEB 5/4 programado promedio 09:00 AM en Restaurant Rincón del Alma Buffet." },
     { label: "🎄 Vacaciones Invierno", cat: "holiday", desc: "Inicia el Receso Vacacional Decembrino de Invierno (18 Dic 2026 al 05 Ene 2027)." }
   ],
-  "2027-01-06": [{ label: "🔄 Retro P3 y Asign. Global", cat: "exam", desc: "Actividad Oficial SEMS #10 (Semana 17 · 06 al 08 Ene): Retroalimentación de evaluaciones, entrega de calificaciones P3, promedio global y/o asignación de examen global." }],
-  "2027-01-11": [{ label: "📝 EVALUACIÓN FINAL / GLOBAL", cat: "exam", desc: "Actividad Oficial SEMS #11 (Semana 18 · 11 al 14 Ene): Periodo Oficial de Evaluación Final / Aplicación de Examen Global (Reajuste formal aprobado en 2.ª Academia)." }],
-  "2027-01-12": [{ label: "📥 Entrega Calif. Semestrales", cat: "pace", desc: "Actividad Oficial SEMS #12 (12 al 15 Ene): Entrega de evaluaciones semestrales a control.escolar54@dgb.edu.mx." }],
+  "2027-01-06": [{ label: "📝 EVALUACIÓN GLOBAL (Día 1)", cat: "exam", desc: "Oficio CEB-5/4 DE/279/2026-2027/1: Evaluación global (6 y 7 de enero) conforme al horario establecido por Subdirección Académica." }],
+  "2027-01-07": [
+    { label: "📝 EVALUACIÓN GLOBAL (Día 2)", cat: "exam", desc: "Segundo día de Evaluación Global conforme a horario de Subdirección Académica." },
+    { label: "✍️ Retro y Firma Global (Día 1)", cat: "pace", desc: "Entrega de calificaciones globales a estudiantes, retroalimentación y firma de conformidad (al día siguiente de su aplicación: 7 y 8 de enero)." }
+  ],
+  "2027-01-08": [
+    { label: "✍️ Retro y Firma Global (Día 2)", cat: "pace", desc: "Segundo día de entrega de calificaciones globales, retroalimentación y firma de conformidad." },
+    { label: "📋 Solic. Reprobadas Ant. (08:00–11:00)", cat: "pace", desc: "Oficio DE/279: Solicitud de asignaturas reprobadas de semestres anteriores (8 de enero de 08:00 a 11:00 h)." }
+  ],
+  "2027-01-11": [{ label: "📜 CAPTURA ACTAS Y CONTROL ESC.", cat: "pace", desc: "Oficio CEB-5/4 DE/279/2026-2027/1: Captura de actas y entrega a Control Escolar (11 de enero)." }],
+  "2027-01-13": [
+    { label: "👨‍👩‍👧 Historiales Padres (TM 07:00 / TV 08:00)", cat: "parents", desc: "Oficio DE/279: Entrega de historiales con madres, padres y/o tutores: 07:00 am Turno Matutino y 08:00 am Turno Vespertino." },
+    { label: "⚡ Solic. Extra/Inter Sem A (08:00–11:00)", cat: "pace", desc: "Solicitud de exámenes extraordinarios y/o cursos intersemestrales de asignaturas reprobadas durante el Semestre A (13 de enero de 08:00 a 11:00 h)." }
+  ],
+  "2027-01-14": [{ label: "🛠️ Inician Extra / Intersemestrales", cat: "exam", desc: "Oficio DE/279: Aplicación de exámenes extraordinarios y/o cursos intersemestrales del 14 al 21 de enero conforme a calendario de Subdirección Académica." }],
   "2027-01-15": [
-    { label: "🏛️ 3ª Reunión Academia", cat: "union", desc: "Actividad Oficial SEMS #13: Tercera Reunión General de Academia (Subdirección)." },
-    { label: "📜 CAPTURA ACTAS FINALES", cat: "pace", desc: "Actividad Oficial SEMS #14: Fecha oficial institucional para Captura de Actas Finales." }
+    { label: "✍️ Inicia Revisión y Control Escolar", cat: "pace", desc: "Revisión de exámenes, retroalimentación, firma de conformidad y entrega de resultados extraordinarios a Control Escolar (15 al 22 de enero)." },
+    { label: "🏛️ 3ª Reunión Academia", cat: "union", desc: "Actividad Oficial SEMS #13: Tercera Reunión General de Academia (Subdirección)." }
   ],
-  "2027-01-18": [
-    { label: "👨‍👩‍👧 Historiales Padres (TV)", cat: "parents", desc: "Actividad Oficial SEMS #15: Entrega de historiales académicos y reunión con padres de familia del Turno Vespertino." },
-    { label: "📚 Capacitación Docente", cat: "union", desc: "Actividad Oficial SEMS #22: Curso intersemestral de capacitación docente (18 al 20 y 29 Ene)." }
-  ],
-  "2027-01-20": [
-    { label: "👨‍👩‍👧 Historiales Padres (TM)", cat: "parents", desc: "Actividad Oficial SEMS #15: Entrega de historiales académicos y reunión con padres de familia del Turno Matutino." },
-    { label: "⚡ Solicitudes Inter/Extra", cat: "pace", desc: "Actividad Oficial SEMS #16 (ÚNICO DÍA): Registro formal de solicitudes estudiantiles de curso intersemestral y examen extraordinario." }
-  ],
-  "2027-01-21": [{ label: "🛠️ Inicia Intersemestral", cat: "normal", desc: "Actividad Oficial SEMS #17: Inicia Periodo del Curso Intersemestral de regularización (21 al 27 de Enero)." }],
-  "2027-01-22": [{ label: "📋 Entrega Calif. Inter", cat: "pace", desc: "Actividad Oficial SEMS #19 (22 al 28 Ene): Entrega de calificaciones de curso intersemestral y firma de estudiantes a Subdirección y Control Escolar." }],
+  "2027-01-18": [{ label: "📚 Capacitación Docente", cat: "union", desc: "Actividad Oficial SEMS #22: Curso intersemestral de capacitación docente (18 al 20 y 29 Ene)." }],
+  "2027-01-21": [{ label: "🛠️ Fin Extra / Intersemestrales", cat: "exam", desc: "Oficio DE/279: Conclusión del periodo de aplicación de exámenes extraordinarios y/o cursos intersemestrales (14 al 21 de enero)." }],
+  "2027-01-22": [{ label: "📥 Límite Resultados Control Esc.", cat: "pace", desc: "Oficio DE/279: Fecha límite para revisión, firma de conformidad y entrega de resultados de evaluación extraordinaria a Control Escolar (15 al 22 de enero)." }],
   "2027-01-27": [{ label: "🛠️ Fin Intersemestral", cat: "normal", desc: "Actividad Oficial SEMS #17: Conclusión formal del Curso Intersemestral." }],
   "2027-01-28": [{ label: "🤝 Labor Social", cat: "normal", desc: "Actividad Oficial SEMS #18: Jornada Institucional de Labor Social coordinada por Subdirección." }],
   "2027-01-29": [{ label: "📚 Cierre Capacitación", cat: "union", desc: "Actividad Oficial SEMS #22: Cierre del curso intersemestral de capacitación docente." }],
@@ -3910,54 +3935,65 @@ const WEEK_VIEWS = {
   },
   "S15": {
     weekNum: "Semana 15",
-    range: "07 al 11 de Diciembre de 2026",
-    title: "Cierre de Bloque III e Inicio de Evaluaciones P3",
-    highlight: "Jueves 10 y Viernes 11 inician exámenes del Tercer Parcial",
+    range: "07 al 12 de Diciembre de 2026",
+    title: "Cierre de Bloque III e Inicio de Evaluaciones P3 (Oficio DE/279)",
+    highlight: "Evaluación 3er Parcial: 9, 10, 11, 12 y 15 Dic · Retro/Firma: 10 al 16 Dic",
     days: [
       { name: "Lunes", date: "07 Dic", isToday: false, isHoliday: false, events: [{ title: "Cierre de Progresiones Bloque III", sub: "Conclusión de contenidos programáticos", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Martes", date: "08 Dic", isToday: false, isHoliday: false, events: [{ title: "Consolidación de Evaluaciones Continuas", sub: "Entrega de proyectos finales", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Miércoles", date: "09 Dic", isToday: false, isHoliday: false, events: [{ title: "Guías de Estudio para 3er Parcial", sub: "Sesiones de repaso general", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Jueves", date: "10 Dic", isToday: false, isHoliday: false, events: [{ title: "📝 Tercera Evaluación Parcial (P3 · Día 1)", sub: "Actividad SEMS #08: Inicio de exámenes finales P3", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Exámenes P3" }] },
-      { name: "Viernes", date: "11 Dic", isToday: false, isHoliday: false, events: [{ title: "📝 Tercera Evaluación Parcial (P3 · Día 2)", sub: "Segunda jornada de evaluaciones ordinarias", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Exámenes P3" }] }
+      { name: "Martes", date: "08 Dic", isToday: false, isHoliday: false, events: [{ title: "Guías y Consolidación de Portafolios", sub: "Repaso previo al arranque de evaluación P3", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
+      { name: "Miércoles", date: "09 Dic", isToday: false, isHoliday: false, events: [{ title: "📝 Tercera Evaluación Parcial (P3 · Día 1)", sub: "Oficio DE/279: Inicia aplicación de evaluación P3 (9, 10, 11, 12 y 15 Dic)", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Exámenes P3" }] },
+      { name: "Jueves", date: "10 Dic", isToday: false, isHoliday: false, events: [
+        { title: "📝 Tercera Evaluación Parcial (P3 · Día 2)", sub: "Segunda jornada de evaluación P3", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Exámenes P3" },
+        { title: "✍️ Inicia Entrega, Retroalimentación y Firma P3", sub: "Calificación P3, promedio de parciales y firma de aceptación en sesión siguiente (10 al 16 Dic)", cat: "pace", priority: "normal", shift: "Ambos turnos", tag: "Firma P3" }
+      ] },
+      { name: "Viernes / Sáb", date: "11–12 Dic", isToday: false, isHoliday: false, events: [{ title: "📝 Tercera Evaluación Parcial (P3 · Días 3 y 4)", sub: "Aplicación 11 y 12 de diciembre + retroalimentación y firma de grupos evaluados", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Exámenes P3" }] }
     ]
   },
   "S16": {
     weekNum: "Semana 16",
     range: "14 al 18 de Diciembre de 2026",
-    title: "Fin de Listas, Límite PACE P3, Muestra PEC y Receso Invernal",
-    highlight: "Cierre del periodo regular de clases y receso decembrino SEP",
+    title: "Cierre P3, Firmas (al 16 Dic), Fin de Listas, Muestra PEC y Festejo",
+    highlight: "Mar 15 fin P3 · Mié 16 cierre firmas/listas · Jue 17 PEC · Vie 18 Festejo",
     days: [
-      { name: "Lunes", date: "14 Dic", isToday: false, isHoliday: false, events: [{ title: "📝 Examen 3er Parcial (Día 3)", sub: "Rol de evaluaciones ordinarias", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "P3" }] },
-      { name: "Martes", date: "15 Dic", isToday: false, isHoliday: false, events: [{ title: "📝 Examen 3er Parcial (Día 4)", sub: "Penúltimo día de evaluaciones ordinarias", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "P3" }] },
+      { name: "Lunes", date: "14 Dic", isToday: false, isHoliday: false, events: [{ title: "✍️ Retroalimentación, Promedio y Firma P3", sub: "Entrega de calificaciones P3, promedio de parciales y aceptación firmada por estudiantes", cat: "pace", priority: "high", shift: "Ambos turnos", tag: "Firma P3" }] },
+      { name: "Martes", date: "15 Dic", isToday: false, isHoliday: false, events: [{ title: "📝 Tercera Evaluación Parcial (P3 · Día 5 / Cierre)", sub: "Oficio DE/279: Último día de aplicación de examen 3er parcial", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Fin P3" }] },
       { name: "Miércoles", date: "16 Dic", isToday: false, isHoliday: false, events: [
-        { title: "📝 Examen P3 (Día 5) y Conclusión de Evaluaciones", sub: "Cierre de exámenes del 3er Parcial", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "P3 Fin" },
-        { title: "📋 FIN DE LISTAS DE ASISTENCIA Y CLASES REGULARES", sub: "Actividad SEMS #07: Conclusión formal de clases del Semestre A", cat: "normal", priority: "high", shift: "Plantel CEB 5/4", tag: "Hito SEMS" }
+        { title: "✍️ Cierre de Entrega, Retro y Firma de Aceptación P3", sub: "Último día (10 al 16 Dic) para entrega de P3, promedio de parciales y firma de estudiantes", cat: "pace", priority: "high", shift: "Ambos turnos", tag: "Cierre Firmas" },
+        { title: "📋 FIN DE LISTAS DE ASISTENCIA Y CLASES REGULARES", sub: "Actividad SEMS #08: Conclusión formal de clases del Semestre A", cat: "normal", priority: "high", shift: "Plantel CEB 5/4", tag: "Hito SEMS" }
       ]},
       { name: "Jueves", date: "17 Dic", isToday: false, isHoliday: false, events: [
-        { title: "⚠️ LÍMITE CAPTURA PACE 3° PARCIAL", sub: "Actividad SEMS #09: Registro obligatorio de calificaciones P3", cat: "pace", priority: "high", shift: "Control Escolar", tag: "Crítico" },
-        { title: "🌟 MUESTRA INSTITUCIONAL PEC Y FIRMA DE PLANTILLA", sub: "Presentación comunitaria de proyectos transversales y firma de estructura PEC", cat: "union", priority: "high", shift: "Ambos turnos", tag: "Muestra PEC" }
+        { title: "🌟 MUESTRA INSTITUCIONAL PEC Y FIN 3ER PARCIAL", sub: "Presentación comunitaria de proyectos transversales PEC", cat: "union", priority: "high", shift: "Ambos turnos", tag: "Muestra PEC" }
       ]},
       { name: "Viernes", date: "18 Dic", isToday: false, isHoliday: true, events: [
         { title: "🎄 Festejo de Navidad CEB 5/4 (09:00 AM)", sub: "Restaurant Rincón del Alma Buffet (promedio 09:00 AM).", cat: "normal", priority: "high", shift: "Personal Escolar", tag: "Festejo Navidad" },
-        { title: "🎄 INICIO DEL RECESO INVERNAL SEP / DGB", sub: "Actividad SEMS #10: Periodo vacacional docente del 18 Dic 2026 al 05 Ene 2027", cat: "holiday", priority: "high", shift: "Vacaciones Oficiales", tag: "Receso Invernal" }
+        { title: "🎄 INICIO DEL RECESO INVERNAL SEP / DGB", sub: "Periodo vacacional docente del 18 Dic 2026 al 05 Ene 2027", cat: "holiday", priority: "high", shift: "Vacaciones Oficiales", tag: "Receso Invernal" }
       ]}
     ]
   },
   "S17-18": {
-    weekNum: "Semanas 17–18 (Enero 2027)",
-    range: "06 al 15 de Enero de 2027",
-    title: "🎓 Ajuste Oficial SEMS: Exámenes Globales y Actas Finales",
-    highlight: "Acuerdo colegiado avalado en 2.ª Academia Ordinaria (28-Oct-2026)",
+    weekNum: "Enero 2027 (Oficio DE/279)",
+    range: "06 al 22 de Enero de 2027",
+    title: "🎓 Ajuste Oficial Dirección (DE/279): Globales, Actas, Historiales y Extraordinarios",
+    highlight: "Globales 6–7 Ene · Actas 11 Ene · Historiales/Solic. 13 Ene · Extra 14–21 Ene",
     days: [
-      { name: "Mié 06 Ene", date: "06 Ene", isToday: false, isHoliday: false, events: [{ title: "🚀 Reanudación de Labores en Plantel", sub: "Actividad SEMS #11: Retorno presencial docente y administrativo", cat: "normal", priority: "high", shift: "Ambos turnos", tag: "Reanudación" }] },
-      { name: "Jue 07 Ene", date: "07 Ene", isToday: false, isHoliday: false, events: [{ title: "Asesorías y Guías Examen Global", sub: "Atención y preparación de estudiantes para evaluación semestral", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Vie 08 Ene", date: "08 Ene", isToday: false, isHoliday: false, events: [{ title: "Asignación definitiva de temarios Globales", sub: "Publicación de guías y horarios de examen", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Lun–Jue", date: "11–14 Ene", isToday: false, isHoliday: false, events: [
-        { title: "🎓 PERIODO DE EXÁMENES GLOBALES 2026-2027", sub: "Acuerdo oficial: Evaluación semestral global aplicada del 11 al 14 de Enero 2027.", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Ajuste SEMS" }
+      { name: "Mié–Jue", date: "06–07 Ene", isToday: false, isHoliday: false, events: [
+        { title: "📝 EVALUACIÓN GLOBAL (6 y 7 de Enero)", sub: "Conforme al horario establecido por Subdirección Académica", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Global" },
+        { title: "✍️ Retroalimentación y Firma Global (7 y 8 Ene)", sub: "Entrega de calificaciones globales y firma de conformidad al día siguiente", cat: "pace", priority: "high", shift: "Ambos turnos", tag: "Firma Global" }
       ]},
-      { name: "Vie 15 Ene", date: "15 Ene", isToday: false, isHoliday: false, events: [
-        { title: "📄 LÍMITE CAPTURA Y ENTREGA DE ACTAS FINALES", sub: "Actividad SEMS #12: Cierre definitivo de actas oficiales del Semestre A", cat: "pace", priority: "high", shift: "Control Escolar", tag: "Crítico" },
-        { title: "🏛️ 3.ª Reunión General de Academia", sub: "Actividad SEMS #13: Evaluación del semestre, firma de actas y acuerdos", cat: "meeting", priority: "high", shift: "Colegiado", tag: "Academia" }
+      { name: "Viernes", date: "08 Ene", isToday: false, isHoliday: false, events: [
+        { title: "✍️ Cierre Retro y Firma Global", sub: "Segundo día de entrega, retroalimentación y firma de conformidad", cat: "pace", priority: "high", shift: "Ambos turnos" },
+        { title: "📋 Solicitud Reprobadas Semestres Anteriores", sub: "Horario: 08:00 a 11:00 hrs", cat: "pace", priority: "high", shift: "08:00–11:00 h", tag: "Control Escolar" }
+      ]},
+      { name: "Lunes", date: "11 Ene", isToday: false, isHoliday: false, events: [
+        { title: "📜 CAPTURA DE ACTAS Y ENTREGA A CONTROL ESCOLAR", sub: "Oficio DE/279: Fecha única de captura de actas y entrega oficial a Control Escolar", cat: "pace", priority: "high", shift: "Docentes", tag: "Crítico Actas" }
+      ]},
+      { name: "Miércoles", date: "13 Ene", isToday: false, isHoliday: false, events: [
+        { title: "👨‍👩‍👧‍👦 Entrega de Historiales a Madres/Padres/Tutores", sub: "Turno Matutino: 07:00 AM · Turno Vespertino: 08:00 AM", cat: "parents", priority: "high", shift: "TM 07:00 / TV 08:00", tag: "Historiales" },
+        { title: "⚡ Solicitud Extraordinarios / Intersemestrales Sem A", sub: "Asignaturas reprobadas durante el Semestre A · 08:00 a 11:00 hrs", cat: "pace", priority: "high", shift: "08:00–11:00 h", tag: "Solicitudes" }
+      ]},
+      { name: "14–22 Ene", date: "14–22 Ene", isToday: false, isHoliday: false, events: [
+        { title: "🛠️ Aplicación Extraordinarios / Intersemestrales (14–21 Ene)", sub: "Conforme a calendario entregado por Subdirección Académica", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Extra/Inter" },
+        { title: "📥 Revisión, Firma y Entrega Control Escolar (15–22 Ene)", sub: "Al día siguiente de evaluación o término de curso y entrega a Control Escolar", cat: "pace", priority: "high", shift: "Control Escolar", tag: "Resultados" }
       ]}
     ]
   }

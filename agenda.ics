@@ -1665,4 +1665,64 @@ CATEGORIES:🎄 FESTEJO NAVIDEÑO,CONVIVENCIA PERSONAL
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-de279-p3-eval-20261209@ceb54.dgb.edu.mx
+DTSTAMP:20261124T143000Z
+DTSTART;VALUE=DATE:20261209
+DTEND;VALUE=DATE:20261216
+SUMMARY:📝 CEB 5/4: Evaluación 3er Parcial (9, 10, 11, 12 y 15 Dic · Oficio DE/279)
+DESCRIPTION:Oficio CEB-5/4 DE/279/2026-2027/1: Evaluación de 3er parcial los días 9, 10, 11, 12 y 15 de diciembre. Entrega, retroalimentación, promedio de parciales y aceptación firmada por estudiantes en su siguiente sesión (10 al 16 de diciembre).
+LOCATION:Plantel CEB 5/4 · Ambos Turnos
+CATEGORIES:📝 EXÁMENES P3,DIRECCIÓN DEL PLANTEL
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-de279-global-20270106@ceb54.dgb.edu.mx
+DTSTAMP:20261124T143000Z
+DTSTART;VALUE=DATE:20270106
+DTEND;VALUE=DATE:20270109
+SUMMARY:📝 CEB 5/4: Evaluación Global (6–7 Ene) y Retroalimentación/Firma (7–8 Ene)
+DESCRIPTION:Oficio CEB-5/4 DE/279/2026-2027/1:\n- Evaluación global: 6 y 7 de enero conforme al horario de Subdirección Académica.\n- Entrega de calificaciones globales, retroalimentación y firma de conformidad: 7 y 8 de enero.\n- Solicitud de asignaturas reprobadas semestres anteriores: 8 de enero de 08:00 a 11:00 h.
+LOCATION:Plantel CEB 5/4 · Ambos Turnos
+CATEGORIES:📝 EVALUACIÓN GLOBAL,DIRECCIÓN DEL PLANTEL
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-de279-actas-20270111@ceb54.dgb.edu.mx
+DTSTAMP:20261124T143000Z
+DTSTART;VALUE=DATE:20270111
+DTEND;VALUE=DATE:20270112
+SUMMARY:📜 CEB 5/4: Captura de Actas y Entrega a Control Escolar (Oficio DE/279)
+DESCRIPTION:Oficio CEB-5/4 DE/279/2026-2027/1: Captura de actas y entrega oficial a Control Escolar el 11 de enero de 2027.
+LOCATION:Control Escolar · CEB 5/4
+CATEGORIES:📜 ACTAS FINALES,CONTROL ESCOLAR
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-de279-historiales-20270113@ceb54.dgb.edu.mx
+DTSTAMP:20261124T143000Z
+DTSTART;VALUE=DATE:20270113
+DTEND;VALUE=DATE:20270114
+SUMMARY:👨‍👩‍👧‍👦 CEB 5/4: Historiales Padres (TM 07:00 / TV 08:00) y Solic. Extra/Inter (08:00–11:00)
+DESCRIPTION:Oficio CEB-5/4 DE/279/2026-2027/1:\n- Entrega de historiales con madres, padres y/o tutores: 13 de enero (07:00 am TM / 08:00 am TV).\n- Solicitud de exámenes extraordinarios y/o cursos intersemestrales (reprobadas Semestre A): 13 de enero de 08:00 a 11:00 h.
+LOCATION:Plantel CEB 5/4 · Ambos Turnos
+CATEGORIES:👨‍👩‍👧‍👦 HISTORIALES,CONTROL ESCOLAR
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-de279-extraordinarios-20270114@ceb54.dgb.edu.mx
+DTSTAMP:20261124T143000Z
+DTSTART;VALUE=DATE:20270114
+DTEND;VALUE=DATE:20270123
+SUMMARY:🛠️ CEB 5/4: Extraordinarios/Intersemestrales (14–21 Ene) y Resultados Control Escolar (15–22 Ene)
+DESCRIPTION:Oficio CEB-5/4 DE/279/2026-2027/1:\n- Aplicación de exámenes extraordinarios y/o cursos intersemestrales: 14 al 21 de enero.\n- Revisión, retroalimentación, firma de conformidad y entrega de resultados a Control Escolar: 15 al 22 de enero.
+LOCATION:Plantel CEB 5/4 · Control Escolar
+CATEGORIES:🛠️ EXTRAORDINARIOS,INTERSEMESTRALES,CONTROL ESCOLAR
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
 END:VCALENDAR

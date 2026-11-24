@@ -1641,4 +1641,28 @@ CATEGORIES:🧡 25N DÍA NARANJA,DIRECCIÓN DEL PLANTEL,CONASAMA
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-confirmar-festejo-navidad-20261126@ceb54.dgb.edu.mx
+DTSTAMP:20261124T123300Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261127
+SUMMARY:🎄 CEB 5/4: Confirmar en Dirección asistencia Festejo Navidad (Antes del Jue 26 Nov)
+DESCRIPTION:Pasar a confirmar asistencia en Dirección antes del jueves 26 de noviembre para reservar el Festejo de Navidad (18 de diciembre 09:00 AM en Restaurant Rincón del Alma Buffet).
+LOCATION:Dirección del Plantel · CEB 5/4
+CATEGORIES:🎄 FESTEJO NAVIDEÑO,DIRECCIÓN DEL PLANTEL
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-festejo-navidad-20261218@ceb54.dgb.edu.mx
+DTSTAMP:20261124T123300Z
+DTSTART:20261218T150000Z
+DTEND:20261218T180000Z
+SUMMARY:🎄 CEB 5/4: Festejo de Navidad (09:00 AM · Restaurant Rincón del Alma Buffet)
+DESCRIPTION:Festejo de Navidad del personal escolar del CEB 5/4 programado promedio 09:00 AM en Restaurant Rincón del Alma Buffet.
+LOCATION:Restaurant Rincón del Alma Buffet
+CATEGORIES:🎄 FESTEJO NAVIDEÑO,CONVIVENCIA PERSONAL
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
 END:VCALENDAR

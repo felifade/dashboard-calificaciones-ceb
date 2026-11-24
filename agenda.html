@@ -2743,7 +2743,7 @@
       </div>
     </section>
 
-    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (27) -->
+    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (28) -->
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
         <!-- Inyectado por JS -->
@@ -3017,6 +3017,16 @@
   <script>
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
+      {
+        id: 28,
+        date: "24 de Noviembre de 2026",
+        sender: "Dirección / Convivencia Personal CEB 5/4",
+        title: "🎄 Festejo de Navidad (18 Dic · 09:00 AM · Restaurant Rincón del Alma Buffet)",
+        req: "El festejo de Navidad está programado para el viernes 18 de diciembre promedio 09:00 AM en Restaurant Rincón del Alma Buffet. Pasar a confirmar asistencia en Dirección antes del jueves 26 de noviembre para poder reservar.",
+        delivery: "Confirmación presencial en Dirección antes del Jueves 26 de Noviembre",
+        status: "Confirmar antes del Jue 26 Nov",
+        ref: "Aviso Festejo Navideño"
+      },
       {
         id: 27,
         date: "23 de Noviembre de 2026",
@@ -3446,6 +3456,7 @@
           { date: "Mié 25 Nov", text: "🧡 25N Día Elim. Violencia vs Mujeres (Prenda naranja) · Cierre 16 Días Activismo · Límite Evidencias Drive", cat: "normal", shift: "ALL", ref: "Orientación" },
           { date: "Mié 25 Nov (12:00 / 13:45 h)", text: "🔸 Webinario SEMS Salud Sexual (12:00 h) y Transmisión DGB Feminicidio Emocional (13:45 h Audiorama)", cat: "normal", shift: "ALL", ref: "DGB / SEMS" },
           { date: "Mié 25 Nov (15:00 h)", text: "🧠 Seminario Web CONASAMA: «¿Es o no es? Pistas para detectar la violencia contra las mujeres» (Facebook Live + Registro)", cat: "normal", shift: "Personal", ref: "Dirección / CONASAMA" },
+          { date: "Antes del Jue 26 Nov", text: "🎄 Confirmar asistencia en Dirección para Festejo de Navidad (18 Dic · Rincón del Alma Buffet)", cat: "union", shift: "Personal", ref: "Dirección" },
           { date: "Jue 26 Nov (17:30 h)", text: "💬 Ciclo de Conferencias «Hablemos para entendernos» · TV (Grupos V107 y V109)", cat: "parents", shift: "TV", ref: "Nota S13" },
           { date: "Vie 27 Nov (07:00 / 13:00 h)", text: "💻 Capacitación Plataforma ceb54.sistemas-sagyc.com (Dr. Felipe López Salazar · Clases inician 2° módulo)", cat: "union", shift: "Docentes", ref: "Subdirección" },
           { date: "Vie 27 Nov", text: "🩺 FERIA DE LA SALUD · AMBOS TURNOS (Responsable: Mtro. Gabriel)", cat: "normal", shift: "ALL", ref: "Nota S13" }
@@ -3615,6 +3626,7 @@
     { label: "📁 Evidencias 16 Días Activismo", cat: "normal", desc: "Fecha límite para que los tutores suban a Google Drive las evidencias correspondientes a las actividades de los 16 Días de Activismo contra la Violencia de Género organizadas por grupo (https://drive.google.com/drive/folders/1em4E9Kd8IaKm57Guni6t5p959W4z1Kvi)." }
   ],
   "2026-11-26": [
+    { label: "🎄 Confirmar Festejo Navidad (Dirección)", cat: "union", desc: "Límite antes del jueves 26 de noviembre: pasar a confirmar asistencia en Dirección para el Festejo de Navidad (18 Dic 09:00 h en Restaurant Rincón del Alma Buffet)." },
     { label: "💬 Conf. Hablemos para entendernos (17:30 h)", cat: "parents", desc: "Ciclo de conferencias 'Hablemos para entendernos' (comunicación asertiva madres, padres e hijos). Turno Vespertino 17:30 h · Grupos convocados: V107 y V109." }
   ],
   "2026-11-27": [
@@ -3628,7 +3640,10 @@
     { label: "📝 Cierre Examen P3", cat: "exam", desc: "Conclusión de exámenes del Tercer Parcial." }
   ],
   "2026-12-17": [{ label: "🌟 Muestra PEC", cat: "normal", desc: "Actividad Oficial SEMS #09: Presentación Comunitaria de Proyectos Transversales (PEC) y fin del 3er Parcial." }],
-  "2026-12-18": [{ label: "🎄 Vacaciones Invierno", cat: "holiday", desc: "Inicia el Receso Vacacional Decembrino de Invierno (18 Dic 2026 al 05 Ene 2027)." }],
+  "2026-12-18": [
+    { label: "🎄 Festejo Navidad (09:00 h · Rincón del Alma)", cat: "normal", desc: "Festejo de Navidad del personal CEB 5/4 programado promedio 09:00 AM en Restaurant Rincón del Alma Buffet." },
+    { label: "🎄 Vacaciones Invierno", cat: "holiday", desc: "Inicia el Receso Vacacional Decembrino de Invierno (18 Dic 2026 al 05 Ene 2027)." }
+  ],
   "2027-01-06": [{ label: "🔄 Retro P3 y Asign. Global", cat: "exam", desc: "Actividad Oficial SEMS #10 (Semana 17 · 06 al 08 Ene): Retroalimentación de evaluaciones, entrega de calificaciones P3, promedio global y/o asignación de examen global." }],
   "2027-01-11": [{ label: "📝 EVALUACIÓN FINAL / GLOBAL", cat: "exam", desc: "Actividad Oficial SEMS #11 (Semana 18 · 11 al 14 Ene): Periodo Oficial de Evaluación Final / Aplicación de Examen Global (Reajuste formal aprobado en 2.ª Academia)." }],
   "2027-01-12": [{ label: "📥 Entrega Calif. Semestrales", cat: "pace", desc: "Actividad Oficial SEMS #12 (12 al 15 Ene): Entrega de evaluaciones semestrales a control.escolar54@dgb.edu.mx." }],
@@ -3870,6 +3885,7 @@ const WEEK_VIEWS = {
         { title: "📁 Límite: Evidencias 16 Días de Activismo (Drive)", sub: "Fecha límite para tutores: cargar a Drive evidencias organizadas por grupo.", cat: "normal", priority: "high", shift: "Tutores", tag: "Drive Activismo" }
       ] },
       { name: "Jueves", date: "26 Nov", isToday: false, isHoliday: false, events: [
+        { title: "🎄 Confirmar Festejo Navidad (Dirección)", sub: "Pasar a confirmar asistencia en Dirección antes del jueves para reservar en Restaurant Rincón del Alma Buffet (18 Dic 09:00 h).", cat: "union", priority: "high", shift: "Personal Escolar", tag: "Confirmar Dirección" },
         { title: "💬 Ciclo «Hablemos para entendernos» (17:30 h)", sub: "Estrategias de comunicación asertiva madres, padres e hijos · Grupos convocados: V107 y V109.", cat: "parents", priority: "high", shift: "🌙 Turno Vespertino", tag: "V107 / V109" },
         { title: "Trabajo en Laboratorios y Aulas", sub: "Desarrollo de proyectos formativos Bloque III", cat: "normal", priority: "normal", shift: "Ambos turnos" }
       ] },
@@ -3922,6 +3938,7 @@ const WEEK_VIEWS = {
         { title: "🌟 MUESTRA INSTITUCIONAL PEC Y FIRMA DE PLANTILLA", sub: "Presentación comunitaria de proyectos transversales y firma de estructura PEC", cat: "union", priority: "high", shift: "Ambos turnos", tag: "Muestra PEC" }
       ]},
       { name: "Viernes", date: "18 Dic", isToday: false, isHoliday: true, events: [
+        { title: "🎄 Festejo de Navidad CEB 5/4 (09:00 AM)", sub: "Restaurant Rincón del Alma Buffet (promedio 09:00 AM).", cat: "normal", priority: "high", shift: "Personal Escolar", tag: "Festejo Navidad" },
         { title: "🎄 INICIO DEL RECESO INVERNAL SEP / DGB", sub: "Actividad SEMS #10: Periodo vacacional docente del 18 Dic 2026 al 05 Ene 2027", cat: "holiday", priority: "high", shift: "Vacaciones Oficiales", tag: "Receso Invernal" }
       ]}
     ]

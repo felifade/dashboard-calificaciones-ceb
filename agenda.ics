@@ -1725,4 +1725,52 @@ CATEGORIES:🛠️ EXTRAORDINARIOS,INTERSEMESTRALES,CONTROL ESCOLAR
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-pec-preproduccion-20261123@ceb54.dgb.edu.mx
+DTSTAMP:20261125T113300Z
+DTSTART;VALUE=DATE:20261123
+DTEND;VALUE=DATE:20261128
+SUMMARY:🎬 CEB 5/4: Preproducción PEC Cultura Digital I (TM Flyers / TV Guion 8 tomas)
+DESCRIPTION:Semana 13 (23 al 27 Nov) — Preproducción PEC en Cultura Digital I:\n- TM (101–106): Diseño de Flyers publicitarios en Canva para Tianguis Artesanal 'Manos que tejen PAZ' y mini-guion de invitación.\n- TV (107–111): Análisis de referente y Guion Técnico de 8 tomas para cortometraje 'Raíces que permanecen'.
+LOCATION:Laboratorio de Cómputo · CEB 5/4
+CATEGORIES:🌟 PEC / PAEC,CULTURA DIGITAL I
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-pec-produccion-20261130@ceb54.dgb.edu.mx
+DTSTAMP:20261125T113300Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261205
+SUMMARY:📣 CEB 5/4: Producción y Difusión PEC (TM Campaña Redes / TV Edición Cortometraje)
+DESCRIPTION:Semana 14 (30 Nov al 04 Dic) — Producción y Difusión PEC:\n- TM: Publicación de campaña en redes sociales (flyers estudiantiles seleccionados y croquis de puestos del Profr. Alfonso).\n- TV: Edición en laboratorio del cortometraje 'Raíces que permanecen' (3 a 5 min, cortinilla CEB 5/4, audio equilibrado, reflexión 'Lo que permanece' y créditos).
+LOCATION:Laboratorio de Cómputo · CEB 5/4
+CATEGORIES:🌟 PEC / PAEC,CULTURA DIGITAL I
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-pec-entrega-final-20261209@ceb54.dgb.edu.mx
+DTSTAMP:20261125T113300Z
+DTSTART:20261209T140000Z
+DTEND:20261209T174000Z
+SUMMARY:🌟 CEB 5/4: Día de Entrega Final PEC (Tianguis «Manos que tejen PAZ» TM / Cortometraje TV)
+DESCRIPTION:Día de Entrega Final PEC (Ambos Turnos):\n- Turno Matutino · Tianguis Artesanal 'Manos que tejen PAZ' (Estacionamiento exterior y Audiorama):\n  • 08:00–08:40 am: Arreglo de puestos y producto.\n  • 09:00 am: Inauguración oficial (Comunidad escolar y padres).\n  • 09:00–11:40 am: Venta en Tianguis Artesanal (Comisión Felipe: Publicidad y logística general).\n  • 11:40 am: Recoger puestos y limpieza de áreas.\n- Turno Vespertino · Entrega oficial digital del cortometraje 'Raíces que permanecen'.
+LOCATION:Estacionamiento Exterior y Audiorama · CEB 5/4
+CATEGORIES:🌟 PEC / PAEC,TIANGUIS ARTESANAL,CULTURA DIGITAL I
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:ceb54-2627-pec-registro-tv-20261211@ceb54.dgb.edu.mx
+DTSTAMP:20261125T113300Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261212
+SUMMARY:⚠️ CEB 5/4: Límite Registro Calificaciones PEC (TV · Rúbrica 8×0.25 = 2.0 pts)
+DESCRIPTION:Hasta el Viernes 11 de diciembre de 2026: Evaluar y capturar calificaciones del 3er Parcial en la plataforma PEC Turno Vespertino (Rúbrica oficial de 8 criterios × 0.25 = 2.0 pts).
+LOCATION:Plataforma PEC · CEB 5/4
+CATEGORIES:🌟 PEC / PAEC,⚠️ LÍMITE EVALUACIÓN,TURNO VESPERTINO
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
 END:VCALENDAR

@@ -2743,7 +2743,7 @@
       </div>
     </section>
 
-    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (30) -->
+    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (31) -->
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
         <!-- Inyectado por JS -->
@@ -3017,6 +3017,16 @@
   <script>
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
+      {
+        id: 31,
+        date: "27 de Noviembre de 2026 (Citatorio: 24-Nov)",
+        sender: "Dirección del Plantel (Maribel Alba Monroy)",
+        title: "🛡️ Proyecto «Entornos Escolares Seguros» (SIPINNA Plantel Piloto) y Psicoterapia Padres/Estudiantes",
+        req: "A partir del lunes 30 de noviembre inicia el ciclo de conferencias de SIPINNA (Proyecto Entornos Escolares Seguros + Psicoterapia Padres/Estudiantes + firma de acuerdo de corresponsabilidad en Sala Audiovisual). TM (07:00–08:30 h): Lun 30 Nov M101-M102 | Mar 01 Dic M103-M104 | Jue 03 Dic M105-M106 | Vie 04 Dic M301-M302 | Lun 07 Dic M303-M304 | Mar 08 Dic M305-M306 | Jue 10 Dic M501-M502 | Vie 11 Dic M503-M504 | Lun 14 Dic M505-M506. TV (17:00–18:30 h): Lun 30 Nov V110-V111 | Mié 02 Dic V107-V109 | Jue 03 Dic V108-V507 | Lun 07 Dic V307-V308 | Jue 10 Dic V509-V508 | Lun 14 Dic V309-V310.",
+        delivery: "Sala Audiovisual CEB 5/4 · Padres, Estudiantes y Docentes (30 Nov al 14 Dic)",
+        status: "Inicia Lunes 30 Nov",
+        ref: "Citatorio Dirección 24-Nov-2026"
+      },
       {
         id: 30,
         date: "25 de Noviembre de 2026",
@@ -3659,21 +3669,35 @@
     { label: "💻 Capacitación SAGYC (07:00 / 13:00 h)", cat: "union", desc: "Capacitación sobre el uso de la plataforma institucional ceb54.sistemas-sagyc.com impartida por el Dr. Felipe López Salazar (TM: 07:00 h / TV: 13:00 h). Actividades con estudiantes inician a partir del 2° módulo." },
     { label: "🩺 Feria de la Salud (Ambos Turnos)", cat: "normal", desc: "Feria Institucional de la Salud con participación de ambos turnos. Responsable: Mtro. Gabriel." }
   ],
-  "2026-11-30": [{ label: "🎬 Producción y Difusión PEC", cat: "normal", desc: "Semana 14 (30 Nov–04 Dic): TM campaña en redes sociales (flyers Canva + croquis Profr. Alfonso) · TV edición en laboratorio cortometraje 'Raíces que permanecen' (3-5 min, cortinilla CEB 5/4, audio, reflexión 'Lo que permanece' y créditos)." }],
-  "2026-12-04": [{ label: "💚 Cierre ABC Emociones", cat: "normal", desc: "Fecha límite de carga y concentración de evidencias de El ABC de las Emociones en Google Drive institucional." }],
+  "2026-11-30": [
+    { label: "🛡️ SIPINNA: M101-M102 (07:00) / V110-V111 (17:00)", cat: "parents", desc: "Inicio Ciclo SIPINNA «Entornos Escolares Seguros» (Sala Audiovisual) + Psicoterapia Padres/Estudiantes y firma de acuerdo: TM M101-M102 (07:00–08:30 h) · TV V110-V111 (17:00–18:30 h)." },
+    { label: "🎬 Producción y Difusión PEC", cat: "normal", desc: "Semana 14 (30 Nov–04 Dic): TM campaña en redes sociales (flyers Canva + croquis Profr. Alfonso) · TV edición en laboratorio cortometraje 'Raíces que permanecen' (3-5 min, cortinilla CEB 5/4, audio, reflexión 'Lo que permanece' y créditos)." }
+  ],
+  "2026-12-01": [{ label: "🛡️ SIPINNA: M103-M104 (07:00–08:30 h)", cat: "parents", desc: "Ciclo SIPINNA «Entornos Escolares Seguros» y Psicoterapia Padres/Estudiantes en Sala Audiovisual: TM M103-M104 (07:00–08:30 h)." }],
+  "2026-12-02": [{ label: "🛡️ SIPINNA: V107-V109 (17:00–18:30 h)", cat: "parents", desc: "Ciclo SIPINNA «Entornos Escolares Seguros» y Psicoterapia Padres/Estudiantes en Sala Audiovisual: TV V107-V109 (17:00–18:30 h)." }],
+  "2026-12-03": [{ label: "🛡️ SIPINNA: M105-M106 (07:00) / V108-V507 (17:00)", cat: "parents", desc: "Ciclo SIPINNA «Entornos Escolares Seguros» en Sala Audiovisual: TM M105-M106 (07:00–08:30 h) · TV V108-V507 (17:00–18:30 h)." }],
+  "2026-12-04": [
+    { label: "🛡️ SIPINNA: M301-M302 (07:00–08:30 h)", cat: "parents", desc: "Ciclo SIPINNA «Entornos Escolares Seguros» en Sala Audiovisual: TM M301-M302 (07:00–08:30 h)." },
+    { label: "💚 Cierre ABC Emociones", cat: "normal", desc: "Fecha límite de carga y concentración de evidencias de El ABC de las Emociones en Google Drive institucional." }
+  ],
+  "2026-12-07": [{ label: "🛡️ SIPINNA: M303-M304 (07:00) / V307-V308 (17:00)", cat: "parents", desc: "Ciclo SIPINNA «Entornos Escolares Seguros» en Sala Audiovisual: TM M303-M304 (07:00–08:30 h) · TV V307-V308 (17:00–18:30 h)." }],
+  "2026-12-08": [{ label: "🛡️ SIPINNA: M305-M306 (07:00–08:30 h)", cat: "parents", desc: "Ciclo SIPINNA «Entornos Escolares Seguros» en Sala Audiovisual: TM M305-M306 (07:00–08:30 h)." }],
   "2026-12-09": [
     { label: "🌟 Entrega Final PEC (TM/TV)", cat: "normal", desc: "TM Tianguis Artesanal 'Manos que tejen PAZ' (Estacionamiento ext. y Audiorama: 08:00-08:40 arreglo, 09:00 inaug., 09:00-11:40 venta [Comisión Felipe: Publicidad y logística], 11:40 limpieza) · TV entrega digital cortometraje 'Raíces que permanecen'." },
     { label: "📝 Inicia Examen P3 (Día 1)", cat: "exam", desc: "Oficio CEB-5/4 DE/279/2026-2027/1: Evaluación del 3er parcial (9, 10, 11, 14 y 15 de diciembre)." }
   ],
   "2026-12-10": [
+    { label: "🛡️ SIPINNA: M501-M502 (07:00) / V509-V508 (17:00)", cat: "parents", desc: "Ciclo SIPINNA «Entornos Escolares Seguros» en Sala Audiovisual: TM M501-M502 (07:00–08:30 h) · TV V509-V508 (17:00–18:30 h)." },
     { label: "📝 Examen P3 (Día 2)", cat: "exam", desc: "Segunda jornada de evaluación del 3er parcial (9, 10, 11, 14 y 15 de diciembre)." },
     { label: "✍️ Inicia Retro y Firma P3", cat: "pace", desc: "Oficio DE/279: Entrega, retroalimentación de calificación P3, promedio de parciales y aceptación firmada por estudiantes en su siguiente sesión (10 al 16 dic)." }
   ],
   "2026-12-11": [
+    { label: "🛡️ SIPINNA: M503-M504 (07:00–08:30 h)", cat: "parents", desc: "Ciclo SIPINNA «Entornos Escolares Seguros» en Sala Audiovisual: TM M503-M504 (07:00–08:30 h)." },
     { label: "⚠️ Límite Registro PEC (TV)", cat: "pace", desc: "Hasta hoy 11 Dic: Evaluar y capturar calificaciones del 3er Parcial en plataforma PEC Turno Vespertino (Rúbrica oficial 8 criterios × 0.25 = 2.0 pts)." },
     { label: "📝 Examen P3 (Día 3)", cat: "exam", desc: "Tercera jornada de evaluación del 3er parcial y retroalimentación/firma de sesiones previas." }
   ],
   "2026-12-14": [
+    { label: "🛡️ SIPINNA: M505-M506 (07:00) / V309-V310 (17:00)", cat: "parents", desc: "Cierre Ciclo SIPINNA «Entornos Escolares Seguros» en Sala Audiovisual: TM M505-M506 (07:00–08:30 h) · TV V309-V310 (17:00–18:30 h)." },
     { label: "📝 Examen P3 (Día 4)", cat: "exam", desc: "Cuarta fecha oficial de evaluación del 3er parcial (9, 10, 11, 14 y 15 de diciembre · Oficio DE/279)." },
     { label: "✍️ Retro y Firma P3", cat: "pace", desc: "Entrega, retroalimentación, promedio de parciales y aceptación firmada por estudiantes." }
   ],
@@ -3946,34 +3970,57 @@ const WEEK_VIEWS = {
   "S14": {
     weekNum: "Semana 14",
     range: "30 Nov al 04 de Diciembre de 2026",
-    title: "Producción y Difusión PEC (Cultura Digital I) y Preparación P3",
-    highlight: "TM: Campaña redes (Flyers + croquis Profr. Alfonso) · TV: Edición cortometraje «Raíces que permanecen»",
+    title: "SIPINNA Entornos Seguros (Inicio), Producción PEC y Preparación P3",
+    highlight: "Ciclo SIPINNA (Sala Audiovisual): TM 07:00–08:30 h · TV 17:00–18:30 h · Producción PEC",
     days: [
-      { name: "Lunes", date: "30 Nov", isToday: false, isHoliday: false, events: [{ title: "🎬 Arranque Producción y Difusión PEC", sub: "TM: Campaña redes (flyers + croquis Profr. Alfonso) · TV: Edición «Raíces que permanecen» (3–5 min, cortinilla CEB 5/4, audio, reflexión «Lo que permanece»).", cat: "normal", priority: "high", shift: "101–111", tag: "PEC / PAEC" }] },
-      { name: "Martes", date: "01 Dic", isToday: false, isHoliday: false, events: [{ title: "🎬 Edición y Campaña PEC en Laboratorio", sub: "Seguimiento a flyers/publicación TM y montaje audiovisual + créditos TV.", cat: "normal", priority: "normal", shift: "101–111", tag: "PEC / PAEC" }] },
-      { name: "Miércoles", date: "02 Dic", isToday: false, isHoliday: false, events: [{ title: "Revisión de Portafolios y Avance PEC", sub: "Concentración de evidencias de aprendizaje", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Jueves", date: "03 Dic", isToday: false, isHoliday: false, events: [{ title: "Consolidación de Exámenes P3 y Cierre Edición", sub: "Elaboración de instrumentos y últimos ajustes al cortometraje TV", cat: "normal", priority: "normal", shift: "Docentes" }] },
-      { name: "Viernes", date: "04 Dic", isToday: false, isHoliday: false, events: [{ title: "📋 Límite de Propuesta de Reactivos P3", sub: "Entrega de instrumentos a Subdirección Académica", cat: "exam", priority: "high", shift: "Colegiado", tag: "Entrega Reactivos" }] }
+      { name: "Lunes", date: "30 Nov", isToday: false, isHoliday: false, events: [
+        { title: "🛡️ SIPINNA: M101-M102 (07:00) y V110-V111 (17:00)", sub: "Proyecto Entornos Escolares Seguros + Psicoterapia Padres y Estudiantes (Sala Audiovisual).", cat: "parents", priority: "high", shift: "M101-102 / V110-111", tag: "SIPINNA" },
+        { title: "🎬 Arranque Producción y Difusión PEC", sub: "TM: Campaña redes (flyers + croquis Profr. Alfonso) · TV: Edición «Raíces que permanecen» (3–5 min, cortinilla CEB 5/4, audio, reflexión «Lo que permanece»).", cat: "normal", priority: "high", shift: "101–111", tag: "PEC / PAEC" }
+      ] },
+      { name: "Martes", date: "01 Dic", isToday: false, isHoliday: false, events: [
+        { title: "🛡️ SIPINNA: M103-M104 (07:00–08:30 h)", sub: "Proyecto Entornos Escolares Seguros + Psicoterapia Padres y Estudiantes (Sala Audiovisual).", cat: "parents", priority: "high", shift: "☀️ M103-M104", tag: "SIPINNA" },
+        { title: "🎬 Edición y Campaña PEC en Laboratorio", sub: "Seguimiento a flyers/publicación TM y montaje audiovisual + créditos TV.", cat: "normal", priority: "normal", shift: "101–111", tag: "PEC / PAEC" }
+      ] },
+      { name: "Miércoles", date: "02 Dic", isToday: false, isHoliday: false, events: [
+        { title: "🛡️ SIPINNA: V107-V109 (17:00–18:30 h)", sub: "Proyecto Entornos Escolares Seguros + Psicoterapia Padres y Estudiantes (Sala Audiovisual).", cat: "parents", priority: "high", shift: "🌙 V107-V109", tag: "SIPINNA" },
+        { title: "Revisión de Portafolios y Avance PEC", sub: "Concentración de evidencias de aprendizaje", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+      ] },
+      { name: "Jueves", date: "03 Dic", isToday: false, isHoliday: false, events: [
+        { title: "🛡️ SIPINNA: M105-M106 (07:00) y V108-V507 (17:00)", sub: "Proyecto Entornos Escolares Seguros + Psicoterapia Padres y Estudiantes (Sala Audiovisual).", cat: "parents", priority: "high", shift: "M105-106 / V108-507", tag: "SIPINNA" },
+        { title: "Consolidación de Exámenes P3 y Cierre Edición", sub: "Elaboración de instrumentos y últimos ajustes al cortometraje TV", cat: "normal", priority: "normal", shift: "Docentes" }
+      ] },
+      { name: "Viernes", date: "04 Dic", isToday: false, isHoliday: false, events: [
+        { title: "🛡️ SIPINNA: M301-M302 (07:00–08:30 h)", sub: "Proyecto Entornos Escolares Seguros + Psicoterapia Padres y Estudiantes (Sala Audiovisual).", cat: "parents", priority: "high", shift: "☀️ M301-M302", tag: "SIPINNA" },
+        { title: "📋 Límite de Propuesta de Reactivos P3", sub: "Entrega de instrumentos a Subdirección Académica", cat: "exam", priority: "high", shift: "Colegiado", tag: "Entrega Reactivos" }
+      ] }
     ]
   },
   "S15": {
     weekNum: "Semana 15",
     range: "07 al 11 de Diciembre de 2026",
-    title: "Entrega Final PEC (09 Dic), Registro PEC TV (11 Dic) e Inicio P3 (Oficio DE/279)",
-    highlight: "Mié 09 Entrega PEC (Tianguis TM / Cortometraje TV) · Vie 11 Límite Registro PEC TV · Eval P3: 9–15 Dic",
+    title: "Entrega Final PEC (09 Dic), Registro PEC TV (11 Dic), SIPINNA e Inicio P3",
+    highlight: "Mié 09 Entrega PEC · Vie 11 Límite PEC TV · Eval P3: 9–15 Dic · SIPINNA 3ros y 5tos",
     days: [
-      { name: "Lunes", date: "07 Dic", isToday: false, isHoliday: false, events: [{ title: "Cierre de Progresiones Bloque III", sub: "Conclusión de contenidos programáticos", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
-      { name: "Martes", date: "08 Dic", isToday: false, isHoliday: false, events: [{ title: "Guías y Logística Previa PEC", sub: "Repaso P3 y preparación final para Tianguis / Cortometraje", cat: "normal", priority: "normal", shift: "Ambos turnos" }] },
+      { name: "Lunes", date: "07 Dic", isToday: false, isHoliday: false, events: [
+        { title: "🛡️ SIPINNA: M303-M304 (07:00) y V307-V308 (17:00)", sub: "Proyecto Entornos Escolares Seguros + Psicoterapia Padres y Estudiantes (Sala Audiovisual).", cat: "parents", priority: "high", shift: "M303-304 / V307-308", tag: "SIPINNA" },
+        { title: "Cierre de Progresiones Bloque III", sub: "Conclusión de contenidos programáticos", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+      ] },
+      { name: "Martes", date: "08 Dic", isToday: false, isHoliday: false, events: [
+        { title: "🛡️ SIPINNA: M305-M306 (07:00–08:30 h)", sub: "Proyecto Entornos Escolares Seguros + Psicoterapia Padres y Estudiantes (Sala Audiovisual).", cat: "parents", priority: "high", shift: "☀️ M305-M306", tag: "SIPINNA" },
+        { title: "Guías y Logística Previa PEC", sub: "Repaso P3 y preparación final para Tianguis / Cortometraje", cat: "normal", priority: "normal", shift: "Ambos turnos" }
+      ] },
       { name: "Miércoles", date: "09 Dic", isToday: false, isHoliday: false, events: [
         { title: "🌟 Entrega Final PEC: Tianguis «Manos que tejen PAZ» (TM)", sub: "Estacionamiento ext. y Audiorama: 08:00–08:40 arreglo · 09:00 inaug. · 09:00–11:40 venta (Comisión Felipe: Publicidad y logística) · 11:40 limpieza.", cat: "normal", priority: "high", shift: "☀️ Turno Matutino", tag: "Tianguis PEC" },
         { title: "🎬 Entrega Cortometraje «Raíces que permanecen» (TV)", sub: "Entrega oficial del producto final digital por estudiantes del Turno Vespertino.", cat: "normal", priority: "high", shift: "🌙 Turno Vespertino", tag: "Cortometraje" },
         { title: "📝 Tercera Evaluación Parcial (P3 · Día 1)", sub: "Oficio DE/279: Inicia aplicación de evaluación P3 (9, 10, 11, 14 y 15 Dic)", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Exámenes P3" }
       ] },
       { name: "Jueves", date: "10 Dic", isToday: false, isHoliday: false, events: [
+        { title: "🛡️ SIPINNA: M501-M502 (07:00) y V509-V508 (17:00)", sub: "Proyecto Entornos Escolares Seguros + Psicoterapia Padres y Estudiantes (Sala Audiovisual).", cat: "parents", priority: "high", shift: "M501-502 / V509-508", tag: "SIPINNA" },
         { title: "📝 Tercera Evaluación Parcial (P3 · Día 2)", sub: "Segunda jornada de evaluación P3", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Exámenes P3" },
         { title: "✍️ Inicia Entrega, Retroalimentación y Firma P3", sub: "Calificación P3, promedio de parciales y firma de aceptación en sesión siguiente (10 al 16 Dic)", cat: "pace", priority: "normal", shift: "Ambos turnos", tag: "Firma P3" }
       ] },
       { name: "Viernes", date: "11 Dic", isToday: false, isHoliday: false, events: [
+        { title: "🛡️ SIPINNA: M503-M504 (07:00–08:30 h)", sub: "Proyecto Entornos Escolares Seguros + Psicoterapia Padres y Estudiantes (Sala Audiovisual).", cat: "parents", priority: "high", shift: "☀️ M503-M504", tag: "SIPINNA" },
         { title: "⚠️ Límite Registro Calificaciones PEC (TV)", sub: "Evaluar y capturar 3er Parcial en plataforma PEC (Rúbrica oficial 8 criterios × 0.25 = 2.0 pts).", cat: "pace", priority: "high", shift: "🌙 Turno Vespertino", tag: "Plataforma PEC" },
         { title: "📝 Tercera Evaluación Parcial (P3 · Día 3)", sub: "Tercera jornada de evaluación + retroalimentación y firma de grupos evaluados", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Exámenes P3" }
       ] }
@@ -3983,9 +4030,10 @@ const WEEK_VIEWS = {
     weekNum: "Semana 16",
     range: "14 al 18 de Diciembre de 2026",
     title: "Cierre P3 (14–15 Dic), Firmas (al 16 Dic), Fin de Listas, Muestra PEC y Festejo",
-    highlight: "Lun 14 y Mar 15 fin P3 · Mié 16 cierre firmas/listas · Jue 17 PEC · Vie 18 Festejo",
+    highlight: "Lun 14 cierre SIPINNA y P3 Día 4 · Mar 15 fin P3 · Mié 16 firmas/listas · Jue 17 PEC · Vie 18 Festejo",
     days: [
       { name: "Lunes", date: "14 Dic", isToday: false, isHoliday: false, events: [
+        { title: "🛡️ SIPINNA (Cierre): M505-M506 (07:00) y V309-V310 (17:00)", sub: "Cierre Ciclo Entornos Escolares Seguros + Psicoterapia Padres y Estudiantes (Sala Audiovisual).", cat: "parents", priority: "high", shift: "M505-506 / V309-310", tag: "SIPINNA" },
         { title: "📝 Tercera Evaluación Parcial (P3 · Día 4)", sub: "Cuarta jornada de evaluación P3 (corrección oficial 14 en lugar de 12 Dic)", cat: "exam", priority: "high", shift: "Ambos turnos", tag: "Exámenes P3" },
         { title: "✍️ Retroalimentación, Promedio y Firma P3", sub: "Entrega de calificaciones P3, promedio de parciales y aceptación firmada por estudiantes", cat: "pace", priority: "high", shift: "Ambos turnos", tag: "Firma P3" }
       ] },
@@ -4309,6 +4357,20 @@ const CULTURAL_EVENTS = [
     ],
     status: "Programado Oficial",
     tag: "PEC Cierre P3"
+  },
+  {
+    id: "cult-19",
+    title: "🛡️ Proyecto «Entornos Escolares Seguros» (SIPINNA Piloto) y Psicoterapia Padres/Estudiantes",
+    date: "30 de Noviembre al 14 de Diciembre de 2026",
+    category: "Convivencia, SIPINNA y Dirección",
+    venue: "Sala Audiovisual CEB 5/4 (TM 07:00–08:30 h · TV 17:00–18:30 h)",
+    participants: "Todos los Grupos (M101–M506 / V107–V509), Madres, Padres, Tutores y Docentes",
+    desc: "Plantel elegido para el proyecto Entornos Escolares Seguros (SIPINNA) + charlas de Psicoterapia Padres y Estudiantes y firma de acuerdo de corresponsabilidad sobre uso de celulares y convivencia pacífica.",
+    files: [
+      { name: "Citatorio Oficial Dirección (24-Nov)", type: "doc" }
+    ],
+    status: "Inicia Lunes 30 Nov",
+    tag: "Plantel Piloto"
   }
 ];
 
@@ -4556,7 +4618,8 @@ const CULTURAL_EVENTS = [
         'cult-15': '2026-11-19',
         'cult-16': '2026-11-24',
         'cult-17': '2026-11-25',
-        'cult-18': '2026-12-09'
+        'cult-18': '2026-12-09',
+        'cult-19': '2026-11-30'
       };
 
       CULTURAL_EVENTS.forEach(ce => {

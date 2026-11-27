@@ -2743,7 +2743,7 @@
       </div>
     </section>
 
-    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (31) -->
+    <!-- TAB PANE 5: AUDITORÍA DE CORREOS Y OFICIOS (32) -->
 <section class="tab-pane" id="pane-audit">
       <div class="audit-container" id="auditEmailsContainer">
         <!-- Inyectado por JS -->
@@ -3017,6 +3017,16 @@
   <script>
     // Inyección de Datos Extraídos
     const AUDIT_EMAILS = [
+      {
+        id: 32,
+        date: "27 de Noviembre de 2026",
+        sender: "SEMS / DGB Federal (Curso Didáctica)",
+        title: "🎓 Constancias Disponibles: Curso «Introducción a la Didáctica en la EMS» (2.ª parte: Feb 2027)",
+        req: "Disponibles las constancias del curso «Introducción a la Didáctica en la Educación Media Superior» (con listado de nombres y números de identificación) en OneDrive SEMS: https://semsgob-my.sharepoint.com/:f:/r/personal/oscar_mendoza_sems_gob_mx/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Foscar%5Fmendoza%5Fsems%5Fgob%5Fmx%2FDocuments%2FDocumentos%2FCursos%2FCurso%20%2D%20Introducci%C3%B3n%20a%20la%20Did%C3%A1ctica%2FConstancias&share=cgpF8MoOnMPSRLg9vyfGivFQEgUCHl%2DPjFtJKqBi8RkekyFLdw · La segunda parte del diplomado estará disponible a partir de febrero de 2027.",
+        delivery: "Descarga en OneDrive SEMS · Resguardo en Expediente Docente",
+        status: "Disponible para Descarga",
+        ref: "Diplomado Didáctica EMS (DGB/SEMS)"
+      },
       {
         id: 31,
         date: "27 de Noviembre de 2026 (Citatorio: 24-Nov)",
@@ -3667,6 +3677,7 @@
   ],
   "2026-11-27": [
     { label: "💻 Capacitación SAGYC (07:00 / 13:00 h)", cat: "union", desc: "Capacitación sobre el uso de la plataforma institucional ceb54.sistemas-sagyc.com impartida por el Dr. Felipe López Salazar (TM: 07:00 h / TV: 13:00 h). Actividades con estudiantes inician a partir del 2° módulo." },
+    { label: "🎓 Constancias Didáctica EMS", cat: "union", desc: "Disponibles constancias del curso «Introducción a la Didáctica en la EMS» en OneDrive SEMS (2.ª parte del diplomado en febrero 2027)." },
     { label: "🩺 Feria de la Salud (Ambos Turnos)", cat: "normal", desc: "Feria Institucional de la Salud con participación de ambos turnos. Responsable: Mtro. Gabriel." }
   ],
   "2026-11-30": [
@@ -3739,7 +3750,8 @@
   "2027-02-01": [{ label: "🇲🇽 Constitución", cat: "holiday", desc: "Suspensión oficial de labores SEP en conmemoración del Aniversario de la Constitución Política." }],
   "2027-02-02": [
     { label: "📋 Planeación Sem B", cat: "union", desc: "Actividad Oficial SEMS #23 (02 al 05 Feb): Elaboración y entrega de Planeación Didáctica para el Semestre B 2026-2027." },
-    { label: "🎟️ Inscripción Regulares", cat: "pace", desc: "Actividad Oficial SEMS #20 (02 y 03 Feb): Proceso de reinscripción en Control Escolar para estudiantes regulares." }
+    { label: "🎟️ Inscripción Regulares", cat: "pace", desc: "Actividad Oficial SEMS #20 (02 y 03 Feb): Proceso de reinscripción en Control Escolar para estudiantes regulares." },
+    { label: "🎓 2.ª Parte Diplomado Didáctica EMS", cat: "union", desc: "Disponible a partir de febrero de 2027 la segunda parte del Diplomado «Didáctica en la Educación Media Superior» (SEMS)." }
   ],
   "2027-02-04": [{ label: "🎟️ Insc. Irregulares", cat: "pace", desc: "Actividad Oficial SEMS #21: Proceso de inscripción en Control Escolar para estudiantes irregulares, reingresos y cambios de plantel." }],
   "2027-02-08": [{ label: "🚀 INICIO CLASES SEM B", cat: "normal", desc: "Apertura formal de clases del Semestre B (Subciclo 2 · 2026-2027) en el CEB 5/4 «Profr. Rafael Ramírez»." }]
